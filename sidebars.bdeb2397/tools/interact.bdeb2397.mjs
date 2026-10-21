@@ -397,6 +397,29 @@ for (const [t, app, first] of [[6, 'superbot', '#fd9e43'], [7, 'roblox', '#335ff
   check('tint', got.app === app && got.first === first && got.band.includes(`rgb(${r}, ${g}, ${b})`), `at ${t}s the vignette is ${app} (${first})`, got);
   await page.close();
 }
+
+// the app fills whatever frame it is in, no bars beside it: wide, tall, and resized while open; the sidebar, the chat
+// and the live view meet edge to edge across it, the live view keeping its width
+const fills = (page) => page.evaluate(() => {
+  const r = (s) => document.querySelector(s).getBoundingClientRect();
+  const app = r('.app'), sb = r('.app > .sb'), ch = r('.app > .ch'), cc = r('.app > .cc');
+  const near = (a, b) => Math.abs(a - b) < 1.5;
+  return { frame: [innerWidth, innerHeight], app: [app.left, app.top, app.right, app.bottom].map(Math.round), fill: near(app.left, 0) && near(app.top, 0) && near(app.right, innerWidth) && near(app.bottom, innerHeight), seams: near(sb.right, ch.left) && near(ch.right, cc.left) && near(cc.right, innerWidth) && near(sb.bottom, innerHeight) && near(cc.bottom, innerHeight) };
+});
+for (const [w, h] of [[1900, 700], [900, 1100]]) {
+  const page = await browser.newPage({ viewport: { width: w, height: h } });
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(String(e)));
+  await page.goto(`${BASE}view.html?v=1&t=40`);
+  await page.waitForFunction(() => window.__ready === true, null, { timeout: 30000 });
+  let got = await fills(page);
+  check('fluid', got.fill && got.seams, `at ${w}x${h} the app fills the frame and its columns meet`, got);
+  await page.setViewportSize({ width: h, height: w });
+  await page.waitForTimeout(200);
+  got = await fills(page);
+  check('fluid', got.fill && got.seams && !errors.length, `resized to ${h}x${w} it fills the new frame`, { ...got, errors });
+  await page.close();
+}
 await browser.close();
 console.log(fails.length ? `${fails.length} failed` : 'all passed');
 process.exit(fails.length ? 1 : 0);

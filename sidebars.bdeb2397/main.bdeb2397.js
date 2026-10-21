@@ -1,5 +1,6 @@
-// The spot with a chosen chat sidebar inside its own 1200x675 app, so the page keeps the creative's 16:9 and nothing is
-// letterboxed beside it. This is the creative's main.af4c3c6b.js (as of 2026-10-21, with its sidebar layout: the chat
+// The spot with a chosen chat sidebar inside its app, which fills whatever frame it is in: drawn at the creative's own
+// scale (the most of its 1200x675 the frame holds) and laid out as wide and as tall as the frame is at that scale, so no
+// frame is letterboxed. This is the creative's main.af4c3c6b.js (as of 2026-10-21, with its sidebar layout: the chat
 // and the live view share what the sidebar leaves), with two differences: the sidebar is this folder's (?v= picks the
 // variant, ?state=loading|empty its list states), and it is static, so nothing paints it per frame. The chat's left
 // offset and the live view's width are set inline here rather than through the creative's stylesheet.
@@ -16,7 +17,6 @@ const S = buildSchedule();
 // the vignette's color follows the app on screen (tint.bdeb2397.js)
 const tint = tinter(S);
 const params = new URLSearchParams(location.search);
-const stage = document.getElementById('stage');
 const dip = document.getElementById('dip');
 const view = buildScreen(document.querySelector('.cc-view'));
 const feed = buildFeed(document.querySelector('.ch'), document.querySelector('.ac'), S);
@@ -31,7 +31,22 @@ enhanceSidebar(sb);
 // its drawn width (the tokens' --sidebar-w, Claude's 242px at this app's scale) sets the app's columns
 const SIDEBAR_W = parseFloat(getComputedStyle(sb).width);
 if (!(SIDEBAR_W > 0)) throw new Error('the sidebar has no width: load sidebars.bdeb2397/tokens.bdeb2397.css before main.bdeb2397.js');
-const APP_W = 1200 - SIDEBAR_W, SIDE_W = 560, CHAT_W = APP_W - SIDE_W, SIDE_IN = 0.5;
+const SIDE_W = 560, SIDE_IN = 0.5;
+// the creative's app: 1200x675, as the spot lays it out
+const BASE_W = 1200, BASE_H = 675;
+// the chat's width before the live view docks (the app's, less the sidebar) and after (less the live view as well);
+// the room past 16:9 goes to the chat, the live view keeping its width
+let APP_W = 0, CHAT_W = 0;
+function layout() {
+  const k = Math.min(innerWidth / BASE_W, innerHeight / BASE_H);
+  const w = innerWidth / k, h = innerHeight / k;
+  app.style.width = `${w.toFixed(2)}px`;
+  app.style.height = `${h.toFixed(2)}px`;
+  app.style.transform = `scale(${k.toFixed(5)})`;
+  APP_W = w - SIDEBAR_W;
+  CHAT_W = APP_W - SIDE_W;
+}
+layout();
 chat.style.left = `${SIDEBAR_W}px`;
 side.style.width = `${SIDE_W}px`;
 // every other chat in the sidebar opens over the spot, its Activity tab the live view's width (chatview.bdeb2397.js)
@@ -68,12 +83,14 @@ function dock(t) {
 // the opening layout from the first instant, before the pages have loaded and the clock has started
 dock(-1);
 
-function scaleStage() {
-  const k = Math.min(innerWidth / 1920, innerHeight / 1080);
-  stage.style.transform = `translate(-50%, -50%) scale(${k})`;
-}
-addEventListener('resize', scaleStage);
-scaleStage();
+// a new frame size: the app laid out again, and once the chat's heights are known, measured again at its new widths
+let measured = false;
+addEventListener('resize', () => {
+  layout();
+  if (!measured) return;
+  measureChat();
+  frame(frozen ?? now());
+});
 
 const frozen = params.has('t') ? Number(params.get('t')) : null;
 if (frozen !== null) document.body.classList.add('freeze');
@@ -90,6 +107,15 @@ function frame(t) {
 
 // false when the live view's pages never loaded: the chat and the Activity tab still play
 let liveView = true;
+
+// the chat's heights at both of its widths: docked beside the live view, and the whole window once it is away (the
+// next frame sets its width back)
+function measureChat() {
+  chat.style.width = `${CHAT_W}px`;
+  measureFeed(feed);
+  chat.style.width = `${APP_W}px`;
+  measureFeed(feed, true);
+}
 
 let origin = 0, paused = false, pausedAt = 0;
 const now = () => (paused ? pausedAt : (performance.now() - origin) / 1000);
@@ -111,11 +137,8 @@ async function start() {
     fit(view);
     measure(view);
   }
-  // the chat's heights at both of its widths: docked beside the live view, and the whole window once it is away
-  chat.style.width = `${CHAT_W}px`;
-  measureFeed(feed);
-  chat.style.width = `${APP_W}px`;
-  measureFeed(feed, true);
+  measureChat();
+  measured = true;
   window.__sidebarReady = true;
   if (frozen !== null) {
     frame(frozen);

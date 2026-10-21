@@ -12,3 +12,7 @@
 .ch-open:hover { background: rgba(0,0,0,.06); }
 .ch-open:focus-visible { outline: 2px solid #0a66d8; outline-offset: 1px; }
 .ch-open svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* the stage is the frame the page is in, edge to edge: the app inside it is sized and scaled to fill it
+   (main.bdeb2397.js layout), where the creative's own stage is a 1920x1080 picture scaled to fit, bars beside it */
+#stage { position: fixed; inset: 0; width: auto; height: auto; transform: none; }
