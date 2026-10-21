@@ -2,15 +2,16 @@ Sources for the sidebar variants (sidebars.bdeb2397). Never shown on screen.
 
 fx/*.png: Fluent Emoji in their 3D style, the same set as the creative's img/fx (the Activity tab's icons), fetched
 2026-10-21 from https://github.com/microsoft/fluentui-emoji (assets/<Name>/3D/<name>_3d.png, 256px) and scaled to
-96px with sips: chart_increasing, megaphone, memo, money_bag, movie_camera, musical_notes, pencil. License: MIT,
-Copyright (c) Microsoft Corporation
+96px with sips: chart_increasing, file_folder, megaphone, memo, money_bag, movie_camera, musical_notes,
+open_file_folder, pencil. License: MIT, Copyright (c) Microsoft Corporation
 (https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE). The rest of the sidebar's 3D icons are the creative's
 own ../img/fx files.
 
 The superbot mark in the sidebar's top bar: the mask geometry of the beta.superbot.gg mascot, from
 superbot-ad-gallery/assets/sb-mark-live.html (first party), drawn as one static ink layer.
 
-Utility icons (search, panel, settings, bell): lucide (https://lucide.dev, ISC).
+Utility and menu icons (search, panel, settings, bell, ellipsis, folder-plus, folder-minus, folder-input, pencil):
+lucide (https://lucide.dev, ISC).
 
 The avatar is the creative's own file (../rbx/assets); see ../img/CREDITS.txt.
 Chat titles are illustrative.

@@ -16,6 +16,8 @@ export const FX = {
   notes: './fx/musical_notes.png',
   megaphone: './fx/megaphone.png',
   pencil: './fx/pencil.png',
+  folder: './fx/file_folder.png',
+  folderOpen: './fx/open_file_folder.png',
 };
 
 export const NAV = [

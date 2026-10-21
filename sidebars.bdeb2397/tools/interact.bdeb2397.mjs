@@ -1,7 +1,8 @@
-// Headless checks of the sidebar against the owner's ask: Claude's sizes 1:1 in a 1456x815 window (242px wide, 28px
-// rows, 9px capitals), a chat dragged two places down lands there and does not navigate, Alt+ArrowUp moves the focused
-// chat and announces it, and hovering a cut-off title scrolls it and lets it go home on leave. Run in the creative
-// (scaled stage) and on the contact sheet (scaled wrapper), so the pointer maths is checked under both transforms.
+// Headless checks of the sidebar against the owner's asks, in the creative (scaled stage) and on the contact sheet
+// (scaled wrapper): Claude's sizes 1:1 in a 1456x815 window; titles fade instead of ending in "…"; the "•••" shows only
+// on hover; drag and Alt+arrow reordering; the hover scroll (fades, steady 32px/s, one pass, home on leave); and groups:
+// "•••" > New group > name it in the dialog (space and R typed into it never reach the spot's own keys), drag another
+// chat onto the group, drag one back out, fold it, rename it.
 // node sidebars.bdeb2397/tools/interact.bdeb2397.mjs http://localhost:5297/sidebars.bdeb2397/
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
@@ -20,14 +21,29 @@ async function run(where, url, root) {
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForFunction(() => window.__sidebarReady === true, null, { timeout: 30000 });
+  await page.waitForTimeout(200);
   const sb = page.locator(root).first();
-  const rows = sb.locator('.sb-scroll .sb-list > li');
-  const order = () => rows.evaluateAll((lis) => lis.map((li) => li.querySelector('.sb-title-in').textContent));
+  const top = sb.locator('.sb-scroll .sb-sec > .sb-list').first();
+  const chats = top.locator(':scope > li.sb-item');
+  // the list as text: a chat by its title, a group as [name: its chats]
+  const order = () => top.evaluate((ul) => [...ul.children].map((li) => li.matches('.sb-group')
+    ? `[${li.querySelector('.sb-ghead .sb-title-in').textContent}: ${[...li.querySelectorAll('.sb-group-list > li.sb-item .sb-title-in')].map((t) => t.textContent).join(' | ')}]`
+    : li.querySelector('.sb-title-in').textContent));
+  const centre = async (loc) => { const b = await loc.boundingBox(); return { x: b.x + b.width / 2, y: b.y + b.height / 2 }; };
+  async function drag(from, toY) {
+    const a = await centre(from);
+    await page.mouse.move(a.x, a.y);
+    await page.mouse.down();
+    for (let i = 1; i <= 12; i++) await page.mouse.move(a.x, a.y + ((toY - a.y) * i) / 12);
+    await page.waitForTimeout(60);
+    await page.mouse.up();
+    await page.waitForTimeout(300);
+  }
 
   // sizes on screen
   const m = await sb.evaluate((el) => {
     const r = el.getBoundingClientRect();
-    const lis = [...el.querySelectorAll('.sb-scroll .sb-list > li')].map((li) => li.getBoundingClientRect());
+    const lis = [...el.querySelectorAll('.sb-scroll .sb-sec > .sb-list > li')].map((li) => li.getBoundingClientRect());
     const ic = el.querySelector('.sb-scroll .sb-ic').getBoundingClientRect();
     const t = el.querySelector('.sb-scroll .sb-title').getBoundingClientRect();
     return { w: r.width, pitch: lis[1].top - lis[0].top, ic: ic.width, icLeft: ic.left - r.left, textLeft: t.left - r.left };
@@ -37,24 +53,32 @@ async function run(where, url, root) {
   check(where, near(m.ic, 13, 0.6) && near(m.icLeft, 13, 1), 'icons 13px, 13px from the edge', m);
   check(where, near(m.textLeft, 39, 1), 'text starts 39px from the edge', m.textLeft);
 
+  // no "…": a long title is clipped under a right-edge fade
+  const rest = await chats.nth(0).locator('.sb-title').evaluate((el) => ({ to: getComputedStyle(el).textOverflow, over: el.classList.contains('is-overflow'), mask: getComputedStyle(el).maskImage }));
+  check(where, rest.to === 'clip' && rest.over && rest.mask.includes('gradient'), 'a long title fades at the edge, no ellipsis', rest);
+
+  // the "•••" only on hover
+  const more1 = chats.nth(1).locator('.sb-more');
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(250);
+  const hidden = await more1.evaluate((el) => getComputedStyle(el).opacity);
+  await page.mouse.move(...Object.values(await centre(chats.nth(1).locator('.sb-row'))));
+  await page.waitForTimeout(250);
+  const shownOp = await more1.evaluate((el) => getComputedStyle(el).opacity);
+  check(where, hidden === '0' && shownOp === '1', 'the ••• shows on hover only', { hidden, shownOp });
+
   // drag the second chat two places down
   const before = await order();
-  const second = rows.nth(1).locator('.sb-row');
-  const box = await second.boundingBox();
   const startUrl = page.url();
-  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-  await page.mouse.down();
-  for (let i = 1; i <= 10; i++) await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2 + (m.pitch * 2.1 * i) / 10);
-  await page.mouse.up();
-  await page.waitForTimeout(400);
+  const b1 = await chats.nth(1).boundingBox();
+  await drag(chats.nth(1).locator('.sb-row'), b1.y + b1.height / 2 + m.pitch * 2.1);
   const afterDrag = await order();
-  const expected = [before[0], before[2], before[3], before[1], ...before.slice(4)];
-  check(where, JSON.stringify(afterDrag) === JSON.stringify(expected), `drag puts "${before[1]}" fourth`, afterDrag.slice(0, 5));
+  check(where, JSON.stringify(afterDrag.slice(0, 5)) === JSON.stringify([before[0], before[2], before[3], before[1], before[4]]), `drag puts "${before[1]}" fourth`, afterDrag.slice(0, 5));
   check(where, page.url() === startUrl, 'the drop does not follow the link', page.url());
-  check(where, await sb.locator('.sb-list.is-sorting, li.is-dragging').count() === 0, 'drag state cleared', null);
+  check(where, await sb.locator('.sb-ghost, .sb-gap, .sb.is-dragging').count() === 0 && !(await sb.evaluate((el) => el.classList.contains('is-dragging'))), 'drag state cleared', null);
 
-  // keyboard: Alt+ArrowUp moves it back up one
-  await sb.locator('.sb-scroll .sb-list > li').nth(3).locator('.sb-row').focus();
+  // keyboard: Alt+ArrowUp moves it back up one, announced, focus kept
+  await chats.nth(3).locator('.sb-row').focus();
   await page.keyboard.press('Alt+ArrowUp');
   const afterKey = await order();
   check(where, afterKey[2] === before[1], 'Alt+ArrowUp moves the focused chat up one', afterKey.slice(0, 5));
@@ -63,40 +87,92 @@ async function run(where, url, root) {
   check(where, await page.evaluate(() => document.activeElement?.classList.contains('sb-row')), 'focus stays on the moved chat', null);
 
   // marquee: hover the first (cut-off) title
+  await page.evaluate(() => document.activeElement?.blur());
   await page.mouse.move(0, 0);
-  const first = rows.nth(0).locator('.sb-row');
-  const fb = await first.boundingBox();
-  await page.mouse.move(fb.x + fb.width / 2, fb.y + fb.height / 2);
-  const sample = () => rows.nth(0).locator('.sb-title').evaluate((el) => ({
+  await page.waitForTimeout(300);
+  const fc = await centre(chats.nth(0).locator('.sb-row'));
+  await page.mouse.move(fc.x - 40, fc.y);
+  const sample = () => chats.nth(0).locator('.sb-title').evaluate((el) => ({
     tx: new DOMMatrix(getComputedStyle(el.firstElementChild).transform).m41,
     l: parseFloat(el.style.getPropertyValue('--fade-l')) || 0, r: parseFloat(el.style.getPropertyValue('--fade-r')) || 0,
     at: performance.now(),
   }));
   await page.waitForTimeout(450);
   const s0 = await sample();
-  // the left fade is only as wide as the text that has slid out past the left edge, so the first letter starts crisp
   check(where, s0.r > 5 && near(s0.l, Math.min(s0.r, -s0.tx), 0.05), 'near the start the left fade equals the distance moved', s0);
   await page.waitForTimeout(500);
   const s1 = await sample();
   await page.waitForTimeout(400);
   const s2 = await sample();
-  const tx = s2.tx;
-  check(where, tx < -5, 'a hovered cut-off title scrolls left', tx);
-  check(where, s2.l > 5 && s2.r > 5, 'mid-scroll both edges fade', s2);
-  // linear at 32 px/s in the list's own units: two samples mid-travel give the same speed
+  check(where, s2.tx < -5 && s2.l > 5 && s2.r > 5, 'mid-scroll it has moved and both edges fade', s2);
   const v1 = (s1.tx - s0.tx) / ((s1.at - s0.at) / 1000), v2 = (s2.tx - s1.tx) / ((s2.at - s1.at) / 1000);
   check(where, near(v1, -32, 5) && near(v2, -32, 5), 'it moves at a steady 32px/s', { v1, v2 });
-  // one pass: once at its end it stays there, the last letter clear of any fade, and never heads back
-  const fullDist = await rows.nth(0).locator('.sb-title').evaluate((el) => el.firstElementChild.offsetWidth - el.clientWidth);
-  await page.waitForTimeout((fullDist / 32) * 1000 + 600 - 1350);
+  const fullDist = await chats.nth(0).locator('.sb-title').evaluate((el) => el.firstElementChild.offsetWidth - el.clientWidth);
+  await page.waitForTimeout(Math.max(0, (fullDist / 32) * 1000 + 600 - 1350));
   const e1 = await sample();
-  await page.waitForTimeout(1500);
+  await page.waitForTimeout(1200);
   const e2 = await sample();
   check(where, near(e1.tx, -fullDist, 0.5) && e2.tx === e1.tx && e2.r === 0 && e2.l > 5, 'it stops at the end and does not come back', { e1, e2, fullDist });
   await page.mouse.move(0, 0);
   await page.waitForTimeout(450);
-  const home = await rows.nth(0).locator('.sb-title').evaluate((el) => ({ on: el.classList.contains('is-marquee'), tx: new DOMMatrix(getComputedStyle(el.firstElementChild).transform).m41 }));
-  check(where, !home.on && home.tx === 0, 'on leave it eases home and the ellipsis returns', home);
+  const home = await chats.nth(0).locator('.sb-title').evaluate((el) => ({ on: el.classList.contains('is-marquee'), tx: new DOMMatrix(getComputedStyle(el.firstElementChild).transform).m41 }));
+  check(where, !home.on && home.tx === 0, 'on leave it eases home', home);
+
+  // groups: ••• > New group > name it
+  const pick = chats.nth(2);
+  const picked = await pick.locator('.sb-title-in').textContent();
+  await page.mouse.move(...Object.values(await centre(pick.locator('.sb-row'))));
+  await page.waitForTimeout(200);
+  await pick.locator('.sb-more').click();
+  const menu = page.locator('.sb-menu:popover-open');
+  check(where, await menu.count() === 1 && (await menu.locator('.sb-menu-item').first().textContent()) === 'New group', 'the ••• opens a menu with New group', await menu.count());
+  await menu.locator('.sb-menu-item').first().click();
+  const dlg = page.locator('dialog.sb-dialog[open]');
+  check(where, await dlg.count() === 1, 'New group opens the name dialog', null);
+  await page.keyboard.type('Launch day r');
+  await page.keyboard.press('Backspace');
+  await page.keyboard.press('Backspace');
+  const typed = await dlg.locator('input').inputValue();
+  check(where, typed === 'Launch day', 'spaces and R go into the field, not to the spot', typed);
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(150);
+  let now = await order();
+  check(where, await dlg.count() === 0 && now.includes(`[Launch day: ${picked}]`), 'Enter creates the group with the chat in it', now);
+  check(where, await page.evaluate(() => document.activeElement?.classList.contains('sb-group-row')), 'focus lands on the new group', null);
+  const group = sb.locator('.sb-group').first();
+  check(where, (await group.locator('.sb-count').textContent()) === '1', 'the group counts 1 chat', null);
+
+  // drag another chat onto the group's row
+  const mover = chats.nth(0);
+  const moverTitle = await mover.locator('.sb-title-in').textContent();
+  const head = await centre(group.locator('.sb-ghead'));
+  await page.mouse.move(0, 0);
+  await drag(mover.locator('.sb-row'), head.y + 2);
+  now = await order();
+  check(where, now.includes(`[Launch day: ${picked} | ${moverTitle}]`), 'a chat dropped on the group joins it', now);
+  check(where, (await group.locator('.sb-count').textContent()) === '2', 'the group counts 2 chats', null);
+  check(where, /in Launch day/.test(await sb.locator('[aria-live]').textContent()), 'the join is announced', await sb.locator('[aria-live]').textContent());
+
+  // drag one back out, to the top of the list
+  const inside = group.locator('.sb-group-list > li.sb-item').first();
+  const firstTop = await top.locator(':scope > li').first().boundingBox();
+  await drag(inside.locator('.sb-row'), firstTop.y + 2);
+  now = await order();
+  check(where, now[0] === picked && now.includes(`[Launch day: ${moverTitle}]`), 'a chat dragged out of the group leaves it', now.slice(0, 4));
+
+  // fold it, then rename it
+  await group.locator('.sb-group-row').click();
+  const folded = await group.evaluate((g) => ({ exp: g.querySelector('.sb-group-row').getAttribute('aria-expanded'), hid: g.querySelector('.sb-group-list').hidden }));
+  check(where, folded.exp === 'false' && folded.hid, 'the group row folds its list', folded);
+  await page.mouse.move(...Object.values(await centre(group.locator('.sb-ghead'))));
+  await page.waitForTimeout(200);
+  await group.locator('.sb-ghead .sb-more').click();
+  await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'Rename group' }).click();
+  check(where, (await dlg.locator('input').inputValue()) === 'Launch day', 'Rename opens with the current name', await dlg.locator('input').inputValue());
+  await dlg.locator('input').fill('Launch');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(150);
+  check(where, (await group.locator('.sb-ghead .sb-title-in').textContent()) === 'Launch', 'the group is renamed', null);
 
   check(where, errors.length === 0, 'no console errors', errors);
   await page.close();

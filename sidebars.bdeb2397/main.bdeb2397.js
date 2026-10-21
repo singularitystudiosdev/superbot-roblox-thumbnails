@@ -125,6 +125,8 @@ async function start() {
 
 addEventListener('keydown', (e) => {
   if (frozen !== null) return;
+  // typing a group's name, or moving through a menu, is not playback control
+  if (e.target.closest?.('input, textarea, dialog, [role="menu"]')) return;
   if (e.key === ' ') {
     e.preventDefault();
     if (paused) { origin = performance.now() - pausedAt * 1000; paused = false; } else { pausedAt = now(); paused = true; }

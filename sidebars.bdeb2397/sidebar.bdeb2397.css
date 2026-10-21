@@ -1,12 +1,13 @@
 /* The sidebar: Claude's sidebar sizes (tokens.bdeb2397.css), the creative's palette and type, every list item wearing a
    Fluent 3D icon as the creative's activity tab does. Values come from the tokens only. Motion: hover fills, rows
    making way while a chat is dragged (interact.bdeb2397.js), and a cut-off title scrolling on hover. */
-.sb { display: flex; flex-direction: column; width: var(--sidebar-w); height: var(--app-h); overflow: hidden; background: var(--ground); box-shadow: inset calc(-1 * var(--hair)) 0 0 var(--sel); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.sb { position: relative; display: flex; flex-direction: column; width: var(--sidebar-w); height: var(--app-h); overflow: hidden; background: var(--ground); box-shadow: inset calc(-1 * var(--hair)) 0 0 var(--sel); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
 .sb, .sb * { box-sizing: border-box; }
-.sb ul { margin: 0; padding: 0; list-style: none; }
-.sb a { color: inherit; text-decoration: none; }
-.sb a, .sb img { -webkit-user-drag: none; }
-.sb button, .sb input { font: inherit; }
+/* resets at zero specificity, so every class below (a group's indented list, a group's row font) wins over them */
+:where(.sb) ul { margin: 0; padding: 0; list-style: none; }
+:where(.sb) a { color: inherit; text-decoration: none; }
+:where(.sb) a, :where(.sb) img { -webkit-user-drag: none; }
+:where(.sb) button, :where(.sb) input { font: inherit; }
 .sb-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* ---------- top: the mark and wordmark on the icon column, then search and collapse ---------- */
@@ -23,7 +24,7 @@
 .sb-scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; padding: 0 var(--pad-x) var(--sp-16); -webkit-mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); }
 .sb-scroll::-webkit-scrollbar { display: none; }
 .sb-row { display: flex; align-items: center; gap: var(--gap-ic); height: var(--row); padding: 0 var(--row-pad); border-radius: var(--r-ctl); font: var(--fs-body)/var(--lh-body) var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
-.sb-row:hover { background: var(--hover); }
+.sb-row:hover, .sb-item:hover > .sb-row { background: var(--hover); }
 .sb-row[aria-current="page"] { background: var(--sel); font-weight: 500; }
 /* muted on the selected fill is 4.0:1, under AA for small text: the open chat's meta takes the ink */
 .sb [aria-current="page"] .sb-time, .sb [aria-current="page"] .sb-sub { color: var(--ink); }
@@ -31,22 +32,30 @@
 .sb a:focus-visible, .sb button:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
 .sb-ic { display: block; flex: none; width: var(--ic); height: var(--ic); }
 .sb-t { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.sb-title, .sb-sub { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-.sb-sub { font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.sb-title { overflow: hidden; white-space: nowrap; }
+.sb-sub { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
 .sb-time { flex: none; font: var(--fs-meta)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
 
-/* a cut-off title on hover or focus: the ellipsis gives way to the whole line, which slides to its end and back with a
-   small fade on each edge where text is hidden past it (interact.bdeb2397.js sets the line's offset and both fades) */
-.sb-title.is-marquee { text-overflow: clip; -webkit-mask: linear-gradient(90deg, transparent, #000 var(--fade-l, 0px), #000 calc(100% - var(--fade-r, 0px)), transparent); mask: linear-gradient(90deg, transparent, #000 var(--fade-l, 0px), #000 calc(100% - var(--fade-r, 0px)), transparent); }
+/* a title longer than its row has no ellipsis: it fades out at the right edge. On hover or focus it slides to its end,
+   with a small fade on each edge where text is hidden past it (marquee.bdeb2397.js sets the offset and both fades) */
+.sb-title.is-overflow, .sb-title.is-marquee { -webkit-mask: linear-gradient(90deg, transparent, #000 var(--fade-l, 0px), #000 calc(100% - var(--fade-r, var(--gap-ic))), transparent); mask: linear-gradient(90deg, transparent, #000 var(--fade-l, 0px), #000 calc(100% - var(--fade-r, var(--gap-ic))), transparent); }
 .sb-title.is-marquee > .sb-title-in { display: inline-block; will-change: transform; }
 
-/* ---------- dragging a chat to a new place ---------- */
-.sb-scroll .sb-list .sb-row { user-select: none; touch-action: none; }
-.sb-list.is-sorting { cursor: grabbing; }
-.sb-list.is-sorting > li { position: relative; transition: transform var(--d-hover) var(--ease-std); }
-.sb-list.is-sorting > li.is-dragging { z-index: 1; }
-.sb-list.is-sorting > li.is-dragging > .sb-row { background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel), var(--lift); cursor: grabbing; }
-.sb-list.is-settling > li { transition: none; }
+/* ---------- a chat's "•••": shown on hover or focus (or while its menu is open), the title making room for it ---------- */
+.sb-item { position: relative; }
+.sb-more { position: absolute; top: 50%; right: var(--row-pad); display: grid; place-items: center; width: var(--tool); height: var(--tool); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--muted); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(-50%); transition: opacity var(--d-hover) ease-out, background-color var(--d-hover) ease-out; }
+.sb-more:hover { background: var(--sel); color: var(--ink); }
+.sb-item:hover > .sb-more, .sb-item:focus-within > .sb-more, .sb-more[aria-expanded="true"] { opacity: 1; pointer-events: auto; }
+.sb-item:is(:hover, :focus-within) > .sb-row, .sb-item:has(> .sb-more[aria-expanded="true"]) > .sb-row { padding-right: calc(var(--tool) + var(--row-pad)); }
+
+/* ---------- dragging a chat: a ghost under the pointer, a gap where it will land ---------- */
+.sb-scroll .sb-item > .sb-row { user-select: none; touch-action: none; }
+.sb.is-dragging, .sb.is-dragging * { cursor: grabbing !important; }
+.sb.is-dragging .sb-more { opacity: 0; pointer-events: none; }
+.sb-ghost { position: absolute; z-index: 5; pointer-events: none; }
+.sb-ghost .sb-row { background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel), var(--lift); }
+.sb-ghost .sb-more { display: none; }
+.sb-gap { list-style: none; }
 
 /* ---------- sections: a muted label ---------- */
 .sb-sec { margin-top: var(--gap-sec); }
@@ -70,6 +79,5 @@
 .sb-me .sb-tool:hover { color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
-  .sb-tool, .sb-row { transition: none; }
-  .sb-list.is-sorting > li { transition: none; }
+  .sb-tool, .sb-row, .sb-more { transition: none; }
 }

@@ -1,0 +1,45 @@
+/* Groups (groups.bdeb2397.js): a group's row folds its list, which hangs one icon step in; the "•••" menu and the
+   name dialog sit in the top layer, scaled by --k to the sidebar's on-screen size. Tokens only. */
+
+/* ---------- a group's row and list ---------- */
+.sb-group-row { width: 100%; border: 0; background: transparent; color: inherit; text-align: left; }
+.sb-group-row .sb-title { font-weight: 500; }
+.sb-group-row .sb-count { flex: none; font: var(--fs-meta)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+.sb-group-row[aria-expanded="true"] .sb-ic-shut, .sb-group-row[aria-expanded="false"] .sb-ic-open { display: none; }
+.sb-group-list { padding-left: var(--gap-ic); }
+/* an empty group says what it is for */
+.sb-group-list:empty::before { content: "Drag chats here"; display: flex; align-items: center; height: var(--row); padding-left: var(--row-pad); font: var(--fs-meta)/1 var(--ui); color: var(--muted); }
+/* the group a dragged chat will drop into */
+.sb-ghead.is-drop > .sb-row { background: var(--sel); box-shadow: inset 0 0 0 var(--hair) var(--muted); }
+
+/* ---------- the "•••" menu ---------- */
+.sb-menu { position: fixed; inset: auto; box-sizing: border-box; min-width: calc(150px * var(--ref)); margin: 0; padding: calc(4px * var(--ref)); border: var(--hair) solid var(--sel); border-radius: var(--r-surf); background: var(--surface); box-shadow: var(--lift); color: var(--ink); font: var(--fs-body)/var(--lh-body) var(--ui); -webkit-font-smoothing: antialiased; transform: scale(var(--k, 1)); transform-origin: 0 0; }
+.sb-menu-item { display: flex; align-items: center; gap: calc(var(--gap-ic) * 0.75); width: 100%; height: var(--row); padding: 0 calc(8px * var(--ref)); border: 0; border-radius: var(--r-ctl); background: transparent; color: inherit; font: inherit; text-align: left; white-space: nowrap; cursor: pointer; }
+.sb-menu-item:hover { background: var(--ground); }
+.sb-menu-item:focus-visible { background: var(--ground); outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.sb-menu-item .sb-lu { color: var(--muted); }
+
+/* ---------- the name dialog ---------- */
+.sb-dialog { box-sizing: border-box; width: calc(320px * var(--ref)); padding: 0; border: var(--hair) solid var(--sel); border-radius: var(--r-surf); background: var(--surface); box-shadow: var(--lift); color: var(--ink); font-family: var(--ui); -webkit-font-smoothing: antialiased; transform: scale(var(--k, 1)); }
+.sb-dialog[open] { animation: sb-dialog-in var(--d-hover) var(--ease-std); }
+.sb-dialog::backdrop { background: var(--scrim); }
+@keyframes sb-dialog-in { from { opacity: 0; transform: scale(calc(var(--k, 1) * 0.97)); } }
+.sb-dialog-form { display: flex; flex-direction: column; gap: calc(12px * var(--ref)); padding: calc(16px * var(--ref)); }
+.sb-dialog-title { margin: 0; font: 600 calc(15px * var(--ref))/1.2 var(--ui); }
+.sb-field { display: flex; flex-direction: column; gap: calc(6px * var(--ref)); font: var(--fs-meta)/1 var(--ui); color: var(--muted); }
+/* the input is the field: its hairline at rest, the ink ring while focused */
+.sb-field input { box-sizing: border-box; height: calc(34px * var(--ref)); padding: 0 calc(10px * var(--ref)); border: 0; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; font: var(--fs-body)/1 var(--ui); color: var(--ink); }
+.sb-field input:focus-visible { box-shadow: 0 0 0 var(--focus) var(--ink); }
+.sb-field input::placeholder { color: var(--muted); }
+.sb-dialog-actions { display: flex; justify-content: flex-end; gap: calc(8px * var(--ref)); }
+.sb-btn-ghost, .sb-btn-primary { height: calc(30px * var(--ref)); padding: 0 calc(12px * var(--ref)); border: 0; border-radius: var(--r-ctl); font: 500 var(--fs-body)/1 var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.sb-btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 var(--hair) var(--sel); }
+.sb-btn-ghost:hover { background: var(--ground); }
+.sb-btn-primary { background: var(--ink); color: var(--surface); }
+.sb-btn-primary:hover { background: color-mix(in srgb, var(--ink) 85%, var(--surface)); }
+.sb-btn-ghost:focus-visible, .sb-btn-primary:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-dialog[open] { animation: none; }
+  .sb-btn-ghost, .sb-btn-primary { transition: none; }
+}
