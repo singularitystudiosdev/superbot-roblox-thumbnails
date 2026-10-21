@@ -42,6 +42,7 @@
   --mark: calc(19px * var(--ref));
   --tool: calc(24px * var(--ref));            /* a header or footer button */
   --tool-ic: calc(14px * var(--ref));         /* its line icon (glyphs 10 to 12 wide) */
+  --more: calc(20px * var(--ref));            /* a row's "•••": 4px clear of the row on every side */
   --field-h: calc(26px * var(--ref));         /* the search field */
   --foot-h: calc(39px * var(--ref));          /* the account row, under a hairline */
   --avatar: calc(20px * var(--ref));

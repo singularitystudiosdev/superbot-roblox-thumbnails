@@ -123,9 +123,25 @@ async function run(where, url, root) {
   const picked = await pick.locator('.sb-title-in').textContent();
   await page.mouse.move(...Object.values(await centre(pick.locator('.sb-row'))));
   await page.waitForTimeout(200);
+  // the "•••" highlight sits 4px clear of the row on every side, and is 20px square on screen
+  await pick.locator('.sb-more').hover();
+  await page.waitForTimeout(250);
+  const inset = await pick.evaluate((li) => {
+    const r = li.querySelector('.sb-row').getBoundingClientRect(), b = li.querySelector('.sb-more').getBoundingClientRect();
+    return { size: b.width, top: b.top - r.top, bottom: r.bottom - b.bottom, right: r.right - b.right, bg: getComputedStyle(li.querySelector('.sb-more')).backgroundColor };
+  });
+  check(where, near(inset.size, 20, 0.6) && near(inset.top, 4, 0.6) && near(inset.bottom, 4, 0.6) && near(inset.right, 4, 0.6) && inset.bg !== 'rgba(0, 0, 0, 0)', 'the ••• hover highlight is inset 4px all round', inset);
   await pick.locator('.sb-more').click();
   const menu = page.locator('.sb-menu:popover-open');
+  const tweens = await page.locator('.sb-menu:popover-open').evaluate((m) => m.getAnimations().map((a) => a.transitionProperty));
+  check(where, tweens.includes('opacity') && tweens.includes('transform'), 'the menu tweens in (opacity and transform)', tweens);
   check(where, await menu.count() === 1 && (await menu.locator('.sb-menu-item').first().textContent()) === 'New group', 'the ••• opens a menu with New group', await menu.count());
+  // a second press on the same "•••" closes it
+  await pick.locator('.sb-more').click();
+  await page.waitForTimeout(200);
+  check(where, await menu.count() === 0 && (await pick.locator('.sb-more').getAttribute('aria-expanded')) === 'false', 'pressing the ••• again closes the menu', await menu.count());
+  await pick.locator('.sb-more').click();
+  await page.waitForTimeout(200);
   await menu.locator('.sb-menu-item').first().click();
   const dlg = page.locator('dialog.sb-dialog[open]');
   check(where, await dlg.count() === 1, 'New group opens the name dialog', null);

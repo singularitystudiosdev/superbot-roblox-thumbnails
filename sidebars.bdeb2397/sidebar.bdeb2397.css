@@ -43,10 +43,11 @@
 
 /* ---------- a chat's "•••": shown on hover or focus (or while its menu is open), the title making room for it ---------- */
 .sb-item { position: relative; }
-.sb-more { position: absolute; top: 50%; right: var(--row-pad); display: grid; place-items: center; width: var(--tool); height: var(--tool); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--muted); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(-50%); transition: opacity var(--d-hover) ease-out, background-color var(--d-hover) ease-out; }
+.sb-more { position: absolute; top: 50%; right: calc((var(--row) - var(--more)) / 2); display: grid; place-items: center; width: var(--more); height: var(--more); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--muted); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(-50%); transition: opacity var(--d-hover) ease-out, background-color var(--d-hover) ease-out; }
 .sb-more:hover { background: var(--sel); color: var(--ink); }
 .sb-item:hover > .sb-more, .sb-item:focus-within > .sb-more, .sb-more[aria-expanded="true"] { opacity: 1; pointer-events: auto; }
-.sb-item:is(:hover, :focus-within) > .sb-row, .sb-item:has(> .sb-more[aria-expanded="true"]) > .sb-row { padding-right: calc(var(--tool) + var(--row-pad)); }
+/* the title stops a row's height short of the edge: the button, its 4px inset, and 4px of air before the fade */
+.sb-item:is(:hover, :focus-within) > .sb-row, .sb-item:has(> .sb-more[aria-expanded="true"]) > .sb-row { padding-right: var(--row); }
 
 /* ---------- dragging a chat: a ghost under the pointer, a gap where it will land ---------- */
 .sb-scroll .sb-item > .sb-row { user-select: none; touch-action: none; }

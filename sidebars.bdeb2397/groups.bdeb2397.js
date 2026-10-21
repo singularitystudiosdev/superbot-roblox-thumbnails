@@ -50,14 +50,16 @@ export function setupGroups(sb, { say, init, changed }) {
   const menu = fromHTML('<div class="sb-menu" popover="auto" role="menu"></div>');
   menu.addEventListener('keydown', (e) => e.stopPropagation());
   document.body.append(menu);
-  let opener = null, actions = [], closed = { at: -Infinity, by: null };
+  let opener = null, actions = [], pressedOpen = false;
 
   const close = (refocus) => { if (menu.matches(':popover-open')) menu.hidePopover(); if (refocus) opener?.focus(); };
-  menu.addEventListener('toggle', (e) => {
-    if (e.newState !== 'closed') return;
-    opener?.setAttribute('aria-expanded', 'false');
-    closed = { at: performance.now(), by: opener };
-  });
+  menu.addEventListener('beforetoggle', (e) => { if (e.newState === 'closed') opener?.setAttribute('aria-expanded', 'false'); });
+  // a press on the "•••" whose menu is open is a close: the menu light-dismisses itself on pointerup, so note at
+  // pointerdown, before that, whether this button's menu was the open one, and let the click that follows do nothing
+  addEventListener('pointerdown', (e) => {
+    const more = e.target.closest?.('.sb-more');
+    pressedOpen = !!more && more === opener && menu.matches(':popover-open');
+  }, true);
 
   function openMenu(btn) {
     opener = btn;
@@ -158,8 +160,7 @@ export function setupGroups(sb, { say, init, changed }) {
     const more = e.target.closest('.sb-more');
     if (more) {
       e.preventDefault();
-      // a second press on the same "•••" closes its menu: the press itself already light-dismissed it
-      if (closed.by === more && performance.now() - closed.at < 300) return;
+      if (pressedOpen) { pressedOpen = false; close(false); return; }
       openMenu(more);
       return;
     }
