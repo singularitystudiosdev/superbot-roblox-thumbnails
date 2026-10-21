@@ -1,5 +1,6 @@
 // Generates the pictures the sidebar's chats show in their cards (chatview.bdeb2397.js): a cooking channel's YouTube
-// thumbnails for the thumbnail-testing chat and three office lunches for the Friday-lunch chat. fal-ai/nano-banana-pro,
+// thumbnails for the thumbnail-testing chat (and its other videos, for its Studio screen) and three office lunches for
+// the Friday-lunch chat. fal-ai/nano-banana-pro,
 // text to image, 16:9 at 1K, saved as 768x432 WebP (the creative's own thumbnail size) to ../chats/; every prompt and
 // fal request id goes to ../chats/prompts.bdeb2397.json. The fal key is read from the keychain (service fal-key).
 // node sidebars.bdeb2397/tools/chat-images.bdeb2397.mjs [all | id ...]   (no ids: only the ones not on disk)
@@ -22,6 +23,13 @@ const PROMPTS = {
   'yt-gnocchi-1': `A YouTube cooking video thumbnail: an extreme close-up of crispy golden roasted gnocchi on a sheet pan with melted mozzarella stretching, glossy and steaming, saturated warm colors, bold yellow text "20 MIN" with a thick black outline in the top left. ${NO_MARKS}`,
   'yt-gnocchi-2': `A YouTube cooking video thumbnail: a cheerful home cook in her thirties in a bright kitchen holding a sheet pan of crispy golden gnocchi toward the camera, excited expression, shallow depth of field, bold white text "ONE PAN!" with a dark outline on the left side, vivid and high contrast. ${NO_MARKS}`,
   'yt-gnocchi-3': `A YouTube cooking video thumbnail split down the middle: on the left pale soggy gnocchi under a red X, on the right crispy golden gnocchi under a green check mark, bold black text "CRISPY?" across the top on a white band, bright and clean. ${NO_MARKS}`,
+  // the same channel's other videos, as its Studio content list shows them (../screens/youtube.webp)
+  'yt-ramen': `A YouTube cooking video thumbnail: a steaming bowl of miso ramen with a jammy soft-boiled egg and chili oil, close and glossy, dark slate background, bold white text "30 MIN RAMEN" with a thick black outline on the left, vivid and high contrast. ${NO_MARKS}`,
+  'yt-tacos': `A YouTube cooking video thumbnail: a sheet pan of charred pork al pastor with pineapple and a stack of street tacos in front, bright saturated colors, bold yellow text "SHEET PAN TACOS" with a black outline across the top. ${NO_MARKS}`,
+  'yt-curry': `A YouTube cooking video thumbnail: a skillet of creamy chickpea coconut curry with rice and naan, overhead, warm colors, bold white text "15 MIN CURRY" on an orange band at the bottom. ${NO_MARKS}`,
+  'yt-pasta': `A YouTube cooking video thumbnail: a wooden spoon lifting creamy lemon orzo from a single pot, steam rising, bright kitchen light, bold black text "ONE POT" on a white band on the right, clean and high contrast. ${NO_MARKS}`,
+  'yt-salmon': `A YouTube cooking video thumbnail: a crispy-skin salmon fillet on roasted broccoli on a sheet pan with lemon halves, glossy and fresh, bold white text "5 INGREDIENTS" with a dark outline at the top. ${NO_MARKS}`,
+  'yt-chili': `A YouTube cooking video thumbnail: a heavy pot of thick beef and bean chili topped with sour cream, cheddar and scallions, dark moody background, bold red text "BEST CHILI?" with a white outline on the left. ${NO_MARKS}`,
   'lunch-ramen': `Overhead photo of a takeout bowl of spicy miso ramen with chashu pork, a soft-boiled egg, scallions and chili oil on a light wooden office desk, chopsticks beside it and the edge of a laptop in frame. ${FOOD}`,
   'lunch-tacos': `Photo of three tacos al pastor with pineapple, onion and cilantro in an open paper takeout box with lime wedges and two small salsa cups on an office desk. ${FOOD}`,
   'lunch-poke': `Overhead photo of a salmon poke bowl with rice, avocado, edamame, cucumber, seaweed salad and sesame seeds in a takeout bowl on a light desk. ${FOOD}`,

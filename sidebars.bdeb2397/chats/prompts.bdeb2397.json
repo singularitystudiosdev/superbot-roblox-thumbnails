@@ -47,5 +47,47 @@
     "prompt": "Overhead photo of a salmon poke bowl with rice, avocado, edamame, cucumber, seaweed salad and sesame seeds in a takeout bowl on a light desk. Appetizing, natural window light, shallow depth of field, shot for a food delivery app. No text, no packaging print. No logos, brand marks or watermarks.",
     "request_id": "01a15fa0-7f69-7781-b833-7b365c16520b",
     "at": "2026-10-21T18:02:16.182Z"
+  },
+  "yt-ramen": {
+    "id": "yt-ramen",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: a steaming bowl of miso ramen with a jammy soft-boiled egg and chili oil, close and glossy, dark slate background, bold white text \"30 MIN RAMEN\" with a thick black outline on the left, vivid and high contrast. No logos, brand marks or watermarks.",
+    "request_id": "01a15fbb-c77f-73b1-849b-f76853712ffa",
+    "at": "2026-10-21T18:32:03.215Z"
+  },
+  "yt-tacos": {
+    "id": "yt-tacos",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: a sheet pan of charred pork al pastor with pineapple and a stack of street tacos in front, bright saturated colors, bold yellow text \"SHEET PAN TACOS\" with a black outline across the top. No logos, brand marks or watermarks.",
+    "request_id": "01a15fbc-58a0-77c1-8fa7-5646d436e3de",
+    "at": "2026-10-21T18:32:39.867Z"
+  },
+  "yt-curry": {
+    "id": "yt-curry",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: a skillet of creamy chickpea coconut curry with rice and naan, overhead, warm colors, bold white text \"15 MIN CURRY\" on an orange band at the bottom. No logos, brand marks or watermarks.",
+    "request_id": "01a15fbb-c773-7172-9fbd-bfab58bf1347",
+    "at": "2026-10-21T18:32:06.259Z"
+  },
+  "yt-pasta": {
+    "id": "yt-pasta",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: a wooden spoon lifting creamy lemon orzo from a single pot, steam rising, bright kitchen light, bold black text \"ONE POT\" on a white band on the right, clean and high contrast. No logos, brand marks or watermarks.",
+    "request_id": "01a15fbb-c774-7781-9005-504524bc1ab1",
+    "at": "2026-10-21T18:32:01.396Z"
+  },
+  "yt-salmon": {
+    "id": "yt-salmon",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: a crispy-skin salmon fillet on roasted broccoli on a sheet pan with lemon halves, glossy and fresh, bold white text \"5 INGREDIENTS\" with a dark outline at the top. No logos, brand marks or watermarks.",
+    "request_id": "01a15fbb-c780-7ef3-9e3b-e1da982a216f",
+    "at": "2026-10-21T18:32:03.535Z"
+  },
+  "yt-chili": {
+    "id": "yt-chili",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: a heavy pot of thick beef and bean chili topped with sour cream, cheddar and scallions, dark moody background, bold red text \"BEST CHILI?\" with a white outline on the left. No logos, brand marks or watermarks.",
+    "request_id": "01a15fbb-c774-72f2-9676-921066cc569e",
+    "at": "2026-10-21T18:32:00.900Z"
   }
 }

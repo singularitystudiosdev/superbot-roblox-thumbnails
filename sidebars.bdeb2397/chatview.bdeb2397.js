@@ -1,12 +1,15 @@
 // Moving between chats: a chat row in the sidebar opens that chat. The live one is the creative itself, playing; every
-// other one opens over it, laid out as the creative is once docked (the chat on the left, the Activity tab where the
-// live view sits) and drawn with the creative's own classes (.cm, .cm-card, .ac-row from style.af4c3c6b.css), so a
-// result card or a win reads exactly as it does in the live chat. ?chat=<id> opens one at load.
+// other one opens over it, laid out as the live one is: the chat on the left, and on the right the live view's top bar,
+// the computer view on the app superbot is working in (screenview.bdeb2397.js, screens.bdeb2397.js) and the Activity
+// tab under it. Drawn with the creative's own classes (.cm, .cm-card, .ac-row, .cc-* from style.af4c3c6b.css), so a
+// result card, a win or the screen reads exactly as it does in the live chat. ?chat=<id> opens one at load.
 //
 // The click is handled on the document, after the sidebar's own listeners (the Automations tab's among them, which
 // hands the current mark back to the live chat as it closes), so the chat clicked always ends up the current one.
 import { CHATS, FX } from './chats.bdeb2397.js';
 import { TRANSCRIPTS } from './transcripts.bdeb2397.js';
+import { SCREENS } from './screens.bdeb2397.js';
+import { screenHTML, fitScreens } from './screenview.bdeb2397.js';
 import { esc, asset } from './parts.bdeb2397.js';
 
 const LIVE = CHATS.find((c) => c.live).id;
@@ -51,20 +54,30 @@ export function mountChats({ app, sb }) {
   // the creative's own rule shows the caret whatever `hidden` says
   composer.querySelector('.rc-caret').style.display = 'none';
   composer.querySelector('.rc-send').classList.remove('is-on');
+  // the live view's top bar, copied as the composer is: it reads the same, and its buttons only work in the live chat
+  const top = app.querySelector('.cc .cc-top').cloneNode(true);
+  top.setAttribute('aria-hidden', 'true');
+  top.querySelectorAll('button').forEach((b) => b.setAttribute('tabindex', '-1'));
   // both panes scroll, so both take focus: the keyboard can scroll them too
   page.innerHTML = `<div class="cv-chat"><div class="cv-feed" tabindex="0" role="region" aria-label="Messages"><div class="cv-in"></div></div></div>
-    <div class="cv-side"><div class="cc-stack"><div class="cc-top cv-top"><h2 class="cv-acts-h" id="cv-acts-h">Activity</h2></div><div class="ac"><div class="ac-list cv-acts" tabindex="0" role="region" aria-labelledby="cv-acts-h"><div class="ac-in"></div></div></div></div></div>`;
+    <div class="cv-side"><div class="cc-stack"><div class="cv-screen" role="img"></div><div class="ac"><div class="ac-list cv-acts" tabindex="0" role="region" aria-label="Activity"><div class="ac-in"></div></div></div></div></div>`;
   page.querySelector('.cv-chat').append(composer);
+  page.querySelector('.cc-stack').prepend(top);
   app.append(page);
   const feed = page.querySelector('.cv-feed'), feedIn = page.querySelector('.cv-in');
   const acts = page.querySelector('.cv-acts'), actsIn = acts.querySelector('.ac-in'), hint = composer.querySelector('.rc-hint');
+  const screen = page.querySelector('.cv-screen');
+  const fit = fitScreens(page);
 
   function render(id) {
-    const t = TRANSCRIPTS[id], title = CHATS.find((c) => c.id === id)?.title ?? '';
+    const t = TRANSCRIPTS[id], title = CHATS.find((c) => c.id === id)?.title ?? '', s = SCREENS[id];
     page.setAttribute('aria-label', `Chat: ${title}`);
     feedIn.innerHTML = t.messages.map(message).join('');
     actsIn.innerHTML = t.acts.map(step).join('');
     hint.textContent = t.hint;
+    // the screen is one picture to a screen reader: what superbot has open
+    screen.innerHTML = s ? screenHTML(s) : '';
+    screen.setAttribute('aria-label', s ? `Your computer: ${s.alt}` : 'Your computer');
   }
 
   function open(id) {
@@ -73,6 +86,7 @@ export function mountChats({ app, sb }) {
     page.hidden = live;
     document.body.classList.toggle('cv-open', !live);
     if (!live) {
+      fit();
       // a chat opens at its latest, as the live one reads: scrolled once it is laid out, not while hidden
       feed.scrollTop = feed.scrollHeight;
       acts.scrollTop = acts.scrollHeight;

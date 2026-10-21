@@ -57,11 +57,12 @@ async function run(where, url, root) {
 
   // moving between chats (chatview.bdeb2397.js), creative page only: no two chats share a title; every row but the live
   // one opens its own conversation (its prompt, result cards, a win, its Activity), scrolled to its latest, with the
-  // row marked current; the live row brings the creative back
+  // row marked current, and its own app on the computer view; the live row brings the creative back
   if (await page.locator('.cv').count()) {
     const rows = sb.locator('.sb-scroll a.sb-row');
     const titles = await rows.locator('.sb-title-in').allTextContents();
     check(where, new Set(titles).size === titles.length && titles.length >= 12, 'every chat has its own title, no repeats', titles);
+    const screens = [];
     for (let i = 1; i < titles.length; i++) {
       await rows.nth(i).click();
       await page.waitForTimeout(80);
@@ -77,7 +78,23 @@ async function run(where, url, root) {
       });
       const href = await rows.nth(i).getAttribute('href');
       check(where, cv.open && cv.prompt.length > 20 && cv.cards >= 2 && cv.wins >= 1 && cv.acts >= 5 && cv.winActs >= 1 && cv.atLatest && !cv.broken.length && cv.current.join() === href && cv.caret === 'none', `"${titles[i]}" opens its own chat at its latest`, cv);
+      // its computer view (screenview.bdeb2397.js): Chrome on its own app's page filling the side's width, the address
+      // showing, the vignette on in that app's colors, Stop on it, under the live view's top bar (out of the tab order)
+      await page.waitForFunction(() => [...document.querySelectorAll('.cv-screen img')].every((im) => im.complete), null, { timeout: 5000 });
+      const sc = await page.evaluate(() => {
+        const s = document.querySelector('.cv-screen'), view = s.querySelector('.cv-view'), edge = s.querySelector('.cv-edge');
+        const k = Number(s.querySelector('.cc-desk').style.transform.match(/scale\(([\d.]+)\)/)?.[1] ?? 0);
+        return {
+          page: s.querySelector('.cv-page')?.naturalWidth, src: s.querySelector('.cv-page')?.getAttribute('src'), fav: s.querySelector('.cc-fav img')?.naturalWidth,
+          host: s.querySelector('.cc-host')?.textContent, hostOn: getComputedStyle(s.querySelector('.cc-u-url')).opacity, fill: Math.abs(1470 * k - view.clientWidth),
+          edge: getComputedStyle(edge).opacity, tint: getComputedStyle(edge).getPropertyValue('--tint-0').trim(), stop: !!s.querySelector('.cc-stop'),
+          top: [...document.querySelectorAll('.cv .cc-top .cc-top-btn')].map((b) => b.tabIndex),
+        };
+      });
+      screens.push(sc);
+      check(where, sc.page === 2940 && sc.fav > 0 && sc.host && sc.hostOn === '1' && sc.fill < 1 && sc.edge === '1' && /^#/.test(sc.tint) && sc.tint !== '#fd9e43' && sc.stop && sc.top.length === 2 && sc.top.every((t) => t === -1), `"${titles[i]}" shows its app on the computer view, tinted to it`, sc);
     }
+    check(where, new Set(screens.map((s) => s.src)).size === screens.length, 'no two chats show the same screen', screens.map((s) => s.src));
     await rows.nth(0).click();
     await page.waitForTimeout(80);
     const back = await page.evaluate(() => ({ cv: document.querySelector('.cv').hidden, ch: getComputedStyle(document.querySelector('.app > .ch')).visibility }));

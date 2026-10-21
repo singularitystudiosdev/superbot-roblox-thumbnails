@@ -14,7 +14,20 @@ const PALETTES = {
   superbot: ['#fd9e43', '#ffb769', '#f68a2c', '#ffc185'],
   // Roblox's logo blue, read off its favicon (img/fav/roblox.png, #335fff), with shades built the way the orange's are
   roblox: ['#335fff', '#6f8dff', '#2149e8', '#a3b6ff'],
+  // the apps the other chats work in (screens.bdeb2397.js), each from its favicon (screens/fav), its shades 30% and 55%
+  // toward white and 10% toward black; Gmail's four-color mark gives its red
+  gmail: ['#ea4335', '#f07b72', '#d33c30', '#f6aaa4'],
+  youtube: ['#ff0033', '#ff4d70', '#e6002e', '#ff8ca3'],
+  calendar: ['#3274f7', '#709ef9', '#2d68de', '#a3c0fb'],
+  flights: ['#12a0e6', '#59bdee', '#1090cf', '#94d4f4'],
+  hotels: ['#4285f4', '#7baaf7', '#3b78dc', '#aac8fa'],
+  craigslist: ['#8707d0', '#ab51de', '#7a06bb', '#c98fea'],
+  vividseats: ['#be4294', '#d27bb4', '#ab3b85', '#e2aacf'],
+  ubereats: ['#06c167', '#51d495', '#05ae5d', '#8fe3bb'],
 };
+// an app's palette, superbot's orange for one without its own (screenview.bdeb2397.js tints a chat's screen with it)
+export const paletteOf = (app) => PALETTES[app] ?? PALETTES.superbot;
+
 // which app a host belongs to; anything else keeps superbot's orange
 const APPS = [{ app: 'roblox', host: /(^|\.)roblox\.com$/ }];
 const appOfHost = (host) => APPS.find((a) => a.host.test(host))?.app ?? 'superbot';

@@ -1,7 +1,7 @@
 /* An open chat (chatview.bdeb2397.js) over the creative, right of the sidebar: the chat column and its composer on the
-   left, the Activity tab the live view's width on the right (--cv-side, set by main.bdeb2397.js). It draws with the
-   creative's own .cm / .cm-card / .ac-row rules, shown in full here rather than painted in from t. Under the
-   Automations tab, which sits a layer above it. */
+   left, the computer view and the Activity tab the live view's width on the right (--cv-side, set by main.bdeb2397.js).
+   It draws with the creative's own .cm / .cm-card / .ac-row / .cc-* rules, shown in full here rather than painted in
+   from t. Under the Automations tab, which sits a layer above it. */
 .cv { position: absolute; left: var(--sidebar-w); right: 0; top: 0; bottom: 0; z-index: 3; display: flex; background: var(--bg); font-family: var(--ui); color: var(--ink); }
 .cv[hidden] { display: none; }
 /* one fade as a chat opens */
@@ -26,14 +26,27 @@ body.cv-open .app > .ch, body.cv-open .app > .cc { visibility: hidden !important
 .cv .cm-thumb.cv-tile img, .cv .cv-tile .cv-tile-ic { width: 26px; height: 26px; object-fit: contain; }
 .cv .cm-strip .cv-tile { aspect-ratio: 16 / 9; border-radius: 6px; }
 
-/* ---------- the Activity tab where the live view sits, every step in view, the latest at the foot ---------- */
+/* ---------- the right side, as the live chat's: its top bar, the computer view, the Activity tab under it ---------- */
 .cv-side { flex: none; display: flex; flex-direction: column; width: var(--cv-side); }
-.cv-top { justify-content: flex-start; padding: 0 14px; }
-.cv-acts-h { margin: 0; font: 600 12px/1 var(--ui); color: var(--muted); }
+
+/* the computer view (screenview.bdeb2397.js): the live view's Chrome on the app superbot is working in. What the live
+   view's script switches on frame by frame is on here: the address, the page, and the vignette, its band turning at the
+   live one's 60deg a second and its glow breathing between .82 and .98 as the live one's does */
+@property --cc-a { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+.cv-screen { flex: none; }
+.cv .cc-u-url { opacity: 1; }
+.cv .cv-page { visibility: visible; }
+.cv .cv-edge { opacity: 1; animation: cv-turn 6s linear infinite; }
+.cv .cv-edge .cc-soft { animation: cv-breathe 1.21s ease-in-out infinite alternate; }
+@keyframes cv-turn { to { --cc-a: 360deg; } }
+@keyframes cv-breathe { from { opacity: .82; } to { opacity: .98; } }
+
+/* the Activity tab, every step in view, the latest at the foot */
 .cv .cv-acts { overflow-y: auto; scrollbar-width: none; }
 .cv .cv-acts::-webkit-scrollbar { display: none; }
 .cv .cv-acts .ac-in { position: static; }
 
 @media (prefers-reduced-motion: reduce) {
-  .cv.is-in { animation: none; }
+  .cv.is-in, .cv .cv-edge, .cv .cv-edge .cc-soft { animation: none; }
+  .cv .cv-edge .cc-soft { opacity: .9; }
 }

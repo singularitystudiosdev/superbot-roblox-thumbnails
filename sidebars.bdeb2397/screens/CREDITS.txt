@@ -1,0 +1,40 @@
+Sources for the pages the chats' computer views show (../screens.bdeb2397.js, drawn by ../screenview.bdeb2397.js). Never
+shown on screen.
+
+Every page is a capture of the app's real UI, taken 2026-10-21 at 1470x837 CSS px (Chrome's page area on the creative's
+desktop) at 2x, saved as WebP. Each was staged in the page before the capture with the chat's own made-up content
+(../transcripts.bdeb2397.js): the names of people, shops, channels, products and hotels are made up, and figures are
+illustrative. Nothing was sent, bought, booked, saved or changed on any account or site.
+
+Signed-in apps, captured read-only from the owner's own Chrome (browser-control) with the account's name, address,
+photo and counts replaced by a made-up identity (Jordan Lee, jordan@quillnote.app) and checked to leave 0 traces of
+the real one before each capture was kept:
+  sponsors.webp       Gmail inbox (mail.google.com), staged by ../tools/stage-gmail.bdeb2397.js: the replies to the
+                      sponsorship outreach.
+  inbox.webp          Gmail inbox, same tool: the 11 starred emails left after the sort, none unread.
+  deposit.webp        Gmail search results, same tool: the security deposit thread, transfer and certified mail.
+  subscriptions.webp  Gmail search results, same tool: four cancellation confirmations, the gym charge, two statements.
+  youtube.webp        YouTube Studio, Content > Videos (studio.youtube.com), staged by ../tools/stage-studio.bdeb2397.js
+                      as the made-up channel Weeknight Kitchen; its thumbnails and avatar are ../chats/yt-*.webp.
+  haircut.webp        Google Calendar, week of Nov 15 2026 (calendar.google.com), staged by
+                      ../tools/stage-calendar.bdeb2397.js; no event was created.
+
+Public sites, captured in headless Chromium (Playwright), no account:
+  flights.webp        Google Flights, SFO to Tokyo, Mar 8 to 22 2027, by ../tools/capture-flights.bdeb2397.mjs: top
+                      result a $612 nonstop, rows at $731 and $894, the price banner to match.
+  bike.webp           Craigslist SF Bay Area bicycles, "road bike 56cm" under $600, list view (no listing photos), by
+                      ../tools/capture-bike.bdeb2397.mjs: every listing's title, price, place and date made up.
+  tickets.webp        Vivid Seats, a real arena concert's event page, by ../tools/capture-tickets.bdeb2397.mjs: restaged
+                      as Neon Harbor at Riverside Arena, Sat Nov 14, 2 tickets, listings from the chat, the artist's
+                      photo removed, the seat map's sponsor names renamed. The seat-view thumbnails are the site's own
+                      crowd photos of that arena, with no identifiable faces.
+  lunch.webp          Uber Eats, a San Francisco poke shop's public store page, by ../tools/capture-lunch.bdeb2397.mjs:
+                      restaged as Poke Lab; the banner and every food photo are crops of ../chats/lunch-poke.webp.
+  lisbon.webp         Google Hotels, hotels in Chiado, Lisbon, Nov 20 to 23 2026, by ../tools/capture-lisbon.bdeb2397.mjs:
+                      every hotel's name, rating and price made up; the hotel photos are the site's (rooms and
+                      facades, no people) and the map is the real one of central Lisbon.
+
+fav/*.png: each app's own favicon, from the site itself (gmail.ico, YouTube Studio's favicon_96_v2.png, Calendar's
+calendar_21_256.ico, Google Flights' travel_flights_64dp.png, Google Travel's travel_logo_32.png, craigslist.org's
+favicon.ico, Vivid Seats' apple-touch-icon, Uber Eats' icon), scaled with sips. Each app's vignette color is read off
+its favicon (../tint.bdeb2397.js).

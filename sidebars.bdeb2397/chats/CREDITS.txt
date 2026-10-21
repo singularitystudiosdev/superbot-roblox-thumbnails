@@ -6,6 +6,8 @@ WebP by ../tools/chat-images.bdeb2397.mjs. Each prompt and fal request id: promp
 hand, and no real person, channel, shop or brand mark is depicted.
 
   yt-gnocchi-0..3   a made-up cooking channel's thumbnails for one video (the original, then 3 versions to test)
+  yt-ramen, yt-tacos, yt-curry, yt-pasta, yt-salmon, yt-chili
+                    the same channel's other videos, as its YouTube Studio content list shows them (../screens/youtube.webp)
   lunch-ramen       an office desk lunch: spicy miso ramen
   lunch-tacos       an office desk lunch: tacos al pastor in a takeout box
   lunch-poke        an office desk lunch: a salmon poke bowl

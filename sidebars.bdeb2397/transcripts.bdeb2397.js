@@ -62,10 +62,10 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'Every Friday, order me a surprise lunch to the office for noon. Something new each week, under $25, and nothing with peanuts.' },
       { b: "Done. Every Friday at 11:30 I'll pick a place you've never ordered from, rated 4.5 or higher, under $25 with delivery and tip, and check the dish for peanuts. I'll post each one here." },
-      { b: 'Friday, Oct 3:', card: { img: './chats/lunch-ramen.webp', title: 'Spicy miso ramen', sub: 'Menya Sora, new to you', line: 'Arrived 11:58, you gave it 5 stars', value: '$19.80', unit: 'with delivery' } },
-      { b: 'Friday, Oct 10:', card: { img: './chats/lunch-tacos.webp', title: 'Tacos al pastor, three', sub: 'La Esquina, new to you', line: 'Arrived 12:03, you gave it 4 stars', value: '$16.50', unit: 'with delivery' } },
-      { b: 'Friday, Oct 17, and your favorite so far:', card: { img: './chats/lunch-poke.webp', title: 'Salmon poke bowl', sub: 'Poke Lab, new to you', line: 'Arrived 11:55, you gave it 5 stars', value: '$22.40', unit: 'with delivery', win: true } },
-      { b: 'Your Fridays so far:', card: { strip: [{ img: './chats/lunch-ramen.webp', name: 'Oct 3, ramen' }, { img: './chats/lunch-tacos.webp', name: 'Oct 10, tacos' }, { img: './chats/lunch-poke.webp', name: 'Oct 17, poke' }] }, after: "This Friday it's Lebanese: a chicken shawarma plate from Cedar House, $18.90." },
+      { b: 'Friday, Oct 2:', card: { img: './chats/lunch-ramen.webp', title: 'Spicy miso ramen', sub: 'Menya Sora, new to you', line: 'Arrived 11:58, you gave it 5 stars', value: '$19.80', unit: 'with delivery' } },
+      { b: 'Friday, Oct 9:', card: { img: './chats/lunch-tacos.webp', title: 'Tacos al pastor, three', sub: 'La Esquina, new to you', line: 'Arrived 12:03, you gave it 4 stars', value: '$16.50', unit: 'with delivery' } },
+      { b: 'Friday, Oct 16, and your favorite so far:', card: { img: './chats/lunch-poke.webp', title: 'Salmon poke bowl', sub: 'Poke Lab, new to you', line: 'Arrived 11:55, you gave it 5 stars', value: '$22.40', unit: 'with delivery', win: true } },
+      { b: 'Your Fridays so far:', card: { strip: [{ img: './chats/lunch-ramen.webp', name: 'Oct 2, ramen' }, { img: './chats/lunch-tacos.webp', name: 'Oct 9, tacos' }, { img: './chats/lunch-poke.webp', name: 'Oct 16, poke' }] }, after: "This Friday it's Lebanese: a chicken shawarma plate from Cedar House, $18.90." },
     ],
     acts: [
       ['calendar', 'Every Friday at 11:30'],
@@ -79,7 +79,7 @@ export const TRANSCRIPTS = {
       ['search', 'Picked Poke Lab, rated 4.8'],
       ['takeout', 'Ordered a salmon poke bowl, $22.40'],
       ['trophy', 'New favorite: the poke bowl, 5 stars', true],
-      ['calendar', 'Next: Cedar House on Oct 24'],
+      ['calendar', 'Next: Cedar House on Oct 23'],
     ],
   },
 
@@ -151,14 +151,14 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'Book me a haircut with Sam every 4 weeks, weekday evenings only.' },
       { b: "Done. 4 weeks after each cut I'll book Sam's first open weekday slot after 5 PM, and move it if something else lands on your calendar." },
-      { b: 'The next one is booked:', card: { fx: 'barber', title: 'Haircut with Sam', sub: 'Fade Room, Valencia St', line: 'Confirmation in your email', value: 'Nov 18', unit: 'Tue, 6:15 PM' } },
-      { b: 'A team dinner just landed on Nov 18, so I moved your cut to the next evening Sam had open:', card: { fx: 'calendar', title: 'Moved, and Sam confirmed', sub: 'Fade Room, Valencia St', line: 'Your calendar is updated', value: 'Nov 19', unit: 'Wed, 5:45 PM', win: true } },
+      { b: 'The next one is booked:', card: { fx: 'barber', title: 'Haircut with Sam', sub: 'Fade Room, Valencia St', line: 'Confirmation in your email', value: 'Nov 18', unit: 'Wed, 6:15 PM' } },
+      { b: 'A team dinner just landed on Nov 18, so I moved your cut to the next evening Sam had open:', card: { fx: 'calendar', title: 'Moved, and Sam confirmed', sub: 'Fade Room, Valencia St', line: 'Your calendar is updated', value: 'Nov 19', unit: 'Thu, 5:45 PM', win: true } },
     ],
     acts: [
       ['calendar', 'Checked your weekday evenings'],
-      ['barber', 'Booked Tue Nov 18 at 6:15 PM'],
+      ['barber', 'Booked Wed Nov 18 at 6:15 PM'],
       ['bell', 'A team dinner landed on Nov 18'],
-      ['loop', 'Moved the haircut to Wed Nov 19, 5:45 PM'],
+      ['loop', 'Moved the haircut to Thu Nov 19, 5:45 PM'],
       ['check', 'Sam confirmed the new time', true],
     ],
   },
