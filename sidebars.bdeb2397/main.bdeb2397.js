@@ -37,6 +37,9 @@ const BASE_W = 1200, BASE_H = 675;
 // the chat's width before the live view docks (the app's, less the sidebar) and after (less the live view as well);
 // the room past 16:9 goes to the chat, the live view keeping its width
 let APP_W = 0, CHAT_W = 0;
+// the stage is the frame the page is in, edge to edge, on any page that loads this (the creative's own stage is a
+// 1920x1080 picture scaled to fit, bars beside it)
+Object.assign(document.getElementById('stage').style, { position: 'fixed', inset: '0', width: 'auto', height: 'auto', transform: 'none' });
 function layout() {
   const k = Math.min(innerWidth / BASE_W, innerHeight / BASE_H);
   const w = innerWidth / k, h = innerHeight / k;
