@@ -1,7 +1,7 @@
 // The gallery thumbnail (1280x720, a frozen frame) and a live-playback check: the unfrozen page runs its clock, and
 // after a few seconds the composer has typed or sent the prompt with no console errors.
 import { createRequire } from 'node:module';
-const require = createRequire('/Users/adrianagne/Documents/cosmos/projects/quick-chats/superbot-ad-gallery/package.json');
+const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
 const [BASE, THUMB, T, LIVE_SHOT] = process.argv.slice(2);

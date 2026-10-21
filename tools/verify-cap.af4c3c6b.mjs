@@ -1,7 +1,7 @@
 // Frozen-frame captures of the breakthroughs variant plus a DOM audit: one user prompt, the bot messages in order,
 // no icon element anywhere in the activity tab, no console errors.
 import { createRequire } from 'node:module';
-const require = createRequire('/Users/adrianagne/Documents/cosmos/projects/quick-chats/superbot-ad-gallery/package.json');
+const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
 const BASE = process.argv[2];

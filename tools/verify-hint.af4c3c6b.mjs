@@ -1,7 +1,7 @@
 // Samples the composer placeholder across the loop: its text and opacity at each time, so the rotation's order, hold and
 // transitions can be checked without watching the whole spot.
 import { createRequire } from 'node:module';
-const require = createRequire('/Users/adrianagne/Documents/cosmos/projects/quick-chats/superbot-ad-gallery/package.json');
+const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
 const BASE = process.argv[2];

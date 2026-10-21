@@ -7,7 +7,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
 
-const require = createRequire('/Users/adrianagne/Documents/cosmos/projects/quick-chats/superbot-ad-gallery/package.json');
+const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
 const [RAW, OUT] = process.argv.slice(2);

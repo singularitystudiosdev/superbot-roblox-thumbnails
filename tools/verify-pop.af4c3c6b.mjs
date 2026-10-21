@@ -1,6 +1,6 @@
 // Frames of one new low's popper and confetti: the Activity rows around that line, at 2x, at set offsets after it lands.
 import { createRequire } from 'node:module';
-const require = createRequire('/Users/adrianagne/Documents/cosmos/projects/quick-chats/superbot-ad-gallery/package.json');
+const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
 
 const [BASE, OUT, WHICH = '0'] = process.argv.slice(2);
