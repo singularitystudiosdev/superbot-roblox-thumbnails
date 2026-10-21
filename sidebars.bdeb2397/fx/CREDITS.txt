@@ -2,8 +2,10 @@ Sources for the sidebar variants (sidebars.bdeb2397). Never shown on screen.
 
 fx/*.png: Fluent Emoji in their 3D style, the same set as the creative's img/fx (the Activity tab's icons), fetched
 2026-10-21 from https://github.com/microsoft/fluentui-emoji (assets/<Name>/3D/<name>_3d.png, 256px) and scaled to
-96px with sips: chart_increasing, file_folder, megaphone, memo, money_bag, movie_camera, musical_notes,
-open_file_folder, pencil. License: MIT, Copyright (c) Microsoft Corporation
+96px with sips: admission_tickets, airplane_departure, barber_pole, bell, bicycle, chart_increasing, credit_card,
+envelope_with_arrow, file_folder, film_frames, handshake, house, inbox_tray, luggage, magnifying_glass_tilted_left,
+memo, money_bag, open_file_folder, pencil, scissors, spiral_calendar, takeout_box, world_map. License: MIT,
+Copyright (c) Microsoft Corporation
 (https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE). The rest of the sidebar's 3D icons are the creative's
 own ../img/fx files.
 
@@ -14,7 +16,8 @@ Utility and menu icons (search, panel, settings, bell, ellipsis, folder-plus, fo
 lucide (https://lucide.dev, ISC).
 
 The avatar is the creative's own file (../rbx/assets); see ../img/CREDITS.txt.
-Chat titles are illustrative.
+Chat titles, conversations (../transcripts.bdeb2397.js), names of people, shops, products and channels, and every
+figure in them are made up and illustrative. The chats' pictures: ../chats/CREDITS.txt.
 
 Layout reference: the Manus sidebar (screenshot supplied by the owner), shadcn sidebar-07
 (https://ui.shadcn.com/blocks), and the superbot desktop app's sidebar (day groups, Settings gear in the footer).

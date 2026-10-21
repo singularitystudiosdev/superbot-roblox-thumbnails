@@ -10,6 +10,7 @@ import { seg, lerp, outCubic, REDUCED } from '../lib.af4c3c6b.js';
 import { sidebarHTML, variantIndex } from './shell.bdeb2397.js';
 import { enhanceSidebar } from './interact.bdeb2397.js';
 import { tinter } from './tint.bdeb2397.js';
+import { mountChats } from './chatview.bdeb2397.js';
 
 const S = buildSchedule();
 // the vignette's color follows the app on screen (tint.bdeb2397.js)
@@ -33,6 +34,9 @@ if (!(SIDEBAR_W > 0)) throw new Error('the sidebar has no width: load sidebars.b
 const APP_W = 1200 - SIDEBAR_W, SIDE_W = 560, CHAT_W = APP_W - SIDE_W, SIDE_IN = 0.5;
 chat.style.left = `${SIDEBAR_W}px`;
 side.style.width = `${SIDE_W}px`;
+// every other chat in the sidebar opens over the spot, its Activity tab the live view's width (chatview.bdeb2397.js)
+app.style.setProperty('--cv-side', `${SIDE_W}px`);
+mountChats({ app, sb });
 
 // the viewer's own control over it: the close button on the sidebar's top bar slides it away and the chat takes the
 // window, the chat's panel button brings it back. It eases in real time, over whatever the spot's own clock is doing

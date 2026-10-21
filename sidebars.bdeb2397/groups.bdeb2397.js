@@ -198,6 +198,8 @@ export function setupGroups(sb, { say, init, changed }) {
     if (!ok) { opener?.focus(); return; }
     // focus goes to the chat that takes its place, or the one before it
     const next = (li.nextElementSibling ?? li.previousElementSibling)?.querySelector('.sb-row');
+    // whoever shows the chat (chatview.bdeb2397.js) hears it is going before its row does
+    sb.dispatchEvent(new CustomEvent('sb-delete', { detail: { id: li.querySelector('a.sb-row').getAttribute('href').slice(1) } }));
     const gone = () => { li.remove(); changed(); say(`Deleted ${title}`); next?.focus(); };
     if (REDUCED) { gone(); return; }
     li.style.overflow = 'hidden';

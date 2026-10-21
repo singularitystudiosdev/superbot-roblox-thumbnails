@@ -1,0 +1,39 @@
+/* An open chat (chatview.bdeb2397.js) over the creative, right of the sidebar: the chat column and its composer on the
+   left, the Activity tab the live view's width on the right (--cv-side, set by main.bdeb2397.js). It draws with the
+   creative's own .cm / .cm-card / .ac-row rules, shown in full here rather than painted in from t. Under the
+   Automations tab, which sits a layer above it. */
+.cv { position: absolute; left: var(--sidebar-w); right: 0; top: 0; bottom: 0; z-index: 3; display: flex; background: var(--bg); font-family: var(--ui); color: var(--ink); }
+.cv[hidden] { display: none; }
+/* one fade as a chat opens */
+.cv.is-in { animation: cv-in var(--d-hover) ease-out; }
+@keyframes cv-in { from { opacity: 0; } }
+/* the creative plays on under an open chat: its loop's white dip must not wash over it, and its chat and live view are
+   hidden rather than covered, so none of their layers (Stop sits at z-index 5) shows through and none of their buttons
+   takes Tab. main.bdeb2397.js writes the live view's visibility inline every frame, hence the !important */
+body.cv-open #dip { visibility: hidden; }
+body.cv-open .app > .ch, body.cv-open .app > .cc { visibility: hidden !important; }
+
+/* ---------- the chat: the live chat's centred column, scrolled to its latest ---------- */
+.cv-chat { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.cv-feed { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; -webkit-mask: linear-gradient(transparent, #000 32px); mask: linear-gradient(transparent, #000 32px); }
+.cv-feed::-webkit-scrollbar { display: none; }
+.cv-feed:focus-visible, .cv .cv-acts:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.cv-in { max-width: 626px; margin: 0 auto; padding: 16px 18px 12px; }
+.cv .cm, .cv .cm-card, .cv .ac-row { opacity: 1; }
+.cv .ac-pop { transform: none; }
+/* a card whose picture is a 3D icon: the icon on a tile the thumbnail's size and shape */
+.cv .cv-tile { display: grid; place-items: center; background: var(--ground); }
+.cv .cm-thumb.cv-tile img, .cv .cv-tile .cv-tile-ic { width: 26px; height: 26px; object-fit: contain; }
+.cv .cm-strip .cv-tile { aspect-ratio: 16 / 9; border-radius: 6px; }
+
+/* ---------- the Activity tab where the live view sits, every step in view, the latest at the foot ---------- */
+.cv-side { flex: none; display: flex; flex-direction: column; width: var(--cv-side); }
+.cv-top { justify-content: flex-start; padding: 0 14px; }
+.cv-acts-h { margin: 0; font: 600 12px/1 var(--ui); color: var(--muted); }
+.cv .cv-acts { overflow-y: auto; scrollbar-width: none; }
+.cv .cv-acts::-webkit-scrollbar { display: none; }
+.cv .cv-acts .ac-in { position: static; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cv.is-in { animation: none; }
+}

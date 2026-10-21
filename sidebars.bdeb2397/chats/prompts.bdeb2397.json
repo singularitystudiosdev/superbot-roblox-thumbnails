@@ -1,0 +1,51 @@
+{
+  "yt-gnocchi-0": {
+    "id": "yt-gnocchi-0",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail that gets few clicks: a flat, dim overhead phone photo of roasted potato gnocchi with peppers and onions on a sheet pan on a cluttered kitchen counter, muted colors, no person, only a small thin white caption reading \"Sheet Pan Gnocchi\" in a corner. No logos, brand marks or watermarks.",
+    "request_id": "01a15fa0-7f72-7180-a2d3-c84513dc7390",
+    "at": "2026-10-21T18:02:16.078Z"
+  },
+  "yt-gnocchi-1": {
+    "id": "yt-gnocchi-1",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: an extreme close-up of crispy golden roasted gnocchi on a sheet pan with melted mozzarella stretching, glossy and steaming, saturated warm colors, bold yellow text \"20 MIN\" with a thick black outline in the top left. No logos, brand marks or watermarks.",
+    "request_id": "01a15fa0-7f6a-76b3-b4c7-6715476305f3",
+    "at": "2026-10-21T18:02:14.959Z"
+  },
+  "yt-gnocchi-2": {
+    "id": "yt-gnocchi-2",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail: a cheerful home cook in her thirties in a bright kitchen holding a sheet pan of crispy golden gnocchi toward the camera, excited expression, shallow depth of field, bold white text \"ONE PAN!\" with a dark outline on the left side, vivid and high contrast. No logos, brand marks or watermarks.",
+    "request_id": "01a15fa0-7f72-79e3-887b-c74b7f89c705",
+    "at": "2026-10-21T18:02:31.079Z"
+  },
+  "yt-gnocchi-3": {
+    "id": "yt-gnocchi-3",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube cooking video thumbnail split down the middle: on the left pale soggy gnocchi under a red X, on the right crispy golden gnocchi under a green check mark, bold black text \"CRISPY?\" across the top on a white band, bright and clean. No logos, brand marks or watermarks.",
+    "request_id": "01a15fa0-7f79-77f0-bab6-a57ed5cd6fb7",
+    "at": "2026-10-21T18:02:16.133Z"
+  },
+  "lunch-ramen": {
+    "id": "lunch-ramen",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "Overhead photo of a takeout bowl of spicy miso ramen with chashu pork, a soft-boiled egg, scallions and chili oil on a light wooden office desk, chopsticks beside it and the edge of a laptop in frame. Appetizing, natural window light, shallow depth of field, shot for a food delivery app. No text, no packaging print. No logos, brand marks or watermarks.",
+    "request_id": "01a15fa0-7f6e-79c2-b619-330236d3eee3",
+    "at": "2026-10-21T18:02:14.817Z"
+  },
+  "lunch-tacos": {
+    "id": "lunch-tacos",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "Photo of three tacos al pastor with pineapple, onion and cilantro in an open paper takeout box with lime wedges and two small salsa cups on an office desk. Appetizing, natural window light, shallow depth of field, shot for a food delivery app. No text, no packaging print. No logos, brand marks or watermarks.",
+    "request_id": "01a15fa0-7f78-7b82-a481-70f2aaa27677",
+    "at": "2026-10-21T18:02:15.557Z"
+  },
+  "lunch-poke": {
+    "id": "lunch-poke",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "Overhead photo of a salmon poke bowl with rice, avocado, edamame, cucumber, seaweed salad and sesame seeds in a takeout bowl on a light desk. Appetizing, natural window light, shallow depth of field, shot for a food delivery app. No text, no packaging print. No logos, brand marks or watermarks.",
+    "request_id": "01a15fa0-7f69-7781-b833-7b365c16520b",
+    "at": "2026-10-21T18:02:16.182Z"
+  }
+}

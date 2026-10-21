@@ -1,0 +1,11 @@
+Sources for the pictures in the sidebar's chats (../transcripts.bdeb2397.js, shown by ../chatview.bdeb2397.js). Never
+shown on screen.
+
+Every file here was generated 2026-10-21 by fal-ai/nano-banana-pro (text to image, 16:9 at 1K) and saved as 768x432
+WebP by ../tools/chat-images.bdeb2397.mjs. Each prompt and fal request id: prompts.bdeb2397.json. Nothing is drawn by
+hand, and no real person, channel, shop or brand mark is depicted.
+
+  yt-gnocchi-0..3   a made-up cooking channel's thumbnails for one video (the original, then 3 versions to test)
+  lunch-ramen       an office desk lunch: spicy miso ramen
+  lunch-tacos       an office desk lunch: tacos al pastor in a takeout box
+  lunch-poke        an office desk lunch: a salmon poke bowl

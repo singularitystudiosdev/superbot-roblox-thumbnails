@@ -55,6 +55,35 @@ async function run(where, url, root) {
     check(where, spot.gapUnder >= 0 && spot.gapUnder < 40 && spot.lastTop > 0, 'at 40s the newest chat message sits at the foot of the chat', spot);
   }
 
+  // moving between chats (chatview.bdeb2397.js), creative page only: no two chats share a title; every row but the live
+  // one opens its own conversation (its prompt, result cards, a win, its Activity), scrolled to its latest, with the
+  // row marked current; the live row brings the creative back
+  if (await page.locator('.cv').count()) {
+    const rows = sb.locator('.sb-scroll a.sb-row');
+    const titles = await rows.locator('.sb-title-in').allTextContents();
+    check(where, new Set(titles).size === titles.length && titles.length >= 12, 'every chat has its own title, no repeats', titles);
+    for (let i = 1; i < titles.length; i++) {
+      await rows.nth(i).click();
+      await page.waitForTimeout(80);
+      const cv = await page.evaluate(() => {
+        const v = document.querySelector('.cv'), feed = v.querySelector('.cv-feed');
+        const imgs = [...v.querySelectorAll('img')];
+        return {
+          open: !v.hidden, prompt: v.querySelector('.cm-u span')?.textContent ?? '', cards: v.querySelectorAll('.cm-card').length,
+          wins: v.querySelectorAll('.cm-card-p .ac-pop').length, acts: v.querySelectorAll('.ac-row').length, winActs: v.querySelectorAll('.ac-row.ac-win').length,
+          atLatest: feed.scrollTop + feed.clientHeight >= feed.scrollHeight - 2, broken: imgs.filter((im) => im.complete && !im.naturalWidth).map((im) => im.src),
+          current: [...document.querySelectorAll('.app > .sb a.sb-row[aria-current]')].map((a) => a.getAttribute('href')), caret: getComputedStyle(v.querySelector('.rc-caret')).display,
+        };
+      });
+      const href = await rows.nth(i).getAttribute('href');
+      check(where, cv.open && cv.prompt.length > 20 && cv.cards >= 2 && cv.wins >= 1 && cv.acts >= 5 && cv.winActs >= 1 && cv.atLatest && !cv.broken.length && cv.current.join() === href && cv.caret === 'none', `"${titles[i]}" opens its own chat at its latest`, cv);
+    }
+    await rows.nth(0).click();
+    await page.waitForTimeout(80);
+    const back = await page.evaluate(() => ({ cv: document.querySelector('.cv').hidden, ch: getComputedStyle(document.querySelector('.app > .ch')).visibility }));
+    check(where, back.cv && back.ch === 'visible', 'the live chat row brings the creative back', back);
+  }
+
   // sizes on screen
   const m = await sb.evaluate((el) => {
     const r = el.getBoundingClientRect();
@@ -308,6 +337,29 @@ async function run(where, url, root) {
     await anyChat.locator('.sb-row').click();
     await page.waitForTimeout(200);
     check(where, await page.locator('.am').evaluate((t) => t.hidden), 'a chat row closes the tab', null);
+
+    // the tab and the chats together: a chat clicked from the tab opens and stays current; Try Me! plays the live chat
+    const state = () => page.evaluate(() => ({ tab: !document.querySelector('.am').hidden, cv: !document.querySelector('.cv').hidden, current: [...document.querySelectorAll('.app > .sb a.sb-row[aria-current]')].map((a) => a.getAttribute('href')).join() }));
+    await sb.locator('.sb-nav a[href="#automations"]').click();
+    await sb.locator('.sb-scroll a.sb-row[href="#lunch"]').click();
+    await page.waitForTimeout(150);
+    const fromTab = await state();
+    check(where, !fromTab.tab && fromTab.cv && fromTab.current === '#lunch', 'a chat clicked from the Automations tab opens and is the current one', fromTab);
+    await sb.locator('.sb-nav a[href="#automations"]').click();
+    await page.locator('.am-try').first().click();
+    await page.waitForTimeout(150);
+    const tried = await state();
+    check(where, !tried.tab && !tried.cv && tried.current === '#thumbs', 'Try Me! closes the tab onto the live chat', tried);
+
+    // deleting the chat that is open goes back to the live one
+    const victim = sb.locator('.sb-scroll li.sb-item:has(a[href="#bike"])');
+    await victim.locator('.sb-row').click();
+    await openMore(victim);
+    await page.locator('.sb-menu:popover-open .sb-menu-item').last().click();
+    await page.locator('dialog.sb-dialog[open] .sb-btn-primary').click();
+    await page.waitForTimeout(400);
+    const afterDelete = await state();
+    check(where, !afterDelete.cv && afterDelete.current === '#thumbs' && !(await sb.locator('a[href="#bike"]').count()), 'deleting the open chat goes back to the live one', afterDelete);
   }
 
   check(where, errors.length === 0, 'no console errors', errors);
