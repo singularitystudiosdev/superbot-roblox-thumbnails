@@ -48,12 +48,8 @@
 .sb-empty p { margin: 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
 .sb-btn { display: inline-flex; align-items: center; height: var(--head); padding: 0 var(--sp-12); border-radius: var(--r-ctl); background: var(--ink); color: var(--surface) !important; font: 500 var(--fs-meta)/1 var(--ui); }
 
-/* ---------- footer: the connection card, then the account ---------- */
-.sb-foot { flex: none; display: flex; flex-direction: column; gap: var(--sp-6); padding: var(--sp-8) var(--sp-8) var(--sp-10); }
-.sb-card { display: flex; align-items: center; gap: var(--sp-10); padding: var(--sp-10) var(--sp-10) var(--sp-10) var(--sp-12); border: var(--hair) solid var(--sel); border-radius: var(--r-surf); background: var(--surface); font: 500 var(--fs-body)/var(--lh-body) var(--ui); transition: border-color var(--d-hover) ease-out; }
-.sb-card:hover { border-color: var(--muted); }
-.sb-card .sb-sub { font-weight: 400; }
-.sb-card > .sb-lu { width: var(--sp-12); height: var(--sp-12); color: var(--muted); }
+/* ---------- footer: the account ---------- */
+.sb-foot { flex: none; padding: var(--sp-8) var(--sp-8) var(--sp-10); }
 .sb-me { display: flex; align-items: center; gap: var(--sp-10); height: var(--sp-40); padding: 0 0 0 var(--sp-8); }
 .sb-avatar { flex: none; width: var(--sp-24); height: var(--sp-24); border-radius: 9999px; object-fit: cover; }
 .sb-name { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 var(--fs-body)/1 var(--ui); }
@@ -61,5 +57,5 @@
 .sb-me .sb-tool:hover { color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
-  .sb-tool, .sb-row, .sb-card { transition: none; }
+  .sb-tool, .sb-row { transition: none; }
 }

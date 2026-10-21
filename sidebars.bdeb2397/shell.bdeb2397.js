@@ -1,5 +1,5 @@
 // The envelope every variant shares, in the Manus sidebar's order: the wordmark with search and collapse, the nav, the
-// variant's scrolling middle, then the connection card and the account row. `state` shows the list's loading
+// variant's scrolling middle, then the account row. `state` shows the list's loading
 // (skeleton rows) and empty states, which belong to the envelope rather than to any one variant.
 import { NAV, ACCOUNT } from './chats.bdeb2397.js';
 import { esc, fx, lu, mark, list, section } from './parts.bdeb2397.js';
@@ -42,7 +42,6 @@ export function sidebarHTML(index, { state = 'ready', labelSuffix = '' } = {}) {
   <nav class="sb-nav" aria-label="Main${labelSuffix}">${navArea(variant)}${fieldSearch ? searchField : ''}</nav>
   <nav class="sb-scroll" aria-label="Chats${labelSuffix}">${middle(variant, state)}</nav>
   <footer class="sb-foot">
-    <a class="sb-card" href="#creator-hub"><img class="sb-ic" src="../img/fav/roblox.png" alt="" width="16" height="16"><span class="sb-t"><span class="sb-title">Roblox Creator Hub</span><span class="sb-sub">Connected, 2 experiences</span></span>${lu('chevronRight')}</a>
     <div class="sb-me"><img class="sb-avatar" src="${ACCOUNT.avatar}" alt="" width="24" height="24"><span class="sb-name">${esc(ACCOUNT.name)}</span>${tool('Settings', 'settings')}${tool('Notifications', 'bell')}</div>
   </footer>
 </aside>`;

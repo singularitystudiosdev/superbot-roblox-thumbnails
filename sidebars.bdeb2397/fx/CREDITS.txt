@@ -10,9 +10,9 @@ own ../img/fx files.
 The superbot mark in the sidebar's top bar: the mask geometry of the beta.superbot.gg mascot, from
 superbot-ad-gallery/assets/sb-mark-live.html (first party), drawn as one static ink layer.
 
-Utility icons (search, panel, settings, bell, chevron-right): lucide (https://lucide.dev, ISC).
+Utility icons (search, panel, settings, bell): lucide (https://lucide.dev, ISC).
 
-The avatar and the Roblox favicon are the creative's own files (../rbx/assets, ../img/fav); see ../img/CREDITS.txt.
+The avatar is the creative's own file (../rbx/assets); see ../img/CREDITS.txt.
 Chat titles are illustrative.
 
 Layout reference: the Manus sidebar (screenshot supplied by the owner), shadcn sidebar-07
