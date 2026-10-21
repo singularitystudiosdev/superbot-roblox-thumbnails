@@ -1,0 +1,49 @@
+/* What the variants add to the shared row (variants.bdeb2397.js). Tokens only. */
+
+/* two-line rows (Two-line preview, Result thumbnails): the title over a muted line, the end column top-aligned */
+.sb-row.is-2 { align-items: flex-start; height: var(--row-2); padding-top: var(--sp-6); }
+.sb-row.is-2 > .sb-ic { margin-top: 0; }
+.sb-row.is-2 .sb-t { gap: var(--sp-2); }
+.sb-end { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: var(--sp-6); padding-top: var(--sp-2); }
+
+/* Result thumbnails: a 16:9-ish picture leads the row, or the icon on a white tile of the same size */
+.sb-row.is-pic { gap: var(--sp-10); padding-top: var(--sp-6); padding-left: var(--sp-6); }
+.sb-thumb { flex: none; display: block; width: var(--thumb-w); height: var(--thumb-h); border-radius: var(--r-ctl); object-fit: cover; box-shadow: 0 0 0 var(--hair) var(--sel); }
+.sb-thumb.is-tile { display: grid; place-items: center; background: var(--surface); }
+.sb-row.is-pic .sb-t { padding-top: 0; }
+
+/* Scoreboard: the result as a white pill, the best chat's with the trophy */
+.sb-pill { flex: none; display: inline-flex; align-items: center; gap: var(--sp-4); height: var(--sp-20); padding: 0 var(--sp-6); border: var(--hair) solid var(--sel); border-radius: 9999px; background: var(--surface); font: 500 var(--fs-meta)/1 var(--ui); font-variant-numeric: tabular-nums; }
+.sb-ic-pill { width: var(--sp-12); height: var(--sp-12); }
+.sb-lu-pill { width: var(--sp-10); height: var(--sp-10); color: var(--muted); }
+
+/* Project tree: a project's head folds; its chats hang off a hairline guide under the project's icon */
+.sb-row.is-ghost { color: var(--muted); }
+.sb-lu-row { width: var(--ic); height: var(--ic); }
+.sb-row.is-node { gap: var(--sp-6); padding-left: var(--sp-4); list-style: none; }
+.sb-row.is-node::-webkit-details-marker { display: none; }
+.sb-row.is-node .sb-chev { color: var(--muted); }
+.sb-tree { margin-left: calc(var(--sp-24) + var(--sp-2)); padding-left: var(--sp-4); box-shadow: inset var(--hair) 0 0 var(--sel); }
+
+/* Pinned shelf: the pinned chats as three icon tiles, two lines of title under each */
+.sb-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-4); margin-bottom: var(--sp-8); }
+.sb-tile { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--sp-6); height: 100%; padding: var(--sp-10) var(--sp-4) var(--sp-8); border-radius: var(--r-ctl); text-align: center; transition: background-color var(--d-hover) ease-out; }
+.sb-tile:hover { background: var(--hover); }
+.sb-tile[aria-current="page"] { background: var(--sel); }
+.sb-ic-tile { width: var(--ic-lg); height: var(--ic-lg); }
+.sb-tile-t { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font: var(--fs-meta)/var(--lh-meta) var(--ui); }
+.sb-tile .sb-dot { position: absolute; top: var(--sp-8); right: var(--sp-8); }
+
+/* Live card: the open chat as a card, its step, its last three iterations, its best result */
+.sb-live { display: flex; flex-direction: column; gap: var(--sp-8); margin-bottom: var(--sp-4); padding: var(--sp-12); border: var(--hair) solid var(--sel); border-radius: var(--r-surf); background: var(--surface); font: 500 var(--fs-body)/var(--lh-body) var(--ui); }
+.sb-live-h { display: flex; align-items: center; gap: var(--sp-10); min-width: 0; }
+.sb-live-s { display: flex; align-items: center; gap: var(--sp-6); min-width: 0; font: 500 var(--fs-meta)/var(--lh-meta) var(--ui); }
+.sb-live-step { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-weight: 400; color: var(--muted); }
+.sb-live-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); }
+.sb-live-strip .sb-thumb { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.sb-live-best { display: flex; align-items: center; gap: var(--sp-6); font: 400 var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.sb-live-best .sb-ic { width: var(--sp-12); height: var(--sp-12); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-tile { transition: none; }
+}

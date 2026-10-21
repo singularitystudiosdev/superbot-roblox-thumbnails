@@ -1,0 +1,75 @@
+/* The sidebar: the Manus sidebar's anatomy (image 2 of the brief) in the creative's palette and type, every list item
+   wearing a Fluent 3D icon as the creative's activity tab does. Values come from tokens.bdeb2397.css only. Nothing
+   here animates; the only transitions are hover fills on controls. */
+.sb { display: flex; flex-direction: column; width: var(--side-w); height: var(--app-h); overflow: hidden; background: var(--ground); box-shadow: inset calc(-1 * var(--hair)) 0 0 var(--sel); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.sb ul { margin: 0; padding: 0; list-style: none; }
+.sb a { color: inherit; text-decoration: none; }
+.sb button { font: inherit; }
+.sb-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- top: the mark and wordmark, then search and collapse ---------- */
+.sb-top { flex: none; display: flex; align-items: center; justify-content: space-between; height: var(--top); padding: 0 var(--sp-8) 0 var(--sp-16); }
+.sb-brand { display: flex; align-items: center; gap: var(--sp-8); font: 700 var(--fs-brand)/1 var(--ui); letter-spacing: -0.01em; }
+.sb-mark { width: var(--sp-20); height: var(--sp-20); color: var(--ink); }
+.sb-tools { display: flex; gap: var(--sp-2); }
+.sb-tool, .sb-act { display: grid; place-items: center; width: var(--head); height: var(--head); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--ink); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.sb-tool:hover, .sb-act:hover { background: var(--sel); }
+.sb-lu { width: var(--ic); height: var(--ic); flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- rows: nav, projects and chats share one anatomy ---------- */
+.sb-nav { flex: none; padding: 0 var(--sp-8) var(--sp-8); }
+.sb-scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; padding: 0 var(--sp-8) var(--sp-16); -webkit-mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); }
+.sb-scroll::-webkit-scrollbar { display: none; }
+.sb-row { display: flex; align-items: center; gap: var(--sp-10); height: var(--row); padding: 0 var(--sp-8); border-radius: var(--r-ctl); font: var(--fs-body)/var(--lh-body) var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.sb-row:hover { background: var(--hover); }
+.sb-row[aria-current="page"] { background: var(--sel); font-weight: 500; }
+/* muted on the selected fill is 4.0:1, under AA for 11px: the open chat's meta takes the ink */
+.sb [aria-current="page"] .sb-time, .sb [aria-current="page"] .sb-sub, .sb [aria-current="page"] .sb-live-step { color: var(--ink); }
+.sb-row.is-unread .sb-title { font-weight: 500; }
+.sb a:focus-visible, .sb button:focus-visible, .sb summary:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.sb-ic { display: block; flex: none; width: var(--ic); height: var(--ic); }
+.sb-t { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.sb-title, .sb-sub { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sb-sub { font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.sb-time { flex: none; font: var(--fs-meta)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+.sb-dot { flex: none; width: var(--dot); height: var(--dot); border-radius: 9999px; }
+.sb-dot.is-run { background: var(--accent); }
+.sb-dot.is-needs { background: var(--ink); }
+
+/* ---------- sections: a muted head, plain or folding ---------- */
+.sb-sec { margin-top: var(--sp-8); }
+.sb-head { display: flex; align-items: center; gap: var(--sp-6); height: var(--head); margin: 0; padding: 0 var(--sp-2) 0 var(--sp-8); font: 400 var(--fs-meta)/1 var(--ui); color: var(--muted); }
+.sb-head .sb-act { margin-left: auto; width: var(--sp-24); height: var(--sp-24); color: var(--muted); }
+.sb-head .sb-act .sb-lu { width: var(--sp-12); height: var(--sp-12); }
+.sb-count { font-variant-numeric: tabular-nums; }
+.sb-head.is-fold { padding-left: var(--sp-4); border-radius: var(--r-ctl); cursor: pointer; list-style: none; }
+.sb-head.is-fold::-webkit-details-marker { display: none; }
+.sb-head.is-fold:hover { color: var(--ink); }
+.sb-chev { width: var(--sp-12); height: var(--sp-12); }
+details:not([open]) > summary .sb-chev { transform: rotate(-90deg); }
+.sb-ic-head { width: var(--sp-12); height: var(--sp-12); }
+
+/* ---------- loading and empty ---------- */
+.sb-skel { display: flex; align-items: center; gap: var(--sp-10); height: var(--row); padding: 0 var(--sp-8); }
+.sb-skel i { flex: none; width: var(--ic); height: var(--ic); border-radius: var(--r-ctl); background: var(--sel); }
+.sb-skel b { flex: 1; height: var(--sp-8); max-width: 70%; border-radius: 9999px; background: var(--sel); }
+.sb-skel:nth-child(2n) b { max-width: 52%; }
+.sb-empty { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-10); padding: var(--sp-8); }
+.sb-empty p { margin: 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.sb-btn { display: inline-flex; align-items: center; height: var(--head); padding: 0 var(--sp-12); border-radius: var(--r-ctl); background: var(--ink); color: var(--surface) !important; font: 500 var(--fs-meta)/1 var(--ui); }
+
+/* ---------- footer: the connection card, then the account ---------- */
+.sb-foot { flex: none; display: flex; flex-direction: column; gap: var(--sp-6); padding: var(--sp-8) var(--sp-8) var(--sp-10); }
+.sb-card { display: flex; align-items: center; gap: var(--sp-10); padding: var(--sp-10) var(--sp-10) var(--sp-10) var(--sp-12); border: var(--hair) solid var(--sel); border-radius: var(--r-surf); background: var(--surface); font: 500 var(--fs-body)/var(--lh-body) var(--ui); transition: border-color var(--d-hover) ease-out; }
+.sb-card:hover { border-color: var(--muted); }
+.sb-card .sb-sub { font-weight: 400; }
+.sb-card > .sb-lu { width: var(--sp-12); height: var(--sp-12); color: var(--muted); }
+.sb-me { display: flex; align-items: center; gap: var(--sp-10); height: var(--sp-40); padding: 0 0 0 var(--sp-8); }
+.sb-avatar { flex: none; width: var(--sp-24); height: var(--sp-24); border-radius: 9999px; object-fit: cover; }
+.sb-name { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 var(--fs-body)/1 var(--ui); }
+.sb-me .sb-tool { color: var(--muted); }
+.sb-me .sb-tool:hover { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-tool, .sb-act, .sb-row, .sb-card { transition: none; }
+}
