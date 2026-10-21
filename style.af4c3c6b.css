@@ -1,0 +1,167 @@
+/* superbot keeps improving a Roblox game's thumbnails: the hub's chat on the left with no header bar, the computer-control
+   live view in a flush sidebar on the right with the activity tab under it, its pages the real roblox.com and Creator
+   Hub documents (rbx/). Card, bubble and composer values are the hub's own
+   (gemini-muse-meme-superbot-6fbc38f8: bakery.005f5570.css .bk, chat.css, assets/hub-real.css); the live view and its
+   vignette are computer.ba3976b6.css's, redrawn here in a light theme (white ground, near-black ink) with an orange
+   vignette. No CSS animation or transition: every moving value is written from t. */
+:root {
+  --ui: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif;
+  --bg: #fff; --side: #fafafa; --line: #e5e5ea; --ink: #1c1c1e; --muted: #6e6e73;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #fff; overflow: hidden; }
+body { font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); transform-origin: 50% 50%; }
+/* the loop's seam dips to the white ground, not to black */
+/* opaque until the first painted frame, so a reload never shows the page half laid out */
+#dip { position: absolute; inset: 0; z-index: 10; background: #fff; opacity: 1; pointer-events: none; }
+.hint { position: fixed; right: 18px; bottom: 14px; font-size: 12px; color: var(--muted); opacity: .6; user-select: none; }
+body.freeze .hint { display: none; }
+
+/* the app, laid out at 1200x675 and drawn at 1.6x, as the hub spots are. Before the first message the chat has the whole
+   window; once it is sent the sidebar slides in from the right and the chat narrows to its left (main.af4c3c6b.js dock()
+   sets both from t). These are the landed sizes, the ones every measurement is taken at. */
+.app { position: absolute; left: 0; top: 0; width: 1200px; height: 675px; transform: scale(1.6); transform-origin: 0 0; background: var(--bg); }
+svg { flex: none; }
+
+/* ---------- the chat: no header bar; what scrolls off the top fades out over its last 32px ---------- */
+.ch { position: absolute; left: 0; top: 0; bottom: 0; display: flex; flex-direction: column; width: 476px; min-height: 0; }
+.ch-feed { position: relative; flex: 1; min-height: 0; overflow: hidden; -webkit-mask: linear-gradient(transparent, #000 32px); mask: linear-gradient(transparent, #000 32px); }
+/* the thread is a centred column the composer's width (the hub's --hub-column, 590px), so the full-width chat reads like
+   the hub and the narrowed one fills its pane */
+.ch-in { position: absolute; left: max(0px, calc(50% - 313px)); right: max(0px, calc(50% - 313px)); top: 0; padding: 16px 18px 12px; }
+.cm { margin-bottom: 14px; opacity: 0; }
+.cm-u { display: flex; justify-content: flex-end; }
+.cm-u span { max-width: 82%; padding: 8px 14px; border-radius: 16px; background: #f2f2f7; font: 12.5px/17px var(--ui); color: var(--ink); }
+/* a link in a sent message: the system link blue, underlined */
+.cm-link { color: #0a66d8; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.cm-say { margin: 0; font: 12.5px/18px var(--ui); color: var(--ink); }
+.cm-h { color: transparent; }
+.cm-after { margin-top: 0; }
+.cm-card { display: flex; align-items: center; gap: 12px; margin: 10px 0; padding: 10px 14px 10px 10px; border-radius: 12px; background: #f9f9fb; box-shadow: inset 0 0 0 1px var(--line); opacity: 0; }
+/* a card's thumbnail, at Roblox's 16:9, and the strip of iterations superbot made */
+.cm-thumb { flex: none; width: 80px; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 7px; box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
+.cm-thumb img, .cm-strip img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cm-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 8px; padding: 8px; }
+.cm-strip figure { margin: 0; min-width: 0; }
+.cm-strip img { aspect-ratio: 16 / 9; height: auto; border-radius: 6px; }
+.cm-strip figcaption { margin-top: 5px; font: 600 11px/14px var(--ui); color: var(--ink); }
+.cm-card-t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.cm-card-t b { font: 600 12.5px/16px var(--ui); color: var(--ink); }
+.cm-card-t small { font: 11px/14px var(--ui); color: var(--muted); }
+.cm-card-p { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.cm-card-p b { font: 700 20px/22px var(--ui); color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.cm-card-p small { font: 11px/14px var(--ui); color: var(--muted); }
+
+/* composer (assets/hub-real.css .rc): +, then the effort picker (High), the mic and send on the right; the draft types
+   in, the send button lights while there is text */
+.composer { flex: none; width: 100%; max-width: 622px; margin: 0 auto; padding: 4px 16px 16px; }
+.rc { display: flex; flex-direction: column; min-height: 83px; padding: 11px 8.5px 7px 10px; border-radius: 14px; background: #fff; box-shadow: inset 0 0 0 1px #d1d1d6, 0 2px 8px rgba(0,0,0,.04); color: var(--muted); font: 12px/1.4 var(--ui); }
+.rc-ph { flex: 1; min-height: 39px; padding: 0 1.5px; overflow: hidden; }
+.rc-hint { display: inline-block; color: var(--muted); }
+.rc-typed { color: var(--ink); white-space: pre-wrap; }
+.rc-caret { display: inline-block; width: 1.5px; height: 13px; margin-left: 1px; vertical-align: -2px; background: var(--ink); }
+.rc-row { display: flex; align-items: center; gap: 9px; }
+.rc-row > span { flex: none; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); }
+.rc-row svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rc-plus { margin-left: 3.5px; color: #3a3a3c !important; }
+.rc-plus svg { width: 14px; height: 14px; }
+.rc-effort { gap: 6.5px; margin: 0 5px 0 auto; font-size: 12px; color: var(--muted) !important; }
+.rc-effort-ic { width: 12.5px; height: 12.5px; }
+.rc-chev { width: 12px; height: 12px; margin-left: -2px; color: #8e8e93; }
+.rc-mic, .rc-send { width: 26px; height: 26px; border-radius: 50%; }
+.rc-mic { background: #f2f2f7; box-shadow: inset 0 0 0 1px var(--line); color: #3a3a3c !important; }
+.rc-mic svg { width: 12.5px; height: 12.5px; }
+.rc-send { background: #e5e5ea; color: #aeaeb2 !important; }
+.rc-send svg { width: 12px; height: 12px; stroke-width: 2.2; }
+.rc-send.is-on { background: var(--ink); color: #fff !important; }
+
+/* ---------- the right side: a sidebar cut flush to the top, right and bottom edges, a hairline on its left, a faint
+   grey ground; the live view, the activity tab under it ---------- */
+.cc { position: absolute; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; width: 724px; min-height: 0; visibility: hidden; }
+.cc-stack { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: hidden; border-left: 1px solid var(--line); background: var(--side); }
+/* the screen share, with no title bar over it: its view is the desktop's shape at the sidebar's width, and Stop floats
+   on the screen itself, bottom centre, over the vignette */
+.cc-frame { position: relative; flex: none; }
+.cc-view { position: relative; aspect-ratio: 1470 / 919; overflow: hidden; background: #fff; }
+.cc-stop { position: absolute; left: 50%; bottom: 16px; z-index: 5; display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 13px; border-radius: 999px; transform: translateX(-50%); background: var(--ink); box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 6px 18px rgba(0,0,0,.24); white-space: nowrap; font: 600 11.5px/1 var(--ui); color: #fff; }
+.cc-stop i { width: 7px; height: 7px; border-radius: 1.5px; background: #fff; }
+
+/* the activity tab, with no header row: one plain line per step, text only, newest at the foot; a breakthrough's line
+   bold in the ink */
+.ac { flex: 1; min-height: 0; display: flex; flex-direction: column; box-shadow: 0 -1px 0 var(--line); }
+/* a row scrolling off under the live view fades out over 14px, as the chat's do */
+.ac-list { position: relative; flex: 1; min-height: 0; overflow: hidden; -webkit-mask: linear-gradient(transparent, #000 14px); mask: linear-gradient(transparent, #000 14px); }
+.ac-in { position: absolute; left: 0; right: 0; top: 0; padding: 6px 0; }
+.ac-row { display: flex; align-items: center; gap: 9px; height: 27px; padding: 0 14px; white-space: nowrap; font: 12px/1 var(--ui); color: #3a3a3c; opacity: 0; }
+.ac-win { font-weight: 700; color: var(--ink); }
+/* each step's Fluent 3D icon, small enough that its depth reads as a light shading */
+.ac-ic { flex: none; display: block; width: 15px; height: 15px; }
+/* a new low's party popper, pivoting on its tip, and its confetti flung from its mouth (feed.af4c3c6b.js paintPop()) */
+.ac-fx { position: relative; flex: none; width: 15px; height: 15px; margin-left: -2px; }
+.ac-pop { display: block; width: 15px; height: 15px; transform: scale(0); transform-origin: 22% 78%; }
+.ac-bit { position: absolute; left: 10px; top: 2px; width: 2.2px; height: 4.2px; border-radius: .6px; opacity: 0; }
+.ac-dot { width: 3px; height: 3px; border-radius: 50%; }
+/* a breakthrough card's popper sits just before its rate, a size up to stand beside the big figure, so the rate keeps
+   its right edge in line with the unit under it */
+.cm-card-p b .ac-fx { display: inline-block; width: 18px; height: 18px; margin: 0 7px 0 0; vertical-align: 1px; }
+.cm-card-p b .ac-pop { width: 18px; height: 18px; }
+.cm-card-p b .ac-bit { left: 12px; top: 2px; }
+.ac-empty { position: absolute; left: 14px; top: 12px; margin: 0; font: 12px/16px var(--ui); color: var(--muted); }
+
+/* ---------- Chrome on the shared desktop, in the desktop's own px (computer.ba3976b6.css) ---------- */
+.cc-desk { position: absolute; left: 0; top: 0; width: 1470px; height: 919px; overflow: hidden; transform-origin: 0 0; background: #fff; }
+/* its own stacking context, so a page's menus never rise over the cursor */
+.cc-win { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #fff; }
+.cc-strip svg, .cc-bar svg { display: block; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.cc-ic { flex: none; display: grid; place-items: center; width: 28px; height: 28px; padding: 5px; border-radius: 50%; color: #474747; }
+.cc-dim { opacity: .38; }
+.cc-strip { display: flex; align-items: flex-end; height: 42px; padding: 0 8px 0 14px; background: #dee1e6; }
+.cc-lights { display: flex; gap: 8px; align-self: center; margin-right: 22px; }
+.cc-lights i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.12); }
+.cc-lights i:nth-child(2) { background: #febc2e; }
+.cc-lights i:nth-child(3) { background: #28c840; }
+.cc-tabs { display: flex; align-items: flex-end; }
+.cc-tab { position: relative; flex: none; display: flex; align-items: center; gap: 8px; width: 240px; height: 34px; padding: 0 8px 0 12px; overflow: hidden; white-space: nowrap; font: 400 12px/1 var(--ui); color: #1f1f1f; }
+.cc-tab > span { position: relative; }
+.cc-tbg { position: absolute; inset: 0; border-radius: 10px 10px 0 0; background: #fff; opacity: 0; }
+.cc-tab.is-on .cc-tbg { opacity: 1; }
+.cc-tab::after { content: ""; position: absolute; right: 0; top: 10px; bottom: 8px; width: 1px; background: #a9acb1; }
+.cc-tab.is-on::after, .cc-tab:has(+ .cc-tab.is-on)::after { display: none; }
+.cc-fav { flex: none; width: 16px; height: 16px; }
+.cc-fav img { display: none; width: 16px; height: 16px; border-radius: 3px; }
+.cc-tab[data-state="page"] .cc-fav img { display: block; }
+.cc-tab[data-state="ntp"] .cc-fav { display: none; }
+.cc-spin { display: none; position: absolute; inset: 1px; border-radius: 50%; border: 2px solid transparent; border-top-color: #1a73e8; border-right-color: #1a73e8; }
+.cc-tab[data-state="load"] .cc-spin { display: block; }
+/* Chrome fades a long title out rather than ending it in an ellipsis */
+.cc-tt { flex: 1; min-width: 0; overflow: hidden; -webkit-mask: linear-gradient(90deg, #000 82%, transparent); mask: linear-gradient(90deg, #000 82%, transparent); }
+.cc-x { flex: none; width: 16px; height: 16px; padding: 3px; color: #474747; }
+.cc-plus { flex: none; display: grid; place-items: center; align-self: center; width: 28px; height: 28px; margin: 8px 0 0 8px; padding: 6px; border-radius: 50%; color: #474747; }
+.cc-bar { display: flex; align-items: center; gap: 4px; height: 40px; padding: 0 8px; border-bottom: 1px solid #e3e3e3; background: #fff; }
+.cc-reload svg + svg, .cc-reload.is-load svg:first-child { display: none; }
+.cc-reload.is-load svg + svg { display: block; }
+.cc-omni { position: relative; flex: 1; height: 34px; margin: 0 6px; border-radius: 17px; background: #f1f3f4; }
+.cc-omni.is-focus { background: #fff; box-shadow: inset 0 0 0 2px rgba(26,115,232,.9); }
+.cc-url { position: absolute; inset: 0; display: flex; align-items: center; gap: 4px; padding: 0 14px 0 5px; white-space: nowrap; font: 400 14px/1 var(--ui); color: #1f1f1f; opacity: 0; }
+.cc-url .cc-ic { width: 24px; height: 24px; padding: 4px; }
+.cc-caret { flex: none; width: 1px; height: 18px; margin: 0 1px; background: #1f1f1f; }
+.cc-u-ph .cc-caret { margin-left: 4px; }
+.cc-ph, .cc-path { color: #5f6368; }
+.cc-me { flex: none; width: 24px; height: 24px; margin: 0 4px; border-radius: 50%; background: #c2e7ff; }
+.cc-pages { position: absolute; left: 0; top: 82px; width: 1470px; height: 837px; overflow: hidden; background: #fff; }
+.cc-page { position: absolute; left: 0; top: 0; display: block; width: 1470px; visibility: hidden; }
+.cc-ntp { height: auto; }
+.cc-blank { height: 837px; background: #fff; }
+/* a captured Roblox page in Chrome's page area, at Chrome's own size; it only ever shows, never takes input */
+.cc-doc { height: 837px; border: 0; background: #fff; pointer-events: none; }
+/* the screen's own cursor: a macOS arrow at its real size on this desktop, placed from its hotspot, which it squeezes
+   toward on a click */
+.cc-cursor { position: absolute; left: 0; top: 0; z-index: 2; width: 24px; height: 24px; overflow: visible; transform-origin: 4px 2.5px; fill: #000; stroke: #fff; stroke-width: 1.5px; stroke-linejoin: round; paint-order: stroke; filter: drop-shadow(0 1px 1.5px rgba(0,0,0,.35)); }
+
+/* the takeover's edge, the one thing drawn over the screen: a thin orange vignette (#fd9e43 and a lighter and a deeper
+   shade of it), a turning conic band from
+   5px outside the view's edge to 8px inside it, blurred so it fades to nothing about 14px in (computer.ba3976b6.css) */
+.cc-edge { position: absolute; inset: 0; z-index: 4; overflow: hidden; opacity: 0; pointer-events: none; }
+.cc-soft { position: absolute; inset: -5px; filter: blur(4px); }
+.cc-band { position: absolute; inset: 0; padding: 13px; background: conic-gradient(from var(--cc-a, 0deg), #fd9e43, #ffb769, #f68a2c, #ffc185, #fd9e43); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }

@@ -1,0 +1,50 @@
+[
+  {
+    "file": "iter-1.webp",
+    "base": 3,
+    "lever": "Tighter crop / bigger face of the grinning robber (full beanie in frame), ZZZ text removed",
+    "prompt": "Edit this Roblox thumbnail: TIGHTER CROP / BIGGER FACE. Move the camera in closer so the grinning robber's whole head, with the complete black beanie fully inside the frame (not cut off at the top edge) and his black eye mask, is large and the clear focal point, taking up about 40% of the frame height, with his big hand grabbing the green banknote in the foreground; the sleeping man in striped pajamas stays visible smaller on the right. Remove the floating ZZZ letters and any text. Keep the exact same game, the same Roblox blocky avatar characters (striped-shirt robber with black beanie and black eye mask), the same glossy 3D Roblox render style and lighting style, 16:9 framing. Change only the one design element described. No text, no letters, no numbers, no logos, no watermarks, no UI, no captions, no speech bubbles.",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "request_id": "01a15e8a-84b1-7c61-8478-4195c04d6d0d"
+  },
+  {
+    "file": "iter-2.webp",
+    "base": 3,
+    "lever": "Tension: sleeping homeowner cracks his eyes open and glances at the frozen robber, warm lamp rim light vs cool blue room",
+    "prompt": "Edit this Roblox thumbnail: TENSION. Keep the robber leaning over the bed with the big green banknote, but now the sleeping man's eyes are cracking open and he is glancing sideways at the robber, who freezes with a nervous wide-eyed grin; add dramatic warm lamp rim light on the robber against the cool blue room. Remove the ZZZ letters and any text. Keep the exact same game, the same Roblox blocky avatar characters (striped-shirt robber with black beanie and black eye mask), the same glossy 3D Roblox render style and lighting style, 16:9 framing. Change only the one design element described. No text, no letters, no numbers, no logos, no watermarks, no UI, no captions, no speech bubbles.",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "request_id": "01a15e89-3044-7ad0-b0c8-b36993b64ddf"
+  },
+  {
+    "file": "iter-3.webp",
+    "base": 1,
+    "lever": "Guard spots robber: flashlight beam pins the robber in a bright warm spotlight, museum shifted to deep cool blue (warm/cool contrast + rim light)",
+    "prompt": "Edit this Roblox thumbnail: A GUARD SPOTTING THE ROBBER. Keep the museum, T-rex skeleton and the two characters, but make the police guard point his bright flashlight beam directly at the robber, hitting him in a bright warm spotlight with a strong rim light, while the rest of the museum falls into deeper cool blue shadow for stronger warm/cool contrast; the guard's mouth open shouting, the robber wide-eyed caught. Keep the exact same game, the same Roblox blocky avatar characters (striped-shirt robber with black beanie and black eye mask), the same glossy 3D Roblox render style and lighting style, 16:9 framing. Change only the one design element described. No text, no letters, no numbers, no logos, no watermarks, no UI, no captions, no speech bubbles.",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "request_id": "01a15e89-d449-7fb3-9866-caca43488898"
+  },
+  {
+    "file": "iter-4.webp",
+    "base": 1,
+    "lever": "Dynamic mid-escape action pose: robber sprints at camera with a bulging gold/diamond loot sack, motion blur, guard chasing behind",
+    "prompt": "Edit this Roblox thumbnail: DYNAMIC ACTION POSE MID-ESCAPE. The striped-shirt robber with black beanie and eye mask now sprints toward the camera mid-leap, carrying a bulging gold-and-diamond loot sack over his shoulder, motion blur and speed lines behind him, while the police guard chases in the background of the same museum with the T-rex skeleton, flashlight beam swinging. Keep the exact same game, the same Roblox blocky avatar characters (striped-shirt robber with black beanie and black eye mask), the same glossy 3D Roblox render style and lighting style, 16:9 framing. Change only the one design element described. No text, no letters, no numbers, no logos, no watermarks, no UI, no captions, no speech bubbles.",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "request_id": "01a15e89-307d-7bb1-9864-0c0793fe84c2"
+  },
+  {
+    "file": "iter-5.webp",
+    "base": 2,
+    "lever": "Bigger, brighter glowing diamond as the focal point (bloom, sparkles, light rays on the scene)",
+    "prompt": "Edit this Roblox thumbnail: BIGGER, BRIGHTER DIAMOND AS THE FOCAL POINT. Make the blue diamond dramatically larger, filling roughly half the frame, glowing intensely bright cyan-white with sparkles, light rays and a bloom glow lighting the room and the robber's face; keep the robber grinning on the rope, the vault door and gold bars, but slightly smaller. Keep the exact same game, the same Roblox blocky avatar characters (striped-shirt robber with black beanie and black eye mask), the same glossy 3D Roblox render style and lighting style, 16:9 framing. Change only the one design element described. No text, no letters, no numbers, no logos, no watermarks, no UI, no captions, no speech bubbles.",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "request_id": "01a15e89-d3ce-7b50-8cef-689caab545cc"
+  },
+  {
+    "file": "iter-6.webp",
+    "base": 4,
+    "lever": "Tighter crop on the robber hugging the diamond, strong warm glow/rim light vs deep cool blue night room; ZZZ and money text removed",
+    "prompt": "Edit this Roblox thumbnail: TIGHTER CROP WITH STRONGER WARM/COOL CONTRAST. Push the camera in close so the sweating, nervous robber and the large diamond he hugs fill most of the frame, from his knees up; the diamond glows bright warm white-gold and lights his face and chest with a strong warm rim light, against the deep cool blue night bedroom; the sleeping man in bed stays visible small in the background on the right. Remove the floating ZZZ letters, the rubber duck can be cropped out, and remove the green money amount text. Keep the exact same game, the same Roblox blocky avatar characters (striped-shirt robber with black beanie and black eye mask), the same glossy 3D Roblox render style and lighting style, 16:9 framing. Change only the one design element described. No text, no letters, no numbers, no logos, no watermarks, no UI, no captions, no speech bubbles.",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "request_id": "01a15e8a-84af-7993-9963-283285f98915"
+  }
+]

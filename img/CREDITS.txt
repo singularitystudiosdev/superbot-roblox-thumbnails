@@ -1,0 +1,47 @@
+Sources for the Roblox thumbnail automation loop (af4c3c6b, built from the concert tickets breakthroughs loop). Never
+shown on screen.
+
+ROBLOX PAGES (rbx/game, rbx/thumbs, rbx/thumbs-edit, rbx/assets)
+Real Roblox pages, captured 2026-10-21 from the game owner's own signed-in Chrome through Cosmos browser-control,
+read-only, in a background tab sized to Chrome's page area here (1470x837 CSS px, 2x). Each page's live DOM and every
+CSS rule it held were serialized to static HTML (scripts removed), the cross-origin stylesheets fetched in, and every
+image and font it used downloaded to rbx/assets, so the pages render as Roblox draws them, with no request to Roblox.
+  rbx/game         https://www.roblox.com/games/96168869671905/ROB-IT (ROB IT's game page, as its owner sees it)
+  rbx/thumbs       https://create.roblox.com/dashboard/creations/experiences/9472441390/places/96168869671905/thumbnails
+  rbx/thumbs-edit  the same page after "Edit active thumbnails" (a client-side view switch; nothing saved)
+What was changed before publishing, and only this:
+  - the Thumbnail performance table's real figures (every data cell and the Total row) were blanked in the saved
+    files; the figures the ad shows are illustrative and set by rbx.af4c3c6b.js
+  - the analytics cards under the table (summary tiles and charts drawn from the real data) were removed
+  - the account's live "removed from personalization" warning was removed
+  - the Robux balance in roblox.com's header is blurred
+  - the carousel's video preview (a blob: stream that only existed in the live tab) has no source
+  - every <meta> but charset, viewport and robots, and every attribute carrying the session's CSRF token, the
+    signed-in user or the Robux balance, were removed; the balance's digits are zeroed
+Nothing was uploaded, saved, reordered or deleted on the account; the edit view's local preference
+(ThumbnailTableMode) was set back to "view" afterwards. Roblox, its pages, marks and UI are Roblox Corporation's.
+
+THUMBNAILS
+  rbx/assets/*.webp (the table's)  ROB IT's own Home Page thumbnails, as Creator Hub served them in the capture
+  the game page's carousel        its own slides (ROB IT's thumbnails, in rbx/assets), shown one at a time
+  img/iter/iter-1..6.webp          AI-generated iterations on ROB IT's four public thumbnails
+                                   (thumbnails.roblox.com/v1/games/multiget/thumbnails, universe 9472441390): fal-ai/nano-banana-pro/edit,
+                                   2026-10-21, each one edit of one public thumbnail used as the reference image, one
+                                   design lever changed (prompts and request ids: tools/iterations.af4c3c6b.json)
+                                   The ad uses iter-3 (Iteration 1), iter-4 (2), iter-5 (3), iter-6 (4), iter-1 (5).
+
+img/fav/roblox.png, img/fav/create.png: https://www.roblox.com/favicon.ico and https://create.roblox.com/favicon.ico.
+
+new-tab.png: Google Chrome's New Tab page, the real capture from
+gemini-muse-meme-superbot-6fbc38f8/img/computer.ba3976b6/new-tab.png (captured 2026-10-16, headless, fresh profile).
+Google's logo and page are Google's. Chrome's tab strip, toolbar and cursor follow
+gemini-muse-meme-superbot-6fbc38f8/scenes/tabs-assets/computer.ba3976b6.css.
+
+img/fx/: the Activity tab's icons, Fluent Emoji in their 3D style, fetched 2026-10-21 from
+https://github.com/microsoft/fluentui-emoji (assets/<Name>/3D/<name>_3d.png, 256px) and scaled to 96px. License: MIT,
+Copyright (c) Microsoft Corporation (https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE).
+
+TOOLS (tools/): serialize.af4c3c6b.js is run in the owner's Chrome to capture a page; rbx-build.af4c3c6b.mjs turns the
+captures into rbx/ and scrubs them; verify-*.af4c3c6b.mjs are the headless checks used on this spot (frames and DOM
+audit, thumbnail and live playback, the popper's burst, the composer placeholder). They load Playwright from
+quick-chats/superbot-ad-gallery/node_modules by absolute path; the unscrubbed raw captures are not kept.
