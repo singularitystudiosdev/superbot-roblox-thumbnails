@@ -86,6 +86,13 @@ async function run(where, url, root) {
   // linear at 32 px/s in the list's own units: two samples mid-travel give the same speed
   const v1 = (s1.tx - s0.tx) / ((s1.at - s0.at) / 1000), v2 = (s2.tx - s1.tx) / ((s2.at - s1.at) / 1000);
   check(where, near(v1, -32, 5) && near(v2, -32, 5), 'it moves at a steady 32px/s', { v1, v2 });
+  // one pass: once at its end it stays there, the last letter clear of any fade, and never heads back
+  const fullDist = await rows.nth(0).locator('.sb-title').evaluate((el) => el.firstElementChild.offsetWidth - el.clientWidth);
+  await page.waitForTimeout((fullDist / 32) * 1000 + 600 - 1350);
+  const e1 = await sample();
+  await page.waitForTimeout(1500);
+  const e2 = await sample();
+  check(where, near(e1.tx, -fullDist, 0.5) && e2.tx === e1.tx && e2.r === 0 && e2.l > 5, 'it stops at the end and does not come back', { e1, e2, fullDist });
   await page.mouse.move(0, 0);
   await page.waitForTimeout(450);
   const home = await rows.nth(0).locator('.sb-title').evaluate((el) => ({ on: el.classList.contains('is-marquee'), tx: new DOMMatrix(getComputedStyle(el.firstElementChild).transform).m41 }));

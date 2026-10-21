@@ -5,7 +5,7 @@ const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const DRAG_FROM = 4; // px of travel, in the list's own units, before a press becomes a drag
 const SETTLE = 150; // ms, tokens --d-hover: the dropped row easing into its slot
-const MARQUEE = { delay: 350, speed: 32, hold: 900, back: 200 }; // ms before it starts, px per s (linear), ms at each end, ms home
+const MARQUEE = { delay: 350, speed: 32, back: 200 }; // ms before it starts, px per s (linear), ms home on leave
 
 const scaleOf = (node) => node.getBoundingClientRect().height / node.offsetHeight || 1;
 const titleOf = (li) => li.querySelector('.sb-title-in')?.textContent ?? '';
@@ -108,7 +108,8 @@ function sortable(list, say) {
   });
 }
 
-// a cut-off title slides at a constant speed to its end and back while the row is hovered or focused, then eases home.
+// a cut-off title slides once, at a constant speed, to its end and stays there while the row is hovered or focused;
+// leaving the row eases it home.
 // A small fade sits on each edge only while text is hidden past it, so the first and last letters are crisp when they
 // are fully in view: the left fade grows as the line leaves its start, the right one shrinks as its end arrives.
 function marquee(row) {
@@ -123,17 +124,14 @@ function marquee(row) {
   }
 
   function run() {
-    const travel = (dist / MARQUEE.speed) * 1000, hold = MARQUEE.hold, period = 2 * (travel + hold);
+    const travel = (dist / MARQUEE.speed) * 1000;
     const t0 = performance.now();
     const step = (now) => {
-      // out, hold at the end, back, hold at the start; linear between holds
-      const t = (now - t0) % period;
-      tx = t < travel ? -dist * (t / travel)
-        : t < travel + hold ? -dist
-          : t < 2 * travel + hold ? -dist * (1 - (t - travel - hold) / travel)
-            : 0;
+      // one linear pass to the end, then it rests there
+      const k = Math.min(1, (now - t0) / travel);
+      tx = -dist * k;
       paint();
-      raf = requestAnimationFrame(step);
+      if (k < 1) raf = requestAnimationFrame(step);
     };
     raf = requestAnimationFrame(step);
   }
