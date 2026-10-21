@@ -8,22 +8,20 @@ From the creative's own pictures (see ../../img/CREDITS.txt for where each came 
            itself an AI iteration on ROB IT's public thumbnail), B ringed and checked as the keeper
   report   Creator Hub's Thumbnails page as the spot's live view shows it at 48s (rbx/thumbs, captured from the
            owner's signed-in Chrome; its figures are illustrative), superbot's takeover edge and Stop hidden
-  event    rbx/assets/6a870bc1f466fa.webp, ROB IT's own Halloween thumbnail
 The rbx/assets thumbnails are ROB IT's own, as Creator Hub served them. Roblox, its pages, marks and UI are Roblox
 Corporation's.
 
 Generated, 2026-10-21, by fal-ai/nano-banana-pro (text to image) or fal-ai/nano-banana-pro/edit (with ROB IT's
-thumbnails as the reference where the output is of this game: icon, gamepass, trailer, updatelog, devlog, gdd, merch,
-translate). Every prompt, its reference files and its fal request id: prompts.03378ba4.json. All 28 others are
-generated: storepage, retopo, playtest, icon, trailer, updatelog, reviews, hud, lighting, translate, revenue,
-turntable, wishlist, welcome, gamepass, lods, youtubers, builds, gdd, bugs, trends, icons, devlog, assets, foliage,
-press, jam, schedule, merch. No brand mark was asked for or kept.
+thumbnails as the reference where the output is of this game: icon, gamepass, updatelog, devlog, gdd). Every prompt,
+its reference files and its fal request id: prompts.03378ba4.json. All 15 others are generated: playtest, icon,
+updatelog, reviews, revenue, wishlist, welcome, gamepass, builds, gdd, bugs, trends, devlog, jam, schedule. No brand
+mark was asked for or kept. The one-off automations (a store page, a retopology, a trailer and the like) were taken
+out of the catalogue on 2026-10-21 with their thumbnails: every automation runs again and again.
 
 APP ICONS (apps/*.png, 64px), each app's own mark from its own site, fetched 2026-10-21:
-  roblox, creatorhub, blender, unreal, steam, figma, youtube, discord, reddit, notion, shopify
+  roblox, creatorhub, steam, youtube, discord, reddit, notion, shopify
               https://www.google.com/s2/favicons?domain=<the app's domain>&sz=128 (roblox.com, create.roblox.com,
-              blender.org, unrealengine.com, store.steampowered.com, figma.com, youtube.com, discord.com,
-              reddit.com, notion.so, shopify.com)
+              store.steampowered.com, youtube.com, discord.com, reddit.com, notion.so, shopify.com)
   unity       https://unity.com/icon.svg (the site's declared SVG mark; its favicon is 48px)
   itch        https://static.itch.io/images/app-icon.png (itch.io's app icon; its favicon is 32px)
   twitch      https://www.twitch.tv/apple-touch-icon.png (its favicon is 32px)

@@ -12,7 +12,6 @@
   --am-r-card: 12px;  /* design-tokens --radius-12; 6px of padding in from it, the thumbnail's --r-ctl is concentric */
   --search-h: 32px;   /* the search field */
   --btn-h: 24px;      /* Try Me! and the field's clear button */
-  --key: 16px;        /* the "/" key hint */
   --app-ic: 20px;     /* a card's app icon, beside its two-line name */
   --star: 12px;       /* the rating's star */
   --chip-h: 28px;     /* a category under the search field */
@@ -39,19 +38,16 @@ body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important
 .am-bar { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-16); }
 .am-h { margin: 0; font: 700 var(--fs-h1)/var(--lh-h1) var(--ui); letter-spacing: -0.01em; }
 .am-count { margin: 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
-/* the input is the whole pill and draws its own focus ring; the search icon, the "/" hint and the clear button sit on
-   it, in the room its padding leaves at each end */
+/* the input is the whole pill and draws its own focus ring; the search icon and the clear button sit on it, in the room
+   its padding leaves at each end */
 .am-search { position: relative; height: var(--search-h); }
 .am-search input { display: block; width: 100%; height: 100%; padding: 0 calc(var(--btn-h) + var(--sp-12)) 0 calc(var(--sp-12) + var(--tool-ic) + var(--sp-8)); border: 0; border-radius: 9999px; background: var(--ground); font: var(--fs-card)/1 var(--ui); transition: background-color var(--d-hover) ease-out; }
 .am-search input:focus { background: var(--surface); }
 .am-search input:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
 .am-search input::placeholder { color: var(--muted); }
 .am-search input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
-.am-search > .am-lu, .am-key, .am-clear { position: absolute; top: 50%; transform: translateY(-50%); }
+.am-search > .am-lu, .am-clear { position: absolute; top: 50%; transform: translateY(-50%); }
 .am-search > .am-lu { left: var(--sp-12); color: var(--muted); pointer-events: none; }
-/* the "/" that focuses the field, shown while it is empty and unfocused */
-.am-key { right: calc(var(--sp-6) + (var(--btn-h) - var(--key)) / 2); display: grid; place-items: center; width: var(--key); height: var(--key); border-radius: var(--r-ctl); box-shadow: inset 0 0 0 var(--hair) var(--sel); background: var(--surface); font: var(--fs-small)/1 var(--ui); color: var(--muted); pointer-events: none; }
-.am-search:focus-within .am-key { display: none; }
 .am-clear { right: var(--sp-6); display: grid; place-items: center; width: var(--btn-h); height: var(--btn-h); padding: 0; border: 0; border-radius: 9999px; background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
 .am-clear:hover { background: var(--sel); color: var(--ink); }
 

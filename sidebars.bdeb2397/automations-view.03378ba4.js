@@ -75,7 +75,7 @@ function pageHTML(state) {
   return `<section class="am" aria-labelledby="am-h" hidden>
   <header class="am-top">
     <div class="am-bar"><h1 class="am-h" id="am-h">Automations</h1><p class="am-count" aria-live="polite">${loading ? 'Loading automations' : countText(AUTOMATIONS.length)}</p></div>
-    <div class="am-search">${lu('search', 'am-lu')}<input type="search" placeholder="Search automations, apps or topics like game design" aria-label="Search automations" autocomplete="off" spellcheck="false"><kbd class="am-key" aria-hidden="true">/</kbd><button class="am-clear" type="button" aria-label="Clear search" hidden>${X_ICON}</button></div>
+    <div class="am-search">${lu('search', 'am-lu')}<input type="search" placeholder="Search automations, apps or topics like game design" aria-label="Search automations" autocomplete="off" spellcheck="false"><button class="am-clear" type="button" aria-label="Clear search" hidden>${X_ICON}</button></div>
     <div class="am-cats" role="group" aria-label="Filter by app">${loading ? skeletonChip.repeat(SKELETON_CHIPS) : ''}</div>
   </header>
   <div class="am-scroll">
@@ -92,7 +92,7 @@ function mountAutomations({ app, sb, state }) {
   template.innerHTML = pageHTML(state);
   const page = template.content.firstElementChild;
   app.append(page);
-  const input = page.querySelector('.am-search input'), clear = page.querySelector('.am-clear'), key = page.querySelector('.am-key');
+  const input = page.querySelector('.am-search input'), clear = page.querySelector('.am-clear');
   const cats = page.querySelector('.am-cats'), grid = page.querySelector('.am-grid'), count = page.querySelector('.am-count');
   const empty = page.querySelector('.am-empty'), emptyText = page.querySelector('.am-empty-t');
   const row = sb.querySelector(AUTOMATIONS_ROW);
@@ -106,7 +106,6 @@ function mountAutomations({ app, sb, state }) {
   // script would show the keyboard's focus ring after a mouse click)
   function render({ chips = true } = {}) {
     clear.hidden = !input.value;
-    key.hidden = Boolean(input.value);
     if (state === 'loading') return;
     const query = input.value.trim(), terms = termsOf(query);
     const offer = categories(terms, picked);

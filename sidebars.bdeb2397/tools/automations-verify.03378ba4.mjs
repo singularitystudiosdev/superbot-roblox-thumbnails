@@ -1,6 +1,6 @@
 // Drives the Automations tab headlessly and fails on anything off: the sidebar's Automations row opens it over the chat
 // and the live view; the search narrows the grid (a space is typed, not taken as the spot's pause) and the app
-// categories to what it reaches ("game design" offers Roblox, Blender, Unity, Steam...); picking categories, several or
+// categories to what it reaches ("game design" offers Roblox, Unity, Steam, itch.io...); picking categories, several or
 // none, narrows the grid to those apps; an unmatched query shows the empty state and Clear search brings every card
 // back; Try Me! returns to the chat with the open chat current again; ?tab=automations opens it at load;
 // ?state=loading shows skeleton cards and categories. Also fails on a console error, a broken image, a card whose title
@@ -68,15 +68,14 @@ const audit = (page) => page.evaluate(() => {
   };
 });
 
-const GAME_DESIGN_APPS = ['roblox', 'blender', 'unity', 'unreal', 'steam', 'itch', 'figma'];
-const BLENDER = ['retopo', 'turntable', 'lods'], UNITY = ['playtest', 'builds', 'assets'];
+const GAME_DESIGN_APPS = ['roblox', 'unity', 'steam', 'itch'];
+const STEAM = ['reviews', 'wishlist'], UNITY = ['playtest', 'builds'];
 const same = (a, b) => a.length === b.length && a.every((x) => b.includes(x));
-// the catalogue grows as the swarms ship (automations-swarm.f2db18c1.js): totals come from it, and the searches below
-// are held to the creative's own automations, a swarm one being free to match a word too
+// the catalogue grows as the swarms ship: totals come from it, and the searches below are held to the creative's own
+// automations, a swarm one (it names its swarm) being free to match a word too
 const { APPS, AUTOMATIONS } = await import(new URL('../automations.03378ba4.js', import.meta.url).href);
-const { SWARM_AUTOMATIONS } = await import(new URL('../automations-swarm.f2db18c1.js', import.meta.url).href);
 const N = AUTOMATIONS.length, N_APPS = Object.keys(APPS).length;
-const swarmIds = new Set(SWARM_AUTOMATIONS.map((a) => a.id)), appOf = new Map(AUTOMATIONS.map((a) => [a.id, a.app]));
+const swarmIds = new Set(AUTOMATIONS.filter((a) => a.swarm).map((a) => a.id)), appOf = new Map(AUTOMATIONS.map((a) => [a.id, a.app]));
 const own = (ids) => ids.filter((id) => !swarmIds.has(id));
 const chipOf = (page, app) => page.locator(`.am-cats button.am-chip[data-app="${app}"]`);
 // the categories as laid out: how many lines the ones in sight take, and whether they are the first ones on offer
@@ -86,6 +85,10 @@ const chipLines = (page) => page.evaluate(() => {
 });
 
 try {
+  // every automation runs again and again (a schedule, each new event, or a loop that keeps testing), none once
+  const once = AUTOMATIONS.filter((a) => !['schedule', 'event', 'loop'].includes(a.trigger?.type) || !a.trigger.when);
+  check('every automation recurs: a schedule, an event or a loop, none a one-off task', !once.length, { once: once.map((a) => a.id) });
+
   // the spot, then the sidebar's Automations row
   const { page, errors } = await open('?v=1');
   check('starts on the chat', !(await state(page)).open);
@@ -110,9 +113,9 @@ try {
   s = await state(page);
   check('"game design" offers the game design apps', GAME_DESIGN_APPS.every((id) => s.chips.includes(id)) && !own(s.shown).some((id) => ['discord', 'gmail'].includes(appOf.get(id))), { chips: s.chips, shown: s.shown.length });
   await page.screenshot({ path: `${OUT}automations-categories.png` });
-  await chipOf(page, 'blender').click();
+  await chipOf(page, 'steam').click();
   s = await state(page);
-  check('picking Blender shows only its automations', same(own(s.shown), BLENDER) && s.shown.every((id) => appOf.get(id) === 'blender') && s.picked.join() === 'blender' && s.count === `${s.shown.length} of ${N}`, s);
+  check('picking Steam shows only its automations', same(own(s.shown), STEAM) && s.shown.every((id) => appOf.get(id) === 'steam') && s.picked.join() === 'steam' && s.count === `${s.shown.length} of ${N}`, s);
   // one highlight on a clicked, picked chip: its fill, with no ring of its own and no keyboard focus ring after a click
   // (read once its 150ms fill and edge transition has run)
   await page.waitForTimeout(250);
@@ -120,16 +123,16 @@ try {
     const c = document.activeElement, cs = getComputedStyle(c);
     return { focused: c.dataset.app, focusVisible: c.matches(':focus-visible'), boxShadow: cs.boxShadow, border: cs.borderTopColor };
   });
-  check('a clicked chip shows its fill only, no double ring', ring.focused === 'blender' && !ring.focusVisible && ring.boxShadow === 'none' && ring.border === 'rgba(0, 0, 0, 0)', ring);
+  check('a clicked chip shows its fill only, no double ring', ring.focused === 'steam' && !ring.focusVisible && ring.boxShadow === 'none' && ring.border === 'rgba(0, 0, 0, 0)', ring);
   await chipOf(page, 'unity').click();
   s = await state(page);
-  check('picking Unity as well shows both', same(own(s.shown), [...BLENDER, ...UNITY]) && same(s.picked, ['blender', 'unity']), s);
+  check('picking Unity as well shows both', same(own(s.shown), [...STEAM, ...UNITY]) && same(s.picked, ['steam', 'unity']), s);
   await page.waitForTimeout(250);
   await page.screenshot({ path: `${OUT}automations-picked.png` });
-  await chipOf(page, 'blender').click();
+  await chipOf(page, 'steam').click();
   s = await state(page);
-  check('unpicking Blender leaves Unity', same(own(s.shown), UNITY) && s.picked.join() === 'unity', s);
-  check('the chip just pressed keeps focus', await page.evaluate(() => document.activeElement?.dataset.app === 'blender'));
+  check('unpicking Steam leaves Unity', same(own(s.shown), UNITY) && s.picked.join() === 'unity', s);
+  check('the chip just pressed keeps focus', await page.evaluate(() => document.activeElement?.dataset.app === 'steam'));
   // a search that no longer reaches the picked app keeps it in sight, leading the categories, so it can be unpicked
   await page.fill('.am-search input', 'gmail');
   const led = await chipLines(page);
