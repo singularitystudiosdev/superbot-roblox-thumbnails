@@ -5,7 +5,7 @@
 // offset and the live view's width are set inline here rather than through the creative's stylesheet.
 import { buildSchedule } from '../schedule.af4c3c6b.js';
 import { buildScreen, fit, measure, paint, ready } from '../screen.af4c3c6b.js';
-import { buildFeed, measureFeed, paintFeed } from '../feed.af4c3c6b.js';
+import { buildFeed, measureFeed, paintFeed } from './feed.bdeb2397.js';
 import { seg, lerp, outCubic, REDUCED } from '../lib.af4c3c6b.js';
 import { sidebarHTML, variantIndex } from './shell.bdeb2397.js';
 import { enhanceSidebar } from './interact.bdeb2397.js';

@@ -1,0 +1,14 @@
+/* The live view's top bar (share, close) and the chat's reopen button, copied verbatim from the creative's working-tree
+   style.af4c3c6b.css (2026-10-21), where another chat added them; that edit is uncommitted and not this folder's to
+   commit, so view.html loads this copy and never depends on it. The chat's left offset and the live view's width that
+   edit also made into variables are set inline by main.bdeb2397.js instead. */
+.cc-top { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 4px; height: 38px; padding: 0 8px; box-shadow: inset 0 -1px 0 var(--line); }
+.cc-top-btn { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3a3a3c; cursor: pointer; }
+.cc-top-btn:hover { background: rgba(0,0,0,.06); }
+.cc-top-btn:focus-visible { outline: 2px solid #0a66d8; outline-offset: 2px; }
+.cc-top-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ac { position: relative; }
+.ch-open { position: absolute; top: 12px; right: 16px; z-index: 3; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3a3a3c; cursor: pointer; opacity: 0; pointer-events: none; }
+.ch-open:hover { background: rgba(0,0,0,.06); }
+.ch-open:focus-visible { outline: 2px solid #0a66d8; outline-offset: 1px; }
+.ch-open svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }

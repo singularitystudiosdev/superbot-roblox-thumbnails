@@ -40,6 +40,21 @@ async function run(where, url, root) {
     await page.waitForTimeout(300);
   }
 
+  // the creative around the sidebar, from this folder's own copies (spot.bdeb2397.css, feed.bdeb2397.js), never the
+  // creative's uncommitted edits: the live view's top buttons are styled, and at t=40 the chat is scrolled so its
+  // newest message sits at the foot of the pane, no blank stretch under it
+  if (await page.locator('.cc-top-btn').count()) {
+    const spot = await page.evaluate(() => {
+      const btn = document.querySelector('.cc-top-btn'), cs = getComputedStyle(btn), ic = btn.querySelector('svg').getBoundingClientRect();
+      const feed = document.querySelector('.ch-feed').getBoundingClientRect();
+      const shown = [...document.querySelectorAll('.ch-in > .cm')].filter((n) => parseFloat(getComputedStyle(n).opacity) > 0.5);
+      const last = shown.at(-1).getBoundingClientRect();
+      return { bg: cs.backgroundColor, border: cs.borderTopWidth, w: btn.getBoundingClientRect().width, icon: ic.width, gapUnder: feed.bottom - last.bottom, lastTop: last.top - feed.top, feedH: feed.height };
+    });
+    check(where, spot.bg === 'rgba(0, 0, 0, 0)' && spot.border === '0px' && spot.icon > 10, "the live view's top buttons are styled (transparent, borderless, icon drawn)", spot);
+    check(where, spot.gapUnder >= 0 && spot.gapUnder < 40 && spot.lastTop > 0, 'at 40s the newest chat message sits at the foot of the chat', spot);
+  }
+
   // sizes on screen
   const m = await sb.evaluate((el) => {
     const r = el.getBoundingClientRect();
