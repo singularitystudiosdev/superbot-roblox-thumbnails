@@ -22,6 +22,7 @@
   --r-ctl: 6px;
   --r-surf: calc(12px * var(--ref));          /* menus, the dialog: 12px on screen */
   --scrim: color-mix(in srgb, var(--ink) 18%, transparent);
+  --danger: #d70015;                          /* delete only: the system red, 5.3:1 on white */
 
   /* Claude's sidebar, screenshot px x --ref */
   --ref: 0.8282;                              /* 675 / 815: that window is a touch wider than 16:9, so the app fits it by height */

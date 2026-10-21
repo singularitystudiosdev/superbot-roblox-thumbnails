@@ -23,6 +23,25 @@
 .sb-menu-item:hover { background: var(--ground); }
 .sb-menu-item:focus-visible { background: var(--ground); outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
 .sb-menu-item .sb-lu { color: var(--muted); }
+.sb-menu-item > span:not(.sb-menu-count) { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.sb-menu-count { flex: none; font: var(--fs-meta)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+/* the destructive item, set apart under a hairline */
+.sb-menu-sep { height: var(--hair); margin: calc(4px * var(--ref)) calc(-4px * var(--ref)); border: 0; background: var(--sel); }
+.sb-menu-item.is-danger, .sb-menu-item.is-danger .sb-lu { color: var(--danger); }
+
+/* Move to group: a search field over the groups, then the list, or one line when nothing matches */
+.sb-menu[role="dialog"] { min-width: calc(200px * var(--ref)); }
+.sb-menu-search { position: relative; display: block; margin-bottom: calc(4px * var(--ref)); }
+.sb-menu-search .sb-lu { position: absolute; left: calc(8px * var(--ref)); top: 50%; width: var(--ic); height: var(--ic); transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.sb-menu-search input { box-sizing: border-box; display: block; width: 100%; height: var(--field-h); padding: 0 calc(8px * var(--ref)) 0 calc(8px * var(--ref) + var(--ic) + var(--gap-ic) * 0.75); border: 0; border-radius: var(--r-ctl); background: var(--ground); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; appearance: none; font: var(--fs-body)/1 var(--ui); color: var(--ink); }
+/* focused the moment the picker opens: an ink hairline, the caret doing the rest */
+.sb-menu-search input:focus-visible { box-shadow: 0 0 0 var(--hair) var(--ink); }
+/* the browser's own blue clear button has no place here; Escape and backspace clear it */
+.sb-menu-search input::-webkit-search-cancel-button, .sb-search input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.sb-menu-search input::placeholder { color: var(--muted); }
+.sb-menu-list { max-height: calc(var(--row) * 6); overflow-y: auto; }
+.sb-menu-empty { margin: 0; padding: calc(6px * var(--ref)) calc(8px * var(--ref)); font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.sb-menu-empty[hidden] { display: none; }
 
 /* ---------- the name dialog ---------- */
 .sb-dialog { box-sizing: border-box; width: calc(320px * var(--ref)); padding: 0; border: var(--hair) solid var(--sel); border-radius: var(--r-surf); background: var(--surface); box-shadow: var(--lift); color: var(--ink); font-family: var(--ui); -webkit-font-smoothing: antialiased; transform: scale(var(--k, 1)); }
@@ -31,6 +50,8 @@
 @keyframes sb-dialog-in { from { opacity: 0; transform: scale(calc(var(--k, 1) * 0.97)); } }
 .sb-dialog-form { display: flex; flex-direction: column; gap: calc(12px * var(--ref)); padding: calc(16px * var(--ref)); }
 .sb-dialog-title { margin: 0; font: 600 calc(15px * var(--ref))/1.2 var(--ui); }
+.sb-dialog-body { margin: 0; font: var(--fs-body)/1.45 var(--ui); color: var(--muted); }
+.sb-dialog-body[hidden], .sb-field[hidden] { display: none; }
 .sb-field { display: flex; flex-direction: column; gap: calc(6px * var(--ref)); font: var(--fs-meta)/1 var(--ui); color: var(--muted); }
 /* the input is the field: its hairline at rest, the ink ring while focused */
 .sb-field input { box-sizing: border-box; height: calc(34px * var(--ref)); padding: 0 calc(10px * var(--ref)); border: 0; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; font: var(--fs-body)/1 var(--ui); color: var(--ink); }
@@ -42,6 +63,8 @@
 .sb-btn-ghost:hover { background: var(--ground); }
 .sb-btn-primary { background: var(--ink); color: var(--surface); }
 .sb-btn-primary:hover { background: color-mix(in srgb, var(--ink) 85%, var(--surface)); }
+.sb-btn-primary.is-danger { background: var(--danger); }
+.sb-btn-primary.is-danger:hover { background: color-mix(in srgb, var(--danger) 88%, var(--ink)); }
 .sb-btn-ghost:focus-visible, .sb-btn-primary:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
 
 @media (prefers-reduced-motion: reduce) {

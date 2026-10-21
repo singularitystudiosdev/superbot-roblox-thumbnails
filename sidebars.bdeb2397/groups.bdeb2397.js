@@ -1,22 +1,27 @@
-// Groups of chats: a row's "•••" opens its menu (New group, Move to a group, Remove from group; on a group: Rename,
-// Ungroup), a dialog names a new group or renames one, and a group's row folds its list. The menu and the dialog live
-// in the top layer, drawn at the sidebar's on-screen scale so they read as part of it; the spot's own keys (space, R,
-// the arrows) never reach them.
+// Groups of chats, and the "•••" menus that manage them. A chat's menu: New group, Move to group (a picker you search
+// by name), Remove from group, and Delete chat. A group's menu: Rename group, Ungroup. One dialog names a group or
+// confirms a delete; a group's row folds its list. The menu and the dialog live in the top layer, drawn at the
+// sidebar's on-screen scale so they read as part of it; the spot's own keys (space, R, the arrows) never reach them.
 import { esc, lu, group as groupHTML } from './parts.bdeb2397.js';
+
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const COLLAPSE = 150; // ms, tokens --d-hover: a deleted chat's row folding away
 
 const scaleOf = (node) => node.getBoundingClientRect().height / node.offsetHeight || 1;
 const nameOf = (g) => g.querySelector('.sb-ghead .sb-title-in').textContent;
 const titleOf = (li) => li.querySelector('.sb-title-in').textContent;
 const fromHTML = (html) => { const t = document.createElement('template'); t.innerHTML = html; return t.content.firstElementChild; };
 
-// one dialog for the page: a heading, a name field, Cancel and the action. Resolves with the name, or null if
-// dismissed. Cancel is a plain button so Enter in the field always means the action.
+// one dialog for the page: a heading, an optional line of text, an optional name field, Cancel and the action (red
+// for a delete). Resolves with the name (a field), true (no field), or null if dismissed. Cancel is a plain button,
+// so Enter always means the action.
 let dialog = null;
-function nameDialog() {
+function theDialog() {
   if (dialog) return dialog;
-  dialog = fromHTML(`<dialog class="sb-dialog" aria-labelledby="sb-dialog-title">
+  dialog = fromHTML(`<dialog class="sb-dialog" aria-labelledby="sb-dialog-title" aria-describedby="sb-dialog-body">
     <form method="dialog" class="sb-dialog-form">
       <h2 class="sb-dialog-title" id="sb-dialog-title"></h2>
+      <p class="sb-dialog-body" id="sb-dialog-body"></p>
       <label class="sb-field"><span>Name</span><input name="name" autocomplete="off" maxlength="60" placeholder="New group"></label>
       <div class="sb-dialog-actions"><button class="sb-btn-ghost" type="button">Cancel</button><button class="sb-btn-primary" value="ok"></button></div>
     </form>
@@ -29,18 +34,27 @@ function nameDialog() {
   return dialog;
 }
 
-function askName({ heading, action, value = '', k }) {
-  const dlg = nameDialog();
+function ask({ heading, body = '', field = false, value = '', action, danger = false, k }) {
+  const dlg = theDialog();
   dlg.querySelector('.sb-dialog-title').textContent = heading;
-  dlg.querySelector('.sb-btn-primary').textContent = action;
-  const input = dlg.querySelector('input');
+  const p = dlg.querySelector('.sb-dialog-body');
+  p.textContent = body;
+  p.hidden = !body;
+  const label = dlg.querySelector('.sb-field'), input = label.querySelector('input'), go = dlg.querySelector('.sb-btn-primary');
+  label.hidden = !field;
+  input.disabled = !field;
   input.value = value;
+  go.textContent = action;
+  go.classList.toggle('is-danger', danger);
   dlg.style.setProperty('--k', k);
   dlg.returnValue = '';
   dlg.showModal();
-  input.select();
+  if (field) input.select(); else go.focus();
   return new Promise((resolve) => {
-    dlg.addEventListener('close', () => resolve(dlg.returnValue === 'ok' ? input.value.trim() || input.placeholder : null), { once: true });
+    dlg.addEventListener('close', () => {
+      if (dlg.returnValue !== 'ok') resolve(null);
+      else resolve(field ? input.value.trim() || input.placeholder : true);
+    }, { once: true });
   });
 }
 
@@ -61,45 +75,86 @@ export function setupGroups(sb, { say, init, changed }) {
     pressedOpen = !!more && more === opener && menu.matches(':popover-open');
   }, true);
 
+  // under the button, kept on screen; above it when there is no room below. Run again when the menu changes size.
+  function place() {
+    const k = scaleOf(sb), r = opener.getBoundingClientRect();
+    const w = menu.offsetWidth * k, h = menu.offsetHeight * k, gap = 4 * k;
+    menu.style.left = `${Math.max(8, Math.min(r.left, innerWidth - w - 8))}px`;
+    menu.style.top = `${r.bottom + gap + h > innerHeight ? Math.max(8, r.top - gap - h) : r.bottom + gap}px`;
+  }
+
+  const itemHTML = (a, i, role = 'menuitem') => `${a.sep ? '<hr class="sb-menu-sep" role="separator">' : ''}<button class="sb-menu-item${a.danger ? ' is-danger' : ''}" type="button"${role ? ` role="${role}"` : ''} tabindex="-1" data-i="${i}">${lu(a.icon)}<span>${esc(a.label)}</span>${a.count === undefined ? '' : `<span class="sb-menu-count">${a.count}</span>`}</button>`;
+
   function openMenu(btn) {
     opener = btn;
     const host = btn.closest('.sb-item');
     const g = host.classList.contains('sb-ghead') ? host.closest('.sb-group') : null;
     actions = g ? groupActions(g) : chatActions(host);
-    menu.innerHTML = actions.map((a, i) => `<button class="sb-menu-item" type="button" role="menuitem" tabindex="-1" data-i="${i}">${lu(a.icon)}<span>${esc(a.label)}</span></button>`).join('');
-    const k = scaleOf(sb), r = btn.getBoundingClientRect();
-    menu.style.setProperty('--k', k);
+    menu.setAttribute('role', 'menu');
+    menu.removeAttribute('aria-label');
+    menu.innerHTML = actions.map((a, i) => itemHTML(a, i)).join('');
+    menu.style.setProperty('--k', scaleOf(sb));
     menu.showPopover();
-    // under the button, kept on screen; above it when there is no room below
-    const w = menu.offsetWidth * k, h = menu.offsetHeight * k, gap = 4 * k;
-    menu.style.left = `${Math.max(8, Math.min(r.left, innerWidth - w - 8))}px`;
-    menu.style.top = `${r.bottom + gap + h > innerHeight ? r.top - gap - h : r.bottom + gap}px`;
+    place();
     btn.setAttribute('aria-expanded', 'true');
     menu.querySelector('.sb-menu-item').focus();
+  }
+
+  // Move to group: the menu turns into a picker, a search field over the groups this chat could join
+  function openPicker(li) {
+    const mine = li.closest('.sb-group');
+    const groups = [...sb.querySelectorAll('.sb-group')].filter((g) => g !== mine);
+    menu.setAttribute('role', 'dialog');
+    menu.setAttribute('aria-label', 'Move to group');
+    menu.innerHTML = `<label class="sb-menu-search">${lu('search')}<input type="search" placeholder="Search groups" aria-label="Search groups" autocomplete="off"></label><div class="sb-menu-list"></div><p class="sb-menu-empty" hidden>No group by that name.</p>`;
+    const input = menu.querySelector('input'), list = menu.querySelector('.sb-menu-list'), empty = menu.querySelector('.sb-menu-empty');
+    const draw = () => {
+      const q = input.value.trim();
+      const hits = groups.filter((g) => nameOf(g).toLowerCase().includes(q.toLowerCase()));
+      actions = hits.map((g) => ({ label: nameOf(g), icon: 'folder', count: g.querySelectorAll('.sb-group-list > li.sb-item').length, run: () => moveInto(li, g) }));
+      // nothing matches: one sentence, and one way on, a new group by the name typed
+      if (!hits.length && q) actions.push({ label: `New group “${q}”`, icon: 'folderPlus', run: () => newGroup(li, q) });
+      list.innerHTML = actions.map((a, i) => itemHTML(a, i, '')).join('');
+      empty.hidden = hits.length > 0;
+    };
+    input.addEventListener('input', () => { draw(); place(); });
+    draw();
+    place();
+    input.focus();
   }
 
   menu.addEventListener('click', (e) => {
     const item = e.target.closest('.sb-menu-item');
     if (!item) return;
-    const run = actions[Number(item.dataset.i)].run;
-    close(false);
-    run();
+    const a = actions[Number(item.dataset.i)];
+    if (!a.keep) close(false);
+    a.run();
   });
   menu.addEventListener('keydown', (e) => {
     const items = [...menu.querySelectorAll('.sb-menu-item')];
+    const search = menu.querySelector('.sb-menu-search input');
     const at = items.indexOf(document.activeElement);
+    if (e.key === 'Escape') { e.preventDefault(); close(true); return; }
+    if (e.key === 'Tab') { close(false); return; }
+    if (document.activeElement === search) {
+      // the field: down into the list, Enter takes the first match
+      if (e.key === 'ArrowDown' && items.length) { e.preventDefault(); items[0].focus(); }
+      if (e.key === 'Enter' && items.length) { e.preventDefault(); items[0].click(); }
+      return;
+    }
+    if (search && e.key === 'ArrowUp' && at === 0) { e.preventDefault(); search.focus(); return; }
     const go = { ArrowDown: at + 1, ArrowUp: at - 1, Home: 0, End: items.length - 1 }[e.key];
-    if (go !== undefined) { e.preventDefault(); items[(go + items.length) % items.length].focus(); }
-    else if (e.key === 'Escape') { e.preventDefault(); close(true); }
-    else if (e.key === 'Tab') close(false);
+    if (go !== undefined && items.length) { e.preventDefault(); items[(go + items.length) % items.length].focus(); }
   });
 
   function chatActions(li) {
     const mine = li.closest('.sb-group');
+    const others = [...sb.querySelectorAll('.sb-group')].some((g) => g !== mine);
     return [
       { label: 'New group', icon: 'folderPlus', run: () => newGroup(li) },
-      ...[...sb.querySelectorAll('.sb-group')].filter((g) => g !== mine).map((g) => ({ label: `Move to ${nameOf(g)}`, icon: 'folderInput', run: () => moveInto(li, g) })),
+      ...(others ? [{ label: 'Move to group', icon: 'folderInput', keep: true, run: () => openPicker(li) }] : []),
       ...(mine ? [{ label: 'Remove from group', icon: 'folderMinus', run: () => removeFrom(li) }] : []),
+      { label: 'Delete chat', icon: 'trash', danger: true, sep: true, run: () => deleteChat(li) },
     ];
   }
   const groupActions = (g) => [
@@ -107,8 +162,8 @@ export function setupGroups(sb, { say, init, changed }) {
     { label: 'Ungroup', icon: 'folderMinus', run: () => ungroup(g) },
   ];
 
-  async function newGroup(li) {
-    const name = await askName({ heading: 'New group', action: 'Create group', k: scaleOf(sb) });
+  async function newGroup(li, preset = null) {
+    const name = preset ?? await ask({ heading: 'New group', field: true, action: 'Create group', k: scaleOf(sb) });
     if (name === null) { opener?.focus(); return; }
     const g = fromHTML(groupHTML(name));
     const mine = li.closest('.sb-group');
@@ -123,6 +178,7 @@ export function setupGroups(sb, { say, init, changed }) {
 
   function moveInto(li, g) {
     g.querySelector('.sb-group-list').append(li);
+    close(false);
     changed();
     say(`${titleOf(li)} moved to ${nameOf(g)}`);
     opener?.focus();
@@ -136,8 +192,20 @@ export function setupGroups(sb, { say, init, changed }) {
     li.querySelector('.sb-row').focus();
   }
 
+  async function deleteChat(li) {
+    const title = titleOf(li);
+    const ok = await ask({ heading: 'Delete chat?', body: `“${title}” and everything in it will be deleted.`, action: 'Delete', danger: true, k: scaleOf(sb) });
+    if (!ok) { opener?.focus(); return; }
+    // focus goes to the chat that takes its place, or the one before it
+    const next = (li.nextElementSibling ?? li.previousElementSibling)?.querySelector('.sb-row');
+    const gone = () => { li.remove(); changed(); say(`Deleted ${title}`); next?.focus(); };
+    if (REDUCED) { gone(); return; }
+    li.style.overflow = 'hidden';
+    li.animate([{ height: `${li.offsetHeight}px`, opacity: 1 }, { height: '0px', opacity: 0 }], { duration: COLLAPSE, easing: 'cubic-bezier(0.2, 0, 0, 1)' }).onfinish = gone;
+  }
+
   async function rename(g) {
-    const name = await askName({ heading: 'Rename group', action: 'Save', value: nameOf(g), k: scaleOf(sb) });
+    const name = await ask({ heading: 'Rename group', field: true, value: nameOf(g), action: 'Save', k: scaleOf(sb) });
     if (name !== null) {
       g.querySelector('.sb-ghead .sb-title-in').textContent = name;
       g.querySelector('.sb-group-list').setAttribute('aria-label', name);

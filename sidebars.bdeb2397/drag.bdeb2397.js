@@ -54,6 +54,10 @@ export function enableDrag(sb, moved) {
   // where the gap goes for a pointer at screen y: { list, before } (before null = the list's end), plus the group it
   // drops into, if any
   function slotAt(y) {
+    // above the list's first row (over its label, the nav, the top bar): the very top of the list, in no group
+    const first = topLists()[0];
+    const lead = [...first.children].find((n) => n !== d.li && shown(n));
+    if (lead && y < lead.getBoundingClientRect().top) return { list: first, before: lead, into: null };
     for (const h of heads()) {
       const r = h.getBoundingClientRect(), g = h.closest('.sb-group');
       if (y >= r.top && y < r.top + r.height * HEAD_EDGE) return { list: g.parentElement, before: g, into: null };
@@ -75,9 +79,8 @@ export function enableDrag(sb, moved) {
     }
     const gr = d.gap.isConnected && shown(d.gap) ? d.gap.getBoundingClientRect() : null;
     if (gr && y >= gr.top && y <= gr.bottom) return null;
-    const lists = topLists();
-    if (items.length && y < items[0].getBoundingClientRect().top) return { list: items[0].parentElement, before: items[0], into: items[0].parentElement.closest('.sb-group') };
-    return { list: lists.at(-1), before: null, into: null };
+    // below everything: the end of the list, in no group
+    return { list: topLists().at(-1), before: null, into: null };
   }
 
   function place(y) {

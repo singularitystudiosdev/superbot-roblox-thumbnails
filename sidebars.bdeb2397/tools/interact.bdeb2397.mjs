@@ -189,6 +189,90 @@ async function run(where, url, root) {
   await page.keyboard.press('Enter');
   await page.waitForTimeout(150);
   check(where, (await group.locator('.sb-ghead .sb-title-in').textContent()) === 'Launch', 'the group is renamed', null);
+  await group.locator('.sb-group-row').click(); // unfold it again
+
+  const openMore = async (li) => {
+    await page.mouse.move(...Object.values(await centre(li.locator('.sb-row'))));
+    await page.waitForTimeout(200);
+    await li.locator('.sb-more').click();
+    await page.waitForTimeout(200);
+  };
+  const menuItems = () => page.locator('.sb-menu:popover-open .sb-menu-item').allTextContents();
+
+  // a group made from the first chat sits first in the list
+  const lead = chats.nth(0);
+  const leadTitle = await lead.locator('.sb-title-in').textContent();
+  await openMore(lead);
+  await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'New group' }).click();
+  await page.keyboard.type('Top');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(200);
+  now = await order();
+  check(where, now[0] === `[Top: ${leadTitle}]`, 'a group made from the first chat leads the list', now.slice(0, 3));
+
+  // Move to group: one item, then a picker searched by name
+  const mover2 = chats.nth(0);
+  const mover2Title = await mover2.locator('.sb-title-in').textContent();
+  await openMore(mover2);
+  const items = await menuItems();
+  check(where, items.includes('Move to group') && !items.some((t) => /^Move to (?!group$)/.test(t)), 'the menu has one Move to group, not one item per group', items);
+  await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'Move to group' }).click();
+  const picker = page.locator('.sb-menu:popover-open');
+  check(where, await picker.locator('input[type="search"]').evaluate((el) => el === document.activeElement), 'the picker opens with its search field focused', null);
+  await page.keyboard.type('lau');
+  const found = await picker.locator('.sb-menu-item').allTextContents();
+  check(where, found.length === 1 && found[0].startsWith('Launch'), 'typing filters the groups', found);
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(200);
+  now = await order();
+  check(where, await picker.count() === 0 && now.some((t) => t.startsWith('[Launch:') && t.includes(mover2Title)), 'Enter moves the chat into the match', now);
+
+  // no match: one line and one way on, nothing created on Escape
+  await openMore(chats.nth(0));
+  await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'Move to group' }).click();
+  await page.keyboard.type('zzz');
+  const none = { line: await picker.locator('.sb-menu-empty').isVisible(), items: await picker.locator('.sb-menu-item').allTextContents() };
+  check(where, none.line && none.items.length === 1 && none.items[0] === 'New group “zzz”', 'no match says so and offers a group by that name', none);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(150);
+  check(where, await picker.count() === 0 && !(await order()).some((t) => t.startsWith('[zzz')), 'Escape closes the picker without making anything', null);
+
+  // drag a chat up out of the leading group, over the "Chats" label: it lands first in the list, in no group
+  await page.mouse.move(0, 0);
+  const topGroup = sb.locator('.sb-group').first();
+  await openMore(chats.nth(0));
+  await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'Move to group' }).click();
+  await page.keyboard.type('Top');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(200);
+  const label = await sb.locator('.sb-scroll .sb-sec > .sb-head').first().boundingBox();
+  const leaving = topGroup.locator('.sb-group-list > li.sb-item').last();
+  const leavingTitle = await leaving.locator('.sb-title-in').textContent();
+  await page.mouse.move(0, 0);
+  await drag(leaving.locator('.sb-row'), label.y + label.height / 2);
+  now = await order();
+  check(where, now[0] === leavingTitle && now[1].startsWith('[Top:') && !now[1].includes(leavingTitle), 'dragged up past the group, it leaves the group for the top of the list', now.slice(0, 3));
+
+  // Delete chat: last in the menu, red, set apart; confirm, and the chat is gone
+  const doomed = chats.nth(1);
+  const doomedTitle = await doomed.locator('.sb-title-in').textContent();
+  const total = await sb.locator('.sb-scroll li.sb-item').count();
+  await openMore(doomed);
+  const del = page.locator('.sb-menu:popover-open .sb-menu-item').last();
+  check(where, (await del.textContent()) === 'Delete chat' && await del.evaluate((el) => el.classList.contains('is-danger') && el.previousElementSibling?.matches('.sb-menu-sep')), 'Delete chat is last, red, under a divider', await del.textContent());
+  await del.click();
+  const confirm = page.locator('dialog.sb-dialog[open]');
+  check(where, (await confirm.locator('.sb-dialog-title').textContent()) === 'Delete chat?' && (await confirm.locator('.sb-dialog-body').textContent()).includes(doomedTitle) && !(await confirm.locator('.sb-field').isVisible()), 'it asks to confirm, naming the chat, with no name field', null);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(150);
+  check(where, await sb.locator('.sb-scroll li.sb-item').count() === total, 'Escape keeps the chat', null);
+  await openMore(doomed);
+  await page.locator('.sb-menu:popover-open .sb-menu-item').last().click();
+  await page.locator('dialog.sb-dialog[open] .sb-btn-primary').click();
+  await page.waitForTimeout(400);
+  const titles = await sb.locator('.sb-scroll li.sb-item .sb-title-in').allTextContents();
+  check(where, titles.length === total - 1 && !titles.includes(doomedTitle), 'Delete removes the chat', { before: total, after: titles.length });
+  check(where, /Deleted/.test(await sb.locator('[aria-live]').textContent()) && await page.evaluate(() => document.activeElement?.classList.contains('sb-row')), 'the delete is announced and focus moves to a neighbour', null);
 
   check(where, errors.length === 0, 'no console errors', errors);
   await page.close();
