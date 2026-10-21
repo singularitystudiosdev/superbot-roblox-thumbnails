@@ -5,7 +5,7 @@ const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const DRAG_FROM = 4; // px of travel, in the list's own units, before a press becomes a drag
 const SETTLE = 150; // ms, tokens --d-hover: the dropped row easing into its slot
-const MARQUEE = { delay: 350, speed: 40, hold: 900, back: 200 }; // ms before it starts, px per s, ms at each end, ms home
+const MARQUEE = { delay: 350, speed: 32, hold: 900, back: 200 }; // ms before it starts, px per s (linear), ms at each end, ms home
 
 const scaleOf = (node) => node.getBoundingClientRect().height / node.offsetHeight || 1;
 const titleOf = (li) => li.querySelector('.sb-title-in')?.textContent ?? '';
@@ -108,43 +108,71 @@ function sortable(list, say) {
   });
 }
 
-// a cut-off title glides to its end and back while the row is hovered or focused, then eases home
+// a cut-off title slides at a constant speed to its end and back while the row is hovered or focused, then eases home.
+// A small fade sits on each edge only while text is hidden past it, so the first and last letters are crisp when they
+// are fully in view: the left fade grows as the line leaves its start, the right one shrinks as its end arrives.
 function marquee(row) {
   const box = row.querySelector('.sb-title'), text = box?.querySelector('.sb-title-in');
   if (!text) return;
-  let timer = 0, anim = null, on = false;
+  let timer = 0, raf = 0, on = false, tx = 0, dist = 0, fade = 0;
+
+  function paint() {
+    text.style.transform = tx ? `translateX(${tx.toFixed(2)}px)` : '';
+    box.style.setProperty('--fade-l', `${Math.min(fade, -tx).toFixed(2)}px`);
+    box.style.setProperty('--fade-r', `${Math.min(fade, dist + tx).toFixed(2)}px`);
+  }
+
+  function run() {
+    const travel = (dist / MARQUEE.speed) * 1000, hold = MARQUEE.hold, period = 2 * (travel + hold);
+    const t0 = performance.now();
+    const step = (now) => {
+      // out, hold at the end, back, hold at the start; linear between holds
+      const t = (now - t0) % period;
+      tx = t < travel ? -dist * (t / travel)
+        : t < travel + hold ? -dist
+          : t < 2 * travel + hold ? -dist * (1 - (t - travel - hold) / travel)
+            : 0;
+      paint();
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  }
 
   function start() {
     on = true;
     clearTimeout(timer);
+    cancelAnimationFrame(raf);
     if (REDUCED || box.scrollWidth <= box.clientWidth) return;
     timer = setTimeout(() => {
       if (!on) return;
       box.classList.add('is-marquee');
-      // the whole line, to its last letter clear of the right-edge fade
-      const fade = parseFloat(getComputedStyle(row).columnGap) || 0;
-      const dist = text.offsetWidth - box.clientWidth + fade;
+      fade = parseFloat(getComputedStyle(row).columnGap) || 0;
+      dist = text.offsetWidth - box.clientWidth;
       if (dist <= 1) { box.classList.remove('is-marquee'); return; }
-      const travel = (dist / MARQUEE.speed) * 1000, total = 2 * travel + 2 * MARQUEE.hold;
-      anim?.cancel();
-      anim = text.animate([
-        { transform: 'translateX(0)', offset: 0, easing: 'ease-in-out' },
-        { transform: `translateX(${-dist}px)`, offset: travel / total },
-        { transform: `translateX(${-dist}px)`, offset: (travel + MARQUEE.hold) / total, easing: 'ease-in-out' },
-        { transform: 'translateX(0)', offset: (2 * travel + MARQUEE.hold) / total },
-        { transform: 'translateX(0)', offset: 1 },
-      ], { duration: total, iterations: Infinity });
+      paint();
+      run();
     }, MARQUEE.delay);
   }
 
   function stop() {
     on = false;
     clearTimeout(timer);
-    if (!anim) { box.classList.remove('is-marquee'); return; }
-    const at = getComputedStyle(text).transform;
-    anim.cancel();
-    anim = text.animate([{ transform: at === 'none' ? 'translateX(0)' : at }, { transform: 'translateX(0)' }], { duration: MARQUEE.back, easing: 'ease-out' });
-    anim.onfinish = () => { anim = null; if (!on) box.classList.remove('is-marquee'); };
+    cancelAnimationFrame(raf);
+    if (!box.classList.contains('is-marquee')) return;
+    // home from wherever it is, easing out
+    const from = tx, t0 = performance.now();
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / MARQUEE.back);
+      tx = from * (1 - k) ** 3;
+      paint();
+      if (k < 1) { raf = requestAnimationFrame(step); return; }
+      tx = 0;
+      text.style.transform = '';
+      box.style.removeProperty('--fade-l');
+      box.style.removeProperty('--fade-r');
+      box.classList.remove('is-marquee');
+    };
+    raf = requestAnimationFrame(step);
   }
 
   row.addEventListener('pointerenter', start);

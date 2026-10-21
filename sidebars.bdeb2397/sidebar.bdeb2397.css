@@ -35,9 +35,9 @@
 .sb-sub { font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
 .sb-time { flex: none; font: var(--fs-meta)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
 
-/* a cut-off title on hover or focus: the ellipsis gives way to the whole line, which glides to its end and back under a
-   fade at the right edge (interact.bdeb2397.js animates it) */
-.sb-title.is-marquee { text-overflow: clip; -webkit-mask: linear-gradient(90deg, #000 calc(100% - var(--gap-ic)), transparent); mask: linear-gradient(90deg, #000 calc(100% - var(--gap-ic)), transparent); }
+/* a cut-off title on hover or focus: the ellipsis gives way to the whole line, which slides to its end and back with a
+   small fade on each edge where text is hidden past it (interact.bdeb2397.js sets the line's offset and both fades) */
+.sb-title.is-marquee { text-overflow: clip; -webkit-mask: linear-gradient(90deg, transparent, #000 var(--fade-l, 0px), #000 calc(100% - var(--fade-r, 0px)), transparent); mask: linear-gradient(90deg, transparent, #000 var(--fade-l, 0px), #000 calc(100% - var(--fade-r, 0px)), transparent); }
 .sb-title.is-marquee > .sb-title-in { display: inline-block; will-change: transform; }
 
 /* ---------- dragging a chat to a new place ---------- */

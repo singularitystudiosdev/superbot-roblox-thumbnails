@@ -67,9 +67,25 @@ async function run(where, url, root) {
   const first = rows.nth(0).locator('.sb-row');
   const fb = await first.boundingBox();
   await page.mouse.move(fb.x + fb.width / 2, fb.y + fb.height / 2);
-  await page.waitForTimeout(1300);
-  const tx = await rows.nth(0).locator('.sb-title-in').evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m41);
+  const sample = () => rows.nth(0).locator('.sb-title').evaluate((el) => ({
+    tx: new DOMMatrix(getComputedStyle(el.firstElementChild).transform).m41,
+    l: parseFloat(el.style.getPropertyValue('--fade-l')) || 0, r: parseFloat(el.style.getPropertyValue('--fade-r')) || 0,
+    at: performance.now(),
+  }));
+  await page.waitForTimeout(450);
+  const s0 = await sample();
+  // the left fade is only as wide as the text that has slid out past the left edge, so the first letter starts crisp
+  check(where, s0.r > 5 && near(s0.l, Math.min(s0.r, -s0.tx), 0.05), 'near the start the left fade equals the distance moved', s0);
+  await page.waitForTimeout(500);
+  const s1 = await sample();
+  await page.waitForTimeout(400);
+  const s2 = await sample();
+  const tx = s2.tx;
   check(where, tx < -5, 'a hovered cut-off title scrolls left', tx);
+  check(where, s2.l > 5 && s2.r > 5, 'mid-scroll both edges fade', s2);
+  // linear at 32 px/s in the list's own units: two samples mid-travel give the same speed
+  const v1 = (s1.tx - s0.tx) / ((s1.at - s0.at) / 1000), v2 = (s2.tx - s1.tx) / ((s2.at - s1.at) / 1000);
+  check(where, near(v1, -32, 5) && near(v2, -32, 5), 'it moves at a steady 32px/s', { v1, v2 });
   await page.mouse.move(0, 0);
   await page.waitForTimeout(450);
   const home = await rows.nth(0).locator('.sb-title').evaluate((el) => ({ on: el.classList.contains('is-marquee'), tx: new DOMMatrix(getComputedStyle(el.firstElementChild).transform).m41 }));
