@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- view.html with the Automations tab: the same spot and sidebar (main.bdeb2397.js), and the tab mounted over the chat
+     and the live view by automations-view.03378ba4.js when the sidebar's Automations row is clicked, or at load with
+     ?tab=automations -->
+<base href="../">
+<title>superbot: Automations</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.af4c3c6b.css">
+<link rel="stylesheet" href="sidebars.bdeb2397/tokens.bdeb2397.css">
+<link rel="stylesheet" href="sidebars.bdeb2397/sidebar.bdeb2397.css">
+<link rel="stylesheet" href="sidebars.bdeb2397/variants.bdeb2397.css">
+<link rel="stylesheet" href="sidebars.bdeb2397/groups.bdeb2397.css">
+<link rel="stylesheet" href="sidebars.bdeb2397/automations.03378ba4.css">
+<style>
+  /* inside the app the sidebar takes the app's full height on its left edge */
+  .app > .sb { position: absolute; left: 0; top: 0; bottom: 0; height: auto; }
+</style>
+</head>
+<body>
+<main>
+<div id="stage">
+  <div class="app">
+    <section class="ch" aria-label="Chat">
+      <button class="ch-open" type="button" aria-label="Open sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg></button>
+      <div class="ch-feed"><div class="ch-in"></div></div>
+      <div class="composer" aria-hidden="true">
+        <div class="rc">
+          <div class="rc-ph"><span class="rc-hint">How can superbot help you today?</span><span class="rc-typed"></span><i class="rc-caret"></i></div>
+          <div class="rc-row">
+            <span class="rc-plus"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></svg></span>
+            <span class="rc-effort"><svg class="rc-effort-ic" viewBox="0 0 24 24"><path d="m12 14 4-4M3.34 19a10 10 0 1 1 17.32 0"/></svg>High<svg class="rc-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span class="rc-mic"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></svg></span>
+            <span class="rc-send"><svg viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cc" aria-label="Your computer">
+      <div class="cc-stack">
+        <div class="cc-top">
+          <button class="cc-top-btn" type="button" aria-label="Share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
+          <button class="cc-top-btn cc-close" type="button" aria-label="Close sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        </div>
+        <div class="cc-frame">
+          <div class="cc-view"></div>
+          <span class="cc-stop"><i></i>Stop</span>
+        </div>
+        <div class="ac">
+          <div class="ac-list"><div class="ac-in"></div><p class="ac-empty">Superbot's steps show up here as it works.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="dip"></div>
+</div>
+<div class="hint" hidden>space pause, R restart, arrows step</div>
+</main>
+<script type="module" src="sidebars.bdeb2397/main.bdeb2397.js"></script>
+<script type="module" src="sidebars.bdeb2397/automations-view.03378ba4.js"></script>
+</body>
+</html>

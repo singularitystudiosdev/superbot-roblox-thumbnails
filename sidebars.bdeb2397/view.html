@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- the creative's own markup, resolved from the spot's root so its pages and images load as they do there; the
-     sidebar is mounted inside its app by main.bdeb2397.js -->
+     sidebar is mounted inside its app by main.bdeb2397.js, and the Automations tab (automations-view.03378ba4.js) over
+     the chat and the live view when the sidebar's Automations row is clicked, or at load with ?tab=automations -->
 <base href="../">
 <title>superbot: keep improving my Roblox thumbnails, with the chat sidebar</title>
 <link rel="icon" href="data:,">
@@ -13,6 +14,7 @@
 <link rel="stylesheet" href="sidebars.bdeb2397/sidebar.bdeb2397.css">
 <link rel="stylesheet" href="sidebars.bdeb2397/variants.bdeb2397.css">
 <link rel="stylesheet" href="sidebars.bdeb2397/groups.bdeb2397.css">
+<link rel="stylesheet" href="sidebars.bdeb2397/automations.03378ba4.css">
 <style>
   /* inside the app the sidebar takes the app's full height on its left edge */
   .app > .sb { position: absolute; left: 0; top: 0; bottom: 0; height: auto; }
@@ -58,5 +60,7 @@
 <div class="hint" hidden>space pause, R restart, arrows step</div>
 </main>
 <script type="module" src="sidebars.bdeb2397/main.bdeb2397.js"></script>
+<!-- the Automations tab, hung on the sidebar main.bdeb2397.js has just built -->
+<script type="module" src="sidebars.bdeb2397/automations-view.03378ba4.js"></script>
 </body>
 </html>

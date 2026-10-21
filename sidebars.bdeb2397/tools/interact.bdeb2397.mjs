@@ -274,6 +274,27 @@ async function run(where, url, root) {
   check(where, titles.length === total - 1 && !titles.includes(doomedTitle), 'Delete removes the chat', { before: total, after: titles.length });
   check(where, /Deleted/.test(await sb.locator('[aria-live]').textContent()) && await page.evaluate(() => document.activeElement?.classList.contains('sb-row')), 'the delete is announced and focus moves to a neighbour', null);
 
+  // the Automations tab (automations-view.03378ba4.js), creative page only: its row opens it beside the sidebar, the
+  // sidebar keeps working over it, and a chat row brings the chat back
+  if (await page.locator('.am').count()) {
+    await page.mouse.move(0, 0);
+    await sb.locator('.sb-nav a[href="#automations"]').click();
+    await page.waitForTimeout(200);
+    const am = await page.evaluate(() => {
+      const t = document.querySelector('.am'), s = document.querySelector('.app > .sb');
+      return { open: !t.hidden, left: t.getBoundingClientRect().left, sbRight: s.getBoundingClientRect().right, current: s.querySelector('[aria-current="page"]')?.getAttribute('href') };
+    });
+    check(where, am.open && near(am.left, am.sbRight, 1) && am.current === '#automations', 'the Automations row opens the tab right of the sidebar', am);
+    const anyChat = top.locator(':scope > li.sb-item').first();
+    await openMore(anyChat);
+    check(where, await page.locator('.sb-menu:popover-open').count() === 1, 'a chat menu still opens over the tab', null);
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(150);
+    await anyChat.locator('.sb-row').click();
+    await page.waitForTimeout(200);
+    check(where, await page.locator('.am').evaluate((t) => t.hidden), 'a chat row closes the tab', null);
+  }
+
   check(where, errors.length === 0, 'no console errors', errors);
   await page.close();
 }

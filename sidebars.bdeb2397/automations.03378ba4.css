@@ -1,0 +1,106 @@
+/* The Automations tab (automations-view.03378ba4.js): over the chat and the live view, right of the sidebar, a title,
+   a search field and the app categories it reaches over a scrolling grid of automation cards. The creative's palette and type: colors, spacing and
+   --r-ctl from tokens.bdeb2397.css, the tab's own sizes below. No chromatic accent: the thumbnails, the app icons and
+   the 3D star are the only color. Radii: --am-r-card on cards, --r-ctl on what sits inside them, pills for the field
+   and the buttons. Motion: hover and press on the controls only. */
+.am {
+  /* in the app's px: card type is the chat card's (style.af4c3c6b.css .cm-card-t b 12.5/16, small 11), the title a
+     step up */
+  --fs-h1: 20px; --lh-h1: 24px;
+  --fs-card: 12.5px; --lh-card: 16px;
+  --fs-small: 11px; --lh-small: 16px;
+  --am-r-card: 12px;  /* design-tokens --radius-12; 6px of padding in from it, the thumbnail's --r-ctl is concentric */
+  --search-h: 32px;   /* the search field */
+  --btn-h: 24px;      /* Try Me! and the field's clear button */
+  --key: 16px;        /* the "/" key hint */
+  --app-ic: 20px;     /* a card's app icon, beside its two-line name */
+  --star: 12px;       /* the rating's star */
+  --chip-h: 28px;     /* a category under the search field */
+  --chip-ic: 16px;    /* its app icon */
+  --card-min: 200px;  /* four columns beside the sidebar */
+
+  position: absolute; left: var(--sidebar-w); right: 0; top: 0; bottom: 0; z-index: 4; display: flex; flex-direction: column; background: var(--surface); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased;
+}
+.am[hidden], .am [hidden] { display: none; }
+/* the spot plays on under the tab: its white dip at the loop's seam must not wash over it, and its chat and live view
+   are hidden rather than covered, so none of their layers (Stop sits at z-index 5) shows through and none of their
+   buttons takes Tab. main.bdeb2397.js writes the live view's visibility inline every frame, hence the !important */
+body.am-open #dip { visibility: hidden; }
+body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important; }
+.am, .am * { box-sizing: border-box; }
+.am ul { margin: 0; padding: 0; list-style: none; }
+/* a reset at one class's weight, so each control's own rule below sets its font and color */
+.am :where(button, input) { font: inherit; color: inherit; }
+.am button:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+.am-lu { flex: none; width: var(--tool-ic); height: var(--tool-ic); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- top: the title and the count, the search field under them ---------- */
+.am-top { flex: none; display: flex; flex-direction: column; gap: var(--sp-12); padding: var(--sp-24) var(--sp-32) var(--sp-8); }
+.am-bar { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-16); }
+.am-h { margin: 0; font: 700 var(--fs-h1)/var(--lh-h1) var(--ui); letter-spacing: -0.01em; }
+.am-count { margin: 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+/* the input is the whole pill and draws its own focus ring; the search icon, the "/" hint and the clear button sit on
+   it, in the room its padding leaves at each end */
+.am-search { position: relative; height: var(--search-h); }
+.am-search input { display: block; width: 100%; height: 100%; padding: 0 calc(var(--btn-h) + var(--sp-12)) 0 calc(var(--sp-12) + var(--tool-ic) + var(--sp-8)); border: 0; border-radius: 9999px; background: var(--ground); font: var(--fs-card)/1 var(--ui); transition: background-color var(--d-hover) ease-out; }
+.am-search input:focus { background: var(--surface); }
+.am-search input:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.am-search input::placeholder { color: var(--muted); }
+.am-search input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.am-search > .am-lu, .am-key, .am-clear { position: absolute; top: 50%; transform: translateY(-50%); }
+.am-search > .am-lu { left: var(--sp-12); color: var(--muted); pointer-events: none; }
+/* the "/" that focuses the field, shown while it is empty and unfocused */
+.am-key { right: calc(var(--sp-6) + (var(--btn-h) - var(--key)) / 2); display: grid; place-items: center; width: var(--key); height: var(--key); border-radius: var(--r-ctl); box-shadow: inset 0 0 0 var(--hair) var(--sel); background: var(--surface); font: var(--fs-small)/1 var(--ui); color: var(--muted); pointer-events: none; }
+.am-search:focus-within .am-key { display: none; }
+.am-clear { right: var(--sp-6); display: grid; place-items: center; width: var(--btn-h); height: var(--btn-h); padding: 0; border: 0; border-radius: 9999px; background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.am-clear:hover { background: var(--sel); color: var(--ink); }
+
+/* ---------- categories: the apps the search reaches, each with how many automations it has there; any number can be
+   picked. A picked one is filled as the sidebar's open chat is (--sel), never ringed: the only ring a chip ever wears
+   is the keyboard's focus ring. A fill, not ink, so a dark app mark still reads on it ---------- */
+.am-cats { display: flex; flex-wrap: wrap; gap: var(--sp-6); }
+.am-chip { display: inline-flex; align-items: center; gap: var(--sp-6); height: var(--chip-h); padding: 0 var(--sp-10); border: var(--hair) solid var(--sel); border-radius: 9999px; background: var(--surface); font: 500 var(--fs-small)/1 var(--ui); white-space: nowrap; cursor: pointer; transition: background-color var(--d-hover) ease-out, border-color var(--d-hover) ease-out; }
+.am-chip:hover { background: var(--ground); }
+.am-chip[aria-pressed="true"] { border-color: transparent; background: var(--sel); }
+.am-chip-ic { flex: none; display: block; width: var(--chip-ic); height: var(--chip-ic); border-radius: var(--r-ctl); }
+.am-chip-n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.am-chip[aria-pressed="true"] .am-chip-n { color: var(--ink); }
+
+/* ---------- the grid: as many columns of at least --card-min as fit; what scrolls fades at both edges ---------- */
+.am-scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; padding: var(--sp-8) var(--sp-32) var(--sp-32); -webkit-mask: linear-gradient(transparent, #000 var(--sp-8), #000 calc(100% - var(--sp-24)), transparent); mask: linear-gradient(transparent, #000 var(--sp-8), #000 calc(100% - var(--sp-24)), transparent); }
+.am-scroll::-webkit-scrollbar { display: none; }
+.am-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr)); gap: var(--sp-16); }
+
+/* ---------- a card: its thumbnail inset by the card's padding, so the two corners stay concentric ---------- */
+.am-card { display: flex; flex-direction: column; min-width: 0; padding: var(--sp-6); border: var(--hair) solid var(--sel); border-radius: var(--am-r-card); background: var(--surface); }
+.am-thumb { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-ctl); background: var(--ground); }
+.am-head { display: flex; align-items: center; gap: var(--sp-8); padding: var(--sp-10) var(--sp-6) 0; }
+.am-app { flex: none; display: block; width: var(--app-ic); height: var(--app-ic); border-radius: var(--r-ctl); }
+.am-name { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.am-title { margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 600 var(--fs-card)/var(--lh-card) var(--ui); }
+.am-app-name { font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.am-desc { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; min-height: calc(2 * var(--lh-small)); margin: var(--sp-8) 0 0; padding: 0 var(--sp-6); font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.am-foot { display: flex; align-items: center; gap: var(--sp-12); margin-top: auto; padding: var(--sp-12) var(--sp-6) var(--sp-6); }
+.am-rate { display: inline-flex; align-items: center; gap: var(--sp-4); font: 500 var(--fs-small)/1 var(--ui); font-variant-numeric: tabular-nums; }
+.am-star { display: block; width: var(--star); height: var(--star); }
+.am-uses { white-space: nowrap; font: var(--fs-small)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+.am-try { flex: none; height: var(--btn-h); margin-left: auto; padding: 0 var(--sp-12); border: 0; border-radius: 9999px; background: var(--ink); color: var(--surface); font: 600 var(--fs-small)/1 var(--ui); white-space: nowrap; cursor: pointer; transition: background-color var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.am-try:hover { background: color-mix(in srgb, var(--ink) 82%, var(--surface)); }
+.am-try:active { transform: scale(0.96); }
+
+/* ---------- loading and no matches ---------- */
+.am-skel .am-thumb { background: var(--sel); }
+.am-skel b { display: block; height: var(--sp-8); margin: var(--sp-12) var(--sp-6) 0; border-radius: 9999px; background: var(--sel); }
+.am-skel b:nth-of-type(1) { width: 56%; }
+.am-skel b:nth-of-type(2) { width: 88%; }
+.am-skel b:nth-of-type(3) { width: 36%; margin-bottom: var(--sp-12); }
+.am-skel-chip { width: calc(var(--card-min) / 2); border-color: transparent; background: var(--sel); cursor: default; }
+.am-empty { display: flex; flex-direction: column; align-items: center; gap: var(--sp-12); padding: var(--sp-48) 0; }
+.am-empty-t { margin: 0; font: var(--fs-card)/var(--lh-card) var(--ui); color: var(--muted); }
+.am-btn { height: var(--btn-h); padding: 0 var(--sp-12); border: var(--hair) solid var(--sel); border-radius: 9999px; background: var(--surface); font: 500 var(--fs-small)/1 var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.am-btn:hover { background: var(--ground); }
+
+@media (prefers-reduced-motion: reduce) {
+  .am-search input, .am-clear, .am-chip, .am-try, .am-btn { transition: none; }
+  .am-try:active { transform: none; }
+}

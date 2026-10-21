@@ -1,0 +1,256 @@
+{
+ "icon": {
+  "id": "icon",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "Using the striped-shirt robber character and the glossy 3D Roblox art style of these thumbnails, make four square game icon options for this game in a neat row on a plain light grey background, evenly spaced: each a rounded square with a different bold saturated background color and a different close-up of the robber (hugging a giant diamond, grinning with a money bag, peeking over a vault door, sprinting with a gold bar).",
+  "refs": [
+   "img/iter/iter-6.webp",
+   "rbx/assets/31d0a6cdb1dac6.webp",
+   "rbx/assets/a3def5f381990d.webp"
+  ],
+  "request_id": "01a15f75-d2db-7fd0-80ff-7943078ad6ef",
+  "at": "2026-10-21T17:15:43.831Z"
+ },
+ "gamepass": {
+  "id": "gamepass",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "A shiny gold VIP pass card for this cartoon heist game, with a crown emblem and the striped-shirt robber character on it, floating beside three blank price tags of different sizes hanging on strings and a stack of gold coins, on a deep purple background.",
+  "refs": [
+   "img/iter/iter-6.webp",
+   "rbx/assets/a3def5f381990d.webp"
+  ],
+  "request_id": "01a15f75-d2d2-7a11-85a7-03e08409261d",
+  "at": "2026-10-21T17:15:38.275Z"
+ },
+ "trends": {
+  "id": "trends",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A grid of nine colorful cartoon 3D game thumbnails about heists and robberies (bank vaults, museums, getaway cars, laser mazes), three of them lifted forward and highlighted with glowing green upward arrows and small rising bar charts, on a dark background.",
+  "refs": [],
+  "request_id": "01a15f75-d2a5-70c3-ba4d-f83b43a483c7",
+  "at": "2026-10-21T17:15:36.786Z"
+ },
+ "retopo": {
+  "id": "retopo",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A 3D modeling software viewport with a dark grey grid showing a stylized fantasy warrior bust split down the middle: the left half is a dense, messy, triangulated sculpt mesh, the right half is a clean, evenly spaced quad wireframe. Orange selection highlights and thin light grey wireframe lines.",
+  "refs": [],
+  "request_id": "01a15f75-d2a8-7171-8625-111744e9a92c",
+  "at": "2026-10-21T17:15:36.166Z"
+ },
+ "lods": {
+  "id": "lods",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A 3D modeling viewport with a dark grey background showing the same wooden treasure chest three times side by side as level-of-detail versions, the polygon difference obvious at a glance: the left one smooth and finely detailed under a dense white wireframe, the middle one visibly faceted under a medium wireframe, the right one a crude blocky shape made of only a few dozen large flat polygons under a sparse wireframe.",
+  "refs": [],
+  "request_id": "01a15f78-5d51-7720-8648-7228f961d100",
+  "at": "2026-10-21T17:18:23.303Z"
+ },
+ "turntable": {
+  "id": "turntable",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A polished studio render of a cute stylized 3D robot figurine standing on a round turntable pedestal, a dotted circular motion arc around it showing it rotating, a soft teal gradient background, glossy materials.",
+  "refs": [],
+  "request_id": "01a15f75-d2a6-70a0-b238-bb17404231eb",
+  "at": "2026-10-21T17:15:35.881Z"
+ },
+ "playtest": {
+  "id": "playtest",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A top-down view of a small 3D game level (rooms, corridors and a vault) in a game engine editor, overlaid with a heatmap of player paths: glowing red and yellow hotspots where players die near the vault, cool blue zones elsewhere, thin dotted path lines, dark editor panels at the edges.",
+  "refs": [],
+  "request_id": "01a15f76-3168-78b1-b044-1b419d473c4b",
+  "at": "2026-10-21T17:16:00.360Z"
+ },
+ "builds": {
+  "id": "builds",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A product shot of a laptop, a smartphone and a handheld game console side by side on a clean light grey surface, all showing the same colorful cartoon game title screen, each with a small green check badge above it.",
+  "refs": [],
+  "request_id": "01a15f76-3168-70a3-8747-06d90ff27a22",
+  "at": "2026-10-21T17:16:01.329Z"
+ },
+ "assets": {
+  "id": "assets",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A game engine project browser panel, dark grey, filled with a neat grid of 3D asset thumbnails (barrels, crates, lanterns, swords, a character, stone and wood textures) sorted into rows by colored folder tabs, one asset highlighted with a bright blue outline.",
+  "refs": [],
+  "request_id": "01a15f76-3167-75c0-b6e4-030f87c74ec5",
+  "at": "2026-10-21T17:16:00.854Z"
+ },
+ "lighting": {
+  "id": "lighting",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "Four versions of the same medieval stone courtyard game scene in a 2 by 2 grid, each lit differently: golden hour with volumetric light shafts, cool blue moonlight, overcast soft light, and warm torchlight at night, one of the four outlined in white as the pick.",
+  "refs": [],
+  "request_id": "01a15f76-3167-7622-ae2d-02b398eaf214",
+  "at": "2026-10-21T17:16:02.190Z"
+ },
+ "foliage": {
+  "id": "foliage",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A game engine landscape editor viewport: rolling green hills being painted with trees, bushes and grass by a glowing circular brush cursor on the terrain, the painted half lush and the unpainted half bare earth.",
+  "refs": [],
+  "request_id": "01a15f76-3167-7461-8e80-14bff6bd0fd6",
+  "at": "2026-10-21T17:16:00.908Z"
+ },
+ "storepage": {
+  "id": "storepage",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A dark navy blue PC game store page layout: a wide capsule image of a cartoon heist game at the top, a strip of four gameplay screenshots below it, small rounded tag pills and a bright green buy button, every line of text replaced by soft grey placeholder bars.",
+  "refs": [],
+  "request_id": "01a15f76-3167-7533-8f82-0543f59375f9",
+  "at": "2026-10-21T17:16:03.938Z"
+ },
+ "reviews": {
+  "id": "reviews",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "Dozens of player review cards on a dark navy background being sorted into two piles, one with green thumbs-up icons and one with red thumbs-down icons, a few cards mid-air between them, a glowing summary gauge above.",
+  "refs": [],
+  "request_id": "01a15f76-8023-78c0-bb32-ba7ff39da951",
+  "at": "2026-10-21T17:16:21.412Z"
+ },
+ "wishlist": {
+  "id": "wishlist",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A dark navy analytics dashboard with a bright blue line chart of a game wishlist count climbing over several months, two sharp spikes marked with small star markers, faint gridlines and glowing data points.",
+  "refs": [],
+  "request_id": "01a15f76-8023-72e1-9027-7f5b2ecc8ed2",
+  "at": "2026-10-21T17:16:21.357Z"
+ },
+ "jam": {
+  "id": "jam",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A wall of colorful pixel-art indie game cover tiles in a grid (platformers, puzzle games, spaceships, dungeons), with a big round countdown stopwatch in the foreground, warm red and pink accents, playful.",
+  "refs": [],
+  "request_id": "01a15f76-8022-7422-b889-4e7f76e8bc30",
+  "at": "2026-10-21T17:16:20.893Z"
+ },
+ "hud": {
+  "id": "hud",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A design tool canvas with a light grey background holding four game HUD screen mockups as separate frames: health and mana bars, a circular minimap, an inventory grid, and an ability bar, one frame selected with pink handles and a small cursor beside it.",
+  "refs": [],
+  "request_id": "01a15f76-8022-7400-adfb-824c9f8e5ba1",
+  "at": "2026-10-21T17:16:20.087Z"
+ },
+ "icons": {
+  "id": "icons",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A design canvas showing a neat grid of twenty-four flat game UI icons (sword, shield, coin, heart, potion, key, gem, map, bow, scroll) each inside a thin purple export slice outline, with a few icons repeated smaller beside it at export sizes, light background.",
+  "refs": [],
+  "request_id": "01a15f76-8023-79c3-bc19-57966dd5e7b9",
+  "at": "2026-10-21T17:16:20.479Z"
+ },
+ "trailer": {
+  "id": "trailer",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "A dark video editing app: a large preview monitor at the top showing a frame from this cartoon heist game, and below it a multi-track timeline filled with clip thumbnails from this same game, a red playhead line and audio waveforms on the bottom track.",
+  "refs": [
+   "rbx/assets/a3def5f381990d.webp",
+   "img/iter/iter-4.webp",
+   "rbx/assets/31d0a6cdb1dac6.webp"
+  ],
+  "request_id": "01a15f76-8023-73a0-a2cf-64fbd3506ad4",
+  "at": "2026-10-21T17:16:21.898Z"
+ },
+ "youtubers": {
+  "id": "youtubers",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A row of five gaming content creators on webcam, each in their own rounded video tile, wearing headsets in colorful RGB-lit rooms, one tile highlighted with a bright outline and a magnifying glass hovering over it, light background.",
+  "refs": [],
+  "request_id": "01a15f76-c63d-7a51-a7b4-bc05bb815065",
+  "at": "2026-10-21T17:16:39.788Z"
+ },
+ "schedule": {
+  "id": "schedule",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A livestreamer weekly schedule panel: a seven-day calendar grid with five bright purple time blocks, a studio microphone and a webcam beside it, purple and black color scheme.",
+  "refs": [],
+  "request_id": "01a15f76-c63d-7e03-94cf-91a5ccc69dcd",
+  "at": "2026-10-21T17:16:39.434Z"
+ },
+ "updatelog": {
+  "id": "updatelog",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "A dark-themed chat app channel with one big announcement post: a banner image from this cartoon heist game at the top of the post, bullet rows below it shown as grey bars, and a row of colorful emoji reaction bubbles underneath.",
+  "refs": [
+   "rbx/assets/7d845c7485b985.webp"
+  ],
+  "request_id": "01a15f76-c63d-7a51-a7b4-bc14d325ed95",
+  "at": "2026-10-21T17:16:39.567Z"
+ },
+ "bugs": {
+  "id": "bugs",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "Chat message bubbles with little ladybug icons flowing into a three-column kanban board, cards stacked by priority with red, yellow and green tags, a dark blue-grey background.",
+  "refs": [],
+  "request_id": "01a15f76-c63c-77f1-92f2-8bf9fe951bd8",
+  "at": "2026-10-21T17:16:39.487Z"
+ },
+ "welcome": {
+  "id": "welcome",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A dark chat server welcome screen with a big friendly waving hand, and a row of colorful round role badges (crossed swords, paintbrush, game controller, star, music note) for new members to pick, soft glow.",
+  "refs": [],
+  "request_id": "01a15f76-c63d-7e73-86c7-de8278a4000b",
+  "at": "2026-10-21T17:16:39.299Z"
+ },
+ "devlog": {
+  "id": "devlog",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "A forum post card on a light background showing a gameplay frame from this cartoon heist game, large orange upvote arrows beside it and a growing comment thread of grey placeholder lines below.",
+  "refs": [
+   "rbx/assets/cd3cce6d08bc20.webp"
+  ],
+  "request_id": "01a15f76-c63c-7533-8ec2-e6ccb77d4393",
+  "at": "2026-10-21T17:16:39.629Z"
+ },
+ "revenue": {
+  "id": "revenue",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "A spreadsheet with a green header row and neat columns of cells shown as grey bars, with a colorful weekly revenue bar chart and a pie chart floating on top of it, a few gold coins in the corner, light background.",
+  "refs": [],
+  "request_id": "01a15f77-0c2b-7621-bc5c-2c8dc4bdc36d",
+  "at": "2026-10-21T17:16:58.619Z"
+ },
+ "gdd": {
+  "id": "gdd",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "A clean minimalist document workspace on white showing a game design document: a cover image from this cartoon heist game, headings as dark bars, a character sketch card, a checklist with ticked boxes and a small table, black and white with soft accents.",
+  "refs": [
+   "rbx/assets/7d845c7485b985.webp"
+  ],
+  "request_id": "01a15f77-0c2c-7ee0-981f-97a1f18a9576",
+  "at": "2026-10-21T17:16:59.264Z"
+ },
+ "press": {
+  "id": "press",
+  "endpoint": "fal-ai/nano-banana-pro",
+  "prompt": "An email compose window on a light background with a press kit attached: a zip file icon, three game screenshot thumbnails and an image sheet as attachment chips, paper-plane envelopes flying out toward small newspaper and podcast microphone icons.",
+  "refs": [],
+  "request_id": "01a15f77-0c2c-73f1-adc5-01319beb77f9",
+  "at": "2026-10-21T17:16:59.081Z"
+ },
+ "merch": {
+  "id": "merch",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "Product mockups for this game merchandise in an online store layout: a black t-shirt, a grey hoodie and a white mug, each printed with this cartoon striped-shirt robber character, on clean white product cards with a small shopping bag icon.",
+  "refs": [
+   "img/iter/iter-6.webp",
+   "rbx/assets/a3def5f381990d.webp"
+  ],
+  "request_id": "01a15f77-0c2c-7da1-9958-236399da2882",
+  "at": "2026-10-21T17:16:59.137Z"
+ },
+ "translate": {
+  "id": "translate",
+  "endpoint": "fal-ai/nano-banana-pro/edit",
+  "prompt": "Three copies of a game store page for this cartoon heist game fanned out like cards, each page with this same thumbnail at the top, a big blue play button and lines of text shown as grey bars, each card wearing a different small round country flag badge in its corner (Spain, Brazil, Japan), light background.",
+  "refs": [
+   "rbx/assets/841bdbf6b2bd6b.webp"
+  ],
+  "request_id": "01a15f78-5d83-7ba0-94f6-00de11a3a2c9",
+  "at": "2026-10-21T17:18:23.711Z"
+ }
+}
