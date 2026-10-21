@@ -9,8 +9,11 @@ import { buildFeed, measureFeed, paintFeed } from '../feed.af4c3c6b.js';
 import { seg, lerp, outCubic, REDUCED } from '../lib.af4c3c6b.js';
 import { sidebarHTML, variantIndex } from './shell.bdeb2397.js';
 import { enhanceSidebar } from './interact.bdeb2397.js';
+import { tinter } from './tint.bdeb2397.js';
 
 const S = buildSchedule();
+// the vignette's color follows the app on screen (tint.bdeb2397.js)
+const tint = tinter(S);
 const params = new URLSearchParams(location.search);
 const stage = document.getElementById('stage');
 const dip = document.getElementById('dip');
@@ -77,7 +80,7 @@ function frame(t) {
   // a short dip to white where the loop comes round
   dip.style.opacity = Math.max(seg(lt, S.L - 0.45, S.L), 1 - seg(lt, 0, 0.35)).toFixed(3);
   const docked = dock(lt);
-  if (liveView) paint(view, S, lt);
+  if (liveView) { paint(view, S, lt); tint(view.edge, lt); }
   paintFeed(feed, S, lt, 1 - docked);
 }
 

@@ -301,6 +301,18 @@ async function run(where, url, root) {
 
 await run('creative', `${BASE}view.html?v=1&t=40`, '.app > .sb');
 await run('sheet', BASE, '.sheet .sb');
+
+// the takeover vignette's color follows the app on screen (tint.bdeb2397.js): superbot's orange on the opening New Tab
+// page, Roblox's logo blue once roblox.com loads, still blue on the second New Tab page mid-task
+for (const [t, app, first] of [[6, 'superbot', '#fd9e43'], [7, 'roblox', '#335fff'], [10, 'roblox', '#335fff'], [40, 'roblox', '#335fff']]) {
+  const page = await browser.newPage({ viewport: { width: 1456, height: 815 } });
+  await page.goto(`${BASE}view.html?v=1&t=${t}`);
+  await page.waitForFunction(() => window.__ready === true, null, { timeout: 30000 });
+  const got = await page.evaluate(() => { const e = document.querySelector('.cc-edge'); return { app: e.dataset.app, first: e.style.getPropertyValue('--tint-0'), band: getComputedStyle(document.querySelector('.cc-band')).backgroundImage }; });
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(first.slice(i, i + 2), 16));
+  check('tint', got.app === app && got.first === first && got.band.includes(`rgb(${r}, ${g}, ${b})`), `at ${t}s the vignette is ${app} (${first})`, got);
+  await page.close();
+}
 await browser.close();
 console.log(fails.length ? `${fails.length} failed` : 'all passed');
 process.exit(fails.length ? 1 : 0);
