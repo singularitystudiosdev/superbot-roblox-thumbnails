@@ -1,24 +1,22 @@
 /* The sidebar variants' tokens. Colors and type are the creative's own (style.af4c3c6b.css :root, .cm-say, .cm-card-t,
    .ac-row); spacing and radii are design-tokens dist/tokens.css values (--spacing-*, --radius-8, --radius-12). Every
-   number the variants use comes from here. */
+   number the variants use comes from here. No chromatic accent: the 3D icons are the only color. */
 :root {
   --ui: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif;
 
-  /* palette: ground, selected/hairline, surface, ink, muted, the one accent (the takeover vignette's deep orange,
-     only ever on a chat that is still working) */
+  /* palette: ground, selected/hairline, surface, ink, muted */
   --ground: #f2f2f7;
   --sel: #e5e5ea;
   --surface: #fff;
   --ink: #1c1c1e;
   --muted: #6e6e73;
-  --accent: #f68a2c;
   --hover: color-mix(in srgb, var(--sel) 60%, transparent);
 
   /* spacing (design-tokens --spacing-*) */
   --sp-2: 2px; --sp-4: 4px; --sp-6: 6px; --sp-8: 8px; --sp-10: 10px; --sp-12: 12px;
   --sp-16: 16px; --sp-20: 20px; --sp-24: 24px; --sp-32: 32px; --sp-40: 40px; --sp-48: 48px;
 
-  /* radii: controls (rows, buttons, thumbnails, tiles) and surfaces (cards) */
+  /* radii: controls (rows, buttons, fields, tiles) and surfaces (cards) */
   --r-ctl: 8px;
   --r-surf: 12px;
 
@@ -32,15 +30,10 @@
   --app-w: 1200px;
   --app-h: 675px;
   --row: var(--sp-32);
-  --row-2: calc(var(--sp-32) + var(--sp-12));
   --head: calc(var(--sp-24) + var(--sp-4));
   --top: var(--sp-48);
+  --ic: var(--sp-16);
   --hair: 1px;
   --focus: 2px;
   --d-hover: 150ms; /* design-tokens --duration-150, fills only */
-  --ic: var(--sp-16);
-  --ic-lg: var(--sp-24);
-  --dot: var(--sp-6);
-  --thumb-w: calc(var(--sp-48) + var(--sp-8));
-  --thumb-h: var(--sp-32);
 }

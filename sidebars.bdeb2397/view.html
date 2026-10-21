@@ -18,19 +18,20 @@
 <body>
 <div id="frame"><div id="side"></div><iframe id="app" title="The superbot creative"></iframe></div>
 <script type="module">
-  // ?v=1..10 picks the variant (keys 1-9 and 0 switch it), ?t= freezes the creative at that second, ?state=loading|empty
-  // shows the list's other states
-  import { sidebarHTML, VARIANTS } from './shell.bdeb2397.js';
+  // ?v=<variant number> picks the variant (the left and right arrow keys step through them), ?t= freezes the creative at
+  // that second, ?state=loading|empty shows the list's other states
+  import { sidebarHTML, variantIndex, VARIANTS } from './shell.bdeb2397.js';
   const params = new URLSearchParams(location.search);
   const frame = document.getElementById('frame'), side = document.getElementById('side'), app = document.getElementById('app');
   const state = params.get('state') || 'ready';
-  let current = Math.min(VARIANTS.length, Math.max(1, Number(params.get('v')) || 1)) - 1;
+  let current = variantIndex(params.get('v') ?? 1);
 
   function show(index) {
     current = index;
+    const variant = VARIANTS[index];
     side.innerHTML = sidebarHTML(index, { state });
-    document.title = `Variant ${index + 1}: ${VARIANTS[index].name}`;
-    params.set('v', String(index + 1));
+    document.title = `Variant ${variant.id}: ${variant.name}`;
+    params.set('v', String(variant.id));
     history.replaceState(null, '', `?${params}`);
   }
   function fit() {
@@ -40,8 +41,8 @@
   app.src = params.has('t') ? `../index.html?t=${encodeURIComponent(params.get('t'))}` : '../index.html';
   addEventListener('resize', fit);
   addEventListener('keydown', (e) => {
-    const n = '1234567890'.indexOf(e.key);
-    if (n >= 0 && n < VARIANTS.length) show(n);
+    const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (step) show((current + step + VARIANTS.length) % VARIANTS.length);
   });
   show(current);
   fit();

@@ -15,7 +15,7 @@ const report = [];
 async function audit(page) {
   return page.evaluate(() => {
     const broken = [...document.querySelectorAll('.sb img')].filter((img) => !img.complete || img.naturalWidth === 0).map((img) => img.getAttribute('src'));
-    const overflow = [...document.querySelectorAll('.sb-row, .sb-tile, .sb-live')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.textContent.trim().slice(0, 40));
+    const overflow = [...document.querySelectorAll('.sb-row, .sb-new, .sb-search')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.textContent.trim().slice(0, 40));
     return { broken, overflow };
   });
 }
@@ -30,7 +30,9 @@ async function open(url, viewport) {
   return { page, errors };
 }
 
-for (let v = 1; v <= 10; v++) {
+// the variant numbers come from the registry itself (plain strings, no DOM), so the render never drifts from it
+const { VARIANTS } = await import(new URL('../variants.bdeb2397.js', import.meta.url));
+for (const { id: v } of VARIANTS) {
   try {
     const { page, errors } = await open(`${BASE}view.html?v=${v}&t=${T}`, { width: 1456, height: 675 });
     const app = page.frameLocator('#app');

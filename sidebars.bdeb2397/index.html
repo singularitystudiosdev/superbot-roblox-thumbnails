@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>superbot chat sidebar: 10 variants</title>
+<title>superbot chat sidebar: Variant 1 and 10 more</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="tokens.bdeb2397.css">
 <link rel="stylesheet" href="sidebar.bdeb2397.css">
@@ -13,7 +13,7 @@
   .sheet-head { max-width: 80ch; margin-bottom: var(--sp-32); }
   .sheet-head h1 { margin: 0 0 var(--sp-8); font: 700 calc(var(--sp-20) + var(--sp-2))/1.2 var(--ui); letter-spacing: -0.4px; }
   .sheet-head p { margin: 0; font: var(--fs-body)/1.5 var(--ui); color: var(--muted); }
-  .sheet { display: grid; grid-template-columns: repeat(5, var(--side-w)); gap: var(--sp-48) var(--sp-32); margin: 0; padding: 0; list-style: none; }
+  .sheet { display: grid; grid-template-columns: repeat(auto-fill, var(--side-w)); gap: var(--sp-48) var(--sp-32); margin: 0; padding: 0; list-style: none; }
   .sheet-cap { display: flex; flex-direction: column; gap: var(--sp-4); min-height: calc(var(--sp-48) + var(--sp-40)); margin-bottom: var(--sp-12); }
   .sheet-cap h2 { margin: 0; font: 500 var(--fs-brand)/1.2 var(--ui); }
   .sheet-cap p { margin: 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
@@ -25,8 +25,8 @@
 <body>
 <main>
 <header class="sheet-head">
-  <h1>superbot chat sidebar, 10 variants</h1>
-  <p>Ten ways to list the chats on the left of the screen. They all use the Manus sidebar layout and the creative's Fluent 3D icons, and only the chat list changes. Open one to see it beside the creative. In that view, the keys 1 to 9 and 0 switch variants.</p>
+  <h1>superbot chat sidebar, Variant 1 and 10 more</h1>
+  <p>Variant 1 is the icon list you kept, now without the status dots, the Computers, Agents and Library rows, or the Projects section. Variants 11 to 20 are ten takes on it. Open one to see it beside the creative. In that view, the left and right arrow keys step through them.</p>
 </header>
 <ul class="sheet" id="sheet"></ul>
 </main>
@@ -34,8 +34,8 @@
   import { sidebarHTML, VARIANTS } from './shell.bdeb2397.js';
   const esc = (s) => s.replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
   document.getElementById('sheet').innerHTML = VARIANTS.map((v, i) => `<li>
-    <div class="sheet-cap"><h2>Variant ${i + 1}: ${esc(v.name)}</h2><p>${esc(v.idea)}</p><a href="view.html?v=${i + 1}">Open beside the creative</a></div>
-    <div class="sheet-side">${sidebarHTML(i, { labelSuffix: `, variant ${i + 1}` })}</div>
+    <div class="sheet-cap"><h2>Variant ${v.id}: ${esc(v.name)}</h2><p>${esc(v.idea)}</p><a href="view.html?v=${v.id}">Open beside the creative</a></div>
+    <div class="sheet-side">${sidebarHTML(i, { labelSuffix: `, variant ${v.id}` })}</div>
   </li>`).join('');
   window.__sidebarReady = true;
 </script>

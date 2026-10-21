@@ -2,19 +2,18 @@ Sources for the sidebar variants (sidebars.bdeb2397). Never shown on screen.
 
 fx/*.png: Fluent Emoji in their 3D style, the same set as the creative's img/fx (the Activity tab's icons), fetched
 2026-10-21 from https://github.com/microsoft/fluentui-emoji (assets/<Name>/3D/<name>_3d.png, 256px) and scaled to
-96px with sips: alarm_clock, bell, books, chart_increasing, desktop_computer, file_folder, gem_stone, megaphone, memo,
-money_bag, movie_camera, musical_notes, pencil, pushpin, robot. License: MIT, Copyright (c) Microsoft Corporation
+96px with sips: chart_increasing, megaphone, memo, money_bag, movie_camera, musical_notes, pencil. License: MIT,
+Copyright (c) Microsoft Corporation
 (https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE). The rest of the sidebar's 3D icons are the creative's
 own ../img/fx files.
 
 The superbot mark in the sidebar's top bar: the mask geometry of the beta.superbot.gg mascot, from
 superbot-ad-gallery/assets/sb-mark-live.html (first party), drawn as one static ink layer.
 
-Utility icons (search, panel, folder-plus, settings, bell, chevrons, trending-up): lucide (https://lucide.dev, ISC).
+Utility icons (search, panel, settings, bell, chevron-right): lucide (https://lucide.dev, ISC).
 
-Thumbnails, the avatar and the Roblox favicon are the creative's own files (../img/iter, ../rbx/assets, ../img/fav);
-see ../img/CREDITS.txt. Chat titles and figures are illustrative.
+The avatar and the Roblox favicon are the creative's own files (../rbx/assets, ../img/fav); see ../img/CREDITS.txt.
+Chat titles are illustrative.
 
-Layout reference: the Manus sidebar (screenshot supplied by the owner), shadcn sidebar-07 and sidebar-11
-(https://ui.shadcn.com/blocks), and the superbot desktop app's sidebar (bucket folds Today / Yesterday / Earlier /
-Pinned, New project row, Settings gear in the footer).
+Layout reference: the Manus sidebar (screenshot supplied by the owner), shadcn sidebar-07
+(https://ui.shadcn.com/blocks), and the superbot desktop app's sidebar (day groups, Settings gear in the footer).
