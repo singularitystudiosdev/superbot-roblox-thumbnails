@@ -2,14 +2,14 @@
 // variant's scrolling middle, then the account row. `state` shows the list's loading
 // (skeleton rows) and empty states, which belong to the envelope rather than to any one variant.
 import { NAV, ACCOUNT } from './chats.bdeb2397.js';
-import { esc, fx, lu, mark, list, section, asset } from './parts.bdeb2397.js';
+import { esc, fx, lu, mark, list, section, asset, title } from './parts.bdeb2397.js';
 import { VARIANTS } from './variants.bdeb2397.js';
 
 const SKELETON_ROWS = 5;
 
 const tool = (label, icon) => `<button class="sb-tool" type="button" aria-label="${label}">${lu(icon)}</button>`;
 const slug = (label) => label.toLowerCase().replace(/ /g, '-');
-const navRow = (n) => `<li><a class="sb-row" href="#${slug(n.label)}">${fx(n.fx)}<span class="sb-t"><span class="sb-title">${esc(n.label)}</span></span></a></li>`;
+const navRow = (n) => `<li><a class="sb-row" href="#${slug(n.label)}" draggable="false">${fx(n.fx)}<span class="sb-t">${title(n.label)}</span></a></li>`;
 
 // the nav as rows, or (nav: 'button') with its first item, New chat, as a full-width button over the rest
 function navArea(variant) {
@@ -39,7 +39,7 @@ export function sidebarHTML(index, { state = 'ready', labelSuffix = '' } = {}) {
   const fieldSearch = variant.search === 'field';
   return `<aside class="sb ${variant.cls ?? ''}" data-variant="${variant.id}" aria-label="superbot sidebar${labelSuffix}">
   <header class="sb-top"><span class="sb-brand">${mark()}superbot</span><span class="sb-tools">${fieldSearch ? '' : tool('Search chats', 'search')}${tool('Collapse sidebar', 'panel')}</span></header>
-  <nav class="sb-nav" aria-label="Main${labelSuffix}">${navArea(variant)}${fieldSearch ? searchField : ''}</nav>
+  <nav class="sb-nav" aria-label="Main${labelSuffix}">${fieldSearch ? searchField : ''}${navArea(variant)}</nav>
   <nav class="sb-scroll" aria-label="Chats${labelSuffix}">${middle(variant, state)}</nav>
   <footer class="sb-foot">
     <div class="sb-me"><img class="sb-avatar" src="${asset(ACCOUNT.avatar)}" alt="" width="24" height="24"><span class="sb-name">${esc(ACCOUNT.name)}</span>${tool('Settings', 'settings')}${tool('Notifications', 'bell')}</div>

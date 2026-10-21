@@ -1,30 +1,31 @@
-/* What variants 11 to 20 change about Variant 1 (variants.bdeb2397.js `cls`, `nav`, `search`). Tokens only. */
+/* What variants 11 to 20 change about Variant 1 (variants.bdeb2397.js `cls`, `nav`, `search`), in the same
+   screenshot-px-times---ref units as the tokens. */
 
-/* 11 Roomy: the Manus screenshot's proportions, bigger icons on taller rows */
-.sb.is-roomy { --row: calc(var(--sp-32) + var(--sp-4)); --ic: var(--sp-20); }
+/* 11 Roomy: taller rows, bigger icons */
+.sb.is-roomy { --row: calc(34px * var(--ref)); --ic: calc(17px * var(--ref)); }
 
 /* 12 Icon tiles: each icon on a white tile with a hairline edge */
-.sb.is-tiles .sb-row > .sb-ic { box-sizing: content-box; padding: var(--sp-4); border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); }
+.sb.is-tiles .sb-row > .sb-ic { box-sizing: content-box; padding: calc(3px * var(--ref)); border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); }
 
 /* 15 Full titles: a chat's title wraps instead of being cut off */
-.sb.is-wrap .sb-scroll .sb-row { align-items: flex-start; height: auto; min-height: var(--row); padding-top: var(--sp-8); padding-bottom: var(--sp-8); }
+.sb.is-wrap .sb-scroll .sb-row { align-items: flex-start; height: auto; min-height: var(--row); padding-top: calc((var(--row) - var(--lh-body)) / 2); padding-bottom: calc((var(--row) - var(--lh-body)) / 2); }
 .sb.is-wrap .sb-scroll .sb-title { white-space: normal; }
 
 /* 16 Compact: shorter rows, smaller icons */
-.sb.is-compact { --row: var(--head); --ic: calc(var(--sp-12) + var(--sp-2)); }
+.sb.is-compact { --row: calc(23px * var(--ref)); --ic: calc(11px * var(--ref)); }
 
 /* 17 White selection: the open chat lifts to white with a hairline instead of the grey fill */
 .sb.is-white-sel .sb-row[aria-current="page"] { background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); }
 
 /* 18 New chat button: the first nav item as a full-width white button */
-.sb-new { display: flex; align-items: center; gap: var(--sp-10); height: var(--sp-40); margin-bottom: var(--sp-4); padding: 0 var(--sp-12); border: var(--hair) solid var(--sel); border-radius: var(--r-ctl); background: var(--surface); font: 500 var(--fs-body)/1 var(--ui); transition: border-color var(--d-hover) ease-out; }
+.sb-new { display: flex; align-items: center; gap: var(--gap-ic); height: calc(32px * var(--ref)); margin-bottom: var(--sp-4); padding: 0 var(--row-pad); border: var(--hair) solid var(--sel); border-radius: var(--r-ctl); background: var(--surface); font: 500 var(--fs-body)/1 var(--ui); transition: border-color var(--d-hover) ease-out; }
 .sb-new:hover { border-color: var(--muted); }
 
-/* 19 Search field: a field over the list in place of the top bar's search button */
-.sb-search { position: relative; display: block; margin-top: var(--sp-8); }
-.sb-search .sb-lu { position: absolute; left: var(--sp-10); top: 50%; width: var(--sp-12); height: var(--sp-12); transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+/* 19 Search field: Claude's field under the top bar, in place of its search button, the nav a row's inset below it */
+.sb-search { position: relative; display: block; margin-bottom: var(--pad-x); }
+.sb-search .sb-lu { position: absolute; left: var(--row-pad); top: 50%; width: var(--ic); height: var(--ic); transform: translateY(-50%); color: var(--muted); pointer-events: none; }
 /* the input is the field: its hairline at rest, the ink ring on keyboard focus */
-.sb-search input { box-sizing: border-box; display: block; width: 100%; height: var(--row); padding: 0 var(--sp-10) 0 calc(var(--sp-10) + var(--sp-12) + var(--sp-8)); border: 0; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; appearance: none; font: var(--fs-body)/1 var(--ui); color: var(--ink); }
+.sb-search input { box-sizing: border-box; display: block; width: 100%; height: var(--field-h); padding: 0 var(--row-pad) 0 calc(var(--row-pad) + var(--ic) + var(--gap-ic)); border: 0; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; appearance: none; font: var(--fs-body)/1 var(--ui); color: var(--ink); }
 .sb-search input:focus-visible { box-shadow: 0 0 0 var(--focus) var(--ink); }
 .sb-search input::placeholder { color: var(--muted); }
 

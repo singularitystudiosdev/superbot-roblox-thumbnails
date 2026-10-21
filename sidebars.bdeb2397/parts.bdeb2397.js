@@ -18,7 +18,10 @@ export const lu = (name, cls = 'sb-lu') => `<svg class="${cls}" viewBox="0 0 24 
 export const asset = (path) => new URL(path, import.meta.url).href;
 
 // a Fluent 3D icon; decorative wherever the row's text already names the thing
-export const fx = (name, cls = 'sb-ic') => `<img class="${cls}" src="${asset(FX[name])}" alt="" width="16" height="16">`;
+export const fx = (name, cls = 'sb-ic') => `<img class="${cls}" src="${asset(FX[name])}" alt="" width="16" height="16" draggable="false">`;
+
+// a row's title: the inner span is what scrolls when the title is cut off (interact.bdeb2397.js)
+export const title = (text) => `<span class="sb-title"><span class="sb-title-in">${esc(text)}</span></span>`;
 
 // the superbot mark, static: the mask geometry of beta.superbot.gg's mascot (superbot-ad-gallery/assets/sb-mark-live.html),
 // its single ink layer, eyes cut out. Each copy needs its own mask id.
@@ -34,7 +37,7 @@ export const time = (chat) => `<span class="sb-time">${esc(chat.time)}</span>`;
 export function row(chat, { trail = '' } = {}) {
   const current = chat.active ? ' aria-current="page"' : '';
   const unread = chat.unread ? ' is-unread' : '';
-  return `<li><a class="sb-row${unread}" href="#${chat.id}"${current}>${fx(chat.fx)}<span class="sb-t"><span class="sb-title">${esc(chat.title)}</span></span>${trail}</a></li>`;
+  return `<li><a class="sb-row${unread}" href="#${chat.id}" draggable="false"${current}>${fx(chat.fx)}<span class="sb-t">${title(chat.title)}</span>${trail}</a></li>`;
 }
 
 export const list = (rows) => `<ul class="sb-list">${rows}</ul>`;

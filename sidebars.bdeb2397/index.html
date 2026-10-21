@@ -13,8 +13,12 @@
   .sheet-head { max-width: 80ch; margin-bottom: var(--sp-32); }
   .sheet-head h1 { margin: 0 0 var(--sp-8); font: 700 calc(var(--sp-20) + var(--sp-2))/1.2 var(--ui); letter-spacing: -0.4px; }
   .sheet-head p { margin: 0; font: var(--fs-body)/1.5 var(--ui); color: var(--muted); }
-  .sheet { display: grid; grid-template-columns: repeat(auto-fill, var(--sidebar-w)); gap: 0 var(--sp-32); margin: 0; padding: 0; list-style: none; }
-  .sheet-side { margin-bottom: var(--sp-48); }
+  /* each sidebar drawn at the size it has on screen in the creative in the 1456px window the reference was taken in,
+     so it measures 1:1 against Claude's (242px wide, 28px rows) */
+  :root { --screen-k: calc(1 / var(--ref)); }
+  .sheet { display: grid; grid-template-columns: repeat(auto-fill, calc(var(--sidebar-w) * var(--screen-k))); gap: 0 var(--sp-32); margin: 0; padding: 0; list-style: none; }
+  .sheet-side { width: calc(var(--sidebar-w) * var(--screen-k)); height: calc(var(--app-h) * var(--screen-k)); margin-bottom: var(--sp-48); }
+  .sheet-side > .sb { transform: scale(var(--screen-k)); transform-origin: 0 0; }
   /* each item spans two shared rows, so captions of different lengths still start every sidebar in a row level */
   .sheet > li { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
   .sheet-cap { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-12); }
@@ -29,17 +33,22 @@
 <main>
 <header class="sheet-head">
   <h1>superbot chat sidebar, Variant 1 and 10 more</h1>
-  <p>Variant 1 is the pick: the icon list without the status dots, the Computers, Agents and Library rows, the Projects section or the Creator Hub card. Variants 11 to 20 are ten takes on it. Open one to see it inside the creative, which keeps its 16:9 frame.</p>
+  <p>Variant 1 is the pick: the icon list without the status dots, the Computers, Agents and Library rows, the Projects section or the Creator Hub card. Variants 11 to 20 are ten takes on it. Sizes match Claude's sidebar 1:1. Drag a chat to reorder it (or press Alt with an arrow key), and hover a cut-off title to read the rest. Open one to see it inside the creative.</p>
 </header>
 <ul class="sheet" id="sheet"></ul>
 </main>
 <script type="module">
   import { sidebarHTML, VARIANTS } from './shell.bdeb2397.js';
+  import { enhanceSidebar } from './interact.bdeb2397.js';
   const esc = (s) => s.replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
   document.getElementById('sheet').innerHTML = VARIANTS.map((v, i) => `<li>
     <div class="sheet-cap"><h2>Variant ${v.id}: ${esc(v.name)}</h2><p>${esc(v.idea)}</p><a href="view.html?v=${v.id}">Open inside the creative</a></div>
     <div class="sheet-side">${sidebarHTML(i, { labelSuffix: `, variant ${v.id}` })}</div>
   </li>`).join('');
+  document.querySelectorAll('.sheet .sb').forEach((sb) => {
+    sb.addEventListener('click', (e) => { if (e.target.closest('a')) e.preventDefault(); });
+    enhanceSidebar(sb);
+  });
   window.__sidebarReady = true;
 </script>
 </body>

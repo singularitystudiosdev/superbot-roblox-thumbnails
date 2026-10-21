@@ -1,31 +1,31 @@
-/* The sidebar: the Manus sidebar's anatomy (image 2 of the brief) in the creative's palette and type, every list item
-   wearing a Fluent 3D icon as the creative's activity tab does. Values come from tokens.bdeb2397.css only. Nothing
-   here animates; the only transitions are hover fills on controls. */
+/* The sidebar: Claude's sidebar sizes (tokens.bdeb2397.css), the creative's palette and type, every list item wearing a
+   Fluent 3D icon as the creative's activity tab does. Values come from the tokens only. Motion: hover fills, rows
+   making way while a chat is dragged (interact.bdeb2397.js), and a cut-off title scrolling on hover. */
 .sb { display: flex; flex-direction: column; width: var(--sidebar-w); height: var(--app-h); overflow: hidden; background: var(--ground); box-shadow: inset calc(-1 * var(--hair)) 0 0 var(--sel); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
 .sb, .sb * { box-sizing: border-box; }
 .sb ul { margin: 0; padding: 0; list-style: none; }
 .sb a { color: inherit; text-decoration: none; }
+.sb a, .sb img { -webkit-user-drag: none; }
 .sb button, .sb input { font: inherit; }
 .sb-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* ---------- top: the mark and wordmark, then search and collapse ---------- */
-.sb-top { flex: none; display: flex; align-items: center; justify-content: space-between; height: var(--top); padding: 0 var(--sp-8) 0 var(--sp-16); }
-.sb-brand { display: flex; align-items: center; gap: var(--sp-8); font: 700 var(--fs-brand)/1 var(--ui); letter-spacing: -0.01em; }
-.sb-mark { width: var(--sp-20); height: var(--sp-20); color: var(--ink); }
-.sb-tools { display: flex; gap: var(--sp-2); }
-.sb-tool { display: grid; place-items: center; width: var(--head); height: var(--head); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--ink); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+/* ---------- top: the mark and wordmark on the icon column, then search and collapse ---------- */
+.sb-top { flex: none; display: flex; align-items: center; justify-content: space-between; height: var(--top); padding: 0 var(--pad-x) 0 calc(var(--pad-x) + var(--row-pad)); }
+.sb-brand { display: flex; align-items: center; gap: calc(var(--gap-ic) / 2); font: 700 var(--fs-brand)/1 var(--ui); letter-spacing: -0.01em; }
+.sb-mark { width: var(--mark); height: var(--mark); color: var(--ink); }
+.sb-tools { display: flex; }
+.sb-tool { display: grid; place-items: center; width: var(--tool); height: var(--tool); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--ink); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
 .sb-tool:hover { background: var(--sel); }
-/* the utility icons keep one size; Roomy and Compact resize only the 3D list icons (--ic) */
-.sb-lu { width: var(--sp-16); height: var(--sp-16); flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sb-lu { width: var(--tool-ic); height: var(--tool-ic); flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- rows: nav and chats share one anatomy ---------- */
-.sb-nav { flex: none; padding: 0 var(--sp-8) var(--sp-8); }
-.sb-scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; padding: 0 var(--sp-8) var(--sp-16); -webkit-mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); }
+.sb-nav { flex: none; padding: 0 var(--pad-x); }
+.sb-scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; padding: 0 var(--pad-x) var(--sp-16); -webkit-mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); }
 .sb-scroll::-webkit-scrollbar { display: none; }
-.sb-row { display: flex; align-items: center; gap: var(--sp-10); height: var(--row); padding: 0 var(--sp-8); border-radius: var(--r-ctl); font: var(--fs-body)/var(--lh-body) var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.sb-row { display: flex; align-items: center; gap: var(--gap-ic); height: var(--row); padding: 0 var(--row-pad); border-radius: var(--r-ctl); font: var(--fs-body)/var(--lh-body) var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
 .sb-row:hover { background: var(--hover); }
 .sb-row[aria-current="page"] { background: var(--sel); font-weight: 500; }
-/* muted on the selected fill is 4.0:1, under AA for 11px: the open chat's meta takes the ink */
+/* muted on the selected fill is 4.0:1, under AA for small text: the open chat's meta takes the ink */
 .sb [aria-current="page"] .sb-time, .sb [aria-current="page"] .sb-sub { color: var(--ink); }
 .sb-row.is-unread .sb-title { font-weight: 500; }
 .sb a:focus-visible, .sb button:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
@@ -35,27 +35,41 @@
 .sb-sub { font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
 .sb-time { flex: none; font: var(--fs-meta)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
 
-/* ---------- sections: a muted head ---------- */
-.sb-sec { margin-top: var(--sp-8); }
-.sb-head { display: flex; align-items: center; height: var(--head); margin: 0; padding: 0 var(--sp-8); font: 400 var(--fs-meta)/1 var(--ui); color: var(--muted); }
+/* a cut-off title on hover or focus: the ellipsis gives way to the whole line, which glides to its end and back under a
+   fade at the right edge (interact.bdeb2397.js animates it) */
+.sb-title.is-marquee { text-overflow: clip; -webkit-mask: linear-gradient(90deg, #000 calc(100% - var(--gap-ic)), transparent); mask: linear-gradient(90deg, #000 calc(100% - var(--gap-ic)), transparent); }
+.sb-title.is-marquee > .sb-title-in { display: inline-block; will-change: transform; }
+
+/* ---------- dragging a chat to a new place ---------- */
+.sb-scroll .sb-list .sb-row { user-select: none; touch-action: none; }
+.sb-list.is-sorting { cursor: grabbing; }
+.sb-list.is-sorting > li { position: relative; transition: transform var(--d-hover) var(--ease-std); }
+.sb-list.is-sorting > li.is-dragging { z-index: 1; }
+.sb-list.is-sorting > li.is-dragging > .sb-row { background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel), var(--lift); cursor: grabbing; }
+.sb-list.is-settling > li { transition: none; }
+
+/* ---------- sections: a muted label ---------- */
+.sb-sec { margin-top: var(--gap-sec); }
+.sb-head { display: flex; align-items: center; height: var(--head); margin: 0; padding: 0 var(--row-pad); font: 400 var(--fs-meta)/1 var(--ui); color: var(--muted); }
 
 /* ---------- loading and empty ---------- */
-.sb-skel { display: flex; align-items: center; gap: var(--sp-10); height: var(--row); padding: 0 var(--sp-8); }
+.sb-skel { display: flex; align-items: center; gap: var(--gap-ic); height: var(--row); padding: 0 var(--row-pad); }
 .sb-skel i { flex: none; width: var(--ic); height: var(--ic); border-radius: var(--r-ctl); background: var(--sel); }
-.sb-skel b { flex: 1; height: var(--sp-8); max-width: 70%; border-radius: 9999px; background: var(--sel); }
+.sb-skel b { flex: 1; height: var(--sp-6); max-width: 70%; border-radius: 9999px; background: var(--sel); }
 .sb-skel:nth-child(2n) b { max-width: 52%; }
-.sb-empty { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-10); padding: var(--sp-8); }
+.sb-empty { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-8); padding: var(--row-pad); }
 .sb-empty p { margin: 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
-.sb-btn { display: inline-flex; align-items: center; height: var(--head); padding: 0 var(--sp-12); border-radius: var(--r-ctl); background: var(--ink); color: var(--surface) !important; font: 500 var(--fs-meta)/1 var(--ui); }
+.sb-btn { display: inline-flex; align-items: center; height: var(--row); padding: 0 var(--sp-10); border-radius: var(--r-ctl); background: var(--ink); color: var(--surface) !important; font: 500 var(--fs-meta)/1 var(--ui); }
 
-/* ---------- footer: the account ---------- */
-.sb-foot { flex: none; padding: var(--sp-8) var(--sp-8) var(--sp-10); }
-.sb-me { display: flex; align-items: center; gap: var(--sp-10); height: var(--sp-40); padding: 0 0 0 var(--sp-8); }
-.sb-avatar { flex: none; width: var(--sp-24); height: var(--sp-24); border-radius: 9999px; object-fit: cover; }
+/* ---------- footer: the account, under a hairline, its avatar centred on the icon column ---------- */
+.sb-foot { flex: none; display: flex; align-items: center; height: var(--foot-h); padding: 0 var(--pad-x); box-shadow: inset 0 var(--hair) 0 var(--sel); }
+.sb-me { flex: 1; min-width: 0; display: flex; align-items: center; gap: calc(var(--gap-ic) - (var(--avatar) - var(--ic)) / 2); padding-left: calc(var(--row-pad) - (var(--avatar) - var(--ic)) / 2); }
+.sb-avatar { flex: none; width: var(--avatar); height: var(--avatar); border-radius: 9999px; object-fit: cover; }
 .sb-name { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 var(--fs-body)/1 var(--ui); }
 .sb-me .sb-tool { color: var(--muted); }
 .sb-me .sb-tool:hover { color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
   .sb-tool, .sb-row { transition: none; }
+  .sb-list.is-sorting > li { transition: none; }
 }

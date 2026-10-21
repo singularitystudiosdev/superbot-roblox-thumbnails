@@ -1,6 +1,7 @@
-/* The sidebar variants' tokens. Colors and type are the creative's own (style.af4c3c6b.css :root, .cm-say, .cm-card-t,
-   .ac-row); spacing and radii are design-tokens dist/tokens.css values (--spacing-*, --radius-8, --radius-12). Every
-   number the variants use comes from here. No chromatic accent: the 3D icons are the only color. */
+/* The sidebar variants' tokens. Colors and the family are the creative's own (style.af4c3c6b.css :root). Sizes are
+   Claude's sidebar 1:1, measured off the owner's screenshot (a 1456x815 window): each is that screenshot's pixels times
+   --ref, the scale between that window and the creative's app drawn in the same window. Spacing that is not
+   the sidebar's own anatomy uses design-tokens --spacing-*. No chromatic accent: the 3D icons are the only color. */
 :root {
   --ui: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif;
 
@@ -11,30 +12,42 @@
   --ink: #1c1c1e;
   --muted: #6e6e73;
   --hover: color-mix(in srgb, var(--sel) 60%, transparent);
+  --lift: 0 calc(4px * var(--ref)) calc(12px * var(--ref)) color-mix(in srgb, var(--ink) 12%, transparent);
 
   /* spacing (design-tokens --spacing-*) */
   --sp-2: 2px; --sp-4: 4px; --sp-6: 6px; --sp-8: 8px; --sp-10: 10px; --sp-12: 12px;
   --sp-16: 16px; --sp-20: 20px; --sp-24: 24px; --sp-32: 32px; --sp-40: 40px; --sp-48: 48px;
 
-  /* radii: controls (rows, buttons, fields, tiles) and surfaces (cards) */
-  --r-ctl: 8px;
+  /* radii: controls (rows, buttons, fields, tiles; design-tokens --radius-6) and surfaces (cards) */
+  --r-ctl: 6px;
   --r-surf: 12px;
 
-  /* type: the creative's body, meta and display sizes */
-  --fs-body: 12.5px; --lh-body: 16px;
-  --fs-meta: 11px; --lh-meta: 14px;
-  --fs-brand: 15px;
+  /* Claude's sidebar, screenshot px x --ref */
+  --ref: 0.8282;                              /* 675 / 815: that window is a touch wider than 16:9, so the app fits it by height */
+  --sidebar-w: calc(242px * var(--ref));      /* the sidebar up to its edge hairline */
+  --top: calc(51px * var(--ref));             /* the header, wordmark row centred at 25.5 */
+  --row: calc(28px * var(--ref));             /* one chat or nav row (Recents pitch 28.1, nav 27.5) */
+  --head: calc(28px * var(--ref));            /* a section label's row ("Pinned", "Recents") */
+  --gap-sec: calc(19.5px * var(--ref));       /* from a block's last row to the next label row */
+  --pad-x: calc(7px * var(--ref));            /* the rows' inset from the sidebar's edges */
+  --row-pad: calc(6px * var(--ref));          /* inside a row, to its icon */
+  --ic: calc(13px * var(--ref));              /* a row's icon, its left edge 13 from the sidebar's */
+  --gap-ic: calc(13px * var(--ref));          /* icon to text: text starts 39 from the sidebar's edge */
+  --fs-body: calc(12.75px * var(--ref));      /* row text: capitals 9px tall */
+  --lh-body: calc(17px * var(--ref));
+  --fs-meta: calc(11.4px * var(--ref));       /* labels: capitals 8px tall */
+  --lh-meta: calc(15px * var(--ref));
+  --fs-brand: calc(18.4px * var(--ref));      /* the wordmark: capitals 13px tall, as "Claude" */
+  --mark: calc(19px * var(--ref));
+  --tool: calc(24px * var(--ref));            /* a header or footer button */
+  --tool-ic: calc(14px * var(--ref));         /* its line icon (glyphs 10 to 12 wide) */
+  --field-h: calc(26px * var(--ref));         /* the search field */
+  --foot-h: calc(39px * var(--ref));          /* the account row, under a hairline */
+  --avatar: calc(20px * var(--ref));
 
-  /* geometry: the app is laid out at 1200x675 (style.af4c3c6b.css .app); the sidebar takes 180 on its left (30% under
-     its first 256), and main.bdeb2397.js reads this value to lay the app out. Not --side-w: the creative uses that name
-     for its live view's width */
-  --sidebar-w: 180px;
-  --app-h: 675px;
-  --row: var(--sp-32);
-  --head: calc(var(--sp-24) + var(--sp-4));
-  --top: var(--sp-48);
-  --ic: var(--sp-16);
+  --app-h: 675px;                             /* the app is laid out at 1200x675 (style.af4c3c6b.css .app) */
   --hair: 1px;
   --focus: 2px;
-  --d-hover: 150ms; /* design-tokens --duration-150, fills only */
+  --d-hover: 150ms; /* design-tokens --duration-150: fills, and rows making way during a drag */
+  --ease-std: cubic-bezier(0.2, 0, 0, 1); /* design-tokens --ease-standard */
 }

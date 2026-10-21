@@ -24,7 +24,7 @@ export const VARIANTS = [
   { id: 16, name: 'Compact', idea: 'Shorter rows and smaller icons, so every chat fits with room to spare.', cls: 'is-compact', body: iconList },
   { id: 17, name: 'White selection', idea: 'The open chat is a white row with a thin edge instead of a grey fill.', cls: 'is-white-sel', body: iconList },
   { id: 18, name: 'New chat button', idea: 'New chat becomes a full-width white button at the top. Automations stays a row.', nav: 'button', body: iconList },
-  { id: 19, name: 'Search field', idea: 'A search field sits over the list and replaces the search button in the top bar.', search: 'field', body: iconList },
+  { id: 19, name: 'Search field', idea: 'A search field under the top bar, as in Claude, replaces the search button.', search: 'field', body: iconList },
   {
     id: 20, name: 'Pinned on top', idea: 'Pinned chats sit above the rest, under quiet Pinned and Recent labels.',
     body: () => section('Pinned', list(rows(CHATS.filter((c) => c.pinned)))) + section('Recent', list(rows(CHATS.filter((c) => !c.pinned)))),

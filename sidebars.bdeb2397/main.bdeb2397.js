@@ -8,10 +8,7 @@ import { buildScreen, fit, measure, paint, ready } from '../screen.af4c3c6b.js';
 import { buildFeed, measureFeed, paintFeed } from '../feed.af4c3c6b.js';
 import { seg, lerp, outCubic, REDUCED } from '../lib.af4c3c6b.js';
 import { sidebarHTML, variantIndex } from './shell.bdeb2397.js';
-
-// the sidebar's width is the tokens' --sidebar-w, so the app's columns always match what the sidebar draws
-const SIDEBAR_W = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w'));
-if (!(SIDEBAR_W > 0)) throw new Error('--sidebar-w is not set: load sidebars.bdeb2397/tokens.bdeb2397.css before main.bdeb2397.js');
+import { enhanceSidebar } from './interact.bdeb2397.js';
 
 const S = buildSchedule();
 const params = new URLSearchParams(location.search);
@@ -23,8 +20,13 @@ const feed = buildFeed(document.querySelector('.ch'), document.querySelector('.a
 const chat = document.querySelector('.ch'), side = document.querySelector('.cc');
 const app = document.querySelector('.app');
 app.insertAdjacentHTML('afterbegin', sidebarHTML(variantIndex(params.get('v') ?? 1), { state: params.get('state') || 'ready' }));
+const sb = app.querySelector('.sb');
 // the sidebar is a picture of the app: its rows are links to nowhere, so a click never leaves the spot
-app.querySelector('.sb').addEventListener('click', (e) => { if (e.target.closest('a')) e.preventDefault(); });
+sb.addEventListener('click', (e) => { if (e.target.closest('a')) e.preventDefault(); });
+enhanceSidebar(sb);
+// its drawn width (the tokens' --sidebar-w, Claude's 242px at this app's scale) sets the app's columns
+const SIDEBAR_W = parseFloat(getComputedStyle(sb).width);
+if (!(SIDEBAR_W > 0)) throw new Error('the sidebar has no width: load sidebars.bdeb2397/tokens.bdeb2397.css before main.bdeb2397.js');
 const APP_W = 1200 - SIDEBAR_W, SIDE_W = 560, CHAT_W = APP_W - SIDE_W, SIDE_IN = 0.5;
 chat.style.left = `${SIDEBAR_W}px`;
 side.style.width = `${SIDE_W}px`;
