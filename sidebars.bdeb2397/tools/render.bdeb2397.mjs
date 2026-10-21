@@ -16,7 +16,8 @@ const report = [];
 async function audit(page) {
   return page.evaluate(() => {
     const broken = [...document.querySelectorAll('.sb img')].filter((img) => !img.complete || img.naturalWidth === 0).map((img) => img.getAttribute('src'));
-    const overflow = [...document.querySelectorAll('.sb-row, .sb-new, .sb-search')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.textContent.trim().slice(0, 40));
+    // chat titles cut off on purpose; the header, the account name and every control must fit whole
+    const overflow = [...document.querySelectorAll('.sb-top, .sb-brand, .sb-me, .sb-name, .sb-row, .sb-new, .sb-search')].filter((el) => el.scrollWidth > el.clientWidth + 1).map((el) => el.textContent.trim().slice(0, 40));
     return { broken, overflow };
   });
 }

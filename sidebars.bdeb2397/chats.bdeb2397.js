@@ -23,7 +23,8 @@ export const NAV = [
   { label: 'Automations', fx: 'loop' },
 ];
 
-export const ACCOUNT = { name: 'ROB IT studio', avatar: '../rbx/assets/a3def5f381990d.webp' };
+// short enough to sit whole beside the footer's two buttons at the sidebar's 180px
+export const ACCOUNT = { name: 'ROB IT', avatar: '../rbx/assets/a3def5f381990d.webp' };
 
 // newest first; `bucket` is the day group the date variants use
 export const CHATS = [

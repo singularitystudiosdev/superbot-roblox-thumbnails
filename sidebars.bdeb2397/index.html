@@ -13,8 +13,11 @@
   .sheet-head { max-width: 80ch; margin-bottom: var(--sp-32); }
   .sheet-head h1 { margin: 0 0 var(--sp-8); font: 700 calc(var(--sp-20) + var(--sp-2))/1.2 var(--ui); letter-spacing: -0.4px; }
   .sheet-head p { margin: 0; font: var(--fs-body)/1.5 var(--ui); color: var(--muted); }
-  .sheet { display: grid; grid-template-columns: repeat(auto-fill, var(--sidebar-w)); gap: var(--sp-48) var(--sp-32); margin: 0; padding: 0; list-style: none; }
-  .sheet-cap { display: flex; flex-direction: column; gap: var(--sp-4); min-height: calc(var(--sp-48) + var(--sp-40)); margin-bottom: var(--sp-12); }
+  .sheet { display: grid; grid-template-columns: repeat(auto-fill, var(--sidebar-w)); gap: 0 var(--sp-32); margin: 0; padding: 0; list-style: none; }
+  .sheet-side { margin-bottom: var(--sp-48); }
+  /* each item spans two shared rows, so captions of different lengths still start every sidebar in a row level */
+  .sheet > li { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
+  .sheet-cap { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-12); }
   .sheet-cap h2 { margin: 0; font: 500 var(--fs-brand)/1.2 var(--ui); }
   .sheet-cap p { margin: 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
   .sheet-cap a { margin-top: auto; font: 500 var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--ink); text-decoration: underline; text-underline-offset: var(--sp-2); }

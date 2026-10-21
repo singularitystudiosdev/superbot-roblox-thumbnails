@@ -9,7 +9,9 @@ import { buildFeed, measureFeed, paintFeed } from '../feed.af4c3c6b.js';
 import { seg, lerp, outCubic, REDUCED } from '../lib.af4c3c6b.js';
 import { sidebarHTML, variantIndex } from './shell.bdeb2397.js';
 
-const SIDEBAR_W = 256; // tokens.bdeb2397.css --sidebar-w
+// the sidebar's width is the tokens' --sidebar-w, so the app's columns always match what the sidebar draws
+const SIDEBAR_W = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sidebar-w'));
+if (!(SIDEBAR_W > 0)) throw new Error('--sidebar-w is not set: load sidebars.bdeb2397/tokens.bdeb2397.css before main.bdeb2397.js');
 
 const S = buildSchedule();
 const params = new URLSearchParams(location.search);

@@ -25,9 +25,10 @@
   --fs-meta: 11px; --lh-meta: 14px;
   --fs-brand: 15px;
 
-  /* geometry: the app is laid out at 1200x675 (style.af4c3c6b.css .app); the sidebar takes 256 on its left. Not
-     --side-w: the creative uses that name for its live view's width */
-  --sidebar-w: 256px;
+  /* geometry: the app is laid out at 1200x675 (style.af4c3c6b.css .app); the sidebar takes 180 on its left (30% under
+     its first 256), and main.bdeb2397.js reads this value to lay the app out. Not --side-w: the creative uses that name
+     for its live view's width */
+  --sidebar-w: 180px;
   --app-h: 675px;
   --row: var(--sp-32);
   --head: calc(var(--sp-24) + var(--sp-4));
