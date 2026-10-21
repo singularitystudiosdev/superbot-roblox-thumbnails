@@ -2,7 +2,7 @@
 // variant's scrolling middle, then the account row. `state` shows the list's loading
 // (skeleton rows) and empty states, which belong to the envelope rather than to any one variant.
 import { NAV, ACCOUNT } from './chats.bdeb2397.js';
-import { esc, fx, lu, mark, list, section } from './parts.bdeb2397.js';
+import { esc, fx, lu, mark, list, section, asset } from './parts.bdeb2397.js';
 import { VARIANTS } from './variants.bdeb2397.js';
 
 const SKELETON_ROWS = 5;
@@ -42,7 +42,7 @@ export function sidebarHTML(index, { state = 'ready', labelSuffix = '' } = {}) {
   <nav class="sb-nav" aria-label="Main${labelSuffix}">${navArea(variant)}${fieldSearch ? searchField : ''}</nav>
   <nav class="sb-scroll" aria-label="Chats${labelSuffix}">${middle(variant, state)}</nav>
   <footer class="sb-foot">
-    <div class="sb-me"><img class="sb-avatar" src="${ACCOUNT.avatar}" alt="" width="24" height="24"><span class="sb-name">${esc(ACCOUNT.name)}</span>${tool('Settings', 'settings')}${tool('Notifications', 'bell')}</div>
+    <div class="sb-me"><img class="sb-avatar" src="${asset(ACCOUNT.avatar)}" alt="" width="24" height="24"><span class="sb-name">${esc(ACCOUNT.name)}</span>${tool('Settings', 'settings')}${tool('Notifications', 'bell')}</div>
   </footer>
 </aside>`;
 }

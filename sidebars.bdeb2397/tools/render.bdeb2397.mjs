@@ -1,5 +1,6 @@
-// Renders every sidebar variant headlessly: the full frame beside the creative frozen at T, the sidebar alone, and the
-// contact sheet; fails on any console error, broken image or a row whose title overflows its row.
+// Renders every sidebar variant headlessly: the spot with the sidebar inside it, frozen at T, the sidebar alone, and
+// the contact sheet; fails on any console error, broken image, a row whose title overflows its row, a letterboxed
+// stage in a 16:9 window, or a chat that overlaps the sidebar.
 // node sidebars.bdeb2397/tools/render.bdeb2397.mjs http://localhost:5297/sidebars.bdeb2397/ [T] [outDir]
 import { createRequire } from 'node:module';
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -30,18 +31,31 @@ async function open(url, viewport) {
   return { page, errors };
 }
 
+// the sidebar inside the spot: in a 16:9 window the stage must fill it edge to edge (no letterbox), and the chat must
+// start where the sidebar ends
+async function layout(page) {
+  return page.evaluate(() => {
+    const r = (sel) => document.querySelector(sel).getBoundingClientRect();
+    const stage = r('#stage'), sb = r('.sb'), ch = r('.ch');
+    const gaps = { left: stage.left, top: stage.top, right: innerWidth - stage.right, bottom: innerHeight - stage.bottom };
+    const letterbox = Object.values(gaps).some((g) => Math.abs(g) > 1);
+    const overlap = ch.left < sb.right - 1;
+    return { letterbox: letterbox ? gaps : null, overlap: overlap ? { sbRight: sb.right, chLeft: ch.left } : null };
+  });
+}
+
 // the variant numbers come from the registry itself (plain strings, no DOM), so the render never drifts from it
 const { VARIANTS } = await import(new URL('../variants.bdeb2397.js', import.meta.url));
+const WINDOW = { width: 1600, height: 900 };
 for (const { id: v } of VARIANTS) {
   try {
-    const { page, errors } = await open(`${BASE}view.html?v=${v}&t=${T}`, { width: 1456, height: 675 });
-    const app = page.frameLocator('#app');
-    await app.locator('body').waitFor();
-    await page.frames()[1].waitForFunction(() => window.__ready === true, null, { timeout: 30000 });
+    const { page, errors } = await open(`${BASE}view.html?v=${v}&t=${T}`, WINDOW);
+    await page.waitForFunction(() => window.__ready === true, null, { timeout: 30000 });
     const id = String(v).padStart(2, '0');
     await page.screenshot({ path: `${OUT}v${id}-full.png` });
     await page.locator('.sb').screenshot({ path: `${OUT}v${id}-sidebar.png` });
-    report.push({ v, errors, ...(await audit(page)) });
+    const { letterbox, overlap } = await layout(page);
+    report.push({ v, errors, ...(await audit(page)), ...(letterbox && { letterbox }), ...(overlap && { overlap }) });
     await page.close();
   } catch (e) {
     console.error(e);
@@ -50,7 +64,7 @@ for (const { id: v } of VARIANTS) {
 }
 
 for (const state of ['loading', 'empty']) {
-  const { page, errors } = await open(`${BASE}view.html?v=1&t=${T}&state=${state}`, { width: 1456, height: 675 });
+  const { page, errors } = await open(`${BASE}view.html?v=1&t=${T}&state=${state}`, WINDOW);
   await page.locator('.sb').screenshot({ path: `${OUT}state-${state}.png` });
   report.push({ state, errors });
   await page.close();
@@ -62,6 +76,6 @@ report.push({ sheet: true, errors, ...(await audit(page)) });
 await browser.close();
 
 writeFileSync(`${OUT}render_report.json`, JSON.stringify(report, null, 1));
-const bad = report.filter((r) => r.errors?.length || r.broken?.length || r.overflow?.length);
+const bad = report.filter((r) => r.errors?.length || r.broken?.length || r.overflow?.length || r.letterbox || r.overlap);
 console.log(JSON.stringify(bad.length ? bad : 'all clean', null, 1));
 process.exit(bad.length ? 1 : 0);

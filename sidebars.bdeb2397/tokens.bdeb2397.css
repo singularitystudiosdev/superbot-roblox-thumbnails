@@ -25,9 +25,9 @@
   --fs-meta: 11px; --lh-meta: 14px;
   --fs-brand: 15px;
 
-  /* geometry: the app is laid out at 1200x675 (style.af4c3c6b.css .app); the sidebar takes 256 on its left */
-  --side-w: 256px;
-  --app-w: 1200px;
+  /* geometry: the app is laid out at 1200x675 (style.af4c3c6b.css .app); the sidebar takes 256 on its left. Not
+     --side-w: the creative uses that name for its live view's width */
+  --sidebar-w: 256px;
   --app-h: 675px;
   --row: var(--sp-32);
   --head: calc(var(--sp-24) + var(--sp-4));

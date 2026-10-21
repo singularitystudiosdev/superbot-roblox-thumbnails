@@ -1,7 +1,7 @@
 /* The sidebar: the Manus sidebar's anatomy (image 2 of the brief) in the creative's palette and type, every list item
    wearing a Fluent 3D icon as the creative's activity tab does. Values come from tokens.bdeb2397.css only. Nothing
    here animates; the only transitions are hover fills on controls. */
-.sb { display: flex; flex-direction: column; width: var(--side-w); height: var(--app-h); overflow: hidden; background: var(--ground); box-shadow: inset calc(-1 * var(--hair)) 0 0 var(--sel); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.sb { display: flex; flex-direction: column; width: var(--sidebar-w); height: var(--app-h); overflow: hidden; background: var(--ground); box-shadow: inset calc(-1 * var(--hair)) 0 0 var(--sel); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
 .sb, .sb * { box-sizing: border-box; }
 .sb ul { margin: 0; padding: 0; list-style: none; }
 .sb a { color: inherit; text-decoration: none; }

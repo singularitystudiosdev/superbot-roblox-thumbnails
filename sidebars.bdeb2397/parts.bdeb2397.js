@@ -13,8 +13,12 @@ const LUCIDE = {
 };
 export const lu = (name, cls = 'sb-lu') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${LUCIDE[name]}</svg>`;
 
+// asset paths in chats.bdeb2397.js are relative to this folder; resolved here, so a page anywhere (the sheet here, the
+// spot at the root) loads the same files
+export const asset = (path) => new URL(path, import.meta.url).href;
+
 // a Fluent 3D icon; decorative wherever the row's text already names the thing
-export const fx = (name, cls = 'sb-ic') => `<img class="${cls}" src="${FX[name]}" alt="" width="16" height="16">`;
+export const fx = (name, cls = 'sb-ic') => `<img class="${cls}" src="${asset(FX[name])}" alt="" width="16" height="16">`;
 
 // the superbot mark, static: the mask geometry of beta.superbot.gg's mascot (superbot-ad-gallery/assets/sb-mark-live.html),
 // its single ink layer, eyes cut out. Each copy needs its own mask id.
