@@ -71,7 +71,19 @@ const audit = (page) => page.evaluate(() => {
 const GAME_DESIGN_APPS = ['roblox', 'blender', 'unity', 'unreal', 'steam', 'itch', 'figma'];
 const BLENDER = ['retopo', 'turntable', 'lods'], UNITY = ['playtest', 'builds', 'assets'];
 const same = (a, b) => a.length === b.length && a.every((x) => b.includes(x));
+// the catalogue grows as the swarms ship (automations-swarm.f2db18c1.js): totals come from it, and the searches below
+// are held to the creative's own automations, a swarm one being free to match a word too
+const { APPS, AUTOMATIONS } = await import(new URL('../automations.03378ba4.js', import.meta.url).href);
+const { SWARM_AUTOMATIONS } = await import(new URL('../automations-swarm.f2db18c1.js', import.meta.url).href);
+const N = AUTOMATIONS.length, N_APPS = Object.keys(APPS).length;
+const swarmIds = new Set(SWARM_AUTOMATIONS.map((a) => a.id)), appOf = new Map(AUTOMATIONS.map((a) => [a.id, a.app]));
+const own = (ids) => ids.filter((id) => !swarmIds.has(id));
 const chipOf = (page, app) => page.locator(`.am-cats button.am-chip[data-app="${app}"]`);
+// the categories as laid out: how many lines the ones in sight take, and whether they are the first ones on offer
+const chipLines = (page) => page.evaluate(() => {
+  const chips = [...document.querySelectorAll('.am-cats .am-chip')], seen = chips.filter((c) => c.getClientRects().length);
+  return { lines: new Set(seen.map((c) => Math.round(c.getBoundingClientRect().top))).size, seen: seen.length, all: chips.length, first: seen.every((c, i) => c === chips[i]), firstSeen: seen[0]?.dataset.app, secondSeen: seen[1]?.dataset.app };
+});
 
 try {
   // the spot, then the sidebar's Automations row
@@ -79,9 +91,12 @@ try {
   check('starts on the chat', !(await state(page)).open);
   await page.locator('.sb a[href="#automations"]').click();
   let s = await state(page);
-  check('the Automations row opens the tab with all 32', s.open && s.shown.length === 32 && s.count === '32 automations' && s.current === '#automations', s);
-  check('every app is a category before a search, All apps on', s.chips.length === 16 && !s.picked.length && s.allApps, { chips: s.chips });
+  check(`the Automations row opens the tab with all ${N}`, s.open && s.shown.length === N && s.count === `${N} automations` && s.current === '#automations', s);
+  check('every app is a category before a search, All apps on', s.chips.length === N_APPS && !s.picked.length && s.allApps, { chips: s.chips });
   check('the search field has focus', await page.evaluate(() => document.activeElement?.matches('.am-search input')));
+  // two lines of categories at most, the first ones; a chip past them is out of sight (display none: out of the tab order)
+  const lines = await chipLines(page);
+  check('the categories take two lines at most, the first ones, the rest hidden', lines.lines === 2 && lines.seen < lines.all && lines.first, lines);
   await page.waitForTimeout(300);
   await page.screenshot({ path: `${OUT}automations-grid.png` });
   const a = await audit(page);
@@ -89,15 +104,15 @@ try {
 
   await page.keyboard.type('discord');
   s = await state(page);
-  check('"discord" narrows to the Discord automations and offers only Discord', s.shown.join() === 'updatelog,welcome,bugs' && s.count === '3 of 32' && s.chips.join() === 'discord', s);
+  check('"discord" narrows to the Discord automations and offers Discord first', own(s.shown).join() === 'updatelog,welcome,bugs' && s.count === `${s.shown.length} of ${N}` && s.chips[0] === 'discord' && s.shown.every((id) => appOf.get(id) === 'discord' || swarmIds.has(id)), s);
 
   await page.fill('.am-search input', 'game design');
   s = await state(page);
-  check('"game design" offers the game design apps', GAME_DESIGN_APPS.every((id) => s.chips.includes(id)) && !s.chips.includes('discord') && !s.chips.includes('gmail'), { chips: s.chips, shown: s.shown.length });
+  check('"game design" offers the game design apps', GAME_DESIGN_APPS.every((id) => s.chips.includes(id)) && !own(s.shown).some((id) => ['discord', 'gmail'].includes(appOf.get(id))), { chips: s.chips, shown: s.shown.length });
   await page.screenshot({ path: `${OUT}automations-categories.png` });
   await chipOf(page, 'blender').click();
   s = await state(page);
-  check('picking Blender shows only its automations', same(s.shown, BLENDER) && s.picked.join() === 'blender' && s.count === '3 of 32', s);
+  check('picking Blender shows only its automations', same(own(s.shown), BLENDER) && s.shown.every((id) => appOf.get(id) === 'blender') && s.picked.join() === 'blender' && s.count === `${s.shown.length} of ${N}`, s);
   // one highlight on a clicked, picked chip: its fill, with no ring of its own and no keyboard focus ring after a click
   // (read once its 150ms fill and edge transition has run)
   await page.waitForTimeout(250);
@@ -108,13 +123,19 @@ try {
   check('a clicked chip shows its fill only, no double ring', ring.focused === 'blender' && !ring.focusVisible && ring.boxShadow === 'none' && ring.border === 'rgba(0, 0, 0, 0)', ring);
   await chipOf(page, 'unity').click();
   s = await state(page);
-  check('picking Unity as well shows both', same(s.shown, [...BLENDER, ...UNITY]) && same(s.picked, ['blender', 'unity']), s);
+  check('picking Unity as well shows both', same(own(s.shown), [...BLENDER, ...UNITY]) && same(s.picked, ['blender', 'unity']), s);
   await page.waitForTimeout(250);
   await page.screenshot({ path: `${OUT}automations-picked.png` });
   await chipOf(page, 'blender').click();
   s = await state(page);
-  check('unpicking Blender leaves Unity', same(s.shown, UNITY) && s.picked.join() === 'unity', s);
+  check('unpicking Blender leaves Unity', same(own(s.shown), UNITY) && s.picked.join() === 'unity', s);
   check('the chip just pressed keeps focus', await page.evaluate(() => document.activeElement?.dataset.app === 'blender'));
+  // a search that no longer reaches the picked app keeps it in sight, leading the categories, so it can be unpicked
+  await page.fill('.am-search input', 'gmail');
+  const led = await chipLines(page);
+  s = await state(page);
+  check('a picked app leads the categories after a search, in sight', led.secondSeen === 'unity' && led.lines <= 2 && s.picked.join() === 'unity', led);
+  await page.fill('.am-search input', 'game design');
   await chipOf(page, '').click();
   s = await state(page);
   check('All apps unpicks every category', !s.picked.length && s.allApps && s.shown.length > UNITY.length, { picked: s.picked, shown: s.shown.length });
@@ -127,11 +148,11 @@ try {
 
   await page.fill('.am-search input', 'zzzz');
   s = await state(page);
-  check('no match shows the empty state', s.empty && s.shown.length === 0 && s.count === '0 of 32' && !s.chips.length, s);
+  check('no match shows the empty state', s.empty && s.shown.length === 0 && s.count === `0 of ${N}` && !s.chips.length, s);
   await page.screenshot({ path: `${OUT}automations-empty.png` });
   await page.locator('.am-empty .am-btn').click();
   s = await state(page);
-  check('Clear search brings every card back', !s.empty && s.shown.length === 32 && s.value === '' && s.chips.length === 16, s);
+  check('Clear search brings every card back', !s.empty && s.shown.length === N && s.value === '' && s.chips.length === N_APPS, s);
 
   await page.locator('.am-card[data-id="thumbs"] .am-try').click();
   s = await state(page);
@@ -149,7 +170,8 @@ try {
 
   // nothing of the spot shows through: at 48s its live view is docked with Stop on screen, under the tab
   const under = await open('?v=1&tab=automations&t=48');
-  const through = await under.page.evaluate(() => [...document.querySelectorAll('.cc-stop, .cc-top-btn, .ch-open, .cc-view')].map((el) => {
+  // (one not laid out at all, as in a closed chat's copy of the live view's top bar, has nothing to show)
+  const through = await under.page.evaluate(() => [...document.querySelectorAll('.cc-stop, .cc-top-btn, .ch-open, .cc-view')].filter((el) => el.getClientRects().length).map((el) => {
     const r = el.getBoundingClientRect(), hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
     return { el: el.className, visibility: getComputedStyle(el).visibility, hit: hit?.closest('.am') ? 'tab' : hit?.className ?? null };
   }).filter((x) => x.visibility !== 'hidden' || x.hit !== 'tab'));

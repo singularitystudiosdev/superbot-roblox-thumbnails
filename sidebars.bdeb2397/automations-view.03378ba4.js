@@ -28,14 +28,27 @@ const appOf = new Map(AUTOMATIONS.map((a) => [a.id, a.app]));
 const termsOf = (query) => query.toLowerCase().split(/\s+/).filter(Boolean);
 const matches = (id, terms) => terms.every((t) => haystacks.get(id).includes(t));
 
-// the categories a query offers: every app with a match, most matches first, catalogue order between equals. A picked
-// app the query no longer reaches stays on offer, last, so it can be unpicked. Picking never moves a chip.
+// the categories a query offers: every app with a match, most matches first, catalogue order between equals. Only the
+// first two lines of them show (clampChips), so a picked app leads them, the query reaching it or not: the filter in
+// force is always in sight and can be unpicked. Picking never moves a chip; the order is set as the query changes.
 function categories(terms, picked) {
   const counts = new Map();
   for (const a of AUTOMATIONS) if (matches(a.id, terms)) counts.set(a.app, (counts.get(a.app) ?? 0) + 1);
   const reached = [...counts.keys()].sort((x, y) => counts.get(y) - counts.get(x) || APP_ORDER.indexOf(x) - APP_ORDER.indexOf(y));
-  const stranded = [...picked].filter((id) => !counts.has(id));
-  return [...reached, ...stranded].map((id) => ({ id, n: counts.get(id) ?? 0 }));
+  return [...picked, ...reached.filter((id) => !picked.has(id))].map((id) => ({ id, n: counts.get(id) ?? 0 }));
+}
+
+// the categories take two lines at most, the first ones: a chip past them is hidden rather than cut off, so the keyboard
+// never lands on one out of sight. An app off them is still a search away.
+const CHIP_LINES = 2;
+function clampChips(cats) {
+  const chips = [...cats.children];
+  for (const c of chips) c.hidden = false;
+  // every chip measured before any is hidden: hiding one lets a later, narrower one move up into the room it left
+  const tops = chips.map((c) => c.offsetTop);
+  const lines = [...new Set(tops)].sort((a, b) => a - b);
+  // laid out yet (a hidden tab measures every chip at 0): the ones below the last line kept go
+  if (lines.length > CHIP_LINES) chips.forEach((c, i) => { c.hidden = tops[i] > lines[CHIP_LINES - 1]; });
 }
 
 // ---------- markup ----------
@@ -108,6 +121,7 @@ function mountAutomations({ app, sb, state }) {
         else b.setAttribute('aria-pressed', String(id ? picked.has(id) : !picked.size));
       }
     }
+    clampChips(cats);
     let shown = 0;
     for (const li of grid.querySelectorAll('.am-card[data-id]')) {
       const hit = matches(li.dataset.id, terms) && (!picked.size || picked.has(appOf.get(li.dataset.id)));
@@ -162,6 +176,15 @@ function mountAutomations({ app, sb, state }) {
     e.preventDefault();
     input.focus();
   });
+
+  // the two lines hold a different number of chips at another width, and the tab is first laid out when it opens: the
+  // chips are measured again whenever the row's width changes (not its height, which the measuring itself changes)
+  let catsWidth = -1;
+  new ResizeObserver(([e]) => {
+    if (e.contentRect.width === catsWidth) return;
+    catsWidth = e.contentRect.width;
+    clampChips(cats);
+  }).observe(cats);
 
   render();
   return { show };

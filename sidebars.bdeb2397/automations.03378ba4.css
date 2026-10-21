@@ -59,6 +59,8 @@ body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important
    picked. A picked one is filled as the sidebar's open chat is (--sel), never ringed: the only ring a chip ever wears
    is the keyboard's focus ring. A fill, not ink, so a dark app mark still reads on it ---------- */
 .am-cats { display: flex; flex-wrap: wrap; gap: var(--sp-6); }
+/* a chip past the row's two lines (automations-view.03378ba4.js clampChips) */
+.am-chip[hidden] { display: none; }
 .am-chip { display: inline-flex; align-items: center; gap: var(--sp-6); height: var(--chip-h); padding: 0 var(--sp-10); border: var(--hair) solid var(--sel); border-radius: 9999px; background: var(--surface); font: 500 var(--fs-small)/1 var(--ui); white-space: nowrap; cursor: pointer; transition: background-color var(--d-hover) ease-out, border-color var(--d-hover) ease-out; }
 .am-chip:hover { background: var(--ground); }
 .am-chip[aria-pressed="true"] { border-color: transparent; background: var(--sel); }
