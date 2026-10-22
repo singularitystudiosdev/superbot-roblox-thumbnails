@@ -1,0 +1,15 @@
+Sources for this chat's Gmail and Google Calendar pages (never shown on screen). Captured 2026-10-21 in the owner's own signed-in Chrome via
+browser-control, in a tab opened for the capture, at 1470x837 CSS px and 2x (cdp Emulation.setDeviceMetricsOverride,
+Page.captureScreenshot, ../../debug/cdp-shot.4c8bc671.mjs, cwebp -q 80). Each page is the app's real layout staged by DOM
+edits only; the account's own name, address and photo are replaced by the made-up Jordan Lee, jordan@quillnote.app, and
+0 traces of the real identity were left in the page text and attributes before a capture was kept. Nothing was opened,
+sent, archived, created, moved or saved; the tab was closed after.
+Gmail (mail.google.com): the real list (Inbox, Sent Mail as Gmail opens it, in:sent, or a broad read-only search
+behind the staged query), staged by ../../tools/stage-gmail.bdeb2397.js with the rows of ../../tools/play-mail.4c8bc671.js;
+where Gmail kept a list an earlier staging had shortened, its own last row was cloned and restaged. All mail is made up.
+Google Calendar (calendar.google.com): the real week (or 4-day) view, staged by ../../tools/stage-calendar.bdeb2397.js
+with the events of ../../tools/play-calendar.4c8bc671.js (each chip cloned from one real chip), the owner-named calendar
+under My calendars renamed to Jordan Lee. Calendar's own holiday chips are its own.
+  eticket           the inbox with the airline's e-ticket receipt, $612
+  calendar-out      week of Mar 7, 2027: the nonstop out on Mon Mar 8, 11:35 AM
+  calendar-back     week of Mar 21, 2027: the flight home on Mon Mar 22

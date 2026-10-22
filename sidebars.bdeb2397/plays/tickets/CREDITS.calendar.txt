@@ -1,0 +1,11 @@
+Google Calendar pages of the tickets chat (pages.calendar.json: calendar, calendar-added). Taken 2026-10-21 from the owner's
+signed-in Google Calendar in Chrome (browser-control), in a tab opened for the capture, week of Nov 8 2026, 1470x837 CSS px
+at 2x, saved as WebP (cwebp -q 80, ../../debug/cdp-shot.4c8bc671.mjs). Never shown on screen.
+Staged by DOM edits only with ../../tools/stage-calendar.bdeb2397.js (its window.CAL_EVENTS / CAL_TOP / REAL_EXTRA hooks,
+10 AM at the top of the grid): the account's own events removed, the chat's made-up week put in from one real event chip's
+markup (standups, Product sync, Designer interview, Quillnote design review, Tools for Teams podcast, Week review, Climbing
+with Dan), the made-up identity (Jordan Lee, J in place of the photo) and the owner-named calendar under My calendars renamed
+to it; 0 traces of the real account's name or address in the page's text and attributes before each capture was kept.
+calendar.webp: the week before superbot adds the show. calendar-added.webp: the same, with "Neon Harbor, 7:30pm, Riverside
+Arena, Portland" on Sat Nov 14 (7:30-10:30 PM). The real "Veterans Day" holiday chip on Wed Nov 11 is Calendar's own.
+No event was created, moved or saved; the tab was closed without a reload of anything changed.

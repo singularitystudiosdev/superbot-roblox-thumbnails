@@ -1,0 +1,43 @@
+{
+ "chat": "deposit",
+ "pages": {
+  "certified-upload": {
+   "img": "certified-upload.webp",
+   "title": "Mailform | How to send a letter online, right from your computer",
+   "host": "www.mailform.io",
+   "path": "/",
+   "fav": "fav-mail-mailform.png",
+   "targets": {
+    "next": [
+     1212.2,
+     314.4
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "certified": {
+   "img": "certified.webp",
+   "title": "Confirmation | Mailform",
+   "host": "www.mailform.io",
+   "path": "/confirmation.html",
+   "fav": "fav-mail-mailform.png",
+   "targets": {
+    "upload": [
+     235.4,
+     778
+    ],
+    "certified": [
+     765,
+     239.7
+    ],
+    "send": [
+     1180.8,
+     125
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "chat": "flights",
+ "pages": {
+  "options-894": {
+   "img": "options-894.webp",
+   "title": "Round trip to Tokyo | Google Flights",
+   "host": "google.com",
+   "path": "/travel/flights/booking?tfs=CBwQAhplEgoyMDI3LTAzLTA4Ih8KA1NGTxIKMjAyNy0wMy0wOBoDSEtHKgJDWDIDODczIh8KA0hLRxIKMjAyNy0wMy0xMBoDSE5EKgJDWDIDNTQyagcIARIDU0ZPcgwIAhIIL20vMDdkZmsaZRIKMjAyNy0wMy0yMiIfCgNITkQSCjIwMjctMDMtMjIaA0hLRyoCQ1gyAzU0OSIfCgNIS0cSCjIwMjctMDMtMjMaA1NGTyoCQ1gyAzg3MmoMCAISCC9tLzA3ZGZrcgcIARIDU0ZPQAFIAXABggELCP___________wGYAQE&tfu=CnRDalJJZVZaak9XbFRZMnh1TlUxQlFXUlBVa0ZDUnkwdExTMHRMUzB0TFMxdmVYSjRNMEZCUVVGQlIzSmFVbFZWVEV0UWFrVkJFZ3REV0RVME9YeERXRGczTWhvTENNV2pCUkFDR2dOVlUwUTRISERGb3dVPRICCAAiAA&hl=en&gl=US&curr=USD",
+   "fav": "fav-google-flights.png",
+   "targets": {
+    "site1": [
+     1167.6,
+     438
+    ],
+    "site6": [
+     1167.6,
+     783
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

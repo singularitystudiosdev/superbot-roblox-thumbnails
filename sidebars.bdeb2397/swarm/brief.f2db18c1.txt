@@ -1,0 +1,208 @@
+AUTOMATION SWARMS: SHARED BRIEF (every agent reads PART A in full and its own archetype's section in PART B)
+
+HUB  = /Users/adrianagne/Documents/cosmos/projects/superbot-roblox-thumbnails
+TOOL = node /Users/adrianagne/Documents/cosmos/projects/superbot-roblox-thumbnails/sidebars.bdeb2397/tools/automations-swarm.f2db18c1.mjs
+TAB  = http://localhost:5297/sidebars.bdeb2397/view.html?v=1&tab=automations
+ROOT = your own project folder (named in your first message). You write only inside ROOT, plus what TOOL writes.
+
+=====================================================================================================================
+PART A. THE SHARED TASK
+=====================================================================================================================
+
+A1. MISSION
+Keep adding new superbot automations, in niches the tab does not cover yet, to the Automations tab (TAB). An
+automation is a job superbot runs for someone over a long series of runs: on a LOOP or at a set TIME or on an EVENT,
+moving one named KPI, and learning from each run so the next one does better. You invent and document automations;
+you never run them for anyone, and you never contact, post, sign up, email, DM or buy anything for research.
+
+A2. WHAT A GOOD AUTOMATION IS (the rubric every archetype scores with, 0 to 10)
+  2  trigger: a concrete loop or schedule ("every weekday 9:00", "each new upload", "every night until the queue is
+     empty"), work that recurs for weeks or months, never a one-off.
+  2  kpi: one number the automation can read itself and moves on purpose (sponsor reply rate, takedowns completed,
+     click-through rate, refund rate, hours to first reply, invoices collected within 30 days).
+  2  learns: what it keeps from each run and how that changes the next (which subject lines got replies, which hosts
+     honour notices fastest, which thumbnail style won on which platform).
+  2  evidence: a page you FETCHED where real people do this by hand, repeatedly, and complain or pay for it (a forum
+     thread, a subreddit post, a job post for a recurring task, a help-forum question, a review complaint).
+  2  novelty: a niche or a job the tab does not hold yet, and not a thin rename of one it does.
+  The user's own examples of the bar: thumbnail design and upload across many platforms (CTR), email outreach for
+  YouTube sponsorships (reply rate, deals closed), DMCA takedown automation for SaaS (pirated links removed).
+  The catalogue already holds ~32 game-creator automations (Roblox, Steam, Blender, Unity...). Go elsewhere: every
+  trade, profession, hobby, platform and business type is open. Read what the tab holds before you invent:
+  HUB/sidebars.bdeb2397/automations.03378ba4.js and HUB/sidebars.bdeb2397/automations-swarm.f2db18c1.js.
+
+A3. WHAT SUPERBOT CAN DO (claim nothing else; superbot.gg, checked 2026-10-20)
+  One agent that uses your computer (you can watch it from your phone); drives apps and the OS like a person (browser,
+  Blender, Studio, spreadsheets, file managers); browses, reads and scrapes websites; makes pictures, video, songs and
+  3D models in one chat; daemon mode loops on a goal and keeps improving; voice chat, calls and texts on the user's
+  own account; email from the user's own account; API relay over the user's own subscriptions; solves captchas; scans
+  every file on the computer for a request; writes legal documents and agreements; teams and automations for shared
+  work; SYNC pulls in chats and projects from the AI apps the user already uses; remote control of one computer from
+  another device.
+
+A4. THE RECORD (one JSON object per line, appended to ROOT/data/<your-role>.jsonl; never edit or delete a line)
+{"id":"<prefix>-<short-slug>","archetype":"<your archetype>","role":"<your role>","created":"2026-10-21T19:00:00Z",
+ "status":"draft",
+ "title":"Sponsor outreach",                       3 to 24 characters, no closing punctuation
+ "app":"gmail",                                    a key of APPS in automations.03378ba4.js or automations-swarm
+ "newApp":null,                                    or {"key":"lemonsqueezy","name":"Lemon Squeezy",
+                                                   "domain":"lemonsqueezy.com","topics":["Monetization"],
+                                                   "keywords":"payments store licenses","iconUrl":null}
+                                                   (declare only an app not in APPS; app must equal newApp.key;
+                                                   iconUrl only if the tool says it found no 48px mark)
+ "topics":["Marketing"],                           0 to 3 Title Case topics
+ "desc":"Pitches brands that sponsor channels like yours each weekday and rewrites the pitch that gets the fewest replies.",
+                                                   ONE sentence, 50 to 140 characters, plain words, says what it
+                                                   does each run and what it keeps; like the cards already there
+ "niche":"YouTubers with 10k to 200k subscribers selling sponsor slots",
+ "trigger":{"type":"schedule","when":"every weekday at 9:00"},        type: schedule | loop | event
+ "kpi":{"name":"sponsor reply rate","direction":"up"},                direction: up | down
+ "learns":"Keeps every pitch, brand and reply; shifts the next sends toward the angles and send times that got replies.",
+ "loop":["find brands sponsoring similar channels","send the pitches","log replies","rewrite the weakest variant"],
+ "evidence":["https://www.reddit.com/r/NewTubers/comments/..."],      pages you fetched; never a search results page
+ "score":null, "notes":""}                         archetype-specific extras are welcome (cell, lens, design_id...)
+Copy rules (checked): no em dashes, en dashes or " -- "; no exclamation marks; none of seamless, robust,
+cutting-edge, game-changing, revolutionary, elevate, unlock, empower, supercharge, effortless, transformative,
+ultimate. Write like a founder describing the job, not like an ad.
+
+A5. SHIPPING ONE AUTOMATION (only roles told to ship do this; others hand candidates on as their section says)
+  1. Append the record with "status":"draft".                     The last line for an id is the one that counts.
+  2. TOOL check ROOT data/<your-role>.jsonl <id>                   Fix and re-append until PASS. A duplicate means
+                                                                   change the idea, not the wording.
+  3. TOOL thumb ROOT <id> "<scene>"                                 $0.15 per picture, so only after PASS. The scene is
+     what the automation makes or watches, as a picture: objects, screens of abstract bars, the result. Never a logo,
+     a brand, a person's likeness or any words. Look at a few HUB/sidebars.bdeb2397/automations/*.webp to match.
+  4. Append the same record again with "status":"ship".
+  5. TOOL check ROOT data/<your-role>.jsonl <id>                   must PASS with the thumbnail.
+  6. TOOL merge                                                     puts every shipped record on TAB.
+  7. Read HUB/sidebars.bdeb2397/swarm/report.f2db18c1.json: your id is under "accepted", or under "rejected" with the
+     reasons. A rejected id: fix and re-ship it once, or drop it. The report's "bySwarm" is the scoreboard.
+
+A6. EVIDENCE AND TOOLS
+  Fetch with mcp__scraper__search and mcp__scraper__fetch (ToolSearch select: them if they are not loaded). Good
+  veins: subreddits of a trade or profession (r/smallbusiness, r/Etsy, r/realtors, r/Accounting, r/freelance,
+  r/NewTubers, r/SaaS, r/LawFirm, r/teachers...), job boards showing a task someone pays for again and again, help
+  forums of the apps the work happens in, app-store and G2/Capterra review complaints. Optional, read-only: the Reddit
+  complaint index, `TOKEN=$(security find-generic-password -s cosmos-sell-to-reddit -a bearer -w)` then JSON-RPC
+  tools/call str_catalog / str_rank_problems at https://str-mcp.dsh.sh/mcp (Authorization: Bearer $TOKEN, Accept:
+  application/json, text/event-stream). A walled page: try another source, never claim what you did not read.
+
+A7. RUNNING FOREVER
+  Work in ROUNDS. Each round ends with one line appended to ROOT/logs/<your-role>.log:
+    <UTC time> round=<n> did="<what>" shipped=<ids or none> next="<what you will try next>"
+  After every 2 or 3 rounds, or when your role says to wait for others: load mcp__cosmos__resume_when
+  (ToolSearch select:mcp__cosmos__resume_when) and call it with after_seconds 60 to 240 and a `then` that says
+  "Continue as <archetype> <role> in <ROOT>: re-read your section of the brief, the tail of your log and the channel
+  files, then run the next round." Then end the turn. You resume on your own. Never stop for good, never ask the
+  user anything, never wait on a person. If the brief and your first message disagree, the first message wins.
+  Keep ROOT tidy: data/ (records), channel/ (files your archetype's agents share), thumbs/ (TOOL writes), logs/.
+  Commit ROOT with git every few rounds (your files only).
+
+=====================================================================================================================
+PART B. THE SIX ARCHETYPES (read your own; the others only if curious)
+=====================================================================================================================
+
+B1. LENS SWARM  (prefix lens, ROOT /Users/adrianagne/Documents/cosmos/projects/auto-swarm-lens)
+  One problem, six expert lenses, each run separately on its own model and its own evidence, then one merge. The gain
+  is the lenses truly differing: each lens must use the sources ITS person uses, not generic search.
+  Lenses (one agent each): developer, freelancer, student, researcher, small-business owner, creator.
+    - Each round: pick one domain your person works in that you have not covered, gather evidence from your person's
+      own sources, and write 2 to 4 CANDIDATES (full A4 records, "status":"candidate", "lens":"<lens>") to
+      data/lens-<lens>.jsonl. Run TOOL check on each (it checks candidates without a thumbnail) and fix what it
+      says. Do not ship, do not make thumbnails.
+    - Independence: never read another lens's file. You may read channel/verdicts.jsonl rows about YOUR lens to learn
+      what the synthesizer keeps and why.
+  Synthesizer (one agent): the merge step. Each round read every new candidate in data/lens-*.jsonl, group the ones
+  that describe the same job, score each group on the A2 rubric (a job two or more lenses found on their own gets +1,
+  capped at 10), and ship the best 2 to 4 per round to data/synth.jsonl (new id with prefix lens-, keep the strongest
+  evidence and KPI from the group, list the source candidate ids and lenses in notes). Append one verdict per
+  candidate to channel/verdicts.jsonl: {"candidate":id,"lens":...,"kept":true|false,"shipped_as":id|null,
+  "score":n,"why":"..."}. Never ship below 7.
+
+B2. WORKER + BUMPER  (prefix wb, ROOT /Users/adrianagne/Documents/cosmos/projects/auto-swarm-worker-bumper)
+  Worker (ships): each round, FIRST read channel/bumps.jsonl; the newest bump you have not acknowledged overrides your
+  own direction for this round. Obey it, then append {"bump":id,"at":...,"did":"..."} to channel/acks.jsonl. Then
+  ship 1 or 2 automations (A5) to data/worker.jsonl. Log the niche, app, trigger type and KPI of each in your round
+  line so the bumper can see your path.
+  Bumper (never ships, never writes automations): every 2 to 4 minutes read the worker's log, data/worker.jsonl and
+  the report. Fire a bump into channel/bumps.jsonl when the worker converges (its last 3 shipped share a niche family,
+  an app, a trigger type or a KPI family), when it was rejected twice running, when it shipped nothing for 10
+  minutes, and at least every 4 worker rounds anyway. Escalate while the pattern holds: L1 nudge (an adjacent niche),
+  L2 reframe (another person in the same world: the vendor, the moderator, the accountant; or invert the KPI), L3 hard
+  constraint (an app not yet used, a trigger type not yet used, a KPI family not yet used), L4 restart (a domain drawn
+  at random with `node -e` from a list of 40 you keep in channel/domains.json). Bump line: {"id":"b<n>","at":...,
+  "level":"L1-L4","because":"...","instruction":"...","forbidden":["..."]}. Log every bump with its reason.
+
+B3. BREAKTHROUGH BROADCAST  (prefix bc, ROOT /Users/adrianagne/Documents/cosmos/projects/auto-swarm-broadcast)
+  Four workers explore apart and tell everyone at once when one of them finds something that works. All four ship.
+    w1 media and creators   w2 commerce and SaaS   w3 local services and trades   w4 regulated work (legal,
+    finance, health admin, education)
+  Each round: FIRST read channel/breakthroughs.jsonl past the last line you read (keep that line number in your log
+  line). Every new notice from another worker costs you your next round: apply it inside YOUR region, then go back to
+  exploring. Otherwise explore your region and ship 1 or 2 automations (A5) to data/<w1..w4>.jsonl.
+  A breakthrough is objective, never a feeling, and is posted only after the report shows the example accepted:
+    source  a new kind of evidence that has given you 2+ accepted automations (e.g. recurring job posts on a board)
+    pattern a trigger or KPI or learning mechanism the tab has not shown before, accepted
+    vein    a niche where you got 3+ distinct automations accepted
+  Notice line: {"id":"<w>-<n>","from":"w2","at":...,"kind":"source|pattern|vein","what":"...",
+  "how_to_reuse":"...","examples":[ids]}. Post sparingly; research shows dense chatter collapses a swarm's diversity
+  (arXiv:2604.18005), so a notice that is not one of the three kinds is noise.
+
+B4. MAP-ELITES QUALITY-DIVERSITY  (prefix qd, ROOT /Users/adrianagne/Documents/cosmos/projects/auto-swarm-quality-diversity)
+  After FunSearch (Nature 625:468, 2023) and AlphaEvolve (arXiv:2506.13131, 2025): an archive of the best automation
+  per CELL, filled by emitters, judged by an evaluator. The goal is every cell full with a strong elite.
+  Grid (channel/grid.json, already written; channel/archive.json starts as {}): audience (12: creators, e-commerce,
+  saas-dev, local-services, trades, health-admin, legal, finance, education, nonprofits, real-estate, hobby) x
+  trigger (schedule, loop, event) x KPI family (reach, revenue, time-cost, quality, risk-compliance) = 180 cells,
+  cell id "creators|schedule|reach", exactly as grid.json lists them.
+  Archivist (the database and sampler): keep channel/archive.json {cell:{elite:id,score,title}} from the evaluator's
+  verdicts. Each round post 6 targets to channel/targets.jsonl: 4 empty cells (spread across audiences) and 2 filled
+  cells whose elite scored under 8, each with 1 or 2 parent elites from neighbouring cells to mutate from:
+  {"target":"t<n>","cell":...,"parents":[ids],"at":...}. Never ships.
+  Emitters e1, e2 (fast models, breadth) and e3 (strong model, depth): each round claim one unclaimed target in
+  channel/claims.jsonl ({"target":...,"by":"e1","at":...}), then write a CANDIDATE for that cell by mutating the parents
+  (change the audience, trigger or KPI to fit the cell; find fresh evidence for the new niche) to
+  data/emitter-<e1|e2|e3>.jsonl with "status":"candidate","cell":...,"target":...,"parents":[...]. TOOL check it. Never
+  ship.
+  Evaluator (ships): score every new candidate on A2, confirm or correct its cell, and ship it (A5, new qd- id, to
+  data/evaluator.jsonl) only if its cell is empty, or it beats the cell's elite by 2+ points (the old one stays on
+  TAB; the archive points to the new elite). Append {"candidate":id,"cell":...,"score":n,"elite":true|false,
+  "shipped_as":id|null,"why":"..."} to channel/verdicts.jsonl.
+
+B5. DREAMER (ACE PLAYBOOK)  (prefix ace, ROOT /Users/adrianagne/Documents/cosmos/projects/auto-swarm-dreamer)
+  After ACE, Agentic Context Engineering (arXiv:2510.04618, ICLR 2026): generators act, a reflector turns outcomes into
+  lessons, a curator folds lessons into a playbook by small deltas, never by rewriting it.
+  Playbook: channel/playbook.json {"bullets":[{"id":"pb-<n>","text":"...","helpful":0,"harmful":0,"added":...}]}.
+  Generators g1, g2 (ship): each round read the playbook, apply its bullets, ship 1 or 2 automations (A5) to
+  data/<g1|g2>.jsonl with "playbook_used":[bullet ids], and append your trajectory to channel/trajectories.jsonl:
+  {"by":"g1","round":n,"searches":[...],"sources_that_worked":[...],"ideas_dropped":[{"idea":...,"why":...}],
+  "check_failures":[...],"shipped":[ids],"rejected":[ids and reasons from the report]}.
+  Reflector (never ships): every 3 to 5 minutes read new trajectories and the report, and write lessons to
+  channel/reflections.jsonl: {"id":"r<n>","lesson":"a specific, reusable rule","evidence":[ids or trajectory refs],
+  "tags":[{"bullet":"pb-3","verdict":"helpful|harmful"}]}. Lessons are specific ("job boards for bookkeepers list the
+  same monthly reconciliation task; mine them for finance automations"), never generic ("do better research").
+  Curator (never ships): fold new reflections into the playbook with DELTA operations only, logged one per line in
+  channel/playbook-ops.jsonl: ADD a bullet, INC helpful or harmful on a bullet, MERGE two near-identical bullets,
+  PRUNE a bullet whose harmful exceeds helpful by 3. Write playbook.json atomically (write a temp file, then mv).
+  Never rewrite the playbook from scratch and never shorten bullets to save space: ACE names "brevity bias" and
+  "context collapse" as how a playbook loses what it learned.
+
+B6. META-CONDUCTOR  (prefix mc, ROOT /Users/adrianagne/Documents/cosmos/projects/auto-swarm-meta-conductor)
+  After ADAS (arXiv:2408.08435, ICLR 2025), AFlow (arXiv:2410.10762, ICLR 2025) and MaAS (arXiv:2502.04180, ICML
+  2025): a meta-agent designs the workflows the workers run, measures each design, and invents better ones from the
+  archive of what worked.
+  Conductor (never ships): keep the design archive in channel/designs.jsonl, one design per line: {"id":"d<n>",
+  "name":"...","recipe":["step 1: where to find evidence","step 2: how to turn it into an automation","step 3: how
+  to check it"],"parent":id|null,"at":...}. Seed it on your first round with 5 different designs (e.g. mine recurring
+  job posts; mine app-store review complaints; take an accepted automation and move it to an unrelated profession;
+  walk a regulation or tax calendar for deadline-driven jobs; read an app's changelog for new automatable features).
+  Each round: compute each design's fitness from channel/runs.jsonl and channel/scores.jsonl (accepted automations per
+  attempt x mean evaluator score; untested designs get an exploration bonus, like UCB), write channel/assignments.json
+  {"w1":{"design":id,"rounds":2},...}, giving at least one worker an untested or new design every round. Every 3
+  rounds write one NEW design conditioned on the archive (recombine the two fittest, or fix the weakest step of a good
+  one), and retire a design that is last in fitness after 4+ trials ("retired":true in a new line).
+  Workers w1, w2, w3 (ship): each round read channel/assignments.json, run YOUR assigned design's recipe exactly, ship
+  1 or 2 automations (A5) to data/<w1|w2|w3>.jsonl with "design_id", and append {"by":"w1","design":id,"round":n,
+  "attempted":n,"shipped":[ids],"rejected":[ids and reasons],"minutes":n} to channel/runs.jsonl.
+  Evaluator (never ships): score every newly accepted mc- automation on A2 and append {"id":...,"design":...,"score":n,
+  "why":"..."} to channel/scores.jsonl; that score is the conductor's signal.

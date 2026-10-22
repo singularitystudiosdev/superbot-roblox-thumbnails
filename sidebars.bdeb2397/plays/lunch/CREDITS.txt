@@ -1,0 +1,22 @@
+Play captures for the "lunch" chat, 2026-10-21. Never shown on screen.
+Tools: ../../tools/play-lunch.8889b4ff.mjs (captures; ONLY=search|store|item|cart redoes part), ../../tools/play-lunch-image.8889b4ff.mjs (Cedar House photo).
+
+Source: ubereats.com, public pages in a throwaway headless Chromium, guest, no login. The visitor's address 500 Howard St, San Francisco
+was typed into the home page's own address box (the site found it). Staging is by DOM edits only (text, the site's own markup, image src
+swaps); nothing added to any page. Nothing was ordered, nothing checked out, "Go to checkout" was never pressed; the guest cart held one
+item in the throwaway browser only.
+
+search.webp        Uber Eats' real search results for "lunch" at 500 Howard St. Four cards restaged: Menya Sora 4.7, La Esquina 4.6,
+                   Poke Lab 4.8, Cedar House 4.7 (names, ratings, counts, times, photos); the other results are the site's own
+                   (real businesses, public listing). The Uber One strip at the bottom and the cookie banner were closed.
+store-menya / store-esquina / store-poke.webp
+                   One real public store page (Bimi Poke, San Francisco) restaged as each place: name, rating, tags, address (made up),
+                   hours, ETA, menu names/prices/ratings, section names, reviews' names and quotes; banner and every food photo are crops
+                   of chats/lunch-ramen.webp, lunch-tacos.webp, lunch-poke.webp. The delivery strip is the site's own ("$0 delivery fee (new users)").
+item-poke.webp     The same store's item dialog (first menu item), restaged as Salmon poke bowl, $16.95; photo = crop of chats/lunch-poke.webp;
+                   options are the site's own layout (utensils, base, toppings, sauces; no peanut item shown).
+cart-poke.webp     The site's guest cart drawer after adding that item (Poke Lab, Salmon poke bowl $16.95, Go to checkout), over the staged store page.
+cedar-house.webp   768x432 photo of a chicken shawarma plate, generated like chats/*.webp (fal-ai/nano-banana-pro, 16:9 1K, FOOD style prompt of
+                   chat-images.bdeb2397.mjs); prompt and fal request id in prompts.8889b4ff.json. Used only inside search.webp.
+Favicon: ../../screens/fav/delivery-site.png (Uber Eats' own icon, existing).
+Paid calls: one fal-ai/nano-banana-pro image (request 01a1606f-0dbd-79b1-a98e-8f8675620d60), about $0.15. No orders, payments or other spend.

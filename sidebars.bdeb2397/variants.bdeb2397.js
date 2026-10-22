@@ -7,6 +7,8 @@ import { row, list, section, time } from './parts.bdeb2397.js';
 const BUCKETS = ['Today', 'Yesterday', 'Earlier'];
 const rows = (chats, opts) => chats.map((c) => row(c, typeof opts === 'function' ? opts(c) : opts)).join('');
 const iconList = () => section('Chats', list(rows(CHATS)));
+// a heading over no chats is left out
+const group = (title, chats) => (chats.length ? section(title, list(rows(chats))) : '');
 
 export const VARIANTS = [
   { id: 1, name: 'Icon list', idea: 'The one you kept: a 3D icon and the title, nothing else on the row.', body: iconList },
@@ -14,7 +16,7 @@ export const VARIANTS = [
   { id: 12, name: 'Icon tiles', idea: 'Each 3D icon sits on a small white tile, like an app icon.', cls: 'is-tiles', body: iconList },
   {
     id: 13, name: 'Quiet dates', idea: 'The same list split under Today, Yesterday and Earlier, with no counts or folds.',
-    body: () => BUCKETS.map((b) => section(b, list(rows(CHATS.filter((c) => c.bucket === b))))).join(''),
+    body: () => BUCKETS.map((b) => group(b, CHATS.filter((c) => c.bucket === b))).join(''),
   },
   {
     id: 14, name: 'With times', idea: 'Variant 1 plus when each chat last changed, in grey on the right.',
@@ -27,6 +29,6 @@ export const VARIANTS = [
   { id: 19, name: 'Search field', idea: 'A search field under the top bar, as in Claude, replaces the search button.', search: 'field', body: iconList },
   {
     id: 20, name: 'Pinned on top', idea: 'Pinned chats sit above the rest, under quiet Pinned and Recent labels.',
-    body: () => section('Pinned', list(rows(CHATS.filter((c) => c.pinned)))) + section('Recent', list(rows(CHATS.filter((c) => !c.pinned)))),
+    body: () => group('Pinned', CHATS.filter((c) => c.pinned)) + group('Recent', CHATS.filter((c) => !c.pinned)),
   },
 ];

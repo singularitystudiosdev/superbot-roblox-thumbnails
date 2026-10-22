@@ -1,0 +1,18 @@
+Certified-mail pages of the deposit chat (pages.certified.json: certified-upload, certified). Taken 2026-10-21 from the REAL
+Mailform send flow (https://www.mailform.io/, no account, no sign-in), headless Chrome (Playwright), 1470x837 CSS px at 2x,
+saved as WebP (cwebp -q 80), by ../../tools/play-deposit-certified.4c8bc671.mjs. Favicon fav-mail-mailform.png is the site's own
+favicon-32x32.png.
+certified-upload.webp: https://www.mailform.io/ after plays/deposit/letter.pdf was picked in the site's own upload input (its
+"Your uploads" chip letter.pdf and the Next button are the site's). letter.pdf is the Gmail compose's letter (tools/play-deposit.8889b4ff.js
+COMPOSE, same body, from Jordan Lee to Westlake Property Management, dated October 8, 2026), made locally with Playwright page.pdf;
+the street addresses are made up, the script having none: Westlake Property Management, 2250 Van Ness Ave, Suite 210, San
+Francisco, CA 94109; Jordan Lee, 1428 Elm St, Apt 3, San Francisco, CA 94117 (the chat's own address line).
+certified.webp: https://www.mailform.io/confirmation.html ("Confirm Your Order"), reached with the site's own Next > destination
+address form (Westlake Property Management) > return address form (Jordan Lee) > Confirm, the forms filled by typing into the real
+fields; then "USPS Certified Mail (via First Class)" ticked with its own checkbox (the site itself unticked First Class and priced
+the order: Certified $8.99, total $11.98, below the screenshot). Staged by DOM edits only: the page's green promo bar and its dark
+"Verifying addresses..." bar were removed, and the margins of the two red section headings (10/20px) were set to 0/6px so the file
+name fits in the first screen. Send Mail (and everything that pays, creates an account or saves to one) was never pressed; the
+site's POSTs to /app/account (address book save) and /app/api (address autocomplete) were aborted; only the anonymous session ones
+the flow needs went through: /app/upload (the made-up letter), /app/address/to, /app/address/from, /app/apply/certified (the
+option toggle). No payment page was opened. The browser context was discarded afterwards.

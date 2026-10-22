@@ -1,0 +1,32 @@
+plays/lisbon (never shown on screen). Date: 2026-10-21. Made by ../../tools/play-lisbon.8889b4ff.mjs
+(headless Chromium, public pages, nobody signed in, nothing booked, reserved, paid or sent; no paid API and no
+image generation were used). Every capture: viewport 1470x837 at 2x, WebP (cwebp -q 80), DOM edits only.
+
+hotels-top.webp   Google Hotels results for "hotels in Chiado Lisbon", Fri Nov 20 to Mon Nov 23 2026, 2 adults, USD,
+                  as the page loads (search row visible). Same staging as ../../screens/lisbon.webp (capture-lisbon):
+                  ten made-up hotels (Casa do Chiado Hotel first: 4.6, (418), $204 a night, $612 total, free
+                  cancellation), sponsored row and vacation rentals hidden, map pin prices made up, "Showing results
+                  1 - 10 of 40", the footer's "from your Internet address" place changed to San Francisco, CA, USA.
+                  The photos are Google's own thumbnails of real hotels (rooms, lobbies, facades); the one real hotel
+                  whose photo shows people on a terrace (Casinha das Flores) is dropped from the list.
+hotels.webp       The same page scrolled 100px (real window.scrollTo), where Google's own header turns compact and
+hotels.scroll.webp  sticks. scroll layer: box [0,174,944,663] (below the sticky filter band, left of the map), img is
+                  the list's content at 2x (944 x 2538 CSS px: first card to the footer). Layer offset s = real
+                  scrollY 100+s. Proof (composite of hotels.webp + layer at s vs a real viewport at scrollY 100+s,
+                  whole 2940x1674 frame): 0 differing pixels at s = 0, 1, 137, 500, 937, 1001; at s = 1875 (end of
+                  page) 76 px differ, all in the map's bottom 2 CSS rows (outside the box, map repaint).
+hotel.webp        Google's own page for the first hotel in the list (real click on its "View prices" card, Overview
+                  tab, "Price displayed: Stay total" chosen in the page's own dialog). Staged: name Casa do Chiado
+                  Hotel (title, left list, aria/alt text), 4.6 (418), address and phone made up, price badge $204 for
+                  Nov 20 - 23, Featured options: Expedia.com $612, first room $612 "1 double bed · Free cancellation
+                  until Nov 17"; left list = the same ten made-up hotels as the results page; map pins made up.
+                  Photos: the real hotel's own (plant courtyard, bathroom, bedroom with TV), no people.
+train.webp        Comboios de Portugal timetable results, Lisboa Rossio > Sintra, Sunday November 22 2026, 2nd Class,
+                  2 passengers (the address cp.pt's own search form goes to, ids 94-59006 and 94-61101). The real
+                  timetable and prices (5.10 EUR for two); cookie banner closed with the site's "Reject All"; the
+                  departures before 08:00 (7 night trains) are hidden, as the page's own Filters panel would.
+fav-cp.png        cp.pt's apple-touch-icon-180x180.png scaled to 64px. The Google Hotels pages use
+                  ../../screens/fav/hotels-site.png.
+
+Not captured: restaurant (TheFork / OpenTable reservation page). Left out on purpose: it is a booking flow and the
+brief for this run forbade any reservation, so no page was opened on those sites.

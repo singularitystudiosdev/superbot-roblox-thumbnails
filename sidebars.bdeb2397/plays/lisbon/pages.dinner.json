@@ -1,0 +1,43 @@
+{
+ "chat": "lisbon",
+ "pages": {
+  "dinner-1": {
+   "img": "dinner-1.webp",
+   "title": "Reservation at Taberna do Largo",
+   "host": "sevenrooms.com",
+   "path": "/explore/tabernadolargo/reservations/create/search/?date=2026-11-20&halo=2&lang=en&start_time=20%3A00",
+   "fav": "fav-sevenrooms.png",
+   "targets": {
+    "slot": [
+     573.9,
+     455.8
+    ],
+    "reserve": [
+     735,
+     731.2
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "dinner-2": {
+   "img": "dinner-2.webp",
+   "title": "Reservation at Casa das Gaivotas",
+   "host": "sevenrooms.com",
+   "path": "/explore/casadasgaivotas/reservations/create/search/?date=2026-11-21&halo=2&lang=en&start_time=20%3A30",
+   "fav": "fav-sevenrooms.png",
+   "targets": {
+    "slot": [
+     574.7,
+     455.8
+    ],
+    "reserve": [
+     735,
+     731.2
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

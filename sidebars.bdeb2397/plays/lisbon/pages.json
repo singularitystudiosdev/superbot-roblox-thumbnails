@@ -1,0 +1,120 @@
+{
+ "chat": "lisbon",
+ "pages": {
+  "hotels-top": {
+   "img": "hotels-top.webp",
+   "title": "Search for accommodations in Chiado - Google hotels",
+   "host": "google.com",
+   "path": "/travel/search?q=hotels+in+Chiado+Lisbon&hl=en&gl=us&curr=USD&ts=CAESCgoCCAMKAggDEAAaUAoyEi4yJDB4ZDE5MzQ3ZjAyYTYzOTBmOjB4ZTAwNTFjNTY2ZmRjMWU5NzoGQ2hpYWRvGgASGhIUCgcI6g8QCxgUEgcI6g8QCxgXGAMyAggBKgkKBToDVVNEGgA",
+   "fav": "../../screens/fav/hotels-site.png",
+   "targets": {
+    "hotel1": [
+     394.5,
+     323
+    ],
+    "prices1": [
+     823,
+     463
+    ],
+    "hotel2": [
+     374.5,
+     541
+    ],
+    "hotel3": [
+     391,
+     759
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "hotels": {
+   "img": "hotels.webp",
+   "title": "Search for accommodations in Chiado - Google hotels",
+   "host": "google.com",
+   "path": "/travel/search?q=hotels+in+Chiado+Lisbon&hl=en&gl=us&curr=USD&ts=CAESCgoCCAMKAggDEAAaUAoyEi4yJDB4ZDE5MzQ3ZjAyYTYzOTBmOjB4ZTAwNTFjNTY2ZmRjMWU5NzoGQ2hpYWRvGgASGhIUCgcI6g8QCxgUEgcI6g8QCxgXGAMyAggBKgkKBToDVVNEGgA",
+   "fav": "../../screens/fav/hotels-site.png",
+   "targets": {
+    "hotel1": [
+     394.5,
+     213
+    ],
+    "prices1": [
+     823,
+     353
+    ],
+    "hotel2": [
+     374.5,
+     431
+    ],
+    "hotel3": [
+     391,
+     649
+    ]
+   },
+   "scroll": {
+    "box": [
+     0,
+     174,
+     944,
+     663
+    ],
+    "img": "hotels.scroll.webp",
+    "height": 2538,
+    "targets": {
+     "hotel1": [
+      394.5,
+      39
+     ],
+     "prices1": [
+      823,
+      179
+     ],
+     "hotel2": [
+      374.5,
+      257
+     ],
+     "hotel3": [
+      391,
+      475
+     ]
+    }
+   },
+   "field": null
+  },
+  "hotel": {
+   "img": "hotel.webp",
+   "title": "Casa do Chiado Hotel - Google hotels",
+   "host": "google.com",
+   "path": "/travel/search?q=hotels+in+Chiado+Lisbon&hl=en&gl=us&curr=USD&ts=CAESCgoCCAMKAggDEAAaTgowEi4yJDB4ZDE5MzQ3ZjAyYTYzOTBmOjB4ZTAwNTFjNTY2ZmRjMWU5NzoGQ2hpYWRvEhoSFAoHCOoPEAsYFBIHCOoPEAsYFxgDMgIIASoJCgU6A1VTRBoA&qs=MihDaG9JeU1XYW51aXYwUFRTQVJvTkwyY3ZNVEZtTnpOMFltdDZiQkFCOA1IAA&ap=KigKEgkqsNmhHVpDQBGcaJCywEoiwBISCY6l_b7FW0NAEZxokFKORiLAMAC6AQhvdmVydmlldw",
+   "fav": "../../screens/fav/hotels-site.png",
+   "targets": {
+    "book": [
+     962.5,
+     708
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "train": {
+   "img": "train.webp",
+   "title": "Lisboa Rossio → Sintra | CP - Comboios de Portugal",
+   "host": "cp.pt",
+   "path": "/en/resultado-pesquisa?passageiros=2&selectedClass=2&startDate=2026-11-22&departureStation=94-59006&arrivalStation=94-61101",
+   "fav": "fav-cp.png",
+   "targets": {
+    "row": [
+     735,
+     643
+    ],
+    "detail": [
+     1286.6,
+     567
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

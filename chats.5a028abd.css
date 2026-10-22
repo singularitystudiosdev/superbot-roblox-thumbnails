@@ -1,0 +1,95 @@
+/* The chat list down the app's left edge (chats.5a028abd.js, ?chats=1..10): ten ways to show the account's chats, each
+   marking a chat with a Fluent 3D emoji from img/fx/ as the Activity tab marks a step. It shares the right sidebar's
+   ground and hairline (#fafafa, a 1px line on the inner edge); the open chat wears the ink at 7%; the one accent is the
+   takeover's orange (#fd9e43, style.af4c3c6b.css .cc-band), spent on the working dot and the unread badges. Two radii:
+   8px on rows, tiles and controls, 12px on the icon grid's cells; pills and dots round. Nothing here animates in CSS:
+   the open chat's slots are written from t. */
+/* --cl-ink2 is the spot's own secondary ink (style.af4c3c6b.css .ac-row): the muted grey falls under 4.5:1 on the open
+   chat's wash, so a stamp, a last message or a count on that wash takes this one */
+:root { --cl-sel: rgba(28, 28, 30, .07); --cl-rule: rgba(28, 28, 30, .12); --cl-accent: #fd9e43; --cl-ink2: #3a3a3c; }
+.app[data-chats] .ch { left: var(--cl); }
+.cl { position: absolute; left: 0; top: 0; bottom: 0; width: var(--cl); display: flex; flex-direction: column; gap: 12px; min-height: 0; padding: 12px 8px; overflow: hidden; background: var(--side); box-shadow: inset -1px 0 0 var(--line); font: 12px/16px var(--ui); color: var(--ink); }
+.cl svg { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cl em { font-style: normal; }
+.cl small { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 11px/16px var(--ui); color: var(--muted); }
+.cl-ic { flex: none; display: block; }
+.cl-preload { display: none; }
+.cl-div { flex: none; align-self: stretch; height: 1px; margin: 0 8px; border: 0; background: var(--cl-rule); }
+
+/* the head: New chat and Search, or a search field */
+.cl-top { flex: none; display: flex; align-items: center; gap: 4px; }
+.cl-new { flex: 1; display: flex; align-items: center; gap: 8px; min-height: 28px; padding: 4px 8px; font-weight: 500; }
+.cl-ib { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; color: var(--muted); }
+.cl-search { flex: 1; display: flex; align-items: center; gap: 8px; height: 28px; padding: 0 8px; border-radius: 8px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); }
+.cl-search svg { width: 14px; height: 14px; }
+
+/* a section under its plain heading */
+.cl-sec { flex: none; display: flex; flex-direction: column; gap: 2px; }
+.cl-h { display: flex; align-items: baseline; gap: 4px; margin: 0; padding: 4px 8px; font: 500 11px/16px var(--ui); color: var(--muted); }
+.cl-n { font-variant-numeric: tabular-nums; }
+
+/* one line: [icon] title ... stamp, or the open chat's working dot */
+.cl-row { display: flex; align-items: center; gap: 8px; min-height: 28px; padding: 4px 8px; border-radius: 8px; }
+.cl-t { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cl-s { flex: none; font: 11px/16px var(--ui); font-variant-numeric: tabular-nums; color: var(--muted); }
+.cl-work { flex: none; display: inline-flex; align-items: center; gap: 4px; font: 11px/16px var(--ui); color: var(--muted); opacity: 0; }
+.cl-work > i, .cl-dot { flex: none; display: block; width: 6px; height: 6px; border-radius: 9999px; background: var(--cl-accent); }
+.cl-dot { opacity: 0; }
+.cl .is-sel { background: var(--cl-sel); }
+.cl .is-sel .cl-t { font-weight: 500; }
+.cl .is-sel .cl-s, .cl .is-sel .cl-work, .cl .is-sel .cl-p, .cl .is-sel small { color: var(--cl-ink2); }
+
+/* two lines: [icon] title ... stamp, then the last message; an unread chat bold with the accent dot */
+.cl-row2 { display: flex; align-items: flex-start; gap: 12px; padding: 8px; border-radius: 8px; }
+.cl-tx { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.cl-l1 { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.cl-p { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 11px/16px var(--ui); color: var(--muted); }
+.cl-unread .cl-t { font-weight: 600; }
+.cl-unread .cl-l1::after { content: ""; flex: none; width: 6px; height: 6px; border-radius: 9999px; background: var(--cl-accent); }
+/* Previews: the last message gets two lines, held open so a reply never moves the rows under it */
+.cl-previews .cl-p { height: 32px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+/* Labeled rail: a 40px tile per chat, its one-word label under it; the open chat's tile washed, with a notch on the edge */
+.cl-rail { align-items: center; gap: 8px; padding: 12px 0; }
+.cl-tile { position: relative; flex: none; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 64px; }
+.cl-box { position: relative; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; }
+.cl .cl-tile.is-sel { background: none; }
+.cl-tile.is-sel .cl-box { background: var(--cl-sel); }
+.cl-tile.is-sel::before { content: ""; position: absolute; left: -4px; top: 8px; width: 3px; height: 24px; border-radius: 0 9999px 9999px 0; background: var(--ink); }
+.cl-tile.is-sel small { color: var(--ink); font-weight: 500; }
+.cl-box .cl-dot { position: absolute; right: 2px; top: 2px; }
+
+/* Projects: one row per game, [folder] name ... count; the open game's chats under it on a guide line */
+.cl-proj { display: flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 8px; border-radius: 8px; font-weight: 500; }
+.cl-pill { flex: none; min-width: 20px; height: 16px; padding: 0 6px; border-radius: 9999px; background: var(--cl-sel); font: 11px/16px var(--ui); font-variant-numeric: tabular-nums; color: var(--cl-ink2); text-align: center; }
+.cl-nest { position: relative; display: flex; flex-direction: column; gap: 2px; padding-left: 20px; }
+.cl-nest::before { content: ""; position: absolute; left: 16px; top: 4px; bottom: 4px; width: 1px; background: var(--cl-rule); }
+
+/* Pinned and recent: the pinned chats as icons over their names, three across */
+.cl-pins { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+.cl-pin { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; padding: 8px 4px; border-radius: 8px; }
+
+/* Timeline: every chat's icon on one spine, a day's label sitting on it */
+.cl-tl { position: relative; display: flex; flex-direction: column; gap: 4px; }
+.cl-tl::before { content: ""; position: absolute; left: 21.5px; top: 12px; bottom: 12px; width: 1px; background: var(--cl-rule); }
+.cl-tl-day { position: relative; align-self: flex-start; margin: 8px 0 0 4px; padding: 2px 8px; border-radius: 9999px; background: var(--side); box-shadow: inset 0 0 0 1px var(--line); font: 500 11px/16px var(--ui); color: var(--muted); }
+.cl-tl-day:first-child { margin-top: 0; }
+.cl-tl-row { position: relative; display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 8px; }
+.cl-tl-row .cl-tx { gap: 0; }
+.cl-node { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9999px; background: var(--bg); box-shadow: 0 0 0 1px var(--line); }
+
+/* Vertical tabs: a deeper ground, the open chat the one raised white tab with its close button */
+.cl-tabs { background: var(--line); }
+.cl-tabs .cl-h { color: var(--ink); }
+.cl-tab { display: flex; align-items: center; gap: 8px; min-height: 32px; padding: 0 8px; border-radius: 8px; }
+.cl-tabs .is-sel { background: var(--bg); box-shadow: 0 0 0 1px var(--cl-rule); }
+.cl-x { flex: none; display: grid; place-items: center; width: 16px; height: 16px; color: var(--muted); }
+.cl-x svg { width: 12px; height: 12px; }
+
+/* Icon grid: three across, each chat's icon over its name, an unread count as a badge on the icon's corner */
+.cl-apps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 4px; }
+.cl-app { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; padding: 8px 4px; border-radius: 12px; }
+.cl-appic { position: relative; display: grid; place-items: center; width: 40px; height: 40px; }
+.cl-app.is-sel small { color: var(--ink); font-weight: 500; }
+.cl-badge { position: absolute; right: -4px; top: -2px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 9999px; background: var(--cl-accent); box-shadow: 0 0 0 2px var(--side); font: 600 10px/16px var(--ui); font-variant-numeric: tabular-nums; color: var(--ink); text-align: center; }
+.cl-appic .cl-dot { position: absolute; right: 0; top: 2px; width: 8px; height: 8px; }

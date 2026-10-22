@@ -1,0 +1,51 @@
+/* A chat's feed scrolling, and the pill over its composer counting the messages under the view (latest.bfdfd5c2.js).
+   The pill is the composer's own white on a hairline with a soft lift, ink type in the chat's family, round; it rises in
+   over --d-enter and sinks out over --d-hover. No chromatic accent: ink is the action color. */
+
+/* a run's chat (style.af4c3c6b.css .ch-feed, .ch-in) scrolls while it plays: feed.bdeb2397.js sets the thread's height
+   to what has arrived and clips it there, so the scroll stops at the latest; the confetti of a card's popper still flies
+   past the column's sides */
+.ch-feed { overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.ch-feed::-webkit-scrollbar { display: none; }
+.ch-feed > .ch-in { overflow-x: visible; overflow-y: clip; }
+.ch-feed:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+
+/* the thread runs on under the composer, whose white box covers it, so an update leaving the view slides under the
+   box's top edge instead of being cut flat over a white band. --lt-tuck is how deep: the composer's top padding (4px)
+   and its box's corner radius (14px), style.af4c3c6b.css .composer and .rc. The thread is narrower than the box by
+   that radius on each side (32px, where the box sits 18px in), so nothing shows past its rounded corners on the way
+   under, and its foot pads out the same depth so the latest update rests clear above the box */
+.ch, .cv-chat { --lt-tuck: 18px; }
+.ch-feed, .cv-feed { margin-bottom: calc(-1 * var(--lt-tuck)); }
+.ch-feed > .ch-in, .cv-feed > .cv-in { padding: 16px var(--sp-32) calc(12px + var(--lt-tuck)); }
+.ch > .composer, .cv-chat > .composer { position: relative; z-index: 1; }
+
+/* the pill: in the middle of the chat's column, its foot 8px over the composer */
+.lt { position: relative; z-index: 2; flex: none; height: 0; }
+.lt-pill {
+  position: absolute; left: 50%; bottom: var(--sp-8);
+  display: inline-flex; align-items: center; gap: var(--sp-6); height: 28px; padding: 0 var(--sp-12) 0 var(--sp-10);
+  border: 0; border-radius: 9999px; background: var(--surface); color: var(--ink);
+  box-shadow: 0 0 0 var(--hair) var(--sel), 0 var(--sp-4) var(--sp-12) color-mix(in srgb, var(--ink) 10%, transparent);
+  font: 500 12px/1 var(--ui); white-space: nowrap; cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translate(-50%, var(--sp-8)) scale(0.96);
+  transition: opacity var(--d-hover) ease-in, transform var(--d-hover) ease-in, visibility 0s var(--d-hover), background-color var(--d-hover) ease-out;
+}
+.lt.is-on .lt-pill {
+  opacity: 1; visibility: visible; transform: translate(-50%, 0);
+  transition: opacity var(--d-enter) var(--ease-std), transform var(--d-enter) var(--ease-std), visibility 0s, background-color var(--d-hover) ease-out;
+}
+.lt-pill:hover { background: var(--ground); }
+.lt-pill:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+.lt-pill .lt-ic { width: 13px; height: 13px; color: var(--muted); }
+/* the figure, an odometer (each digit a column that rolls), a word space from what it counts */
+.lt-l { display: inline-flex; align-items: center; gap: var(--sp-4); }
+.lt-n { display: flex; height: var(--od-h); line-height: var(--od-h); font-variant-numeric: tabular-nums; }
+.lt-n .od-d { display: block; height: var(--od-h); overflow: hidden; }
+.lt-n .od-strip, .lt-n .od-strip i { display: block; }
+.lt-n .od-strip i { height: var(--od-h); font-style: normal; }
+
+/* with reduced motion it only fades */
+@media (prefers-reduced-motion: reduce) {
+  .lt-pill, .lt.is-on .lt-pill { transform: translate(-50%, 0); transition-property: opacity, visibility, background-color; }
+}

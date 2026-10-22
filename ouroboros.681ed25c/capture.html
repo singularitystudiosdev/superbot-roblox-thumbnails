@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- One ouroboros logo on a transparent canvas, drawn at a given time: the frame source for export.681ed25c.mjs (?id=<figure>&size=<px>) -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ouroboros capture</title>
+<style>html, body { margin: 0; background: transparent; } canvas { display: block; }</style>
+<script type="importmap">{ "imports": { "three": "../logos.4bc2a2d5/vendor/three.module.js" } }</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script type="module">
+import { FIGURES } from './figures.681ed25c.js';
+import { mount } from '../logos.4bc2a2d5/engine.4bc2a2d5.js';
+
+const params = new URLSearchParams(location.search);
+const fig = FIGURES.find((f) => f.id === params.get('id'));
+const size = Number(params.get('size') ?? 512);
+const view = mount(document.getElementById('c'), fig.make(), { size, pixelRatio: 1, capture: true });
+window.period = view.period;
+window.poster = fig.poster ?? 0;
+window.frameAt = (t) => { view.renderAt(t); return document.getElementById('c').toDataURL('image/png'); };
+window.ready = true;
+</script>
+</body>
+</html>

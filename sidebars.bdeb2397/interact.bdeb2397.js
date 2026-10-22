@@ -1,8 +1,9 @@
 // Everything a rendered sidebar does under the pointer and keyboard, wired in one place: titles fade and scroll
-// (marquee.bdeb2397.js), chats drag to a new place or into a group (drag.bdeb2397.js), the "•••" menus and group
-// dialog (groups.bdeb2397.js), and Alt with the up or down arrow moving the focused chat one place. Every change is
-// announced in a live region.
+// (marquee.bdeb2397.js), a working chat's app icon keeps turning (spin.4bc2a2d5.js), chats drag to a new place or into a
+// group (drag.bdeb2397.js), the "•••" menus and group dialog (groups.bdeb2397.js), and Alt with the up or down arrow
+// moving the focused chat one place. Every change is announced in a live region.
 import { marquee } from './marquee.bdeb2397.js';
+import { spin } from './spin.4bc2a2d5.js';
 import { enableDrag } from './drag.bdeb2397.js';
 import { setupGroups } from './groups.bdeb2397.js';
 
@@ -28,6 +29,7 @@ export function enhanceSidebar(sb) {
   };
   const init = (host) => {
     marquee(host);
+    spin(host);
     host.querySelector('a.sb-row')?.setAttribute('aria-describedby', hint.id);
   };
 

@@ -4,6 +4,8 @@
 import { NAV, ACCOUNT } from './chats.bdeb2397.js';
 import { esc, fx, lu, mark, list, section, asset, title } from './parts.bdeb2397.js';
 import { VARIANTS } from './variants.bdeb2397.js';
+// the wordmark's logo turns live (<sb-mark>)
+import './mark.901bc0c7.js';
 
 const SKELETON_ROWS = 5;
 
@@ -37,12 +39,12 @@ export const variantIndex = (id) => Math.max(0, VARIANTS.findIndex((v) => v.id =
 export function sidebarHTML(index, { state = 'ready', labelSuffix = '' } = {}) {
   const variant = VARIANTS[index];
   const fieldSearch = variant.search === 'field';
-  return `<aside class="sb ${variant.cls ?? ''}" data-variant="${variant.id}" aria-label="superbot sidebar${labelSuffix}">
-  <header class="sb-top"><span class="sb-brand">${mark()}superbot</span><span class="sb-tools">${fieldSearch ? '' : tool('Search chats', 'search')}${tool('Collapse sidebar', 'panel')}</span></header>
+  return `<aside class="sb ${variant.cls ?? ''}" data-variant="${variant.id}" aria-label="ouroboro sidebar${labelSuffix}">
+  <header class="sb-top"><span class="sb-brand">${mark()}ouroboro</span><span class="sb-tools">${fieldSearch ? '' : tool('Search chats', 'search')}${tool('Collapse sidebar', 'panel')}</span></header>
   <nav class="sb-nav" aria-label="Main${labelSuffix}">${fieldSearch ? searchField : ''}${navArea(variant)}</nav>
   <nav class="sb-scroll" aria-label="Chats${labelSuffix}">${middle(variant, state)}</nav>
   <footer class="sb-foot">
-    <div class="sb-me"><img class="sb-avatar" src="${asset(ACCOUNT.avatar)}" alt="" width="24" height="24"><span class="sb-name">${esc(ACCOUNT.name)}</span>${tool('Settings', 'settings')}${tool('Notifications', 'bell')}</div>
+    <div class="sb-me"><img class="sb-avatar" src="${asset(ACCOUNT.avatar)}" alt="" width="24" height="24"><span class="sb-name">${esc(ACCOUNT.name)}</span>${tool('Settings', 'settings')}</div>
   </footer>
 </aside>`;
 }

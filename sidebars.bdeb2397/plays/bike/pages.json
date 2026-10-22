@@ -1,0 +1,93 @@
+{
+  "chat": "bike",
+  "pages": {
+    "search": {
+      "img": "search.webp",
+      "title": "SF bay area bicycles for sale \"road bike 56cm\" - craigslist",
+      "host": "craigslist.org",
+      "path": "/search/area/sfbay?cat=bia&max_price=600&query=road%20bike%2056cm",
+      "fav": "../../screens/fav/craigslist.png",
+      "targets": {
+        "row540": [
+          410,
+          192
+        ],
+        "rowA": [
+          398,
+          229
+        ],
+        "rowB": [
+          414,
+          377
+        ],
+        "rowC": [
+          413.6,
+          488
+        ]
+      },
+      "scroll": {
+        "box": [
+          200,
+          151,
+          1270,
+          686
+        ],
+        "img": "search.scroll.webp",
+        "height": 1310,
+        "targets": {
+          "row540": [
+            210,
+            41
+          ],
+          "rowA": [
+            198,
+            78
+          ],
+          "rowB": [
+            214,
+            226
+          ],
+          "rowC": [
+            213.6,
+            337
+          ]
+        }
+      },
+      "field": null
+    },
+    "listing": {
+      "img": "listing.webp",
+      "title": "Aluminum road bike 56cm - new chain and tires - bicycles - by owner - bike sale - craigslist",
+      "host": "craigslist.org",
+      "path": "/view/d/oakland-aluminum-road-bike-56cm-new/Q8mZ2vKd4rWnTq7LcHs3Bx",
+      "fav": "../../screens/fav/craigslist.png",
+      "targets": {
+        "reply": [
+          285.1,
+          86.1
+        ],
+        "photo": [
+          554,
+          316.9
+        ]
+      },
+      "scroll": null,
+      "field": null
+    },
+    "reply": {
+      "img": "reply.webp",
+      "title": "Aluminum road bike 56cm - new chain and tires - bicycles - by owner - bike sale - craigslist",
+      "host": "craigslist.org",
+      "path": "/view/d/oakland-aluminum-road-bike-56cm-new/Q8mZ2vKd4rWnTq7LcHs3Bx",
+      "fav": "../../screens/fav/craigslist.png",
+      "targets": {
+        "email": [
+          355,
+          120.1
+        ]
+      },
+      "scroll": null,
+      "field": null
+    }
+  }
+}

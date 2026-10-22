@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat list, ten ways: superbot Roblox thumbnails</title>
+<link rel="icon" href="data:,">
+<style>
+/* the contact sheet for the chat-list variants (chat-variants.5a028abd.js): each is a frozen frame at 30s, the spot's
+   first new best, linking to the variant playing live. The spot's own palette and face (style.af4c3c6b.css :root). */
+:root { --ui: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif; --bg: #fff; --side: #fafafa; --line: #e5e5ea; --ink: #1c1c1e; --muted: #6e6e73; --link: #0a66d8; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--side); font: 15px/1.5 var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased; }
+main { max-width: 1680px; margin: 0 auto; padding: 32px 24px 48px; }
+h1 { margin: 0 0 8px; font: 600 28px/1.15 var(--ui); letter-spacing: -0.02em; }
+.lede { max-width: 72ch; margin: 0 0 32px; color: var(--muted); }
+.lede a, figcaption a { color: var(--link); text-underline-offset: 2px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 720px), 1fr)); gap: 32px 24px; margin: 0; padding: 0; list-style: none; }
+figure { margin: 0; }
+.shot { display: block; overflow: hidden; border-radius: 12px; background: var(--bg); box-shadow: 0 0 0 1px var(--line); }
+.shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.shot:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 12px; }
+figcaption b { font-weight: 600; }
+figcaption span { flex: 1 1 32ch; color: var(--muted); }
+figcaption a { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<main>
+<h1>Chat list, ten ways</h1>
+<p class="lede">The Roblox thumbnails spot with the account's chats down the app's left edge, each chat marked with a Fluent 3D emoji like the Activity tab's steps. Each frame is frozen at 30s, just after the first new best, so the open chat's icon shows the trophy. Click a frame to watch that variant play.</p>
+<ul class="grid" id="sheet"></ul>
+</main>
+<script type="module">
+import { VARIANTS } from './chat-variants.5a028abd.js';
+import { esc } from './lib.af4c3c6b.js';
+document.getElementById('sheet').innerHTML = VARIANTS.map((v, i) => {
+  const href = `chats.5a028abd.html?chats=${i + 1}`;
+  return `<li><figure>
+    <a class="shot" href="${href}" aria-label="Play ${esc(v.name)}"><img src="img/chats.5a028abd/v${i + 1}.jpg" alt="${esc(v.name)}: the spot at 30s with this chat list on the left" width="1920" height="1080" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async"></a>
+    <figcaption><b>${esc(v.name)}</b><span>${esc(v.note)}</span><a href="${href}">?chats=${i + 1}</a></figcaption>
+  </figure></li>`;
+}).join('');
+</script>
+</body>
+</html>

@@ -52,5 +52,6 @@
   --hair: 1px;
   --focus: 2px;
   --d-hover: 150ms; /* design-tokens --duration-150: fills, and rows making way during a drag */
+  --d-enter: 200ms; /* design-tokens --duration-200: something rising into view (the chat's messages-below pill) */
   --ease-std: cubic-bezier(0.2, 0, 0, 1); /* design-tokens --ease-standard */
 }

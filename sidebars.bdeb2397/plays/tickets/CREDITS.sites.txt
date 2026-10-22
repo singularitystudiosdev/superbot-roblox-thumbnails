@@ -1,0 +1,31 @@
+plays/tickets (second batch): the "Checked 4 resale sites" captures for the "tickets" chat (Neon Harbor, Riverside Arena, Portland, Sat Nov 14 2026 7:30pm). Date 2026-10-21. Never shown on screen.
+
+Sources (real public event pages of the same real arena concert the Vivid Seats captures use; captured headless, Playwright/Chromium 1470x837 @2x, cwebp -q 80,
+by ../../tools/play-tickets-sites.4c8bc671.mjs, re-runnable):
+  site-gametime      https://gametime.co/concert/teddy-swims-tickets/11-14-2026-las-vegas-nv-t-mobile-arena/events/69e17124eb91be296b0521a2?quantity=2   (favicon: assets.gametime.co favicon png)
+  site-ticketsmarter https://www.ticketsmarter.com/e/teddy-swims-with-freak-freely-tickets-las-vegas-11-14-2026-t-mobile-arena/3361089                     (favicon: TicketSmarter-512x512.png, scaled to 48px)
+  site-ticketnetwork https://www.ticketnetwork.com/tickets/7883124/teddy-swims-tickets-sat-nov-14-2026-t-mobile-arena                                      (favicon: apple-icon-192x192.png, scaled to 48px)
+
+Staged by DOM edits only: real show/venue/city/address/state/start time replaced with the made-up ones (text nodes, aria/alt/title text, document.title);
+every price the site draws (listing rows, Gametime "Top Deals" cards and map pins) pushed through one monotone map so the real ordering is kept and the
+cheapest 2-ticket listing is $246 (Gametime), $251 (TicketSmarter), $262 (TicketNetwork), every one "Fees Included" / "Includes Fees"; quantity filter set with
+each site's own 2-ticket control (Gametime ?quantity=2; TicketSmarter/TicketNetwork "How Many Tickets" radio = 2, they then read "2 Tickets" on every row);
+Gametime's <time> timestamp moved to 7:30 PM Pacific so the site's own formatter prints it; the artist photo in Gametime's header replaced by a flat navy block.
+Sections, rows, seat-view pictures and the seat maps are the site's own as drawn (they are the real arena's, not retouched).
+Removed: cookie/consent banners, Gametime's "$20 off your first order" email promo, TicketNetwork's "Inventory is limited" pop-up (dismissed with its own button),
+the "How Many Tickets" modal (after choosing 2).
+
+Pages: site-gametime / site-ticketsmarter / site-ticketnetwork. Targets: price1 = price of the cheapest listing (first row), row1 = that listing's row.
+
+NOT captured, walled headless (verbatim):
+  SeatGeek  (seatgeek.com/teddy-swims-tickets/vegas)  HTTP 403, body = DataDome: <iframe src="https://geo.captcha-delivery.com/captcha/?initialCid=...">, page title "seatgeek.com", no content.
+  StubHub   (stubhub.com/teddy-swims-las-vegas-tickets-11-14-2026/event/160913830/)  HTTP 403, DataDome interstitial: <iframe src="https://geo.captcha-delivery.com/interstitial/?initialCid=...">, title "stubhub.com".
+  viagogo   (viagogo.com/.../E-160913830)  HTTP 403, empty page titled "viagogo.com" (same StubHub-family bot wall).
+  TickPick  (tickpick.com/buy-teddy-swims-tickets-t-mobile-arena-11-14-26-7pm/7883124/)  HTTP 403, response header "cf-mitigated: challenge" (Cloudflare); the page shows "Something's not right. We couldn't verify your session, which helps us fight bots that make tickets harder to get. We've blocked access to this page for now."
+  No challenge was solved or bypassed; the three pages above were used instead.
+
+NOT captured: the Vivid Seats payment step (Step 2 of 2, saved Visa 4417). It only exists after the guest email is POSTed ("Continue as a Guest") and the site creates a hold on the seats / a checkout session;
+reaching it needs a real hold or an account, neither of which was created. The furthest real step remains checkout-filled.webp (Step 1 of 2) from the first batch.
+
+Safety: no purchase, hold, sign-in, form submit, email entry or payment. Every non-GET to ticketsmarter/ticketnetwork/gametime order/checkout/cart/account/auth endpoints was aborted
+in the browser (aborted in this run: 1 POST ticketsmarter create-session, 4 POST ticketnetwork /api/web-vitals beacons). Only the pages' analytics beacons went out. No paid API calls were made.

@@ -3,19 +3,52 @@ Sources for the sidebar variants (sidebars.bdeb2397). Never shown on screen.
 fx/*.png: Fluent Emoji in their 3D style, the same set as the creative's img/fx (the Activity tab's icons), fetched
 2026-10-21 from https://github.com/microsoft/fluentui-emoji (assets/<Name>/3D/<name>_3d.png, 256px) and scaled to
 96px with sips: admission_tickets, airplane_departure, barber_pole, bell, bicycle, chart_increasing, credit_card,
-envelope_with_arrow, file_folder, film_frames, handshake, house, inbox_tray, luggage, magnifying_glass_tilted_left,
-memo, money_bag, open_file_folder, pencil, scissors, spiral_calendar, takeout_box, world_map. License: MIT,
-Copyright (c) Microsoft Corporation
+envelope_with_arrow, file_folder, handshake, inbox_tray, luggage, magnifying_glass_tilted_left, memo, money_bag,
+open_file_folder, pencil, scissors, spiral_calendar, takeout_box, wrapped_gift. License: MIT, Copyright (c) Microsoft Corporation
 (https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE). The rest of the sidebar's 3D icons are the creative's
 own ../img/fx files.
+fx/pack/*.png (the fx pack, ../fx-pack.d3748edf.js: 864 icons in 48 niches, browsed at ../pack.d3748edf.html): Fluent
+Emoji in their 3D style, fetched 2026-10-22 by ../tools/fx-pack.d3748edf.mjs from microsoft/fluentui-emoji at commit
+1ffb34c752ecf5d402f04cfb4b392c77f57c54bc (assets/<Name>/3D/<name>_3d.png, or a person's assets/<Name>/Default/3D/
+<name>_3d_default.png, 256px), scaled to 96px with sips the same way, so an icon also in fx/ or ../img/fx is the same
+file byte for byte; keycap_5 and ringed_planet, whose sources are not square, are centred on a transparent 96px square.
+A key is the Fluent file name without '!' or accents (on_arrow, up_button, pinata). Per-icon log:
+../debug/fx-pack.d3748edf/run.json. License: MIT, Copyright (c) Microsoft Corporation, as above.
+fx/coin-silver.0ecb8f7c.png (the credits row's coin over the account row): generated 2026-10-21 by
+../tools/coin-fx.0ecb8f7c.mjs with fal-ai/nano-banana-pro/edit, a plain silver coin with no emblem drawn in the style
+of four of the creative's Fluent icons and the silver of fx/tier-low.8e7c682e.png, then trimmed, its contrast graded
+(a sigmoidal curve), cut out with a round mask and scaled to 96px. Prompt and fal request id: fx/prompts.0ecb8f7c.json.
+fx/coin-rainbow.0ecb8f7c.png: generated 2026-10-22 by the same tool and model from the silver coin,
+fx/tier-max.8e7c682e.png and the same four Fluent icons, cut the same way; not drawn (Billing's 100,000,000 pack is the
+silver coin with a CSS rainbow over it, ../settings.854d0793.css .st-flow). fx/coin-gold.0ecb8f7c.png
+(Billing's 20,000,000 pack): fal's content checker refused every gold draft, so it is the silver coin colour-graded
+through a gradient map (`grade gold`, 2026-10-22). Both logged in fx/prompts.0ecb8f7c.json.
+
+fx/app-*.png (the chat rows' icons, one per app a chat is done in): generated 2026-10-21 by
+../tools/app-fx.4bc2a2d5.mjs with fal-ai/nano-banana-pro/edit, each from the app's real logo as its site or store
+serves it (../automations/apps/{gmail,ubereats,youtube,craigslist}.png, ../screens/fav/{tickets-site,google-flights,
+hotels-site}.png, ../plays/haircut/fav-fresha.png, ../../img/fav/roblox.png) with four of the creative's Fluent icons
+as the style, the background cut away with fal-ai/birefnet/v2 and the icon scaled to 96px. Prompts and fal request
+ids: fx/prompts.4bc2a2d5.json. The logos are trademarks of Roblox, Google (Gmail, YouTube, Google Flights, Google
+Hotels), Vivid Seats, Uber, Fresha and craigslist, shown as the apps the made-up chats are done in.
+fx/app-{x,discord,facebook,reddit}.png (the share box's places to post a link): the same tool and models, each from
+the app's App Store icon as the iTunes lookup API serves it (artworkUrl512, fetched 2026-10-21; X id 333903271,
+Discord 985746746, Facebook 284882215, Reddit 1064216828), kept in fx/share-logos/. The marks are trademarks of X
+Corp., Discord Inc., Meta Platforms and Reddit Inc., shown as the places a chat's link is posted to.
 
 The superbot mark in the sidebar's top bar: the mask geometry of the beta.superbot.gg mascot, from
 superbot-ad-gallery/assets/sb-mark-live.html (first party), drawn as one static ink layer.
 
 Utility and menu icons (search, panel, settings, bell, ellipsis, folder-plus, folder-minus, folder-input, pencil):
 lucide (https://lucide.dev, ISC).
+The share box's offer is modeled on Manus's share sheet (screenshot supplied by the owner).
 
 The avatar is the creative's own file (../rbx/assets); see ../img/CREDITS.txt.
+
+mark.901bc0c7.png: the ouroboro mark's poster, the Impossible infinity of the project's own logos (../../logos.4bc2a2d5,
+drawn by code, see its CREDITS.txt) recoloured grey, rendered by ../tools/mark-poster.901bc0c7.mjs.
+tier-low.8e7c682e.png, tier-medium.8e7c682e.png, tier-high.8e7c682e.png, tier-max.8e7c682e.png: the effort tiers (../tier.8e7c682e.js),
+the same Impossible infinity in silver, gold, diamond and the logos' own Rainbow flow, rendered by ../tools/tier-posters.8e7c682e.mjs.
 Chat titles, conversations (../transcripts.bdeb2397.js), names of people, shops, products and channels, and every
 figure in them are made up and illustrative. The chats' pictures: ../chats/CREDITS.txt.
 

@@ -1,0 +1,44 @@
+{
+  "thumb-desk-setup-daily": {
+    "id": "thumb-desk-setup-daily",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. A tidy wooden desk seen from slightly above: an ultrawide monitor and a laptop both showing a clean made-up notes app with colorful abstract blocks, a small desk lamp, a ceramic mug and a plant. The monitor and laptop have plain blank bezels and chins with no logo, badge or lettering at all, and a generic unbranded laptop. Bold yellow text reading exactly \"7 APPS\" (the word APPS has exactly two P letters: A, P, P, S) on the left.",
+    "request_id": "01a16072-0a7f-7191-a773-1c86a190b06d",
+    "at": "2026-10-21T21:51:05.885Z"
+  },
+  "thumb-calm-code": {
+    "id": "thumb-calm-code",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. A dark developer desk at night: a laptop with a code editor in dark theme next to a second screen showing a calm focus timer app with a green leaf, soft teal ambient light. Bold white text \"FOCUS APPS\" at the top.",
+    "request_id": "01a16071-1ecc-77d0-8e43-a880d8f753ba",
+    "at": "2026-10-21T21:50:05.364Z"
+  },
+  "thumb-tidy-tabs": {
+    "id": "thumb-tidy-tabs",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. A laptop screen full of dozens of tiny crowded browser tabs on the left half, and on the right half the same screen with just three neat violet tabs, a clean split composition. Bold white text \"40 TABS?\" with a violet outline.",
+    "request_id": "01a16071-1ed2-7c21-a241-680d99fbba2e",
+    "at": "2026-10-21T21:50:05.918Z"
+  },
+  "thumb-workflow-weekly": {
+    "id": "thumb-workflow-weekly",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. A laptop showing a made-up automation app: a blue canvas of connected rounded boxes with flow arrows, on a clean white desk with a coffee cup. Bold white text \"AUTOMATE IT\" on a royal blue band at the bottom.",
+    "request_id": "01a16071-1ec8-7d40-b193-be6a78da90e9",
+    "at": "2026-10-21T21:50:06.309Z"
+  },
+  "thumb-keyboard-coffee": {
+    "id": "thumb-keyboard-coffee",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. A cozy morning desk: a mechanical keyboard with warm beige keycaps in the foreground, a latte in a cup, a laptop with a to-do list app softly blurred behind, golden morning light. Bold cream text \"MORNING SETUP\" at the top.",
+    "request_id": "01a16071-1ed2-7743-9dc3-d5d891848e43",
+    "at": "2026-10-21T21:50:06.668Z"
+  },
+  "thumb-focus-friday": {
+    "id": "thumb-focus-friday",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. An overhead shot of a minimal desk with a phone showing a bullseye focus timer app, a notebook, a pencil and a small hourglass, coral red and cream colors. Bold white text \"DEEP WORK\" on a coral band.",
+    "request_id": "01a16071-1ecc-7972-be92-75cff80bdcd3",
+    "at": "2026-10-21T21:50:10.291Z"
+  }
+}

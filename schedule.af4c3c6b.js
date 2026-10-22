@@ -16,10 +16,17 @@ const S_READ = 400; // the edit view scrolled to show its header and the first s
 const ROW_H = 89;
 const PAGE_ROOM = 765; // the Thumbnails page's scrolling column
 const EDIT_FULL = 1630; // its height with the ten rows it lists today
+const ASKED = 0.6; // after the send: the prompt's bubble in, then the run asks which game (S.gate)
+const ANSWERED = 0.15; // the answer's bubble lands this long after the run goes on from its question
 
 const pct = (v) => `${v.toFixed(2)}%`;
 
-export function buildSchedule() {
+// `ask` is the prompt typed in, the spot's own unless one is given (an automation started in the sidebar view,
+// sidebars.bdeb2397/main.bdeb2397.js); everything after it keeps its place relative to the send. With `asks` (an
+// automation's prompt, which names no game) the run asks which game once it is sent and waits at S.gate until it is
+// answered (sidebars.bdeb2397/gameask.b3fb005c.js); `game`, the answer, is then the user's next message, and everything
+// after keeps its place relative to that instead
+export function buildSchedule(ask = ASK, { asks = false, game = null } = {}) {
   const S = { chat: [], typing: [], acts: [], moves: [], clicks: [], tabs: [{ openAt: -1 }], views: [[{ at: -1, v: 'ntp' }], []], active: [{ at: -1, tab: 0 }],
     omni: [{ at: -1, mode: 'ph' }], scrolls: { hub: [], edit: [], game: [] }, hero: [], table: [], control: 0, panel: 0, L: 0 };
   // one activity line: when it lands, its icon (img/fx/<icon>.png), its text, and whether it is a breakthrough
@@ -43,8 +50,13 @@ export function buildSchedule() {
   const scrollEdit = (t0, to, dur = 0.7) => { scroll('edit', t0, t0 + dur, editAt, to); editAt = to; return t0 + dur; };
 
   // the one ask; the sidebar slides in once it is sent, superbot takes control, and the user only watches
-  say(0.5, ASK);
-  const send = S.typing[0].send;
+  say(0.5, ask);
+  let send = S.typing[0].send;
+  if (asks) {
+    S.gate = send + ASKED;
+    send = S.gate + ANSWERED;
+    if (game) S.chat.push({ at: send, kind: 'user', text: game });
+  }
   S.panel = send + 0.1;
   S.control = send + 0.6;
   bot(send + 0.35, "On it. I'll read how every ROB IT thumbnail performs, make iterations on your thumbnails, and swap one in for your lowest performer each round. I'll post every win here.");

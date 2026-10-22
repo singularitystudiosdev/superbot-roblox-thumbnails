@@ -60,11 +60,11 @@ export function enableDrag(sb, moved) {
     if (lead && y < lead.getBoundingClientRect().top) return { list: first, before: lead, into: null };
     for (const h of heads()) {
       const r = h.getBoundingClientRect(), g = h.closest('.sb-group');
-      if (y >= r.top && y < r.top + r.height * HEAD_EDGE) return { list: g.parentElement, before: g, into: null };
+      if (y >= r.top && y < r.top + r.height * HEAD_EDGE) return { list: g.parentElement, before: g, into: g.parentElement.closest('.sb-group') };
       if (y >= r.top && y <= r.bottom) return { list: g.querySelector('.sb-group-list'), before: null, into: g };
-      // an open group with nothing in it yet: its drop hint takes the chat too
+      // an open group with nothing in it yet (no chat, no group inside it): its drop hint takes the chat too
       const gl = g.querySelector('.sb-group-list');
-      if (shown(gl) && !gl.querySelector('li.sb-item')) {
+      if (shown(gl) && !gl.querySelector('li.sb-item, li.sb-group')) {
         const lr = gl.getBoundingClientRect();
         if (y > r.bottom && y <= lr.bottom) return { list: gl, before: null, into: g };
       }

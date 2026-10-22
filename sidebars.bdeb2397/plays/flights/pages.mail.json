@@ -1,0 +1,50 @@
+{
+ "chat": "flights",
+ "pages": {
+  "eticket": {
+   "img": "eticket.webp",
+   "title": "Inbox (1) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "eticket": [
+     698.8,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar-out": {
+   "img": "calendar-out.webp",
+   "title": "Google Calendar - Week of March 7, 2027",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2027/3/8",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "out": [
+     534.1,
+     335
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar-back": {
+   "img": "calendar-back.webp",
+   "title": "Google Calendar - Week of March 21, 2027",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2027/3/22",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "back": [
+     534.1,
+     187
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

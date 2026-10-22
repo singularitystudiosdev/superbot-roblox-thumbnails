@@ -1,0 +1,35 @@
+{
+ "chat": "tickets",
+ "pages": {
+  "calendar": {
+   "img": "calendar.webp",
+   "title": "Google Calendar - Week of November 8, 2026",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2026/11/14",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "slot": [
+     1298.9,
+     700
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar-added": {
+   "img": "calendar-added.webp",
+   "title": "Google Calendar - Week of November 8, 2026",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2026/11/14",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "concert": [
+     1298.9,
+     700
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

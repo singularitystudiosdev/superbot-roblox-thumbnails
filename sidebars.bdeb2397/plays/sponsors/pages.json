@@ -1,0 +1,32 @@
+{
+  "chat": "sponsors",
+  "pages": {
+    "yt-search": {
+      "img": "yt-search.webp",
+      "title": "productivity app review - YouTube",
+      "host": "youtube.com",
+      "path": "/results?search_query=productivity+app+review",
+      "fav": "fav-youtube.png",
+      "targets": {
+        "video1": [
+          514,
+          252.3
+        ],
+        "channel1": [
+          856.6,
+          181
+        ],
+        "video1-title": [
+          1028.4,
+          124.5
+        ],
+        "channel1-avatar": [
+          796,
+          181
+        ]
+      },
+      "scroll": null,
+      "field": null
+    }
+  }
+}

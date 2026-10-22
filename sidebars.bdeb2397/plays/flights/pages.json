@@ -1,0 +1,92 @@
+{
+ "chat": "flights",
+ "pages": {
+  "results-894": {
+   "img": "results-894.webp",
+   "title": "San Francisco to Tokyo | Google Flights",
+   "host": "google.com",
+   "path": "/travel/flights?hl=en&gl=US&curr=USD&q=Flights%20to%20TYO%20from%20SFO%20on%202027-03-08%20through%202027-03-22%20round%20trip%20economy%201%20adult",
+   "fav": "../../screens/fav/google-flights.png",
+   "targets": {
+    "row1": [
+     735,
+     436
+    ],
+    "price1": [
+     1147.2,
+     425
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "results-731": {
+   "img": "results-731.webp",
+   "title": "San Francisco to Tokyo | Google Flights",
+   "host": "google.com",
+   "path": "/travel/flights?hl=en&gl=US&curr=USD&q=Flights%20to%20TYO%20from%20SFO%20on%202027-03-08%20through%202027-03-22%20round%20trip%20economy%201%20adult",
+   "fav": "../../screens/fav/google-flights.png",
+   "targets": {
+    "row1": [
+     735,
+     436
+    ],
+    "price1": [
+     1148.7,
+     425
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "results-612": {
+   "img": "results-612.webp",
+   "title": "San Francisco to Tokyo | Google Flights",
+   "host": "google.com",
+   "path": "/travel/flights?hl=en&gl=US&curr=USD&q=Flights%20to%20TYO%20from%20SFO%20on%202027-03-08%20through%202027-03-22%20round%20trip%20economy%201%20adult",
+   "fav": "../../screens/fav/google-flights.png",
+   "targets": {
+    "row1": [
+     735,
+     436
+    ],
+    "price1": [
+     1148.8,
+     425
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "returning": {
+   "img": "returning.webp",
+   "title": "Tokyo to San Francisco | Google Flights",
+   "host": "google.com",
+   "path": "/travel/flights/search?tfs=CBwQAhpDEgoyMDI3LTAzLTA4Ih4KA1NGTxIKMjAyNy0wMy0wOBoDTlJUKgJaRzICMjVqBwgBEgNTRk9yDAgCEggvbS8wN2RmaxojEgoyMDI3LTAzLTIyagwIAhIIL20vMDdkZmtyBwgBEgNTRk9AAUgBcAGCAQsI____________AZgBAQ&tfu=CmxDalJJZUhGQmNuY3RPRkp4Y0UxQlFWUkpSM2RDUnkwdExTMHRMUzB0TFMxdmVXNW1NVUZCUVVGQlIzSmFUa1k0VDNoeVZVMUJFZ1JhUnpJMUdnc0lpYzRGRUFJYUExVlRSRGdjY0luT0JRPT0SAggAIgMKATA&hl=en&gl=US&curr=USD",
+   "fav": "../../screens/fav/google-flights.png",
+   "targets": {
+    "row1": [
+     735,
+     404
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "booking": {
+   "img": "booking.webp",
+   "title": "Round trip to Tokyo | Google Flights",
+   "host": "google.com",
+   "path": "/travel/flights/booking?tfs=CBwQAhpDEgoyMDI3LTAzLTA4Ih4KA1NGTxIKMjAyNy0wMy0wOBoDTlJUKgJaRzICMjVqBwgBEgNTRk9yDAgCEggvbS8wN2RmaxpDEgoyMDI3LTAzLTIyIh4KA05SVBIKMjAyNy0wMy0yMhoDU0ZPKgJaRzICMjZqDAgCEggvbS8wN2Rma3IHCAESA1NGT0ABSAFwAYIBCwj___________8BmAEB&tfu=CmxDalJJV0VscFQzbGhTM2hGTm10QlFYTlRXV2RDUnkwdExTMHRMUzB0TFc5clpuUXlOVUZCUVVGQlIzSmFUa2hOVEdKSFQwOUJFZ1JhUnpJMkdnc0lpYzRGRUFJYUExVlRSRGdjY0luT0JRPT0SAggAIgMKATA&hl=en&gl=US&curr=USD",
+   "fav": "../../screens/fav/google-flights.png",
+   "targets": {
+    "continue": [
+     1145.1,
+     584
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

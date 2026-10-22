@@ -1,9 +1,13 @@
 Sources for the pictures in the sidebar's chats (../transcripts.bdeb2397.js, shown by ../chatview.bdeb2397.js). Never
 shown on screen.
 
-Every file here was generated 2026-10-21 by fal-ai/nano-banana-pro (text to image, 16:9 at 1K) and saved as 768x432
-WebP by ../tools/chat-images.bdeb2397.mjs. Each prompt and fal request id: prompts.bdeb2397.json. Nothing is drawn by
-hand, and no real person, channel, shop or brand mark is depicted.
+Each card's picture is the thing the card reports, as the app beside it shows that thing: a channel's icon, the
+subscriptions' app icons, the hotel's photo, the calendar with the haircut moved. The concert tickets' cards show the
+ticket icon (../fx/admission_tickets.png) instead of a picture.
+
+Generated 2026-10-21 by fal-ai/nano-banana-pro (text to image at 1K) with ../tools/chat-images.bdeb2397.mjs: 16:9
+pictures saved as 768x432 WebP, icons square at 512x512. Each prompt and fal request id: prompts.bdeb2397.json. Nothing
+is drawn by hand, and no real person, channel, shop, app or bank is depicted; the names are the chats' made-up ones.
 
   yt-gnocchi-0..3   a made-up cooking channel's thumbnails for one video (the original, then 3 versions to test)
   yt-ramen, yt-tacos, yt-curry, yt-pasta, yt-salmon, yt-chili
@@ -11,3 +15,29 @@ hand, and no real person, channel, shop or brand mark is depicted.
   lunch-ramen       an office desk lunch: spicy miso ramen
   lunch-tacos       an office desk lunch: tacos al pastor in a takeout box
   lunch-poke        an office desk lunch: a salmon poke bowl
+  bike-listing      the listed bike: a used silver aluminium road bike
+  haircut-sam       Sam, the barber, as a booking page shows him
+  parts/ch-*        the channels' icons (the sponsorship chat's inbox, ../screens/sponsors.webp)
+  parts/app-*       the subscriptions' app icons: the 4 cancelled and the gym (../screens/subscriptions.webp), 3 kept
+  parts/logo-*      the property manager's and the credit union's app icons (../screens/deposit.webp)
+  parts/moveout-*   the move-out photos the deposit request was sent with
+  parts/lisbon-*    the Lisbon trip's dinner and its day in Sintra
+
+Put together 2026-10-21 by ../tools/chat-cards.b50586fe.mjs (HTML drawn by headless Chromium, 768x432 WebP) from the
+pictures above and from crops of the chats' own computer views (../screens/, see ../screens/CREDITS.txt):
+
+  sponsors-outreach, sponsors-desk-setup, sponsors-calm-code, sponsors-booked
+                    the channels' icons: all 6 in the inbox, each channel that said yes, the 3 booked
+  yt-updated        4 of the channel's winning thumbnails
+  subs-found, subs-cancelled
+                    the subscriptions' app icons, then the 4 cancelled, each marked with an x
+  flights-cheapest, flights-booked
+                    the fare's airline mark, a crop of its row on ../screens/flights.webp (Google Flights' own marks for
+                    American and Japan Airlines, as the computer view shows them)
+  haircut-moved     a crop of ../screens/haircut.webp: the team dinner Wednesday, the haircut Thursday
+  inbox-sorted      a crop of ../screens/inbox.webp: the starred emails left after the sort
+  inbox-week        5 days at zero, Monday to Friday (lucide check, ISC)
+  lisbon-hotel      a crop of ../screens/lisbon.webp: the hotel's photo in the results
+  lisbon-plan       the hotel, a dinner, Sintra
+  deposit-letter    4 of the move-out photos
+  deposit-paid      the property manager's icon, an arrow (lucide, ISC), the credit union's icon

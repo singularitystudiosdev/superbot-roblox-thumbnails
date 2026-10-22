@@ -1,0 +1,11 @@
+Sources for Billing's payment marks (../settings-pay.8a3994ee.js). Never shown on screen.
+
+visa.svg, mastercard.svg, amex.svg, discover.svg (the badges in Add payment method's card number field) and
+google-pay.svg, google-pay-icon.svg (its Google Pay tile and a Google Pay method's row): each brand's own logo from
+Iconify's "SVG Logos" set (logos:visa, logos:mastercard, logos:amex, logos:discover, logos:google-pay,
+logos:google-pay-icon), fetched 2026-10-22 from https://api.iconify.design/logos.json by
+../tools/pay-marks.8a3994ee.mjs. Author: Gil Barbara (https://github.com/gilbarbara/logos). License: CC0-1.0
+(https://raw.githubusercontent.com/gilbarbara/logos/master/LICENSE.txt). The badges set each logo on its brand's
+colour: Visa's wordmark recoloured white on Visa Blue, Mastercard's circles without its wordmark on near-black, the
+Amex box on its own blue and the Discover wordmark on white. The marks are the card networks' and Google's
+trademarks, shown only to name the payment method.

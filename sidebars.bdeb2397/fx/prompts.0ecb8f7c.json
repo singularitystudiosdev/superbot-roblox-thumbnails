@@ -1,0 +1,38 @@
+{
+  "silver": {
+    "model": "fal-ai/nano-banana-pro/edit",
+    "prompt": "The first image is a polished silver infinity sign; the other images are Microsoft Fluent Emoji 3D icons. Draw one new icon: a single round game token, a thick disc seen straight from the front, in exactly the 3D style of the Fluent Emoji icons: a soft, smooth, slightly glossy clay-like 3D render with a thick rounded bevelled raised rim, gentle gradients, soft light from the top left, a subtly darker lower edge and no outlines. Its material is the cool polished silver of the infinity sign: light silvery greys with soft white highlights and mid-grey shading, no gold, no yellow and no warm tint. The face inside the rim is plain, smooth and slightly recessed, completely blank. Centered, filling about 80% of the square, alone on a plain flat pure white background: no shadow on the background, no reflection, no other objects and no text.",
+    "refs": [
+      "sidebars.bdeb2397/fx/tier-low.8e7c682e.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a1612c-31cd-7642-b985-b2ac18466ce4",
+    "at": "2026-10-22T01:14:28.481Z",
+    "picked": 2,
+    "cut": "trim on white, -sigmoidal-contrast 7,60%, round mask, 96px"
+  },
+  "gold": {
+    "from": "fx/coin-silver.0ecb8f7c.png",
+    "cut": "-clut through a gradient map #2e1700 > #c47f0a > #ffcc33",
+    "at": "2026-10-22T09:35:09.339Z"
+  },
+  "rainbow": {
+    "model": "fal-ai/nano-banana-pro/edit",
+    "prompt": "The first image is a glossy rainbow infinity sign; the second is a silver game token; the other images are Microsoft Fluent Emoji 3D icons. Draw one new icon: the same round game token as the second image, the same thick disc seen straight from the front with the same rim and proportions, in exactly the 3D style of the Fluent Emoji icons: a soft, smooth, slightly glossy clay-like 3D render with a thick rounded bevelled raised rim, gentle gradients, soft light from the top left, a subtly darker lower edge and no outlines. Its material is the glossy iridescent rainbow of the infinity sign: a smooth spectrum that flows around the rim and across the face, from red and orange through yellow and green to blue and violet, with soft white highlights. The face inside the rim is plain, smooth and slightly recessed, completely blank. Centered, filling about 80% of the square, alone on a plain flat pure white background: no shadow on the background, no reflection, no other objects and no text.",
+    "refs": [
+      "sidebars.bdeb2397/fx/tier-max.8e7c682e.png",
+      "sidebars.bdeb2397/fx/coin-silver.0ecb8f7c.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a162f2-4f59-7082-87b8-e5707f00b38e",
+    "at": "2026-10-22T09:30:31.675Z",
+    "picked": 3,
+    "cut": "trim on white, -sigmoidal-contrast 3,50%, round mask, 96px"
+  }
+}

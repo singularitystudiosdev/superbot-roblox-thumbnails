@@ -1,0 +1,23 @@
+Sources for the bike chat's extra listing-site pages ("Checked 3 local listing sites"). Never shown on screen. Made 2026-10-21 by
+../../tools/play-bike-sites.4c8bc671.mjs (headless Chromium, 1470x837 at 2x, cwebp -q 80). Public pages, no account, nothing clicked, saved or sent.
+
+site-offerup.webp     offerup.com's real search results for "road bike 56cm", $600 and under, Oakland CA, 20 miles
+                      (https://offerup.com/search?q=road%20bike%2056cm&PRICE_MAX=600&radius=20), signed out.
+                      The site guessed the search area from the capture machine's IP (Ripon, WI), so the tool sets OfferUp's own
+                      "ou.location" cookie to Oakland, 94610. Staged by DOM edits: the real listings (real photos, real titles, real
+                      prices, all under $600) are kept but only complete road bikes (no helmet, BMX, frameset, $1 placeholder, "Trek"
+                      with no detail, a repeat listing of the same bike), 14 tiles; seller towns farther than ~20 miles from Oakland (San Ramon, Union City, Fremont,
+                      Vallejo, San Jose) replaced by nearby ones (Alameda, Hayward, San Leandro, Berkeley, Emeryville); tile links
+                      set to "#". No title was rewritten, so every photo matches its title. Removed: the sponsored "Shop related
+                      products" ad strip. Listing tiles carry no seller names.
+site-facebook.webp    facebook.com's real Marketplace search results for "road bike 56cm", Oakland, max $600
+                      (https://www.facebook.com/marketplace/oakland/search?query=road%20bike%2056cm&maxPrice=600&exact=false), signed out.
+                      Staged by DOM edits: the site's own "See more on Facebook" login modal and its grey scrim removed (nothing typed
+                      or pressed); 12 real tiles kept (real photos, titles, prices, all under $600; a "Bike Lot" and a gravel bike
+                      removed); seller towns farther than ~20 miles (Hercules, Redwood City, Fairfax, Stanford, Discovery Bay,
+                      Martinez) replaced by nearby ones; the location filter's "Within 40 mi" set to "Within 20 mi". No title was
+                      rewritten. The signed-out header (email / password / Log In, Forgot Account?) is Facebook's own. No seller
+                      names appear on the results page.
+Tried and not used:   eBay (ebay.com/sch/i.html?_nkw=road+bike+56cm&_udhi=600&LH_LocalPickup=1) answers headless Chromium with
+                      HTTP 403, page title "Error Page | eBay". Nextdoor redirects to nextdoor.com/login/ (hard login wall).
+Favicons: fav-offerup.png (offerup.com) and fav-facebook.png (facebook.com), each the site's own, from its <link rel="icon">.

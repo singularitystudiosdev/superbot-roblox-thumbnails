@@ -1,0 +1,40 @@
+{
+ "chat": "subscriptions",
+ "pages": {
+  "activity": {
+   "img": "activity.webp",
+   "title": "Search results - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#search/we+miss+you+OR+last+watched+OR+last+used+OR+streak",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "waveline": [
+     619.1,
+     170
+    ],
+    "streambox": [
+     597.2,
+     290
+    ],
+    "reelhouse": [
+     607.1,
+     330
+    ],
+    "freshcrate": [
+     620.3,
+     370
+    ],
+    "cloudvault": [
+     639.9,
+     410
+    ],
+    "gym": [
+     638.3,
+     450
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

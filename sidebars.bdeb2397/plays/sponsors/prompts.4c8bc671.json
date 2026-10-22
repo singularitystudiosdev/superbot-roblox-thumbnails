@@ -1,0 +1,44 @@
+{
+  "thumb-desk-setup-daily-4": {
+    "id": "thumb-desk-setup-daily-4",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a desk setup and productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. Any monitor, laptop or keyboard has plain blank bezels with no logo, badge or lettering at all. A tidy underside-of-desk view: neatly bundled black cables in a cable tray with velcro ties, a power strip and a few plain cable clips, cool blue light; the desk above shows only its underside and edge, no monitor or laptop in the frame. Bold white text reading exactly \"NO MORE CABLES\" on a dark navy band.",
+    "request_id": "01a160a1-0bb8-70e0-b91d-5ba4dab6c986",
+    "at": "2026-10-21T22:42:26.853Z"
+  },
+  "thumb-desk-setup-daily-5": {
+    "id": "thumb-desk-setup-daily-5",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a desk setup and productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. Any monitor, laptop or keyboard has plain blank bezels with no logo, badge or lettering at all. A height-adjustable standing desk raised high with a laptop and a monitor on it, a small timer showing 30, an energetic orange and teal color scheme. Bold white text reading exactly \"30 DAYS\" with an orange outline.",
+    "request_id": "01a160a0-5e85-7910-929d-0ec5ed4f32d1",
+    "at": "2026-10-21T22:41:41.083Z"
+  },
+  "thumb-desk-setup-daily-3": {
+    "id": "thumb-desk-setup-daily-3",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a desk setup and productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. Any monitor, laptop or keyboard has plain blank bezels with no logo, badge or lettering at all. A laptop on a white desk showing five colorful made-up app icons as rounded squares in a row, a small plant and a notebook, mint green and cream colors. Bold white text reading exactly \"5 FREE APPS\" with a dark green outline.",
+    "request_id": "01a160a0-5e7b-7d51-b610-84b709340650",
+    "at": "2026-10-21T22:41:41.564Z"
+  },
+  "thumb-desk-setup-daily-6": {
+    "id": "thumb-desk-setup-daily-6",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a desk setup and productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. Any monitor, laptop or keyboard has plain blank bezels with no logo, badge or lettering at all. A side-by-side layout of three laptops and monitors each showing a different made-up notes app, purple, green and orange interfaces, on a clean desk, a small trophy-like gold star floating above the middle one. Bold white text reading exactly \"NOTES APPS\" at the top.",
+    "request_id": "01a160a0-5e8d-7893-9a4f-82f0e089e0c0",
+    "at": "2026-10-21T22:41:43.054Z"
+  },
+  "thumb-desk-setup-daily-2": {
+    "id": "thumb-desk-setup-daily-2",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube video thumbnail for a desk setup and productivity app review channel, bright and high contrast, crisp, saturated colors, bold sans-serif text with a thick outline. No people, no faces, no hands, no logos, no real brand marks, no watermarks. Any monitor, laptop or keyboard has plain blank bezels with no logo, badge or lettering at all. A freshly rebuilt minimal wooden desk, a dramatic before/after feel: a clean light-wood desk with one ultrawide monitor showing a calm made-up focus app, a warm desk lamp, a tidy keyboard, a mug and a small plant, bright warm light. Bold yellow text reading exactly \"UNDER $300\" at the top left.",
+    "request_id": "01a160a0-5e8b-7f82-9226-6839b4e76a12",
+    "at": "2026-10-21T22:41:43.530Z"
+  },
+  "banner-desk-setup-daily": {
+    "id": "banner-desk-setup-daily",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A very wide, panoramic YouTube channel banner photo (21:9). A long light-wood desk runs across the whole width along the lower third of the picture, with plain pale warm wall above it. Left to right along the desk: a green plant in a pot, a small desk lamp, a mechanical keyboard with beige keys, a ceramic mug, a stack of notebooks, a small succulent, a pen cup. Nothing tall in the middle: all objects sit low, so a thin horizontal strip across the middle still shows desk items. Soft warm morning light, soft teal and yellow accents. No people, no faces, no hands, no logos, no real brand marks, no watermarks. Absolutely no text, no letters, no numbers, no screens, no laptops and no monitors anywhere.",
+    "request_id": "01a160a1-0bad-7543-85f9-d82381a8e662",
+    "at": "2026-10-21T22:42:37.572Z"
+  }
+}

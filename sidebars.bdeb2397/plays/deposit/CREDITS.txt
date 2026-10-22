@@ -1,0 +1,22 @@
+Gmail pages of the deposit chat (pages.json: compose, search, inbox-paid). Taken 2026-10-21 from the owner's signed-in Gmail in
+Chrome (browser-control), in a tab opened for the capture, 1470x837 CSS px at 2x, saved as WebP (cwebp -q 80). Staged by
+DOM edits only with ../../tools/stage-gmail.bdeb2397.js and ../../tools/play-deposit.8889b4ff.js: the list, the made-up
+identity (Jordan Lee, jordan@quillnote.app, J in place of the photo) and all counts are the chat's (../../transcripts.bdeb2397.js);
+every sender, subject, snippet and address is made up (Westlake Property Management, tenants@westlakepm.com, 1428 Elm St,
+Apt 3, as ../../screens/deposit.webp); 0 traces of the real account's name or address in the page's text, attributes and
+field values before each capture was kept. Gmail's own "Enable desktop notifications" toast and, in the compose capture,
+its "Not connected" bar were removed.
+compose.webp: Gmail's real New Message window, opened with its own Compose button, with the browser offline (CDP
+Network.emulateNetworkConditions) for the whole time it was open, so nothing could be saved, uploaded or sent. Recipient
+chip made by Gmail itself (address put in the To field, Enter pressed); subject and body by DOM edits, nothing typed in the
+editor. The 24 attachment chips: one local file (a screenshot) was picked in the window's own attach input while offline;
+Gmail drew its chip, which could not upload and showed "Attachment failed", and that chip was cloned 23 times by DOM edits
+into moveout-01.jpg ... moveout-24.jpg with made-up sizes, the failure text, Retry and Help removed (the name, size and
+remove cross Gmail drew stay). The body's min-height was lowered so the chips follow the letter; the window was scrolled so
+the end of the letter and the first five chips show. The window was closed with its own Discard button; after going online
+and a reload Drafts was as before (18, no new draft). Send was never pressed. The attached file never left the machine.
+search.webp: Gmail search "security deposit", as screens/deposit.webp, re-staged (the rows are Gmail's own search rows with
+the chat's text). The filter chips are the live ones (Gmail now shows "Exclude Promotions").
+inbox-paid.webp: Gmail inbox with the bank's "Deposit received: $1,800.00" email unread on top (same subject as the search
+row), the landlord's reply below it, 2 unread.
+Nothing was opened, sent, archived or changed; the tab was reloaded and closed.

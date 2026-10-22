@@ -1,0 +1,20 @@
+{
+ "chat": "deposit",
+ "pages": {
+  "sent": {
+   "img": "sent.webp",
+   "title": "Sent Mail - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#sent",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "request": [
+     685,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

@@ -1,5 +1,5 @@
-// Groups of chats, and the "•••" menus that manage them. A chat's menu: New group, Move to group (a picker you search
-// by name), Remove from group, and Delete chat. A group's menu: Rename group, Ungroup. One dialog names a group or
+// Groups of chats, and the "•••" menus that manage them. A chat's menu: New group (inside the group the chat is in, if
+// any), Move to group (a picker you search by name), Remove from group, and Delete chat. A group's menu: Rename group, Ungroup. One dialog names a group or
 // confirms a delete; a group's row folds its list. The menu and the dialog live in the top layer, drawn at the
 // sidebar's on-screen scale so they read as part of it; the spot's own keys (space, R, the arrows) never reach them.
 import { esc, lu, group as groupHTML } from './parts.bdeb2397.js';
@@ -166,9 +166,8 @@ export function setupGroups(sb, { say, init, changed }) {
     const name = preset ?? await ask({ heading: 'New group', field: true, action: 'Create group', k: scaleOf(sb) });
     if (name === null) { opener?.focus(); return; }
     const g = fromHTML(groupHTML(name));
-    const mine = li.closest('.sb-group');
-    // the group takes the chat's place; a chat already in a group starts the new one just under that group
-    if (mine) mine.after(g); else li.before(g);
+    // the group takes the chat's place, so a chat already in a group starts the new one inside that group
+    li.before(g);
     g.querySelector('.sb-group-list').append(li);
     init(g.querySelector('.sb-ghead'));
     changed();

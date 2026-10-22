@@ -1,12 +1,11 @@
-/* The Automations tab (automations-view.03378ba4.js): over the chat and the live view, right of the sidebar, a title,
+/* The Automations tab (automations-view.03378ba4.js): over the chat and the live view, right of the sidebar,
    a search field and the app categories it reaches over a scrolling grid of automation cards. The creative's palette and type: colors, spacing and
    --r-ctl from tokens.bdeb2397.css, the tab's own sizes below. No chromatic accent: the thumbnails, the app icons and
    the 3D star are the only color. Radii: --am-r-card on cards, --r-ctl on what sits inside them, pills for the field
    and the buttons. Motion: hover and press on the controls only. */
-.am {
-  /* in the app's px: card type is the chat card's (style.af4c3c6b.css .cm-card-t b 12.5/16, small 11), the title a
-     step up */
-  --fs-h1: 20px; --lh-h1: 24px;
+/* the tab's sizes, which an automation opened in full (.amd, below) shares */
+.am, .amd {
+  /* in the app's px: card type is the chat card's (style.af4c3c6b.css .cm-card-t b 12.5/16, small 11) */
   --fs-card: 12.5px; --lh-card: 16px;
   --fs-small: 11px; --lh-small: 16px;
   --am-r-card: 12px;  /* design-tokens --radius-12; 6px of padding in from it, the thumbnail's --r-ctl is concentric */
@@ -17,15 +16,18 @@
   --chip-h: 28px;     /* a category under the search field */
   --chip-ic: 16px;    /* its app icon */
   --card-min: 200px;  /* four columns beside the sidebar */
-
+}
+.am {
   position: absolute; left: var(--sidebar-w); right: 0; top: 0; bottom: 0; z-index: 4; display: flex; flex-direction: column; background: var(--surface); font-family: var(--ui); color: var(--ink); -webkit-font-smoothing: antialiased;
 }
 .am[hidden], .am [hidden] { display: none; }
 /* the spot plays on under the tab: its white dip at the loop's seam must not wash over it, and its chat and live view
    are hidden rather than covered, so none of their layers (Stop sits at z-index 5) shows through and none of their
-   buttons takes Tab. main.bdeb2397.js writes the live view's visibility inline every frame, hence the !important */
+   buttons takes Tab. main.bdeb2397.js writes the live view's visibility inline every frame, hence the !important.
+   Every layer inside them is hidden too: the live view's screen (screen.af4c3c6b.js) shows its current page as
+   visibility: visible, which a hidden parent does not hide */
 body.am-open #dip { visibility: hidden; }
-body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important; }
+body.am-open .app > :is(.ch, .cc), body.am-open .app > :is(.ch, .cc) * { visibility: hidden !important; }
 .am, .am * { box-sizing: border-box; }
 .am ul { margin: 0; padding: 0; list-style: none; }
 /* a reset at one class's weight, so each control's own rule below sets its font and color */
@@ -33,11 +35,10 @@ body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important
 .am button:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
 .am-lu { flex: none; width: var(--tool-ic); height: var(--tool-ic); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-/* ---------- top: the title and the count, the search field under them ---------- */
-.am-top { flex: none; display: flex; flex-direction: column; gap: var(--sp-12); padding: var(--sp-24) var(--sp-32) var(--sp-8); }
-.am-bar { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-16); }
-.am-h { margin: 0; font: 700 var(--fs-h1)/var(--lh-h1) var(--ui); letter-spacing: -0.01em; }
-.am-count { margin: 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+/* ---------- top: the search field, the categories under it ---------- */
+.am-top { position: relative; flex: none; display: flex; flex-direction: column; gap: var(--sp-12); padding: var(--sp-24) var(--sp-32) var(--sp-8); }
+/* the count is not shown, only read out as the search narrows the grid */
+.am-count { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 /* the input is the whole pill and draws its own focus ring; the search icon and the clear button sit on it, in the room
    its padding leaves at each end */
 .am-search { position: relative; height: var(--search-h); }
@@ -59,7 +60,8 @@ body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important
 .am-chip[hidden] { display: none; }
 .am-chip { display: inline-flex; align-items: center; gap: var(--sp-6); height: var(--chip-h); padding: 0 var(--sp-10); border: var(--hair) solid var(--sel); border-radius: 9999px; background: var(--surface); font: 500 var(--fs-small)/1 var(--ui); white-space: nowrap; cursor: pointer; transition: background-color var(--d-hover) ease-out, border-color var(--d-hover) ease-out; }
 .am-chip:hover { background: var(--ground); }
-.am-chip[aria-pressed="true"] { border-color: transparent; background: var(--sel); }
+/* picked: a step darker than the hairline gray, so it reads as on beside the outlined chips */
+.am-chip[aria-pressed="true"] { border-color: transparent; background: color-mix(in srgb, var(--sel) 90%, var(--ink)); }
 .am-chip-ic { flex: none; display: block; width: var(--chip-ic); height: var(--chip-ic); border-radius: var(--r-ctl); }
 .am-chip-n { color: var(--muted); font-variant-numeric: tabular-nums; }
 .am-chip[aria-pressed="true"] .am-chip-n { color: var(--ink); }
@@ -75,7 +77,8 @@ body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important
 .am-head { display: flex; align-items: center; gap: var(--sp-8); padding: var(--sp-10) var(--sp-6) 0; }
 .am-app { flex: none; display: block; width: var(--app-ic); height: var(--app-ic); border-radius: var(--r-ctl); }
 .am-name { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.am-title { margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 600 var(--fs-card)/var(--lh-card) var(--ui); }
+/* a name too long for one line ("Roblox Thumbnail Optimizer" in a narrow card) wraps rather than being cut off */
+.am-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; margin: 0; font: 600 var(--fs-card)/var(--lh-card) var(--ui); }
 .am-app-name { font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
 .am-desc { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; min-height: calc(2 * var(--lh-small)); margin: var(--sp-8) 0 0; padding: 0 var(--sp-6); font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
 .am-foot { display: flex; align-items: center; gap: var(--sp-12); margin-top: auto; padding: var(--sp-12) var(--sp-6) var(--sp-6); }
@@ -85,6 +88,195 @@ body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important
 .am-try { flex: none; height: var(--btn-h); margin-left: auto; padding: 0 var(--sp-12); border: 0; border-radius: 9999px; background: var(--ink); color: var(--surface); font: 600 var(--fs-small)/1 var(--ui); white-space: nowrap; cursor: pointer; transition: background-color var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
 .am-try:hover { background: color-mix(in srgb, var(--ink) 82%, var(--surface)); }
 .am-try:active { transform: scale(0.96); }
+/* a press anywhere on a card opens it in full: its own button lies over the whole card, under Try Me!, which starts it
+   (automations-view.03378ba4.js). Its focus ring rings the card; under the pointer the card's edge darkens */
+.am-card[data-id] { position: relative; cursor: pointer; }
+.am-open { position: absolute; inset: 0; z-index: 0; padding: 0; border: 0; border-radius: var(--am-r-card); background: transparent; cursor: pointer; }
+.am-card .am-try { position: relative; z-index: 1; }
+.am-card:has(> .am-open:hover) { border-color: color-mix(in srgb, var(--sel) 60%, var(--muted)); }
+
+/* ---------- an automation in full (automation-detail.71c311e9.js): a modal over the spot, drawn at the sidebar's
+   on-screen scale (--k) in the tab's sizes, as Settings is. A top row kept in place (its app, its name, Try Me!, close)
+   over what scrolls: its sections under one another, split by hairlines, its reviews a list, never cards. Radii:
+   --am-r-card on the dialog and the other automations' buttons, --r-ctl on the pictures and the rating stars, pills for
+   the bars and buttons. It rises in once as it opens. Clipped, never scrolled itself: only .amd-scroll scrolls ---------- */
+.amd {
+  --amd-w: 560px;                       /* the dialog: 512px of content inside its padding */
+  --amd-pad: var(--sp-24);
+  --fs-title: 16px; --lh-title: 24px;   /* design-tokens --text-title-medium: its name, the stats */
+  --fs-score: 28px; --lh-score: 36px;   /* design-tokens --text-headline-medium: the average over the bars */
+  --lh-long: 18px;                      /* running text at --fs-card, 1.44 */
+  --amd-app: 40px;                      /* its app icon beside its name */
+  --bar-h: 6px;                         /* a star's bar, as Settings' credits meter */
+  --rate-star: 20px;                    /* the viewer's own rating */
+  --more-thumb: 96px;                   /* another automation's thumbnail */
+  --star-off: 0.35;                     /* a star not given: the 3D star, gray and faint */
+  --pfp-sm: 32px;                       /* a publisher's picture on its row; in the top row it is --amd-app */
+  box-sizing: border-box; width: var(--amd-w); max-width: none; max-height: calc(var(--app-h) - var(--sp-48)); padding: 0; border: var(--hair) solid var(--sel); border-radius: var(--am-r-card); overflow: clip; background: var(--surface); box-shadow: var(--lift); color: var(--ink); font-family: var(--ui); -webkit-font-smoothing: antialiased; transform: scale(var(--k, 1));
+}
+.amd[open] { display: flex; flex-direction: column; animation: amd-in 200ms var(--ease-std); }
+@keyframes amd-in { from { opacity: 0; transform: scale(calc(var(--k, 1) * 0.97)); } }
+.amd::backdrop { background: var(--scrim); }
+.amd *, .amd *::before { box-sizing: border-box; }
+/* weightless, so the tab's own controls it reuses (.am-try, .am-btn) keep their font and color */
+:where(.amd) :where(button, input, textarea) { font: inherit; color: inherit; }
+.amd [hidden] { display: none; }
+.amd button:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+.amd-vh { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* what scrolls: no bar of its own (the tab's grid shows none either), its foot fading out over its padding. Positioned,
+   so the rating's hidden radios are laid out in it and focusing one scrolls only it */
+.amd-scroll { position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; padding: var(--amd-pad); -webkit-mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); mask: linear-gradient(#000 calc(100% - var(--sp-24)), transparent); }
+.amd-scroll::-webkit-scrollbar { display: none; }
+.amd-thumb { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-ctl); background: var(--ground); }
+
+/* the top row, kept in place under a hairline: its app, its name and Try Me!, then the close button, a toolbar button
+   as the tab's clear button is */
+.amd-top { flex: none; display: flex; align-items: center; gap: var(--sp-8); padding: var(--sp-16) var(--amd-pad); box-shadow: inset 0 calc(-1 * var(--hair)) 0 var(--sel); }
+.amd-close { flex: none; display: grid; place-items: center; width: var(--chip-h); height: var(--chip-h); padding: 0; border: 0; border-radius: 9999px; background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.amd-close:hover { background: var(--ground); color: var(--ink); }
+/* back from a publisher to the automation it was opened from, drawn as the close button is */
+.amd-back { flex: none; display: grid; place-items: center; width: var(--chip-h); height: var(--chip-h); padding: 0; border: 0; border-radius: 9999px; background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.amd-back:hover { background: var(--ground); color: var(--ink); }
+/* a publisher's picture: their mark on the ground, round */
+.amd-pfp { flex: none; display: block; border-radius: 9999px; background: var(--ground); object-fit: contain; }
+.amd-pfp-sm { width: var(--pfp-sm); height: var(--pfp-sm); padding: var(--sp-4); }
+.amd-pfp-md { width: var(--amd-app); height: var(--amd-app); padding: var(--sp-6); }
+.amd-head { flex: 1; min-width: 0; display: flex; align-items: center; gap: var(--sp-12); }
+.amd-app { flex: none; display: block; width: var(--amd-app); height: var(--amd-app); border-radius: var(--r-ctl); }
+.amd-name { flex: 1; min-width: 0; }
+.amd-title { margin: 0; font: 600 var(--fs-title)/var(--lh-title) var(--ui); }
+/* focused from script when another automation opens in its place: ringed only when the keyboard did it */
+.amd-title:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+.amd-sub { margin: 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+/* after the dialog's reset, so its own font and color stand: white on ink, as on the card */
+.amd-try { height: var(--chip-h); padding: 0 var(--sp-16); color: var(--surface); font: 600 var(--fs-card)/1 var(--ui); }
+
+/* under the thumbnail, rating, uses, credits a round and how it runs: four columns between hairlines */
+.amd-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: var(--sp-16) 0 0; padding: var(--sp-12) 0; list-style: none; box-shadow: inset 0 var(--hair) 0 var(--sel), inset 0 calc(-1 * var(--hair)) 0 var(--sel); }
+.amd-stats li { display: flex; flex-direction: column; align-items: center; gap: var(--sp-2); padding: 0 var(--sp-8); text-align: center; }
+.amd-stats li + li { box-shadow: inset var(--hair) 0 0 var(--sel); }
+.amd-stats b { display: inline-flex; align-items: center; gap: var(--sp-4); font: 600 var(--fs-title)/var(--lh-title) var(--ui); font-variant-numeric: tabular-nums; }
+.amd-stats li > span { font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.amd-star { display: block; width: var(--star); height: var(--star); }
+
+/* the sections: about, ratings and reviews, more */
+.amd-sec { margin-top: var(--sp-24); }
+.amd-h { margin: 0 0 var(--sp-8); font: 600 var(--fs-card)/var(--lh-card) var(--ui); }
+.amd-p { margin: 0; font: var(--fs-card)/var(--lh-long) var(--ui); }
+.amd-p + .amd-p { margin-top: var(--sp-8); }
+
+/* the average over a bar per star, the viewer's own rating, the reviews */
+.amd-ratings { display: flex; align-items: center; gap: var(--sp-24); }
+.amd-big { flex: none; display: flex; flex-direction: column; align-items: center; margin: 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.amd-big b { font: 600 var(--fs-score)/var(--lh-score) var(--ui); letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.amd-bars { flex: 1; display: flex; flex-direction: column; gap: var(--sp-4); margin: 0; padding: 0; list-style: none; }
+.amd-bars li { display: flex; align-items: center; gap: var(--sp-8); font: var(--fs-small)/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+.amd-bars li > span:first-child { width: 1ch; text-align: right; }
+.amd-bar { flex: 1; height: var(--bar-h); overflow: hidden; border-radius: 9999px; background: var(--sel); }
+.amd-bar i { display: block; height: 100%; border-radius: 9999px; background: var(--ink); }
+.amd .is-off { filter: grayscale(1); opacity: var(--star-off); }
+/* a floated legend is laid out as any child, so it sits in the row with the stars */
+.amd-rate { position: relative; display: flex; align-items: center; gap: var(--sp-12); min-width: 0; margin: var(--sp-16) 0 0; padding: var(--sp-8) 0; border: 0; box-shadow: inset 0 var(--hair) 0 var(--sel), inset 0 calc(-1 * var(--hair)) 0 var(--sel); }
+.amd-rate-l { float: left; padding: 0; font: 500 var(--fs-card)/var(--lh-card) var(--ui); }
+.amd-rate-stars { display: flex; }
+.amd-rate label { display: grid; place-items: center; width: var(--chip-h); height: var(--chip-h); border-radius: var(--r-ctl); cursor: pointer; }
+.amd-rate input:focus-visible + label { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+/* opened or last pressed by the pointer: the focus it opens with (the close button) is not ringed until a key other
+   than a modifier or a shortcut is pressed in it (automation-detail.71c311e9.js); the ring is drawn clear rather than
+   dropped, so nothing moves when it comes back */
+.amd.is-pointer :focus-visible, .amd.is-pointer .amd-rate input:focus-visible + label { outline-color: transparent; }
+/* not given, given, then the pointer's preview over both: the star under it and every one before it lit */
+.amd-rate-star { display: block; width: var(--rate-star); height: var(--rate-star); filter: grayscale(1); opacity: var(--star-off); }
+.amd-rate label.is-on .amd-rate-star { filter: none; opacity: 1; }
+.amd-rate-stars:hover label .amd-rate-star { filter: grayscale(1); opacity: var(--star-off); }
+.amd-rate-stars:hover label:is(:hover, :has(~ label:hover)) .amd-rate-star { filter: none; opacity: 1; }
+.amd-rated { font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.amd-reviews { margin: 0; padding: 0; list-style: none; }
+.amd-review { padding: var(--sp-12) 0; box-shadow: inset 0 calc(-1 * var(--hair)) 0 var(--sel); }
+.amd-review:last-child { box-shadow: none; }
+.amd-rv-top { display: flex; align-items: center; gap: var(--sp-8); margin: 0 0 var(--sp-4); }
+.amd-rv-stars { flex: none; display: inline-flex; gap: var(--sp-2); }
+.amd-rv-star { display: block; width: var(--star); height: var(--star); }
+.amd-rv-t { min-width: 0; font: 600 var(--fs-card)/var(--lh-card) var(--ui); }
+.amd-rv-by { margin: var(--sp-4) 0 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+
+/* the other automations, each opening in this one's place */
+.amd-more-list { display: flex; flex-direction: column; gap: var(--sp-8); margin: 0; padding: 0; list-style: none; }
+.amd-more { display: flex; align-items: center; gap: var(--sp-12); width: 100%; padding: var(--sp-6); border: var(--hair) solid var(--sel); border-radius: var(--am-r-card); background: var(--surface); text-align: left; cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.amd-more:hover { background: var(--ground); }
+.amd-more-thumb { flex: none; display: block; width: var(--more-thumb); height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-ctl); }
+.amd-more-t { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.amd-more-rate { flex: none; display: inline-flex; align-items: center; gap: var(--sp-4); padding-right: var(--sp-8); font: 500 var(--fs-small)/1 var(--ui); font-variant-numeric: tabular-nums; }
+
+/* its publisher, under the stats: their picture, name and how many they published, opening their page. Its fill on
+   hover runs past the column by its padding, so the picture lines up with the text above */
+.amd-pub { display: flex; align-items: center; gap: var(--sp-12); width: calc(100% + 2 * var(--sp-8)); margin: var(--sp-12) calc(-1 * var(--sp-8)) 0; padding: var(--sp-8); border: 0; border-radius: var(--r-ctl); background: transparent; text-align: left; cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.amd-pub:hover { background: var(--ground); }
+.amd-pub-t { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.amd-pub-t b { font: 600 var(--fs-card)/var(--lh-card) var(--ui); }
+.amd-pub-t small { font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.amd-pub-go { color: var(--muted); }
+
+/* the viewer's review: a field under their rating, then their review leading the list, on the ground, with Edit and
+   Delete (automation-review.71c311e9.js) */
+.amd-write { display: flex; flex-direction: column; gap: var(--sp-8); margin: var(--sp-12) 0 0; }
+.amd-write-l { font: 500 var(--fs-card)/var(--lh-card) var(--ui); }
+.amd-write-t { display: block; width: 100%; min-height: calc(3 * var(--lh-long) + 2 * var(--sp-8)); margin: 0; padding: var(--sp-8) var(--sp-10); border: 0; border-radius: var(--r-ctl); background: var(--surface); box-shadow: inset 0 0 0 var(--hair) var(--sel); color: var(--ink); font: var(--fs-card)/var(--lh-long) var(--ui); resize: vertical; transition: box-shadow var(--d-hover) ease-out; }
+.amd-write-t::placeholder { color: var(--muted); opacity: 1; }
+/* focused as the composer's own field is (chat-ui.854d0793.css .rc:focus-within): its edge darkens */
+.amd-write-t:focus-visible { outline: none; box-shadow: inset 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 45%, transparent); }
+.amd-write-row { display: flex; align-items: center; gap: var(--sp-8); }
+.amd-write-hint { flex: 1; min-width: 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.amd-write-post:disabled { background: var(--sel); color: var(--muted); cursor: default; }
+.amd-rv-status { margin: var(--sp-8) 0 0; font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+.amd-rv-status:empty { display: none; }
+.amd-review.is-mine { margin-top: var(--sp-12); padding: var(--sp-12); border-radius: var(--r-ctl); background: var(--ground); box-shadow: none; }
+.amd-rv-acts { display: flex; gap: var(--sp-16); margin: var(--sp-8) 0 0; }
+.amd-link { padding: 0; border: 0; background: none; color: var(--ink); font: 500 var(--fs-small)/var(--lh-small) var(--ui); text-decoration: underline; text-underline-offset: var(--sp-2); cursor: pointer; }
+.amd-rv-del { color: var(--danger); }
+.amd-more-t b { font: 600 var(--fs-card)/var(--lh-card) var(--ui); }
+.amd-more-t small { font: var(--fs-small)/var(--lh-small) var(--ui); color: var(--muted); }
+
+/* ---------- the game question (gameask.b3fb005c.js): docked above the live chat's composer and drawn as it is
+   (style.af4c3c6b.css .rc: white, a #d1d1d6 hairline, 14px corners, its 12px type and send button), 8px in from its
+   sides with its foot tucked under the composer's top edge, so the two read as one. It rises in as it opens and fades
+   away once answered; a wrong link is said under the field ---------- */
+.ga {
+  --ga-tuck: 18px;    /* the composer's top padding (4px) and its corner (14px): the card's foot sits under them */
+  --ga-field-h: 32px; /* the Automations search field's height */
+  flex: none; width: 100%; max-width: 622px; margin: 0 auto calc(-1 * var(--ga-tuck)); padding: 0 var(--sp-24); opacity: 0; transform: translateY(var(--sp-6));
+  transition: transform 200ms var(--ease-std), opacity var(--d-hover) ease-out;
+}
+.ga[hidden] { display: none; }
+.ga.is-open { opacity: 1; transform: none; }
+.ga ~ .composer { position: relative; z-index: 1; }
+.ga-card { border-radius: 14px 14px 0 0; background: var(--surface); box-shadow: inset 0 0 0 var(--hair) #d1d1d6; }
+.ga-in { display: flex; flex-direction: column; gap: var(--sp-8); padding: var(--sp-10) var(--sp-10) calc(var(--sp-10) + var(--ga-tuck)); color: var(--ink); font: 12px/1.4 var(--ui); }
+.ga-head { display: flex; align-items: center; gap: var(--sp-8); padding: 0 var(--sp-2); }
+.ga-logo { flex: none; display: block; width: 16px; height: 16px; }
+.ga-q { margin: 0; font: 500 12px/1.4 var(--ui); }
+.ga-opt { display: flex; align-items: center; gap: var(--sp-10); width: 100%; padding: var(--sp-6); border: 0; border-radius: var(--r-ctl); background: transparent; box-shadow: inset 0 0 0 var(--hair) var(--sel); color: var(--ink); font: inherit; text-align: left; cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.ga-opt[hidden] { display: none; }
+.ga-opt:hover { background: var(--hover); }
+.ga-opt:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--hair); }
+.ga-thumb { flex: none; display: block; width: 48px; height: 27px; border-radius: var(--r-ctl); object-fit: cover; }
+.ga-opt-t { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.ga-opt-t b { font: 500 11px/14px var(--ui); }
+.ga-opt-t small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 10px/12px var(--ui); color: var(--muted); }
+.ga-form { display: flex; align-items: center; gap: var(--sp-8); margin: 0; }
+.ga-field { flex: 1; min-width: 0; height: var(--ga-field-h); margin: 0; padding: 0 var(--sp-10); border: 0; border-radius: var(--r-ctl); background: var(--surface); box-shadow: inset 0 0 0 var(--hair) var(--sel); color: var(--ink); font: 12px/1.4 var(--ui); outline: none; transition: box-shadow var(--d-hover) ease-out; }
+.ga-field::placeholder { color: var(--muted); opacity: 1; }
+/* focused as the composer's own field is (chat-ui.854d0793.css .rc:focus-within) */
+.ga-field:focus-visible { box-shadow: inset 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 45%, transparent); }
+.ga-field[aria-invalid="true"] { box-shadow: inset 0 0 0 var(--hair) var(--danger); }
+.ga-go { flex: none; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 9999px; background: var(--sel); color: #aeaeb2; cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.ga-go:disabled { cursor: default; }
+.ga-go.is-on { background: var(--ink); color: var(--surface); }
+.ga-go.is-on:hover { background: color-mix(in srgb, var(--ink) 85%, var(--surface)); }
+.ga-go:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--hair); }
+.ga-go svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ga-err { margin: calc(-1 * var(--sp-4)) 0 0; padding: 0 var(--sp-2); font: 10px/12px var(--ui); color: var(--danger); }
+.ga-err[hidden] { display: none; }
 
 /* ---------- loading and no matches ---------- */
 .am-skel .am-thumb { background: var(--sel); }
@@ -99,6 +291,7 @@ body.am-open .app > .ch, body.am-open .app > .cc { visibility: hidden !important
 .am-btn:hover { background: var(--ground); }
 
 @media (prefers-reduced-motion: reduce) {
-  .am-search input, .am-clear, .am-chip, .am-try, .am-btn { transition: none; }
+  .am-search input, .am-clear, .am-chip, .am-try, .am-btn, .ga, .ga-opt, .ga-field, .ga-go, .amd-close, .amd-more, .amd-back, .amd-pub, .amd-write-t { transition: none; }
   .am-try:active { transform: none; }
+  .amd[open] { animation: none; }
 }

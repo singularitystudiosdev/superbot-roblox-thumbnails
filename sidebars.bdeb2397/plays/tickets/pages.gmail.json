@@ -1,0 +1,35 @@
+{
+ "chat": "tickets",
+ "pages": {
+  "announce": {
+   "img": "announce.webp",
+   "title": "Inbox (1) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "announce": [
+     722.5,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "order": {
+   "img": "order.webp",
+   "title": "Inbox (1) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "order": [
+     667,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

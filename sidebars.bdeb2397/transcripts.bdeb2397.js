@@ -1,11 +1,12 @@
 // Every chat but the live one, as it stands: the prompt, superbot's replies with their result cards, the composer's
 // follow-up suggestion, and the Activity tab's steps. Written in the creative's own format (feed.bdeb2397.js): a card
 // is a picture (or a 3D icon) with a title, two lines and a figure; a breakthrough's figure carries the party popper,
-// and its Activity line is bold. Names of people, shops, products and channels are made up; figures are illustrative,
-// as the creative's are. Pictures: chats/CREDITS.txt; icons: chats.bdeb2397.js FX.
+// and its Activity line is bold; a new find's figure (a lower price, a listing, a place) carries the popper too. Names
+// of people, shops, products and channels are made up; figures are illustrative, as the creative's are. Pictures:
+// chats/CREDITS.txt; icons: chats.bdeb2397.js FX.
 //
 // a message: { u: text } from the user, or { b: text, card?, after? } from superbot
-// a card: { img | fx, title, sub, line, value, unit, win? }, or { strip: [{ img | fx, name }] }
+// a card: { img | fx, title, sub, line, value, unit, win?, find? }, or { strip: [{ img | fx, name }] }
 // an Activity step: [icon, text] or [icon, text, true] for a win
 
 export const TRANSCRIPTS = {
@@ -14,10 +15,10 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'We just launched Quillnote, an AI meeting notes app for small teams. Find YouTubers who review productivity apps and email them about a paid sponsorship. Budget is $500 to $2,000 a video.' },
       { b: "On it. I'll find productivity reviewers with 20k to 300k subscribers who posted in the last month, write each one a personal email that mentions a recent video of theirs, and follow up once. I'll post every yes here." },
-      { b: 'Found 46 channels that fit, and wrote to each one from your Gmail:', card: { fx: 'outbox', title: 'Outreach sent', sub: '46 personal emails, one per channel', line: 'Sent Oct 18 at 9:00 AM', value: '46', unit: 'emails' } },
-      { b: 'First yes. Desk Setup Daily will do a 60-second integration:', card: { fx: 'handshake', title: 'Desk Setup Daily', sub: '88k subscribers, productivity reviews', line: '60-second integration, live Oct 28', value: '$900', unit: 'per video', win: true } },
-      { b: "I followed up with the 21 who hadn't replied. Calm Code said yes to a full video:", card: { fx: 'handshake', title: 'Calm Code', sub: '142k subscribers, dev tools and focus', line: 'Dedicated review, live Nov 4', value: '$1,600', unit: 'per video', win: true }, after: 'Tidy Tabs said yes too: a 45-second mention for $650, live Nov 9.' },
-      { b: '3 sponsorships booked. Each has the brief, a tracking link and a 20% off code, and all three are in your sponsorship sheet.', card: { fx: 'chartUp', title: 'Sponsorships booked', sub: 'Desk Setup Daily, Calm Code, Tidy Tabs', line: '17 of 46 replied, a 37% reply rate', value: '$3,150', unit: 'for 3 videos' } },
+      { b: 'Found 46 channels that fit, and wrote to each one from your Gmail:', card: { img: './chats/sponsors-outreach.webp', title: 'Outreach sent', sub: '46 personal emails, one per channel', line: 'Sent Oct 18 at 9:00 AM', value: '46', unit: 'emails', find: true } },
+      { b: 'First yes. Desk Setup Daily will do a 60-second integration:', card: { img: './chats/sponsors-desk-setup.webp', title: 'Desk Setup Daily', sub: '88k subscribers, productivity reviews', line: '60-second integration, live Oct 28', value: '$900', unit: 'per video', win: true } },
+      { b: "I followed up with the 21 who hadn't replied. Calm Code said yes to a full video:", card: { img: './chats/sponsors-calm-code.webp', title: 'Calm Code', sub: '142k subscribers, dev tools and focus', line: 'Dedicated review, live Nov 4', value: '$1,600', unit: 'per video', win: true }, after: 'Tidy Tabs said yes too: a 45-second mention for $650, live Nov 9.' },
+      { b: '3 sponsorships booked. Each has the brief, a tracking link and a 20% off code, and all three are in your sponsorship sheet.', card: { img: './chats/sponsors-booked.webp', title: 'Sponsorships booked', sub: 'Desk Setup Daily, Calm Code, Tidy Tabs', line: '17 of 46 replied, a 37% reply rate', value: '$3,150', unit: 'for 3 videos' } },
     ],
     acts: [
       ['search', 'Searched YouTube for productivity app reviews'],
@@ -40,8 +41,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: "Get me 2 tickets together for Neon Harbor at Riverside Arena on Nov 14. Don't pay more than $150 each. Watch the prices and buy when they drop." },
       { b: "On it. I'll watch every resale listing for 2 seats together and buy the moment a pair drops to $150 each or less, fees included. Face value was $129, and resale pairs start at $238 right now." },
-      { b: 'Cheapest pair this morning:', card: { fx: 'tickets', title: 'Section 214, Row C', sub: '2 seats together, upper level', line: 'Checked 4 resale sites at 6:00 AM', value: '$238', unit: 'each, with fees' } },
-      { b: 'Prices started falling once a second date was announced:', card: { fx: 'chartDown', title: 'Section 120, Row R', sub: '2 seats together, lower level', line: 'Down $67 since yesterday', value: '$171', unit: 'each, with fees' } },
+      { b: 'Cheapest pair this morning:', card: { fx: 'tickets', title: 'Section 214, Row C', sub: '2 seats together, upper level', line: 'Checked 4 resale sites at 6:00 AM', value: '$238', unit: 'each, with fees', find: true } },
+      { b: 'Prices started falling once a second date was announced:', card: { fx: 'tickets', title: 'Section 120, Row R', sub: '2 seats together, lower level', line: 'Down $67 since yesterday', value: '$171', unit: 'each, with fees', find: true } },
       { b: 'Bought. 2 seats together, $8 under your limit:', card: { fx: 'tickets', title: 'Section 108, Row K, seats 11 and 12', sub: 'Lower level, side stage', line: 'Paid with your saved card', value: '$142', unit: 'each, with fees', win: true }, after: 'The tickets are in your account, and Nov 14 is on your calendar.' },
     ],
     acts: [
@@ -57,13 +58,43 @@ export const TRANSCRIPTS = {
     ],
   },
 
+  pricewatch: {
+    hint: 'Watch the Nov 15 show too...',
+    messages: [
+      { u: 'Buy tickets for Neon Harbor anytime they drop below $150. I need 2 seats together for the Portland show on Nov 14.' },
+      { b: "On it. I'll check Vivid Seats, Gametime, TicketSmarter and TicketNetwork every 10 minutes, around the clock, and buy 2 seats together every time a pair drops under $150 each, fees included, with your saved card." },
+      { b: 'Cheapest pair right now, on Vivid Seats. The other 3 sites start at $246:', card: { fx: 'tickets', title: 'Section 214, Row C', sub: '2 seats together, upper level', line: 'Checked 4 resale sites at 7:00 AM', value: '$238', unit: 'each, with fees', find: true } },
+      { b: "A second Portland show was announced, and prices started falling. Still over $150, so I'm still watching:", card: { fx: 'chartDown', title: 'Section 120, Row R', sub: '2 seats together, lower level', line: 'Down $67 since 7:00 AM', value: '$171', unit: 'each, with fees', find: true } },
+      { b: 'They dropped below $150, so I bought them. 2 seats together, $8 under your limit:', card: { fx: 'tickets', title: 'Section 108, Row K, seats 11 and 12', sub: 'Lower level, side stage', line: '$284 total, paid with your Visa ending 4417', value: '$142', unit: 'each, with fees', win: true }, after: 'The order confirmation is in your Gmail, and Sat, Nov 14 at 7:30 PM is on your calendar.' },
+      { b: 'Back to watching for more. The cheapest pair left is still over $150:', card: { fx: 'hourglass', title: 'Section 115, Row M', sub: '2 seats together, lower level', line: 'Next check at 9:40 AM', value: '$159', unit: 'each, with fees' }, after: "I'll buy the next pair that drops below $150." },
+    ],
+    acts: [
+      ['search', 'Searched Vivid Seats for Neon Harbor'],
+      ['tickets', 'Opened Sat, Nov 14 in Portland for 2 tickets'],
+      ['tickets', 'Cheapest pair on Vivid Seats: $238 each'],
+      ['search', 'Gametime, TicketSmarter, TicketNetwork: $246 and up'],
+      ['hourglass', 'Checking all 4 sites every 10 minutes'],
+      ['loop', '7:10 AM: still $238 each'],
+      ['bell', '7:42 AM: a second Portland show was announced'],
+      ['chartDown', '7:50 AM: cheapest pair fell to $171 each'],
+      ['hourglass', 'Still over $150 everywhere, kept checking'],
+      ['chartDown', 'Next day, 9:16 AM: a pair fell to $142 each'],
+      ['eyes', 'Section 108, Row K: together, lower level'],
+      ['card', 'Paid with your saved Visa ending 4417'],
+      ['tickets', 'Bought 2 tickets for $284, order #VS-48213907', true],
+      ['calendar', 'Added Sat, Nov 14 at 7:30 PM to your calendar'],
+      ['loop', 'Back to watching all 4 sites every 10 minutes'],
+      ['hourglass', '9:30 AM: cheapest pair left is $159 each'],
+    ],
+  },
+
   lunch: {
     hint: "Skip next Friday, I'm out...",
     messages: [
       { u: 'Every Friday, order me a surprise lunch to the office for noon. Something new each week, under $25, and nothing with peanuts.' },
       { b: "Done. Every Friday at 11:30 I'll pick a place you've never ordered from, rated 4.5 or higher, under $25 with delivery and tip, and check the dish for peanuts. I'll post each one here." },
-      { b: 'Friday, Oct 2:', card: { img: './chats/lunch-ramen.webp', title: 'Spicy miso ramen', sub: 'Menya Sora, new to you', line: 'Arrived 11:58, you gave it 5 stars', value: '$19.80', unit: 'with delivery' } },
-      { b: 'Friday, Oct 9:', card: { img: './chats/lunch-tacos.webp', title: 'Tacos al pastor, three', sub: 'La Esquina, new to you', line: 'Arrived 12:03, you gave it 4 stars', value: '$16.50', unit: 'with delivery' } },
+      { b: 'Friday, Oct 2:', card: { img: './chats/lunch-ramen.webp', title: 'Spicy miso ramen', sub: 'Menya Sora, new to you', line: 'Arrived 11:58, you gave it 5 stars', value: '$19.80', unit: 'with delivery', find: true } },
+      { b: 'Friday, Oct 9:', card: { img: './chats/lunch-tacos.webp', title: 'Tacos al pastor, three', sub: 'La Esquina, new to you', line: 'Arrived 12:03, you gave it 4 stars', value: '$16.50', unit: 'with delivery', find: true } },
       { b: 'Friday, Oct 16, and your favorite so far:', card: { img: './chats/lunch-poke.webp', title: 'Salmon poke bowl', sub: 'Poke Lab, new to you', line: 'Arrived 11:55, you gave it 5 stars', value: '$22.40', unit: 'with delivery', win: true } },
       { b: 'Your Fridays so far:', card: { strip: [{ img: './chats/lunch-ramen.webp', name: 'Oct 2, ramen' }, { img: './chats/lunch-tacos.webp', name: 'Oct 9, tacos' }, { img: './chats/lunch-poke.webp', name: 'Oct 16, poke' }] }, after: "This Friday it's Lebanese: a chicken shawarma plate from Cedar House, $18.90." },
     ],
@@ -91,7 +122,7 @@ export const TRANSCRIPTS = {
       { b: 'Your lowest is Sheet Pan Gnocchi at 2.1% click-through. Your channel averages 4.8%.', card: { img: './chats/yt-gnocchi-0.webp', title: 'Lowest performer', sub: 'Sheet Pan Gnocchi', line: '61,400 impressions in 28 days', value: '2.1%', unit: 'click-through' } },
       { b: 'Made 3 versions to test against it:', card: { strip: [{ img: './chats/yt-gnocchi-1.webp', name: 'Version 1' }, { img: './chats/yt-gnocchi-2.webp', name: 'Version 2' }, { img: './chats/yt-gnocchi-3.webp', name: 'Version 3' }] } },
       { b: 'New best. Version 2 won the test, more than 3 times the old click-through:', card: { img: './chats/yt-gnocchi-2.webp', title: 'Version 2', sub: 'You holding the pan, big text', line: 'Won Test & Compare after 7 days', value: '6.8%', unit: 'click-through', win: true } },
-      { b: 'I did the same on 9 more videos and kept each winner:', card: { fx: 'chartUp', title: '10 videos updated', sub: 'Average click-through was 2.9%', line: 'Views on them up 71% this week', value: '5.6%', unit: 'click-through', win: true } },
+      { b: 'I did the same on 9 more videos and kept each winner:', card: { img: './chats/yt-updated.webp', title: '10 videos updated', sub: 'Average click-through was 2.9%', line: 'Views on them up 71% this week', value: '5.6%', unit: 'click-through', win: true } },
     ],
     acts: [
       ['laptop', 'Opened YouTube Studio'],
@@ -112,8 +143,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: "Go through my card statements and cancel the subscriptions I don't use." },
       { b: "On it. I'll list every recurring charge from the last 3 months, check when you last used each one, and cancel anything you haven't touched in 90 days. I'll ask before cancelling anything you used more recently." },
-      { b: 'Found 14 subscriptions:', card: { fx: 'card', title: '14 subscriptions', sub: 'From your last 3 statements', line: '4 unused for over 90 days', value: '$211', unit: 'a month' } },
-      { b: 'Cancelled the 4 you never use:', card: { fx: 'scissors', title: '4 cancelled', sub: '2 streaming apps, a meal kit, a cloud backup', line: 'Confirmations saved to a folder', value: '$64', unit: 'saved a month', win: true }, after: 'Your gym is $39 a month and you last went in August. Want me to cancel it too?' },
+      { b: 'Found 14 subscriptions:', card: { img: './chats/subs-found.webp', title: '14 subscriptions', sub: 'From your last 3 statements', line: '4 unused for over 90 days', value: '$211', unit: 'a month', find: true } },
+      { b: 'Cancelled the 4 you never use:', card: { img: './chats/subs-cancelled.webp', title: '4 cancelled', sub: '2 streaming apps, a meal kit, a cloud backup', line: 'Confirmations saved to a folder', value: '$64', unit: 'saved a month', win: true }, after: 'Your gym is $39 a month and you last went in August. Want me to cancel it too?' },
     ],
     acts: [
       ['card', 'Read 3 months of card statements'],
@@ -132,8 +163,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'Watch flights from SFO to Tokyo for March 8 to 22 and book when a round trip drops under $700.' },
       { b: "On it. I'll check prices every few hours across airlines and booking sites, economy with at most 1 stop, and book the first round trip under $700." },
-      { b: 'Cheapest today:', card: { fx: 'plane', title: 'SFO to Haneda, 1 stop', sub: 'Mar 8 to Mar 22, economy', line: 'Checked 6 sites', value: '$894', unit: 'round trip' } },
-      { b: 'Booked. Nonstop, $88 under your limit:', card: { fx: 'plane', title: 'SFO to Narita, nonstop', sub: 'Out Mar 8, 11:35 AM, back Mar 22', line: 'Seat 34A, 1 checked bag', value: '$612', unit: 'round trip', win: true }, after: 'Your confirmation is in your inbox, and both flights are on your calendar.' },
+      { b: 'Cheapest today:', card: { img: './chats/flights-cheapest.webp', title: 'SFO to Haneda, 1 stop', sub: 'Mar 8 to Mar 22, economy', line: 'Checked 6 sites', value: '$894', unit: 'round trip', find: true } },
+      { b: 'Booked. Nonstop, $88 under your limit:', card: { img: './chats/flights-booked.webp', title: 'SFO to Narita, nonstop', sub: 'Out Mar 8, 11:35 AM, back Mar 22', line: 'Seat 34A, 1 checked bag', value: '$612', unit: 'round trip', win: true }, after: 'Your confirmation is in your inbox, and both flights are on your calendar.' },
     ],
     acts: [
       ['search', 'Checked 6 sites for Mar 8 to Mar 22'],
@@ -151,8 +182,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'Book me a haircut with Sam every 4 weeks, weekday evenings only.' },
       { b: "Done. 4 weeks after each cut I'll book Sam's first open weekday slot after 5 PM, and move it if something else lands on your calendar." },
-      { b: 'The next one is booked:', card: { fx: 'barber', title: 'Haircut with Sam', sub: 'Fade Room, Valencia St', line: 'Confirmation in your email', value: 'Nov 18', unit: 'Wed, 6:15 PM' } },
-      { b: 'A team dinner just landed on Nov 18, so I moved your cut to the next evening Sam had open:', card: { fx: 'calendar', title: 'Moved, and Sam confirmed', sub: 'Fade Room, Valencia St', line: 'Your calendar is updated', value: 'Nov 19', unit: 'Thu, 5:45 PM', win: true } },
+      { b: 'The next one is booked:', card: { img: './chats/haircut-sam.webp', title: 'Haircut with Sam', sub: 'Fade Room, Valencia St', line: 'Confirmation in your email', value: 'Nov 18', unit: 'Wed, 6:15 PM', find: true } },
+      { b: 'A team dinner just landed on Nov 18, so I moved your cut to the next evening Sam had open:', card: { img: './chats/haircut-moved.webp', title: 'Moved, and Sam confirmed', sub: 'Fade Room, Valencia St', line: 'Your calendar is updated', value: 'Nov 19', unit: 'Thu, 5:45 PM', win: true } },
     ],
     acts: [
       ['calendar', 'Checked your weekday evenings'],
@@ -168,8 +199,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: "Keep my inbox at zero. Archive what doesn't need me, reply to the easy ones, and flag the rest." },
       { b: "On it. Every morning at 8 I'll sort what came in overnight. I'll only send replies that confirm a time or say thanks, and flag anything that needs a real answer from you." },
-      { b: 'Monday morning:', card: { fx: 'inbox', title: '88 emails sorted', sub: 'Archived 71, replied to 6, flagged 11', line: 'Done by 8:04 AM', value: '0', unit: 'left unread' } },
-      { b: 'Your first full week:', card: { fx: 'trophy', title: 'Inbox at zero, 5 days running', sub: '412 emails sorted', line: 'Archived 361, replied to 34, flagged 17', value: '5', unit: 'days at zero', win: true } },
+      { b: 'Monday morning:', card: { img: './chats/inbox-sorted.webp', title: '88 emails sorted', sub: 'Archived 71, replied to 6, flagged 11', line: 'Done by 8:04 AM', value: '0', unit: 'left unread' } },
+      { b: 'Your first full week:', card: { img: './chats/inbox-week.webp', title: 'Inbox at zero, 5 days running', sub: '412 emails sorted', line: 'Archived 361, replied to 34, flagged 17', value: '5', unit: 'days at zero', win: true } },
     ],
     acts: [
       ['inbox', 'Sorted 88 emails from overnight'],
@@ -187,8 +218,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'Find me a used road bike under $600. 56cm frame, carbon or aluminum, pickup within 20 miles.' },
       { b: "On it. I'll check local listings every hour, skip anything with frame damage in the photos, and ask sellers about mileage and wear before I show you anything." },
-      { b: 'Best one so far:', card: { fx: 'bike', title: 'Aluminum road bike, 56cm', sub: '11 miles away, new chain and tires', line: 'About 1,500 miles on it, the seller says', value: '$540', unit: 'asking' } },
-      { b: 'The seller took $480, and can meet Saturday at 10 AM:', card: { fx: 'handshake', title: 'Deal agreed', sub: 'Pickup in Oakland, Saturday 10 AM', line: 'On your calendar, with the address', value: '$480', unit: 'agreed', win: true } },
+      { b: 'Best one so far:', card: { img: './chats/bike-listing.webp', title: 'Aluminum road bike, 56cm', sub: '11 miles away, new chain and tires', line: 'About 1,500 miles on it, the seller says', value: '$540', unit: 'asking', find: true } },
+      { b: 'The seller took $480, and can meet Saturday at 10 AM:', card: { img: './chats/bike-listing.webp', title: 'Deal agreed', sub: 'Pickup in Oakland, Saturday 10 AM', line: 'On your calendar, with the address', value: '$480', unit: 'agreed', win: true } },
     ],
     acts: [
       ['search', 'Checked 3 local listing sites'],
@@ -206,8 +237,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'Plan a 3-day trip to Lisbon for Nov 20 to 23. A mid-range hotel near the center, good food, and one day trip.' },
       { b: "On it. I'll book a hotel you can walk the center from, two dinner reservations, and a day trip to Sintra, then send you the plan day by day." },
-      { b: 'Hotel booked:', card: { fx: 'luggage', title: 'Hotel in Chiado', sub: '3 nights, rated 4.6', line: 'Free cancellation until Nov 17', value: '$612', unit: '3 nights' } },
-      { b: 'Everything is booked. Your plan is in your email and on your calendar:', card: { fx: 'map', title: '3 days in Lisbon', sub: 'Hotel, 2 dinners, Sintra on Nov 22', line: 'Train tickets and entry times included', value: '$1,140', unit: 'all in', win: true } },
+      { b: 'Hotel booked:', card: { img: './chats/lisbon-hotel.webp', title: 'Hotel in Chiado', sub: '3 nights, rated 4.6', line: 'Free cancellation until Nov 17', value: '$612', unit: '3 nights', find: true } },
+      { b: 'Everything is booked. Your plan is in your email and on your calendar:', card: { img: './chats/lisbon-plan.webp', title: '3 days in Lisbon', sub: 'Hotel, 2 dinners, Sintra on Nov 22', line: 'Train tickets and entry times included', value: '$1,140', unit: 'all in', win: true } },
     ],
     acts: [
       ['search', 'Compared 40 hotels near the center'],
@@ -224,8 +255,8 @@ export const TRANSCRIPTS = {
     messages: [
       { u: 'My landlord is keeping my $1,800 deposit. I moved out Sept 30 and left the place clean. Help me get it back.' },
       { b: "On it. I'll write a formal request with your move-out photos and the 21-day deadline your state sets for returning deposits, send it by email and certified mail, and follow up." },
-      { b: 'Letter sent:', card: { fx: 'memo', title: 'Deposit request', sub: 'With 24 move-out photos', line: 'Email and certified mail, Oct 8', value: '$1,800', unit: 'requested' } },
-      { b: 'Your landlord paid it back in full:', card: { fx: 'money', title: 'Deposit returned', sub: 'By bank transfer', line: 'Arrived Oct 16', value: '$1,800', unit: 'returned', win: true } },
+      { b: 'Letter sent:', card: { img: './chats/deposit-letter.webp', title: 'Deposit request', sub: 'With 24 move-out photos', line: 'Email and certified mail, Oct 8', value: '$1,800', unit: 'requested' } },
+      { b: 'Your landlord paid it back in full:', card: { img: './chats/deposit-paid.webp', title: 'Deposit returned', sub: 'By bank transfer', line: 'Arrived Oct 16', value: '$1,800', unit: 'returned', win: true } },
     ],
     acts: [
       ['memo', 'Wrote the deposit request letter'],

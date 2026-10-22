@@ -1,0 +1,51 @@
+{
+  "chat": "bike",
+  "pages": {
+    "site-offerup": {
+      "img": "site-offerup.webp",
+      "title": "Search: road bike 56cm near Oakland, CA - OfferUp",
+      "host": "offerup.com",
+      "path": "/search?q=road%20bike%2056cm&PRICE_MAX=600&radius=20",
+      "fav": "fav-offerup.png",
+      "targets": {
+        "row1": [
+          401.4,
+          486.8
+        ],
+        "row2": [
+          871,
+          486.8
+        ],
+        "filter": [
+          171,
+          525.4
+        ]
+      },
+      "scroll": null,
+      "field": null
+    },
+    "site-facebook": {
+      "img": "site-facebook.webp",
+      "title": "Facebook",
+      "host": "facebook.com",
+      "path": "/marketplace/oakland/search?query=road%20bike%2056cm&maxPrice=600&exact=false",
+      "fav": "fav-facebook.png",
+      "targets": {
+        "row1": [
+          519.8,
+          243.7
+        ],
+        "row2": [
+          783.3,
+          587.2
+        ],
+        "filter": [
+          271.4,
+          443
+        ]
+      },
+      "scroll": null,
+      "field": null
+    }
+  }
+}

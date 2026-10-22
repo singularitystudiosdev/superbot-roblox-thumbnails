@@ -1,0 +1,23 @@
+plays/lisbon, dinner reservations (never shown on screen). Date: 2026-10-21. Made by ../../tools/play-lisbon-dinner.4c8bc671.mjs
+(headless Chromium, public pages, nobody signed in, nothing booked, reserved, held, paid or sent; no paid API and no image
+generation were used). Every capture: viewport 1470x837 at 2x, WebP (cwebp -q 80), DOM edits only.
+Source: SevenRooms' public online-booking widget (sevenrooms.com), the reservation engine two Lisbon restaurants embed.
+TheFork (thefork.com / thefork.pt) was tried first and answered every non-browser-grade client with a DataDome HTTP 403.
+
+dinner-1.webp   https://www.sevenrooms.com/explore/pizzarialisboa/reservations/create/search/?date=2026-11-20&halo=2&lang=en
+                (real page, real clicks: Time field -> 20:00, then that slot's button). Fri 20 Nov 2026, 2 guests, slot dialog
+                open: venue photo (dining room, brick arches, a painted mural, no people), "Fri 20 Nov . 8:00 PM", notes, "Select".
+                Staged: restaurant renamed Taberna do Largo (heading, dialog title, document title, aria text), address Rua da
+                Misericordia 54, phone +351 21 555 0142, description, the venue's notes reworded, the real brand "Avillez" removed,
+                times shown 12-hour (8:00 PM), header logo badge hidden. The hero photo (a pizza with the venue logo on it) is
+                only visible dimmed at the sides of the dialog; the logo sits behind the dialog.
+dinner-2.webp   https://www.sevenrooms.com/explore/attikolisbon/reservations/create/search/?date=2026-11-21&halo=2&lang=en
+                (same clicks, Time -> 20:30). Sat 21 Nov 2026, 2 guests. Photos: the venue's bar/dining room, no people.
+                Staged: renamed Casa das Gaivotas, address Rua da Atalaia 48, phone +351 21 555 0178, intro note and description
+                rewritten, slot label "Dining room", children/dress-code notes reworded, 12-hour times, header logo hidden.
+fav-sevenrooms.png  SevenRooms' own favicon (icons/SevenRoomsLogo.svg from the page's <link rel=icon>), rasterised at 64px.
+
+Never pressed: the dialog's "Select" button (it POSTs /api-yoa/dining/hold/add, which would hold a real table, and opens the
+guest-details / confirm step). Every non-GET request except SevenRooms' anonymous token refresh was aborted, including that
+hold request and all analytics beacons. Nothing was typed anywhere.
+Not captured: dinner-1-confirm (it only opens after the hold request above).

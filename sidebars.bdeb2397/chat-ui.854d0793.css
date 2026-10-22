@@ -1,0 +1,222 @@
+/* The page's controls, working (chat-ui.854d0793.js and the modules it mounts): the composer's field, files, menus and
+   buttons, the bell among them; New chat; the share box; Stop and Resume; the computer view folding away; the sidebar's
+   search, collapse rail and account button. Colors, spacing and radii from tokens.bdeb2397.css (--r-ctl on controls,
+   --r-surf on the popovers, pills and dots round); the composer and chat keep the creative's own px (style.af4c3c6b.css),
+   the popovers the sidebar's --ref sizes. No chromatic accent: ink is the action color, the 3D icons the only color. */
+
+/* ---------- the composer: its controls are buttons now (view.html), drawn as the creative's spans were ---------- */
+:where(.rc-row > button) { flex: none; display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: var(--muted); font: inherit; cursor: pointer; }
+.composer[inert] .rc-row > button { cursor: default; }
+.rc-row > button:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+/* + and the effort picker have no fill at rest; on hover one grows round them without moving them */
+.rc-plus { border-radius: 9999px; transition: background-color var(--d-hover) ease-out, box-shadow var(--d-hover) ease-out; }
+.rc-effort { border-radius: var(--r-ctl); transition: background-color var(--d-hover) ease-out, box-shadow var(--d-hover) ease-out; }
+.composer:not([inert]) .rc-plus:hover, .rc-plus[aria-expanded="true"] { background: var(--hover); box-shadow: 0 0 0 var(--sp-6) var(--hover); }
+.composer:not([inert]) .rc-effort:hover, .rc-effort[aria-expanded="true"] { background: var(--hover); box-shadow: 0 0 0 var(--sp-4) var(--hover); color: var(--ink) !important; }
+/* its tier in place of the gauge (tier.8e7c682e.js): the ouroboro mark in silver, gold or diamond, or Max's rolling
+   rainbow, which glows the hue its band is passing through, once round the spectrum a loop (3.6s, as the band rolls) */
+.rc-effort .rc-effort-ic { display: block; width: 22px; height: 15px; margin: -1.5px -1px -1.5px -1.5px; }
+.rc-effort-ic > * { display: block; width: 100%; height: 100%; object-fit: cover; }
+.rc-effort-ic[tier="max"] { animation: rc-tier-glow 3.6s linear infinite; /* deliberate: the glow keeps the rainbow's time, not a transition */ }
+@keyframes rc-tier-glow {
+  0%, 100% { filter: drop-shadow(0 0 2px rgb(255 64 96 / 0.55)); }
+  25% { filter: drop-shadow(0 0 2px rgb(255 200 40 / 0.55)); }
+  50% { filter: drop-shadow(0 0 2px rgb(40 200 255 / 0.55)); }
+  75% { filter: drop-shadow(0 0 2px rgb(170 80 255 / 0.55)); }
+}
+.composer:not([inert]) .rc-mic:hover { background: var(--sel); }
+.rc-mic.is-rec { background: var(--ink); color: var(--surface) !important; box-shadow: 0 0 0 0 color-mix(in srgb, var(--ink) 24%, transparent); animation: rc-rec 900ms ease-in-out infinite alternate; /* deliberate: a slow breathing ring while it listens, not a transition */ }
+@keyframes rc-rec { to { box-shadow: 0 0 0 var(--sp-4) color-mix(in srgb, var(--ink) 16%, transparent); } }
+.rc-send:disabled { cursor: default; }
+.rc-send.is-on:not(:disabled):hover { background: color-mix(in srgb, var(--ink) 85%, var(--surface)); }
+/* the bell: a bell while the chat notifies you, struck through and muted while it does not; round fill on hover */
+.rc-bell { transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.composer:not([inert]) .rc-bell:hover { background: var(--hover); }
+.rc-bell.is-off { color: var(--muted) !important; }
+
+/* the field: in the place of the run's lettering, growing to 160px; while a run types, it lies clear over the lettering */
+.composer.is-working { position: relative; }
+.composer.is-working .rc { position: relative; cursor: text; transition: box-shadow var(--d-hover) ease-out; }
+.composer.is-working .rc:focus-within { box-shadow: inset 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 45%, transparent), 0 2px 8px color-mix(in srgb, var(--ink) 4%, transparent); }
+.composer.is-working:not(.is-painted) .rc-ph { display: none; }
+.rc-input { box-sizing: border-box; display: block; width: 100%; min-height: 39px; max-height: 160px; margin: 0; padding: 0 1.5px; border: 0; resize: none; overflow-y: auto; scrollbar-width: none; background: transparent; color: var(--ink); font: inherit; }
+.rc-input::placeholder { color: var(--muted); opacity: 1; }
+.composer.is-painted .rc-input { position: absolute; top: 11px; left: 10px; right: 8.5px; height: 39px !important; opacity: 0; }
+/* a library automation named in the field (automation-refs.3c255b31.js): a copy of the field's text in the same cell,
+   sized by the field alone and set as the field sets its own, draws the name as a link; only the link takes a press, and
+   the field's lettering goes clear under the copy, its caret still showing */
+.rc-field { display: grid; }
+.rc-field > * { grid-area: 1 / 1; }
+.rc-refs { box-sizing: border-box; min-width: 0; padding: 0 1.5px; overflow: hidden; contain: size; white-space: pre-wrap; overflow-wrap: break-word; letter-spacing: normal; word-spacing: normal; text-indent: 0; text-align: start; color: var(--ink); pointer-events: none; }
+.rc-refs .am-ref { pointer-events: auto; }
+.rc-input.has-refs { color: transparent; caret-color: var(--ink); }
+.composer.is-painted .rc-refs { display: none; }
+/* a short line under the box: dictation, files attached, a browser blocking notifications */
+.rc-status { position: absolute; left: var(--sp-16); right: var(--sp-16); bottom: 1px; margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; font: 10.5px/14px var(--ui); color: var(--muted); pointer-events: none; }
+
+/* files picked: a chip each over the field, a photo as its thumbnail, each with its own remove */
+.rc-files { display: flex; flex-wrap: wrap; gap: var(--sp-6); margin: 0 0 var(--sp-8); padding: 0; list-style: none; }
+.rc-files[hidden] { display: none; }
+.rc-file { display: flex; align-items: center; gap: var(--sp-8); max-width: 220px; height: 40px; padding: 0 var(--sp-4) 0 var(--sp-6); border-radius: var(--r-ctl); background: var(--ground); box-shadow: inset 0 0 0 var(--hair) var(--sel); color: var(--ink); }
+.rc-file img { flex: none; width: 28px; height: 28px; border-radius: var(--r-ctl); object-fit: cover; }
+.rc-file .rc-file-ic { width: 16px; height: 16px; margin: 0 var(--sp-6); color: var(--muted); }
+.rc-file-t, .cu-file span { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.rc-file-t b, .cu-file b { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 11px/14px var(--ui); }
+.rc-file-t small, .cu-file small { font: 10px/12px var(--ui); color: var(--muted); }
+.rc-file-x { flex: none; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 9999px; background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.rc-file-x:hover { background: var(--sel); color: var(--ink); }
+.rc-file-x:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.rc-file-x .sb-lu { width: 12px; height: 12px; }
+
+/* ---------- a message the viewer sent (bubble.854d0793.js) ---------- */
+.cu { flex-direction: column; align-items: flex-end; gap: var(--sp-6); }
+.cu > span { white-space: pre-wrap; overflow-wrap: anywhere; }
+.cu-files { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--sp-6); max-width: 82%; margin: 0; padding: 0; list-style: none; }
+.cu-pic img { display: block; width: 120px; height: 90px; border-radius: var(--r-ctl); object-fit: cover; box-shadow: 0 0 0 var(--hair) var(--sel); }
+.cu-file { display: flex; align-items: center; gap: var(--sp-8); max-width: 240px; height: 40px; padding: 0 var(--sp-12) 0 var(--sp-10); border-radius: var(--r-ctl); background: var(--surface); box-shadow: inset 0 0 0 var(--hair) var(--sel); color: var(--ink); }
+.cu-file .cu-file-ic { width: 16px; height: 16px; color: var(--muted); }
+
+/* ---------- the popovers: menu rows with a line under them, the effort's check ---------- */
+.sb-menu-item.has-sub { height: auto; align-items: flex-start; padding-top: calc(6px * var(--ref)); padding-bottom: calc(6px * var(--ref)); }
+.sb-menu-item.has-sub > .sb-lu { margin-top: calc(1px * var(--ref)); }
+.pm-t { display: flex; flex-direction: column; gap: calc(2px * var(--ref)); }
+.pm-t small { font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); white-space: normal; }
+/* the effort picker (composer.854d0793.js): its name, then ChatGPT's thinking-effort slider, ink where ChatGPT is blue.
+   The thumb's centre runs a radius (--ef-r) in from each end of the track, at --at (0 to 1); the stops sit on the same
+   run, lit where the fill is under them. Its rows open under it. */
+.pm-effort { --ef-r: calc(11px * var(--ref)); width: calc(232px * var(--ref)); padding: calc(8px * var(--ref)) calc(12px * var(--ref)) calc(14px * var(--ref)); }
+/* centred over the chip (composer.854d0793.js), it glides to stay so when the name picked changes the chip's width */
+.pm-effort:popover-open { transition: opacity var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std), overlay var(--d-hover) allow-discrete, display var(--d-hover) allow-discrete, left var(--d-hover) var(--ease-std); }
+.pm-ef-head { display: flex; align-items: center; gap: calc(2px * var(--ref)); margin: 0 auto calc(10px * var(--ref)); padding: calc(2px * var(--ref)) calc(4px * var(--ref)) calc(2px * var(--ref)) calc(8px * var(--ref)); border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--ink); font: 500 var(--fs-body)/var(--lh-body) var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.pm-ef-head:hover { background: var(--ground); }
+.pm-ef-head:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.pm-ef-chev { width: var(--ic); height: var(--ic); color: var(--muted); transition: transform var(--d-hover) var(--ease-std); }
+.pm-ef-head[aria-expanded="true"] .pm-ef-chev { transform: rotate(90deg); }
+.pm-ef-track { position: relative; height: calc(18px * var(--ref)); border-radius: 9999px; background: var(--ground); box-shadow: inset 0 0 0 var(--hair) var(--sel); cursor: pointer; touch-action: none; }
+.pm-ef-fill { position: absolute; left: 0; top: 0; bottom: 0; width: calc(2 * var(--ef-r) + var(--at, 0) * (100% - 2 * var(--ef-r))); border-radius: inherit; background: var(--ink); }
+.pm-ef-stop { position: absolute; top: 50%; left: calc(var(--ef-r) + var(--i) * (100% - 2 * var(--ef-r))); width: calc(4px * var(--ref)); height: calc(4px * var(--ref)); border-radius: 50%; background: color-mix(in srgb, var(--ink) 24%, transparent); transform: translate(-50%, -50%); pointer-events: none; }
+.pm-ef-stop.is-in { background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.pm-ef-thumb { position: absolute; top: 50%; left: calc(var(--ef-r) + var(--at, 0) * (100% - 2 * var(--ef-r))); width: calc(2 * var(--ef-r)); height: calc(2 * var(--ef-r)); border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel), 0 calc(1px * var(--ref)) calc(4px * var(--ref)) color-mix(in srgb, var(--ink) 20%, transparent); transform: translate(-50%, -50%); cursor: grab; }
+.pm-ef-thumb:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+/* settling on a stop eases; while dragged it is wherever the pointer is */
+.pm-ef-thumb, .pm-ef-fill { transition: left var(--d-hover) var(--ease-std), width var(--d-hover) var(--ease-std); }
+.pm-ef-track.is-dragging .pm-ef-thumb, .pm-ef-track.is-dragging .pm-ef-fill { transition: none; }
+.pm-ef-track.is-dragging, .pm-ef-track.is-dragging .pm-ef-thumb { cursor: grabbing; }
+.pm-ef-list { margin: calc(12px * var(--ref)) calc(-8px * var(--ref)) calc(-10px * var(--ref)); padding-top: calc(4px * var(--ref)); border-top: var(--hair) solid var(--sel); }
+.pm-ef-list[hidden] { display: none; }
+/* iOS's tap tick (composer.854d0793.js tapTicks): a clear label over the track and each row, its switch hidden and
+   never under the finger */
+.pm-ef-list [data-effort] { position: relative; }
+.tap-tick { position: absolute; inset: 0; -webkit-tap-highlight-color: transparent; }
+.tap-tick > input { position: absolute; width: 1px; height: 1px; margin: 0; visibility: hidden; }
+.sb-menu-item .pm-check { visibility: hidden; color: var(--ink); }
+.sb-menu-item[aria-checked="true"] .pm-check { visibility: visible; }
+.sb-menu-item[aria-checked="true"] .pm-t > span { font-weight: 500; }
+
+/* the share box: the chat's link and Copy, then what posting it earns. It is as tall as what it holds and never
+   scrolls: a popover is overflow: auto by default, and a pixel past its foot would show a scrollbar */
+.pm-share { width: calc(300px * var(--ref)); padding: calc(12px * var(--ref)); overflow: visible; }
+.pm-h { margin: 0 0 calc(4px * var(--ref)); font: 600 var(--fs-body)/1.3 var(--ui); }
+.pm-sub { margin: 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.pm-link { display: flex; gap: calc(6px * var(--ref)); margin-top: calc(10px * var(--ref)); }
+.pm-link input { flex: 1; min-width: 0; height: calc(30px * var(--ref)); padding: 0 calc(8px * var(--ref)); border: 0; border-radius: var(--r-ctl); background: var(--ground); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; font: var(--fs-meta)/1 var(--ui); color: var(--ink); }
+.pm-link input:focus-visible { box-shadow: 0 0 0 var(--focus) var(--ink); }
+/* Copy link, and Copied with its check for a moment after (chat-ui.854d0793.js): both labels in one cell, so the button
+   keeps the wider one's width and the field beside it never moves */
+.pm-copy { display: inline-grid; white-space: nowrap; }
+.pm-copy-l { grid-area: 1 / 1; display: inline-flex; align-items: center; justify-content: center; gap: calc(6px * var(--ref)); }
+.pm-copy.is-copied > .pm-copy-l:first-child, .pm-copy:not(.is-copied) > .pm-copy-l:last-child { visibility: hidden; }
+.pm-copy .sb-lu { color: inherit; }
+/* the offer (Manus's share box, on this app's surfaces): the 3D gift, what it gives and how to claim it, then a tile
+   per place to post with that app's 3D icon (fx/app-*.png, as the chat rows have), the tile a control's hairline over
+   the ground */
+.pm-earn { margin-top: calc(12px * var(--ref)); padding: calc(10px * var(--ref)); border-radius: var(--r-ctl); background: var(--ground); }
+.pm-earn-top { display: flex; align-items: center; gap: calc(10px * var(--ref)); }
+.pm-earn-ic { flex: none; width: calc(32px * var(--ref)); height: calc(32px * var(--ref)); }
+.pm-earn-h { margin: 0; font: 500 var(--fs-body)/1.3 var(--ui); text-wrap: balance; }
+.pm-earn-sub { display: flex; align-items: center; gap: calc(4px * var(--ref)); margin: calc(2px * var(--ref)) 0 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.pm-why { flex: none; display: grid; place-items: center; width: calc(16px * var(--ref)); height: calc(16px * var(--ref)); padding: 0; border: 0; border-radius: 9999px; background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.pm-why:hover, .pm-why[aria-expanded="true"] { background: var(--sel); color: var(--ink); }
+.pm-why:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: 0; }
+.pm-why .sb-lu { width: calc(13px * var(--ref)); height: calc(13px * var(--ref)); }
+.pm-why-t { margin: calc(8px * var(--ref)) 0 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.pm-socials { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(6px * var(--ref)); margin-top: calc(10px * var(--ref)); }
+.pm-social { display: grid; place-items: center; height: calc(30px * var(--ref)); border-radius: var(--r-ctl); background: var(--surface); box-shadow: inset 0 0 0 var(--hair) var(--sel); color: var(--ink); transition: background-color var(--d-hover) ease-out; }
+.pm-social:hover { background: var(--sel); }
+.pm-social:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+.pm-social-ic { width: calc(20px * var(--ref)); height: calc(20px * var(--ref)); }
+
+/* ---------- New chat (newchat.854d0793.js): the greeting over the composer, ideas under it; then the chat ---------- */
+.cv .cv-chat { position: relative; }
+.nc.is-empty .cv-chat { justify-content: center; padding-bottom: var(--sp-48); }
+.nc.is-empty .cv-feed, .nc:not(.is-empty) .nc-hero, .nc:not(.is-empty) .nc-ideas { display: none; }
+/* the mark leads the heading, the two centred together as one lockup */
+.nc-hero { display: flex; align-items: center; justify-content: center; gap: var(--sp-10); margin-bottom: var(--sp-12); padding: 0 var(--sp-16); }
+.nc-hero .sb-mark { width: 48px; height: 32px; }
+.nc-h { margin: 0; font: 600 24px/1.2 var(--ui); letter-spacing: -0.02em; text-wrap: balance; color: var(--ink); }
+.nc-ideas { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-8); max-width: 622px; margin: 0 auto; padding: 0 var(--sp-16); list-style: none; }
+.nc-idea, .nc-more { display: inline-flex; align-items: center; gap: var(--sp-8); height: 30px; padding: 0 var(--sp-12); border: 0; border-radius: 9999px; background: var(--surface); box-shadow: inset 0 0 0 var(--hair) var(--sel); color: var(--ink); font: 12px/1 var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.nc-more { color: var(--muted); }
+.nc-idea:hover, .nc-more:hover { background: var(--ground); color: var(--ink); }
+.nc-idea:focus-visible, .nc-more:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+.nc-idea img { flex: none; width: 16px; height: 16px; }
+
+/* ---------- a chat's computer view, the live one's too: Stop and Resume, and folding it away ---------- */
+button.cc-stop { border: 0; cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+button.cc-stop:hover { background: color-mix(in srgb, var(--ink) 82%, var(--surface)); }
+button.cc-stop:focus-visible { outline: var(--focus) solid var(--surface); outline-offset: var(--focus); }
+.cc-stop .cc-stop-ic { width: 10px; height: 10px; fill: currentColor; stroke: none; }
+/* stopped, superbot lets go of the computer: the takeover's vignette fades (the live one's is painted each frame) */
+.cv:not(.is-play) .cv-edge { transition: opacity 300ms ease-out; }
+.cv.is-stopped:not(.is-play) .cv-edge { opacity: 0; animation: none; }
+.app.is-live-stopped > .cc .cc-edge { opacity: 0 !important; }
+
+/* ---------- the live chat held (main.bdeb2397.js .is-still, live.e61b4e86.js): as it stands, both panes scrolling ---------- */
+.app.is-still > .ch .ch-feed, .app.is-still > .cc .ac-list { overflow-y: auto; scrollbar-width: none; }
+.app.is-still > .ch .ch-feed::-webkit-scrollbar, .app.is-still > .cc .ac-list::-webkit-scrollbar { display: none; }
+.app.is-still > .ch .ch-feed:focus-visible, .app.is-still > .cc .ac-list:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.app.is-still > .ch .cm, .app.is-still > .cc .ac-row { opacity: 1; }
+.cv:not(.nc) { overflow: hidden; }
+/* folding it away slides it off as the live view's close button does (main.bdeb2397.js setSide, which eases the
+   chat's width), the chat widening into its room */
+.cv-side { transition: margin-right 300ms var(--ease-std), visibility 0s; /* deliberate */ }
+.cv.is-side-shut .cv-side { margin-right: calc(-1 * var(--cv-side)); visibility: hidden; transition: margin-right 300ms var(--ease-std), visibility 0s 300ms; /* deliberate */ }
+/* the field's focus is the box's ring (.rc:focus-within above): the field itself draws none */
+.composer.is-working .rc-input:focus-visible { outline: 0; box-shadow: none; }
+.cv .cv-side-open { z-index: 4; opacity: 1; pointer-events: auto; }
+.cv .cv-side-open[hidden] { display: none; }
+
+/* ---------- the sidebar: folded away with a rail left in its corner, search with no match, the account button ---------- */
+.app.is-sb-shut > .sb { visibility: hidden; }
+.app.is-sb-shut .cv, .app.is-sb-shut .am { left: 0; }
+.sb-rail { position: absolute; left: var(--pad-x); top: calc((var(--top) - var(--tool)) / 2); z-index: 8; display: flex; gap: var(--sp-2); padding: var(--sp-2); border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); }
+.sb-rail[hidden] { display: none; }
+.sb-rail .sb-tool:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
+.sb-noresult[hidden] { display: none; }
+.sb-noresult .sb-btn { border: 0; cursor: pointer; }
+.sb-me-btn { flex: 1; min-width: 0; display: flex; align-items: center; gap: calc(var(--gap-ic) - (var(--avatar) - var(--ic)) / 2); height: var(--tool); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background-color var(--d-hover) ease-out, box-shadow var(--d-hover) ease-out; }
+.sb-me-btn:hover { background: var(--hover); box-shadow: 0 0 0 var(--sp-4) var(--hover); }
+/* the credits left, over the account row under the same hairline and laid out as it is: the coin on the avatar's
+   column at its size, the figure where the name starts in the name's type, Get more credits (+) on the gear's column;
+   the figure an odometer (odometer.0ecb8f7c.js) whose digits are columns, each a strip that rolls, faded top and bottom */
+.sb-foot:has(> .sb-credits) { flex-direction: column; align-items: stretch; height: auto; padding-top: var(--sp-6); }
+.sb-foot:has(> .sb-credits) > .sb-me { flex: none; height: var(--foot-h); }
+.sb-credits { flex: none; display: flex; align-items: center; height: var(--tool); padding-left: calc(var(--row-pad) - (var(--avatar) - var(--ic)) / 2); }
+.sb-credits-btn { flex: 1; min-width: 0; display: flex; align-items: center; gap: calc(var(--gap-ic) - (var(--avatar) - var(--ic)) / 2); height: var(--tool); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--ink); font: 500 var(--fs-body)/1 var(--ui); text-align: left; cursor: pointer; transition: background-color var(--d-hover) ease-out, box-shadow var(--d-hover) ease-out; }
+.sb-credits-btn:hover { background: var(--hover); box-shadow: 0 0 0 var(--sp-4) var(--hover); }
+.sb-credits .sb-ic { width: var(--avatar); height: var(--avatar); }
+.sb-credits .sb-tool { color: var(--muted); }
+.sb-credits .sb-tool:hover { color: var(--ink); }
+.sb-credits-n { display: flex; height: var(--od-h); line-height: var(--od-h); font-weight: inherit; font-variant-numeric: tabular-nums; white-space: nowrap; mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent); }
+.od-d { display: block; height: var(--od-h); overflow: hidden; }
+.od-strip, .od-strip i { display: block; }
+.od-strip i { height: var(--od-h); font-style: normal; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rc-plus, .rc-effort, .rc-bell, .composer.is-working .rc, .rc-file-x, .nc-idea, .nc-more, button.cc-stop, .sb-me-btn, .sb-credits-btn { transition: none; }
+  .pm-ef-head, .pm-ef-chev, .pm-ef-thumb, .pm-ef-fill, .pm-why, .pm-social { transition: none; }
+  .pm-effort:popover-open { transition: none; }
+  .rc-effort-ic[tier="max"] { animation: none; filter: drop-shadow(0 0 2px rgb(170 80 255 / 0.45)); }
+  .rc-mic.is-rec { animation: none; }
+  .cv:not(.is-play) .cv-edge, .cv-side, .cv.is-side-shut .cv-side { transition: none; }
+}

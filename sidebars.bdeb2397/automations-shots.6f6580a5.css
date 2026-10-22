@@ -1,0 +1,170 @@
+/* The thumbnails' previews (automations-shots.6f6580a5.js): miniature UI over the card's tint, under the app badge.
+   A miniature takes the page's tokens at preview scale: windows and media the control radius (--r-ctl) and half of
+   it, text --sh-fs and down. The only colors past the page's own are two status tones, for good and bad numbers. */
+:root {
+  --sh-top: 34px;   /* under the app badge */
+  --sh-x: 14px;
+  --sh-fs: 7.5px; --sh-lh: 10px;
+  --sh-fs-s: 6.5px;
+  --sh-fs-h: 8.5px;
+  --sh-fs-big: 15px;
+  --sh-row: 17px;   /* a list row */
+  --sh-av: 13px;    /* an avatar or a row's lead */
+  --sh-r: calc(var(--r-ctl) / 2);
+  --sh-ok: #1a7f37;
+  --sh-bad: #c62828;
+}
+
+.sh { position: absolute; inset: var(--sh-top) var(--sh-x) 0; display: flex; align-items: flex-start; justify-content: center; font: var(--sh-fs)/var(--sh-lh) var(--ui); color: var(--ink); pointer-events: none; user-select: none; }
+.sh p, .sh ul, .sh ol, .sh figure { margin: 0; padding: 0; list-style: none; }
+.sh img { display: block; -webkit-user-drag: none; }
+.sh .is-ok { color: var(--sh-ok); }
+.sh .is-bad { color: var(--sh-bad); }
+.sh-lu { flex: none; width: var(--sh-lh); height: var(--sh-lh); fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+.sh-media { width: 100%; height: 100%; object-fit: cover; }
+
+/* a window rising from the thumbnail's bottom edge, its lower corners cut off by it */
+.sh-win { width: 100%; height: calc(100% + var(--r-ctl)); padding: var(--sp-8); overflow: hidden; border: var(--hair) solid var(--sel); border-radius: var(--r-ctl); background: var(--surface); }
+.sh-title { display: flex; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-4); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: var(--sh-fs-s); color: var(--muted); }
+.sh-title .sh-lu { width: var(--sh-fs); height: var(--sh-fs); }
+.sh-foot { margin-top: var(--sp-4); font-weight: 600; }
+.sh-h { margin-bottom: var(--sp-2); font: 600 var(--sh-fs-h)/1.25 var(--ui); }
+.sh-label { font-size: var(--sh-fs-s); color: var(--muted); }
+.sh-text { color: var(--muted); }
+
+/* avatars and a row's lead */
+.sh-av { flex: none; width: var(--sh-av); height: var(--sh-av); border-radius: 50%; object-fit: cover; }
+.sh-av-fx { border-radius: 0; object-fit: contain; }
+.sh .au-logo { width: var(--sh-av); height: var(--sh-av); }
+.sh-init { display: grid; place-items: center; border-radius: 50%; background: var(--sel); font: 600 var(--sh-fs-s)/1 var(--ui); color: var(--ink); }
+
+/* ---------- list ---------- */
+.sh-list { display: flex; flex-direction: column; }
+.sh-row { display: flex; align-items: center; gap: var(--sp-6); min-height: var(--sh-row); }
+.sh-row + .sh-row { box-shadow: inset 0 var(--hair) 0 var(--sel); }
+.sh-lead { flex: none; width: var(--sh-av); height: var(--sh-av); object-fit: contain; }
+img.sh-lead-img { width: calc(var(--sh-av) * 16 / 9); object-fit: cover; border-radius: var(--sh-r); }
+.sh-file { color: var(--muted); }
+.sh-t { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.sh-t b, .sh-t small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.sh-t b { font-weight: 500; }
+.sh-t small { font-size: var(--sh-fs-s); line-height: 1.2; color: var(--muted); }
+.sh-row s { flex: none; font-size: var(--sh-fs-s); color: var(--muted); }
+.sh-v { flex: none; font-style: normal; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sh-box { flex: none; display: grid; place-items: center; width: var(--sh-lh); height: var(--sh-lh); border-radius: var(--sh-r); box-shadow: inset 0 0 0 var(--hair) var(--muted); }
+.sh-row.is-done .sh-box { background: var(--ink); box-shadow: none; color: var(--surface); }
+.sh-box .sh-lu { width: var(--sh-fs-s); height: var(--sh-fs-s); stroke-width: 3; }
+.sh-row.is-done b { color: var(--muted); text-decoration: line-through; }
+
+/* ---------- chart: a headline number over its line or bars ---------- */
+.sh-win.is-ok { --tone: var(--sh-ok); }
+.sh-win.is-bad { --tone: var(--sh-bad); }
+.sh-big { font: 700 var(--sh-fs-big)/1.15 var(--ui); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.sh-delta { font-size: var(--sh-fs-s); font-weight: 600; color: var(--tone); }
+.sh-plot { display: block; width: 100%; height: calc(4 * var(--sp-8)); margin-top: var(--sp-4); color: var(--tone); overflow: visible; }
+.sh-plot polyline { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sh-plot polygon { fill: currentColor; opacity: 0.12; }
+.sh-bars { display: flex; align-items: flex-end; gap: var(--sp-2); height: calc(4 * var(--sp-8)); margin-top: var(--sp-4); }
+.sh-bars i { flex: 1; background: color-mix(in srgb, var(--tone) 30%, transparent); }
+.sh-bars i.is-now { background: var(--tone); }
+
+/* ---------- pair: A and B (the winner ringed), or before and after ---------- */
+.sh-pair { display: flex; align-items: flex-start; gap: var(--sp-8); width: 100%; }
+.sh-tile { position: relative; flex: 1; min-width: 0; }
+.sh-tile .sh-media { height: auto; aspect-ratio: 16 / 9; border-radius: var(--sh-r); box-shadow: 0 0 0 var(--focus) var(--surface); }
+.sh-tile.is-win .sh-media { box-shadow: 0 0 0 var(--focus) var(--ink); }
+.sh-tile figcaption { margin-top: var(--sp-6); font-size: var(--sh-fs-s); color: var(--muted); }
+.sh-tile figcaption b { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 600 var(--sh-fs)/var(--sh-lh) var(--ui); color: var(--ink); }
+.sh-tile.is-win figcaption { font-weight: 600; color: var(--ink); }
+.sh-badge { position: absolute; top: var(--sp-4); left: var(--sp-4); display: inline-flex; align-items: center; gap: var(--sp-2); padding: var(--hair) var(--sp-4) var(--hair) var(--sp-2); border-radius: 9999px; background: var(--surface); font: 600 var(--sh-fs-s)/var(--sh-lh) var(--ui); }
+.sh-badge .sh-fx { width: var(--sh-lh); height: var(--sh-lh); }
+.sh-arrow { align-self: center; margin-top: calc(-1 * var(--sp-12)); color: var(--muted); }
+
+/* ---------- gallery: options with the one picked, a set, frames of a sheet, a mood board ---------- */
+.sh-gal { display: flex; justify-content: center; gap: var(--sp-6); width: 100%; }
+.sh-gi { position: relative; flex: 1; min-width: 0; max-width: calc(6 * var(--sp-8) + var(--sp-4)); }
+.sh-gbox { display: block; aspect-ratio: 1; overflow: hidden; border-radius: var(--sh-r); background: var(--surface); box-shadow: 0 0 0 var(--focus) var(--surface); }
+.sh-gi .sh-media-fx { padding: 18%; object-fit: contain; }
+.sh-gi.is-pick .sh-gbox { box-shadow: 0 0 0 var(--focus) var(--ink); }
+.sh-gi figcaption { margin-top: var(--sp-6); overflow: hidden; white-space: nowrap; text-align: center; font-size: var(--sh-fs-s); color: var(--ink); }
+.sh-check { position: absolute; top: calc(-1 * var(--sp-4)); right: calc(-1 * var(--sp-4)); display: grid; place-items: center; width: var(--sp-12); height: var(--sp-12); border-radius: 50%; background: var(--ink); color: var(--surface); }
+.sh-check .sh-lu { width: var(--sh-fs-s); height: var(--sh-fs-s); stroke-width: 3.5; }
+.sh-gal.is-circle .sh-gbox { border-radius: 50%; box-shadow: none; background: transparent; }
+.sh-gal.is-portrait .sh-gi { max-width: calc(5 * var(--sp-8)); }
+.sh-gal.is-portrait .sh-gbox { aspect-ratio: 4 / 5; }
+.sh-gal.is-sheet { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); max-width: calc(16 * var(--sp-8)); padding: var(--sp-4); border-radius: var(--sh-r); background: var(--surface); }
+.sh-gal.is-sheet .sh-gi { max-width: none; }
+.sh-gal.is-sheet .sh-gbox { background: var(--ground); box-shadow: none; }
+.sh-gal.is-board { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: repeat(2, calc(4 * var(--sp-8))); gap: var(--sp-4); }
+.sh-gal.is-board .sh-gi { max-width: none; }
+.sh-gal.is-board .sh-gi:first-child { grid-row: span 2; }
+.sh-gal.is-board .sh-gbox { aspect-ratio: auto; height: 100%; }
+.sh-chip { position: absolute; top: calc(var(--sp-8) - var(--sh-top)); right: calc(var(--sp-8) - var(--sh-x)); display: inline-flex; align-items: center; height: var(--au-badge-h); padding: 0 var(--sp-8); border-radius: 9999px; background: var(--surface); font: 500 var(--au-fs-meta)/1 var(--ui); }
+
+/* ---------- messages and notifications ---------- */
+.sh-msgs { display: flex; flex-direction: column; gap: var(--sp-4); }
+.sh-msg { display: flex; align-items: flex-start; gap: var(--sp-4); }
+.sh-msg.is-me { flex-direction: row-reverse; }
+.sh-bubble { display: flex; flex-direction: column; min-width: 0; max-width: 85%; padding: var(--sp-2) var(--sp-6) var(--sp-4); border-radius: var(--r-ctl); background: var(--ground); }
+.sh-msg.is-me .sh-bubble { background: var(--ink); color: var(--surface); }
+.sh-bubble > b { display: flex; align-items: center; gap: var(--sp-4); font: 600 var(--sh-fs-s)/var(--sh-lh) var(--ui); }
+.sh-msg.is-bad .sh-bubble > span { color: var(--muted); text-decoration: line-through; }
+.sh-tag { padding: 0 var(--sp-4); border-radius: 9999px; background: var(--surface); font-style: normal; color: var(--ink); }
+.sh-msg.is-bad .sh-tag { color: var(--sh-bad); }
+.sh-attach { width: 100%; height: calc(4 * var(--sp-8)); margin-top: var(--sp-4); object-fit: cover; border-radius: var(--sh-r); }
+.sh-alerts { display: flex; flex-direction: column; gap: var(--sp-6); width: 100%; }
+.sh-toast { display: flex; align-items: center; gap: var(--sp-6); padding: var(--sp-6) var(--sp-8); border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); }
+.sh-toast time { flex: none; align-self: flex-start; font-size: var(--sh-fs-s); color: var(--muted); }
+
+/* ---------- calendar and board ---------- */
+.sh-cal { display: grid; grid-auto-columns: 1fr; grid-auto-flow: column; gap: var(--sp-4); }
+.sh-day { display: flex; flex-direction: column; gap: var(--sp-2); min-width: 0; }
+.sh-day > b { padding-bottom: var(--sp-2); box-shadow: inset 0 calc(-1 * var(--hair)) 0 var(--sel); font: 500 var(--sh-fs-s)/var(--sh-lh) var(--ui); color: var(--muted); }
+.sh-ev { padding: var(--sp-2) var(--sp-4); border-radius: var(--sh-r); background: color-mix(in srgb, var(--tint, var(--ground)), var(--ink) 7%); font-size: var(--sh-fs-s); line-height: 1.3; }
+.sh-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); width: 100%; }
+.sh-col { display: flex; flex-direction: column; gap: var(--sp-4); min-width: 0; min-height: calc(10 * var(--sp-8)); padding: var(--sp-4); border-radius: var(--r-ctl); background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.sh-col > b { font: 600 var(--sh-fs-s)/var(--sh-lh) var(--ui); color: var(--muted); }
+.sh-card { padding: var(--sp-4); border-radius: var(--sh-r); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); font-size: var(--sh-fs-s); line-height: 1.3; }
+
+/* ---------- video: clips cut from a long one, an edit timeline, one image in several sizes ---------- */
+.sh-clips { display: flex; align-items: center; gap: var(--sp-6); }
+.sh-long { position: relative; width: calc(11 * var(--sp-8)); }
+.sh-long .sh-media { height: auto; aspect-ratio: 16 / 9; border-radius: var(--sh-r); }
+.sh-long figcaption, .sh-short figcaption { position: absolute; color: var(--surface); font-weight: 600; }
+.sh-long figcaption { right: var(--sp-2); bottom: var(--sp-2); padding: 0 var(--sp-2); border-radius: var(--sh-r); background: color-mix(in srgb, var(--ink) 80%, transparent); font-size: var(--sh-fs-s); }
+.sh-short { position: relative; width: calc(4 * var(--sp-8) + var(--sp-4)); aspect-ratio: 9 / 16; overflow: hidden; border-radius: var(--sh-r); box-shadow: 0 0 0 var(--focus) var(--surface); }
+.sh-short figcaption { left: var(--sp-2); right: var(--sp-2); bottom: var(--sp-8); padding: var(--sp-2); border-radius: var(--sh-r); background: color-mix(in srgb, var(--ink) 70%, transparent); text-align: center; font-size: var(--sh-fs-s); line-height: 1.2; }
+.sh-tl { position: relative; display: flex; flex-direction: column; gap: var(--sp-2); }
+.sh-track { display: flex; gap: var(--hair); height: calc(3 * var(--sp-8)); }
+.sh-clip { min-width: 0; overflow: hidden; border-radius: var(--sh-r); }
+.sh-audio { align-items: center; gap: var(--hair); height: var(--sp-12); }
+.sh-audio i { flex: 1; background: color-mix(in srgb, var(--ink) 35%, transparent); }
+.sh-head { position: absolute; top: calc(-1 * var(--sp-2)); bottom: calc(-1 * var(--sp-2)); left: 62%; width: var(--hair); background: var(--sh-bad); }
+.sh-sizes { display: flex; align-items: flex-start; gap: var(--sp-8); }
+.sh-frame { display: block; height: calc(7 * var(--sp-8)); overflow: hidden; border-radius: var(--sh-r); box-shadow: 0 0 0 var(--focus) var(--surface); }
+.sh-sizes figcaption { margin-top: var(--sp-6); white-space: nowrap; text-align: center; font-size: var(--sh-fs-s); color: var(--ink); }
+
+/* ---------- audio, code, a sheet ---------- */
+.sh-wave { display: block; width: 100%; height: calc(3 * var(--sp-8)); margin-block: var(--sp-2); fill: var(--ink); }
+.sh-wave.is-noisy { fill: var(--muted); opacity: 0.6; }
+.sh-wavebox { position: relative; }
+.sh-wavebox.is-loop::before, .sh-wavebox.is-loop::after { content: ''; position: absolute; top: 0; bottom: 0; width: var(--hair); background: var(--sh-ok); }
+.sh-wavebox.is-loop::before { left: 6%; }
+.sh-wavebox.is-loop::after { right: 6%; }
+.sh-code { font: var(--sh-fs-s)/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.sh-code li { display: flex; gap: var(--sp-6); padding-inline: var(--sp-2); white-space: pre; }
+.sh-code li i { flex: none; font-style: normal; color: var(--muted); }
+.sh-code li.is-hl { background: color-mix(in srgb, var(--sh-bad) 12%, transparent); }
+.sh-note { display: flex; align-items: flex-start; gap: var(--sp-4); margin-top: var(--sp-4); padding: var(--sp-4); border-radius: var(--sh-r); background: var(--ground); font-size: var(--sh-fs-s); line-height: 1.3; }
+.sh-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.sh-table th, .sh-table td { padding: var(--sp-2) var(--sp-4); text-align: left; }
+.sh-table th + th, .sh-table td + td { text-align: right; }
+.sh-table th { background: var(--ground); font: 500 var(--sh-fs-s)/var(--sh-lh) var(--ui); color: var(--muted); }
+.sh-table td { box-shadow: inset 0 calc(-1 * var(--hair)) 0 var(--sel); }
+.sh-table tr.is-flag td { background: color-mix(in srgb, var(--sh-bad) 10%, transparent); color: var(--sh-bad); font-weight: 600; }
+
+/* ---------- document: a title, lines, tags, maybe a banner and a button ---------- */
+.sh-banner { width: calc(100% + 2 * var(--sp-8)); height: calc(4 * var(--sp-8)); margin: calc(-1 * var(--sp-8)) calc(-1 * var(--sp-8)) var(--sp-6); object-fit: cover; }
+.sh-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-4); }
+.sh-tags span { padding: 0 var(--sp-4); border-radius: 9999px; background: var(--ground); font-size: var(--sh-fs-s); }
+.sh-cta { display: inline-block; margin-top: var(--sp-6); padding: var(--sp-2) var(--sp-8); border-radius: var(--sh-r); background: var(--ink); color: var(--surface); font: 600 var(--sh-fs-s)/var(--sh-lh) var(--ui); }

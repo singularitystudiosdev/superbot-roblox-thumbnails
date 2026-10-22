@@ -1,0 +1,134 @@
+{
+ "chat": "haircut",
+ "pages": {
+  "booking-wed": {
+   "img": "booking-wed.webp",
+   "title": "Make an appointment at Fade Room - Valencia Street - San Francisco | Fresha",
+   "host": "fresha.com",
+   "path": "/a/fade-room-san-francisco-valencia-street-x7k2m9q4/booking?allOffer=true&cartId=5e1b3c9a-2d47-4f6e-9a18-7c0d2b64e3f1",
+   "fav": "fav-fresha.png",
+   "targets": {
+    "slot": [
+     465,
+     466.5
+    ],
+    "continue": [
+     1105,
+     745
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "booking-wed-picked": {
+   "img": "booking-wed-picked.webp",
+   "title": "Make an appointment at Fade Room - Valencia Street - San Francisco | Fresha",
+   "host": "fresha.com",
+   "path": "/a/fade-room-san-francisco-valencia-street-x7k2m9q4/booking?allOffer=true&cartId=5e1b3c9a-2d47-4f6e-9a18-7c0d2b64e3f1",
+   "fav": "fav-fresha.png",
+   "targets": {
+    "slot": [
+     465,
+     466.5
+    ],
+    "continue": [
+     1105,
+     745
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "booking-thu": {
+   "img": "booking-thu.webp",
+   "title": "Make an appointment at Fade Room - Valencia Street - San Francisco | Fresha",
+   "host": "fresha.com",
+   "path": "/a/fade-room-san-francisco-valencia-street-x7k2m9q4/booking?allOffer=true&cartId=5e1b3c9a-2d47-4f6e-9a18-7c0d2b64e3f1",
+   "fav": "fav-fresha.png",
+   "targets": {
+    "slot": [
+     465,
+     466.5
+    ],
+    "continue": [
+     1105,
+     745
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "booking-thu-picked": {
+   "img": "booking-thu-picked.webp",
+   "title": "Make an appointment at Fade Room - Valencia Street - San Francisco | Fresha",
+   "host": "fresha.com",
+   "path": "/a/fade-room-san-francisco-valencia-street-x7k2m9q4/booking?allOffer=true&cartId=5e1b3c9a-2d47-4f6e-9a18-7c0d2b64e3f1",
+   "fav": "fav-fresha.png",
+   "targets": {
+    "slot": [
+     465,
+     466.5
+    ],
+    "continue": [
+     1105,
+     745
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar-moved": {
+   "img": "calendar-moved.webp",
+   "title": "Google Calendar - Week of November 15, 2026",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2026/11/15",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "haircut": [
+     996.6,
+     682
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar-free": {
+   "img": "calendar-free.webp",
+   "title": "Google Calendar - Week of November 15, 2026",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2026/11/15",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "wed-evening": [
+     845.5,
+     700
+    ],
+    "thu-evening": [
+     996.6,
+     676
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar-conflict": {
+   "img": "calendar-conflict.webp",
+   "title": "Google Calendar - Week of November 15, 2026",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2026/11/15",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "haircut": [
+     880,
+     706
+    ],
+    "dinner": [
+     810.9,
+     736
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

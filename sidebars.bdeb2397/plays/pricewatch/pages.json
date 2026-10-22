@@ -1,0 +1,101 @@
+{
+ "chat": "pricewatch",
+ "pages": {
+  "home": {
+   "img": "home.webp",
+   "title": "Buy and Sell Tickets: Concerts, Sports & Theater | Vivid Seats",
+   "host": "vividseats.com",
+   "path": "/",
+   "fav": "../../screens/fav/tickets-site.png",
+   "targets": {
+    "search": [
+     411.5,
+     87.5
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "home-focus": {
+   "img": "home-focus.webp",
+   "title": "Buy and Sell Tickets: Concerts, Sports & Theater | Vivid Seats",
+   "host": "vividseats.com",
+   "path": "/",
+   "fav": "../../screens/fav/tickets-site.png",
+   "targets": {},
+   "scroll": null,
+   "field": {
+    "box": [
+     289,
+     77.1,
+     90.9,
+     20.8
+    ],
+    "stops": [
+     299.5,
+     307.9,
+     316.9,
+     325.9,
+     329.9,
+     340.6,
+     350.1,
+     355.8,
+     365.3,
+     374.2,
+     379.9
+    ],
+    "text": "Neon Harbor",
+    "filled": "home-typed"
+   }
+  },
+  "home-typed": {
+   "img": "home-typed.webp",
+   "title": "Buy and Sell Tickets: Concerts, Sports & Theater | Vivid Seats",
+   "host": "vividseats.com",
+   "path": "/",
+   "fav": "../../screens/fav/tickets-site.png",
+   "targets": {
+    "suggest": [
+     411.5,
+     437
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "event-qty": {
+   "img": "event-qty.webp",
+   "title": "Neon Harbor Portland tickets - Riverside Arena - 11/14/2026 | Vivid Seats",
+   "host": "vividseats.com",
+   "path": "/neon-harbor-tickets-portland-riverside-arena-11-14-2026--concerts-rb/production/6912149",
+   "fav": "../../screens/fav/tickets-site.png",
+   "targets": {
+    "qty2": [
+     672.8,
+     397.5
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "event-159": {
+   "img": "event-159.webp",
+   "title": "Neon Harbor Portland tickets - Riverside Arena - 11/14/2026 | Vivid Seats",
+   "host": "vividseats.com",
+   "path": "/neon-harbor-tickets-portland-riverside-arena-11-14-2026--concerts-rb/production/6912149?quantity=2",
+   "fav": "../../screens/fav/tickets-site.png",
+   "targets": {
+    "row1": [
+     265.3,
+     415
+    ],
+    "price1": [
+     459.6,
+     434.5
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

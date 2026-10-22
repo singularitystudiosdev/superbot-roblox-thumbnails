@@ -5,13 +5,14 @@
 // Types), and sessionStorage.cvChip holding the outerHTML of one real timed event chip from any week (its text is all
 // replaced). No event is created, moved or saved; a reload undoes all of it. Calendar redraws the week on its own sync,
 // so the capture is taken straight after this runs. Answers counts only: chips staged, and any trace of the real
-// identity left on the page (must be 0 before a capture is kept).
+// identity left on the page (must be 0 before a capture is kept). Another chat's week: window.CAL_EVENTS (EVENTS' shape,
+// colors as rgb strings) and window.CAL_TOP (the hour at the top of the grid), set before it runs.
 (() => {
   const ACC = { name: 'Jordan Lee', email: 'jordan@quillnote.app', initial: 'J' };
   const HOUR = 48; // px a grid hour
   const BLUE = 'rgb(3, 155, 229)', SAGE = 'rgb(51, 182, 121)', GRAPE = 'rgb(142, 36, 170)', TANGERINE = 'rgb(244, 81, 30)';
   // [column (0 is Sunday), from, to (hours), title, start as Calendar writes it, location, color]
-  const EVENTS = [
+  const EVENTS = window.CAL_EVENTS ?? [
     [1, 9.5, 10, 'Team standup', '9:30am', 'Google Meet', BLUE], [1, 12, 13, 'Lunch with Priya', '12pm', 'Tartine Manufactory', BLUE], [1, 15, 16, 'Roadmap planning', '3pm', 'Office, 4th floor', BLUE],
     [2, 9.5, 10, 'Team standup', '9:30am', 'Google Meet', BLUE], [2, 14, 15, 'Quillnote design review', '2pm', 'Office, 4th floor', BLUE],
     [3, 9.5, 10, 'Team standup', '9:30am', 'Google Meet', BLUE], [3, 13, 14, '1:1 with Dan', '1pm', 'Google Meet', BLUE], [3, 18, 20.5, 'Team dinner', '6pm', 'Nopa, 560 Divisadero St', GRAPE],
@@ -69,7 +70,7 @@
   for (const n of document.querySelectorAll('[role=dialog], [role=alertdialog]')) if (n.offsetParent) n.style.display = 'none';
   // 7 AM at the top, as the creative's working day reads
   const grid = document.querySelector('.mDPmMe');
-  if (grid) grid.scrollTop = 7 * HOUR;
+  if (grid) grid.scrollTop = (window.CAL_TOP ?? 7) * HOUR;
 
   const html = document.body.innerHTML + document.title;
   return { staged: document.querySelectorAll('[data-eventid^=staged]').length, identityFound: real.length + extra.length, identityLeft: [...real, ...extra].reduce((n, r) => n + html.split(r).length - 1, 0) };

@@ -3,7 +3,7 @@
 // summing the heights of what has arrived, each weighted by its entrance: the newest line slides up into view. The
 // activity tab: one line per step behind a small Fluent 3D icon (img/fx/CREDITS.txt), a breakthrough's line bold in the
 // ink with a party popper after it that pops in and fires a burst of confetti.
-import { seg, outCubic, caretOn, countAt, lastAt, el, esc, REDUCED, STREAM_CPS, TYPE_CPS } from './lib.af4c3c6b.js';
+import { seg, lerp, outCubic, caretOn, countAt, lastAt, el, esc, REDUCED, STREAM_CPS, TYPE_CPS } from './lib.af4c3c6b.js';
 import { THUMBS } from './rbx.af4c3c6b.js';
 
 const GAP = 14; // between chat items (.cm margin-bottom)
@@ -120,10 +120,11 @@ export function buildFeed(left, act, S) {
   };
 }
 
-// heights once laid out (fonts loaded)
-export function measureFeed(f) {
-  for (const it of f.items) it.h = it.node.offsetHeight + GAP;
-  for (const r of f.rows) r.h = r.node.offsetHeight;
+// heights once laid out (fonts loaded): a chat item's at the chat's docked width, or with `wide` at the full window's,
+// where its lines run longer
+export function measureFeed(f, wide = false) {
+  for (const it of f.items) it[wide ? 'hw' : 'h'] = it.node.offsetHeight + GAP;
+  if (!wide) for (const r of f.rows) r.h = r.node.offsetHeight;
 }
 
 const enter = (t, at) => outCubic(seg(t, at, at + ENTER));
@@ -139,14 +140,15 @@ function stream(line, start, t) {
   line.v.textContent = line.text.slice(0, n);
   line.h.textContent = line.text.slice(n);
 }
-// how far a pane has scrolled: what has arrived, less the room it has
-function scrolled(list, t, room) {
+// how far a pane has scrolled: what has arrived, less the room it has; `wide` (0 docked, 1 full window) blends a chat
+// item's two heights as the chat widens
+function scrolled(list, t, room, wide = 0) {
   let used = 0;
-  for (const it of list) used += it.h * enter(t, it.c ? it.c.at : it.a.at);
+  for (const it of list) used += lerp(it.h, it.hw ?? it.h, wide) * enter(t, it.c ? it.c.at : it.a.at);
   return Math.max(0, used - room);
 }
 
-export function paintFeed(f, S, t) {
+export function paintFeed(f, S, t, wide = 0) {
   // chat
   for (const it of f.items) {
     const k = enter(t, it.c.at);
@@ -160,7 +162,7 @@ export function paintFeed(f, S, t) {
     }
   }
   const room = f.feed.clientHeight - 28; // the feed's top and bottom padding (.ch-in)
-  f.feedIn.style.transform = `translateY(${(-scrolled(f.items, t, room)).toFixed(2)}px)`;
+  f.feedIn.style.transform = `translateY(${(-scrolled(f.items, t, room, wide)).toFixed(2)}px)`;
 
   // composer: the user's draft types in, the send button lights while there is text; while it is empty the placeholder
   // turns through its suggestions (with reduced motion they only fade)

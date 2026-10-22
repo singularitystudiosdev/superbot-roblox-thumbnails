@@ -1,7 +1,8 @@
 /* An open chat (chatview.bdeb2397.js) over the creative, right of the sidebar: the chat column and its composer on the
    left, the computer view and the Activity tab the live view's width on the right (--cv-side, set by main.bdeb2397.js).
-   It draws with the creative's own .cm / .cm-card / .ac-row / .cc-* rules, shown in full here rather than painted in
-   from t. Under the Automations tab, which sits a layer above it. */
+   It draws with the creative's own .cm / .cm-card / .ac-row / .cc-* rules. A chat with a run (.is-play,
+   chatplay.8889b4ff.js) is painted from t as the live chat is; one without is shown in full as it stands. Under the
+   Automations tab, which sits a layer above it. */
 .cv { position: absolute; left: var(--sidebar-w); right: 0; top: 0; bottom: 0; z-index: 3; display: flex; background: var(--bg); font-family: var(--ui); color: var(--ink); }
 .cv[hidden] { display: none; }
 /* one fade as a chat opens */
@@ -9,9 +10,13 @@
 @keyframes cv-in { from { opacity: 0; } }
 /* the creative plays on under an open chat: its loop's white dip must not wash over it, and its chat and live view are
    hidden rather than covered, so none of their layers (Stop sits at z-index 5) shows through and none of their buttons
-   takes Tab. main.bdeb2397.js writes the live view's visibility inline every frame, hence the !important */
+   takes Tab. main.bdeb2397.js writes the live view's visibility inline every frame, hence the !important. Every layer
+   inside them is hidden too: the live view's screen (screen.af4c3c6b.js) shows its current page as visibility: visible,
+   which a hidden parent does not hide, and it would show through a chat's fade as it opens */
 body.cv-open #dip { visibility: hidden; }
-body.cv-open .app > .ch, body.cv-open .app > .cc { visibility: hidden !important; }
+body.cv-open .app > :is(.ch, .cc), body.cv-open .app > :is(.ch, .cc) * { visibility: hidden !important; }
+/* a run's own dip to white where its loop comes round, over the whole chat as the live one's is over the app */
+.cv-dip { position: absolute; inset: 0; z-index: 6; background: #fff; opacity: 0; pointer-events: none; }
 
 /* ---------- the chat: the live chat's centred column, scrolled to its latest ---------- */
 .cv-chat { flex: 1; min-width: 0; display: flex; flex-direction: column; }
@@ -19,8 +24,9 @@ body.cv-open .app > .ch, body.cv-open .app > .cc { visibility: hidden !important
 .cv-feed::-webkit-scrollbar { display: none; }
 .cv-feed:focus-visible, .cv .cv-acts:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }
 .cv-in { max-width: 626px; margin: 0 auto; padding: 16px 18px 12px; }
-.cv .cm, .cv .cm-card, .cv .ac-row { opacity: 1; }
-.cv .ac-pop { transform: none; }
+.cv:not(.is-play) .cm, .cv:not(.is-play) .cm-card, .cv:not(.is-play) .ac-row { opacity: 1; }
+.cv:not(.is-play) .ac-pop { transform: none; }
+/* a run's chat is the live chat's .ch-feed and .ch-in: laid out once, scrolling as posts arrive (latest.bfdfd5c2.css) */
 /* a card whose picture is a 3D icon: the icon on a tile the thumbnail's size and shape */
 .cv .cv-tile { display: grid; place-items: center; background: var(--ground); }
 .cv .cm-thumb.cv-tile img, .cv .cv-tile .cv-tile-ic { width: 26px; height: 26px; object-fit: contain; }
@@ -29,24 +35,34 @@ body.cv-open .app > .ch, body.cv-open .app > .cc { visibility: hidden !important
 /* ---------- the right side, as the live chat's: its top bar, the computer view, the Activity tab under it ---------- */
 .cv-side { flex: none; display: flex; flex-direction: column; width: var(--cv-side); }
 
-/* the computer view (screenview.bdeb2397.js): the live view's Chrome on the app superbot is working in. What the live
-   view's script switches on frame by frame is on here: the address, the page, and the vignette, its band turning at the
-   live one's 60deg a second and its glow breathing between .82 and .98 as the live one's does */
+/* the computer view: the live view's Chrome on the app superbot is working in. A chat as it stands (screenview.bdeb2397.js)
+   has its address, its page and the vignette on, the band turning at the live one's 60deg a second and its glow
+   breathing between .82 and .98 as the live one's does; a run (playscreen.8889b4ff.js) paints all of it from t */
 @property --cc-a { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
 .cv-screen { flex: none; }
-.cv .cc-u-url { opacity: 1; }
-.cv .cv-page { visibility: visible; }
-.cv .cv-edge { opacity: 1; animation: cv-turn 6s linear infinite; }
-.cv .cv-edge .cc-soft { animation: cv-breathe 1.21s ease-in-out infinite alternate; }
+.cv:not(.is-play) .cc-u-url { opacity: 1; }
+.cv:not(.is-play) .cv-page { visibility: visible; }
+.cv:not(.is-play) .cv-edge { opacity: 1; animation: cv-turn 6s linear infinite; }
+.cv:not(.is-play) .cv-edge .cc-soft { animation: cv-breathe 1.21s ease-in-out infinite alternate; }
 @keyframes cv-turn { to { --cc-a: 360deg; } }
 @keyframes cv-breathe { from { opacity: .82; } to { opacity: .98; } }
+/* a long address runs out at the box's edge, as Chrome's does */
+.cv .cc-url { overflow: hidden; }
+/* a run's page: its capture, the whole content of its scrolling region in a clip over it, and a field being typed into
+   revealed from the capture of it filled in */
+.cv-pg { height: 837px; }
+.cv-pg-img { position: absolute; left: 0; top: 0; display: block; width: 1470px; height: 837px; }
+.cv-pg-clip { position: absolute; overflow: hidden; }
+.cv-pg-clip img { position: absolute; left: 0; top: 0; display: block; max-width: none; }
 
-/* the Activity tab, every step in view, the latest at the foot */
+/* the Activity tab: a chat as it stands lists every step, scrolled to the latest; a run's lands them as the live one does */
 .cv .cv-acts { overflow-y: auto; scrollbar-width: none; }
 .cv .cv-acts::-webkit-scrollbar { display: none; }
-.cv .cv-acts .ac-in { position: static; }
+.cv:not(.is-play) .cv-acts .ac-in { position: static; }
+.cv:not(.is-play) .ac-empty { display: none; }
+.cv.is-play .cv-acts { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .cv.is-in, .cv .cv-edge, .cv .cv-edge .cc-soft { animation: none; }
-  .cv .cv-edge .cc-soft { opacity: .9; }
+  .cv:not(.is-play) .cv-edge .cc-soft { opacity: .9; }
 }

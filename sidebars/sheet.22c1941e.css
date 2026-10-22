@@ -1,0 +1,14 @@
+/* The contact sheet around the variants: the spot's white canvas and ink, each variant in a frame at its real size
+   (240x675, the app's px) with its number and name. */
+:root { --canvas: #fff; --ground: #f4f4f5; --ink: #1c1c1e; --muted: #6e6e73; --line: #e5e5ea; --font: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--canvas); color: var(--ink); font: 400 14px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+main { padding: 48px 32px 96px; }
+.sheet-head { max-width: 72ch; margin-bottom: 32px; }
+.sheet-head h1 { margin: 0 0 8px; font: 600 28px/36px var(--font); letter-spacing: -0.5px; text-wrap: balance; }
+.sheet-head p { margin: 0; color: var(--muted); text-wrap: pretty; }
+.sheet { display: flex; flex-wrap: wrap; gap: 32px 24px; }
+.sheet-item { margin: 0; }
+.sheet-frame { position: relative; width: 240px; height: 675px; overflow: hidden; border-radius: 12px; box-shadow: 0 0 0 1px var(--line); }
+.sheet-item figcaption { display: flex; flex-direction: column; gap: 4px; margin-top: 12px; font-size: 13px; line-height: 20px; }
+.sheet-item figcaption b { font-weight: 500; }

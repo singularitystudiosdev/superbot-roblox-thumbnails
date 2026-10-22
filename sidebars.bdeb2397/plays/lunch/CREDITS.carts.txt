@@ -1,0 +1,24 @@
+Item-dialog and cart captures for the first two Fridays of the "lunch" chat, 2026-10-21. Never shown on screen.
+Tool: ../../tools/play-lunch-carts.4c8bc671.mjs (ONLY=menya|esquina redoes one place). Listed in pages.carts.json (pages.json is untouched).
+
+Source: ubereats.com, public pages in a throwaway headless Chromium, guest, no login; the same real store page as plays/lunch/store-*.webp
+(Bimi Poke, San Francisco, https://www.ubereats.com/store/bimi-poke-san-francisco/HpBdo0fCTF-FW_1BFjb_nw). The visitor's address 500 Howard St,
+San Francisco was typed into the home page's own address box (the site found it). Each place was captured in its own fresh browser context so the
+guest cart held only that one item. Staging is by DOM edits only (text, the site's own markup, image src swaps); nothing was added to any page.
+Nothing was ordered, paid or submitted; "Go to checkout" was never pressed; non-GET requests to order-placing/payment endpoints are aborted
+(none were attempted); the guest cart existed only in the throwaway browser.
+
+item-menya.webp    The store's item dialog (first menu item), the same restaging as item-poke: store page behind it staged as Menya Sora (as
+                   store-menya); dialog restaged as Spicy miso ramen, $15.50 (the price on the store page's menu card), 97% (312); description
+                   "Pork chashu, soft egg, corn, scallion, bean sprouts, spicy miso broth. Contains wheat, egg, soy, sesame."; "Most popular" order
+                   cards and the first option group (Choice of toppings: Extra chashu, Soft egg, Menma) renamed; photo = crop of chats/lunch-ramen.webp.
+cart-menya.webp    The site's guest cart drawer after adding it: Menya Sora, 412 Folsom St (made up), Spicy miso ramen, $15.50, "Choice of toppings:
+                   Soft egg, Menma", offer card Tonkotsu ramen $13.00 (was $16.25); photos = crops of chats/lunch-ramen.webp. The drawer shows only
+                   the item price (no total); the chat's "$19.80 with delivery" is that $15.50 plus fees at checkout.
+item-esquina.webp  Same for La Esquina: Tacos al pastor (3), $11.50 (menu card price), 96% (405); description "Marinated pork, pineapple, onion,
+                   cilantro, corn tortillas, salsa verde. Contains no nuts."; option group Choice of salsa; photo = crop of chats/lunch-tacos.webp.
+cart-esquina.webp  Guest cart drawer: La Esquina, 1180 Mission St (made up), Tacos al pastor (3), $11.50, "Choice of salsa: Salsa roja, Pico de gallo",
+                   offer Carne asada tacos (3) $10.00 (was $12.50). The chat's "$16.50 with delivery" is $11.50 plus fees at checkout.
+Removed/left alone: no pop-ups were open (cookie banner dismissed as in play-lunch). The site's own banner artwork ("Sign in to enjoy $0 Delivery Fee")
+stays. Reviewer names/quotes on the store page are made up (stageStore). Every merchant, address and dish name is made up.
+Favicon: ../../screens/fav/delivery-site.png (Uber Eats' own icon, existing). No paid calls.

@@ -1,0 +1,15 @@
+Sources for the sponsors play's pages (plays/sponsors/pages.json). Never shown on screen. Date: 2026-10-21.
+
+yt-search.webp  YouTube search results for "productivity app review" (youtube.com/results?search_query=productivity+app+review),
+                the real page captured signed out in headless Chromium (Playwright) at 1470x837 CSS px, 2x, cwebp -q 80, by
+                ../tools/play-sponsors.8889b4ff.mjs. Staged by DOM edits only: the six result rows' titles, durations, views,
+                ages, description snippets, channel names and links, thumbnails and channel avatars were replaced with the chat's
+                made-up channels (Desk Setup Daily, Calm Code, Tidy Tabs, Focus Friday, Workflow Weekly, Keyboard & Coffee); the
+                real results, the Shorts shelf, chapters rows, verified and 4K/CC badges and YouTube's inline video preview were
+                removed. Nothing is signed in, searched on an account, or changed on the site. Desk Setup Daily's latest video
+                (row 1) is "7 Productivity Apps I Actually Use at My Desk (Honest Review)", 12:04, 5 days ago.
+                Thumbnails: plays/sponsors/thumb-*.webp, generated with fal-ai/nano-banana-pro (16:9, 1K, 768x432 WebP, the same way
+                as ../../chats/yt-*.webp) by ../tools/play-sponsors-thumbs.8889b4ff.mjs; desk / app-review scenes with no people and
+                no real brands (one first draft with a monitor logo and one with a misspelled word were regenerated). Prompts and fal
+                request ids: prompts.8889b4ff.json. Avatars: ../../chats/parts/ch-*.webp.
+fav-youtube.png YouTube's own favicon (www.youtube.com/s/desktop/.../img/favicon_144x144.png), scaled to 64px with sips.

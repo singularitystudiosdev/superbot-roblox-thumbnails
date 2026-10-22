@@ -1,0 +1,35 @@
+{
+ "chat": "lunch",
+ "pages": {
+  "receipt-menya": {
+   "img": "receipt-menya.webp",
+   "title": "Inbox (1) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "receipt": [
+     652.9,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "receipt-esquina": {
+   "img": "receipt-esquina.webp",
+   "title": "Inbox (1) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "receipt": [
+     652.9,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

@@ -1,0 +1,223 @@
+{
+  "roblox": {
+    "app": "roblox",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Roblox logo: a white square tilted about 15 degrees with a small square hole in its centre, on a blue rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "img/fav/roblox.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0b3-7ee3-98e2-1937f9122d05",
+    "cutout_request_id": "01a160b0-2230-70e1-b9f1-ac9e496cca95",
+    "at": "2026-10-21T22:58:40.902Z"
+  },
+  "gmail": {
+    "app": "gmail",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Gmail logo: the M-shaped envelope in Google's red, blue, green and yellow. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/automations/apps/gmail.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0a3-7ea2-8daa-dcab2d66a75f",
+    "cutout_request_id": "01a160b0-1e6a-7373-b57e-f59a0118bdda",
+    "at": "2026-10-21T22:58:39.834Z"
+  },
+  "vividseats": {
+    "app": "vividseats",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Vivid Seats logo: a downward pointing triangle made of diagonal bands of magenta, purple, blue and teal. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/screens/fav/tickets-site.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0a4-7de1-b0aa-d44c1b2340c9",
+    "cutout_request_id": "01a160b0-217e-7581-a107-810fb0ba8bdc",
+    "at": "2026-10-21T22:58:40.680Z"
+  },
+  "ubereats": {
+    "app": "ubereats",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Uber Eats app icon: the words \"Uber Eats\" on two lines in black on a green rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/automations/apps/ubereats.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0a4-7e00-9a7e-9df97efb770c",
+    "cutout_request_id": "01a160b0-4569-7952-85d4-452a33c92cbf",
+    "at": "2026-10-21T22:58:49.905Z"
+  },
+  "youtube": {
+    "app": "youtube",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the YouTube logo: a white play triangle on a red rounded rectangle. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/automations/apps/youtube.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0ad-79a0-8850-55af1c8dbe3f",
+    "cutout_request_id": "01a160b0-1f82-7701-babf-0149e32ea8cf",
+    "at": "2026-10-21T22:58:40.050Z"
+  },
+  "flights": {
+    "app": "flights",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "General Use (Dynamic)",
+    "prompt": "The first image is the Google Flights logo: a white airplane on a blue circle. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/screens/fav/google-flights.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0ad-79a0-8850-559ff0c3cce7",
+    "cutout_request_id": "01a160b0-c2ac-7341-8564-cdd41b630263",
+    "at": "2026-10-21T22:58:39.580Z"
+  },
+  "fresha": {
+    "app": "fresha",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Fresha app icon: the lowercase letters \"fr\" in white on a violet rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/plays/haircut/fav-fresha.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0af-7713-9b21-174a10c623d9",
+    "cutout_request_id": "01a160b0-1e1f-7f73-ba6c-363560a59d74",
+    "at": "2026-10-21T22:58:40.119Z"
+  },
+  "craigslist": {
+    "app": "craigslist",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the craigslist app icon: a white peace sign on a purple rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/automations/apps/craigslist.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0ae-7583-a9c7-bdcd8f13ebce",
+    "cutout_request_id": "01a160b0-212b-7dc1-bc2d-56d4fee13b0d",
+    "at": "2026-10-21T22:58:41.055Z"
+  },
+  "hotels": {
+    "app": "hotels",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Google Hotels logo: a rolling suitcase in Google's blue, red, yellow and green with a white G on its front. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/screens/fav/hotels-site.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a160af-e0b8-76f1-96d6-e8be2b54f4d5",
+    "cutout_request_id": "01a160b0-45c3-7653-8e4e-b0768f7e70c1",
+    "at": "2026-10-21T22:58:50.526Z"
+  },
+  "x": {
+    "app": "x",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "General Use (Dynamic)",
+    "prompt": "The first image is the X app icon: a white X letterform, one thick and one thin diagonal stroke, on a black rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/fx/share-logos/x.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a16131-e377-7a53-9148-c98a9c158165",
+    "cutout_request_id": "01a16132-24e6-7952-bc8d-e659d0f65c9d",
+    "at": "2026-10-22T01:20:41.694Z"
+  },
+  "discord": {
+    "app": "discord",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Discord app icon: the white Discord mascot, a rounded game-controller-shaped face with two eyes, on a blurple rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/fx/share-logos/discord.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a16131-4c58-7202-8d0a-9d8958e622f6",
+    "cutout_request_id": "01a16131-8dfc-74f0-9bec-624235c54202",
+    "at": "2026-10-22T01:20:02.328Z"
+  },
+  "facebook": {
+    "app": "facebook",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Facebook app icon: a white lowercase letter f on a bright blue rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/fx/share-logos/facebook.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a16131-4c51-7bf1-b906-00c856118a36",
+    "cutout_request_id": "01a16131-8b87-7bd3-a4f9-e8d254b3375e",
+    "at": "2026-10-22T01:20:01.814Z"
+  },
+  "reddit": {
+    "app": "reddit",
+    "model": "fal-ai/nano-banana-pro/edit",
+    "cutout": "fal-ai/birefnet/v2",
+    "cutout_model": "default",
+    "prompt": "The first image is the Reddit app icon: Snoo, the white alien head with orange eyes, a smile and an antenna ending in a ball, on an orange-red rounded square tile. Redraw it as one icon in exactly the 3D style of the other images, which are Microsoft Fluent Emoji 3D icons: a soft, smooth, slightly glossy clay-like 3D render with rounded bevelled edges, gentle color gradients, soft light from the top left, a subtly darker underside and no outlines. Keep the logo's own shape, proportions and colors so it is recognisable at a glance. Seen straight from the front, centered, filling about 80% of the square, alone on a plain flat light grey background: no shadow on the background, no reflection, no other objects and no text beyond the logo's own.",
+    "refs": [
+      "sidebars.bdeb2397/fx/share-logos/reddit.png",
+      "img/fx/counterclockwise_arrows_button.png",
+      "img/fx/check_mark_button.png",
+      "img/fx/trophy.png",
+      "img/fx/hourglass_not_done.png"
+    ],
+    "request_id": "01a16131-4c51-7021-bdf5-ab5e40fb26ea",
+    "cutout_request_id": "01a16131-8ff7-7431-acd9-4bfb1384df29",
+    "at": "2026-10-22T01:20:03.232Z"
+  }
+}

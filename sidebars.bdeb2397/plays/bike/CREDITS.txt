@@ -1,0 +1,18 @@
+Sources for the bike chat's play pages (Craigslist SF Bay Area). Never shown on screen. Made 2026-10-21 by
+../../tools/play-bike.8889b4ff.mjs (headless Chromium, 1470x837 at 2x, cwebp -q 80). Public pages, no account, nothing sent.
+
+search.webp, search.scroll.webp   craigslist.org's real bicycles search "road bike 56cm", max $600, list view (no photos),
+                                  staged like ../../screens/bike.webp: the same 18 made-up rows (title, place, date, price)
+                                  plus 15 more below for the scroll layer; the result counter set to the 33 staged rows.
+                                  The scroll image is the page below the fixed query bar + filter row (y 151 down), shot
+                                  in a viewport as tall as the page.
+listing.webp                      a real Craigslist posting page (a single-photo Oakland Rockridge / Claremont bicycle
+                                  posting, so the real map and chrome are Rockridge's), restaged as the $540 bike: title,
+                                  price, place, body text, attributes (type road, frame 56cm, wheel 700c, aluminum), post id,
+                                  posted "12 minutes ago" (datetime 2026-10-21 09:36), the "updated" line removed, the
+                                  prev/next links neutralised. Photo = ../../chats/bike-listing.webp (fal-ai/nano-banana-pro,
+                                  see ../../chats/CREDITS.txt), swapped into the posting's own image slot.
+reply.webp                        the same page right after pressing the site's real "reply" button once: Craigslist's own
+                                  contact-options panel (here only "email"; no contact info, no captcha, nothing chosen or sent).
+                                  Craigslist sometimes shows an hCaptcha instead (risk based): the tool would stop, never solve it.
+The map, header, footer and every other element are Craigslist's own. Favicon: ../../screens/fav/craigslist.png (craigslist.org).

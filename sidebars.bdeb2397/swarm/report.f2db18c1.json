@@ -1,0 +1,3122 @@
+{
+ "at": "2026-10-21T21:51:21.896Z",
+ "totals": {
+  "accepted": 385,
+  "rejected": 0
+ },
+ "bySwarm": {
+  "lens": {
+   "archetype": "Lens Swarm",
+   "accepted": 66,
+   "rejected": 0
+  },
+  "wb": {
+   "archetype": "Worker + Bumper",
+   "accepted": 35,
+   "rejected": 0
+  },
+  "bc": {
+   "archetype": "Breakthrough Broadcast",
+   "accepted": 284,
+   "rejected": 0
+  },
+  "qd": {
+   "archetype": "MAP-Elites Quality-Diversity",
+   "accepted": 0,
+   "rejected": 0
+  },
+  "ace": {
+   "archetype": "Dreamer (ACE playbook)",
+   "accepted": 0,
+   "rejected": 0
+  },
+  "mc": {
+   "archetype": "Meta-Conductor",
+   "accepted": 0,
+   "rejected": 0
+  }
+ },
+ "accepted": [
+  {
+   "id": "bc-playlist-curator-pitcher",
+   "title": "Playlist pitcher",
+   "app": "spotify",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:10:30Z"
+  },
+  {
+   "id": "bc-podcast-guest-booker",
+   "title": "Podcast guest booker",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:10:30Z"
+  },
+  {
+   "id": "wb-fba-missed-claims",
+   "title": "Lost inventory claims",
+   "app": "sellercentral",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:10:32Z"
+  },
+  {
+   "id": "wb-load-board-scout",
+   "title": "Load board scout",
+   "app": "dat",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:10:32Z"
+  },
+  {
+   "id": "bc-salon-gap-filler",
+   "title": "Cancellation gap filler",
+   "app": "vagaro",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:11:12Z"
+  },
+  {
+   "id": "bc-trade-review-asks",
+   "title": "Job review asker",
+   "app": "googlebusiness",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:11:12Z"
+  },
+  {
+   "id": "bc-caqh-reattest-keeper",
+   "title": "CAQH attestation keeper",
+   "app": "caqh",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:11:13Z"
+  },
+  {
+   "id": "bc-ecf-deadline-docketer",
+   "title": "Court deadline docketer",
+   "app": "clio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:11:13Z"
+  },
+  {
+   "id": "bc-ebay-stale-relister",
+   "title": "Stale listing relister",
+   "app": "ebay",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:12:07Z"
+  },
+  {
+   "id": "bc-stripe-failed-payment-chaser",
+   "title": "Failed payment chaser",
+   "app": "stripe",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:12:07Z"
+  },
+  {
+   "id": "wb-lien-notice-tracker",
+   "title": "Lien notice tracker",
+   "app": "quickbooks",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:13:03Z"
+  },
+  {
+   "id": "wb-prior-auth-chaser",
+   "title": "Prior auth chaser",
+   "app": "availity",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:13:03Z"
+  },
+  {
+   "id": "bc-declined-repair-callback",
+   "title": "Declined repair callback",
+   "app": "tekmetric",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:13:07Z"
+  },
+  {
+   "id": "bc-lead-refund-filer",
+   "title": "Bad lead refund filer",
+   "app": "thumbtack",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:13:07Z"
+  },
+  {
+   "id": "bc-newsletter-rec-swaps",
+   "title": "Newsletter swap finder",
+   "app": "substack",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:13:18Z"
+  },
+  {
+   "id": "bc-stock-photo-uploader",
+   "title": "Stock photo uploader",
+   "app": "shutterstock",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:13:18Z"
+  },
+  {
+   "id": "bc-amazon-ppc-dayparter",
+   "title": "Ad bid dayparter",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:14:26Z"
+  },
+  {
+   "id": "bc-whatnot-show-slotter",
+   "title": "Live show slot picker",
+   "app": "whatnot",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:14:26Z"
+  },
+  {
+   "id": "bc-coi-request-desk",
+   "title": "Certificate request desk",
+   "app": "appliedepic",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:14:30Z"
+  },
+  {
+   "id": "bc-month-end-receipt-chase",
+   "title": "Month-end receipt chase",
+   "app": "quickbooks",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:14:30Z"
+  },
+  {
+   "id": "bc-groom-cycle-rebooker",
+   "title": "Groom cycle rebooker",
+   "app": "moego",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:14:36Z"
+  },
+  {
+   "id": "bc-table-confirm-caller",
+   "title": "Table confirm caller",
+   "app": "opentable",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:14:36Z"
+  },
+  {
+   "id": "bc-missing-work-parent-digest",
+   "title": "Missing work digest",
+   "app": "classroom",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:15:08Z"
+  },
+  {
+   "id": "bc-quarterly-estimate-nudger",
+   "title": "Estimated tax nudger",
+   "app": "taxdome",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:15:08Z"
+  },
+  {
+   "id": "bc-impersonator-sweeper",
+   "title": "Impersonator sweeper",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:15:15Z"
+  },
+  {
+   "id": "bc-stolen-design-hunter",
+   "title": "Stolen design hunter",
+   "app": "redbubble",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:15:15Z"
+  },
+  {
+   "id": "lens-dependency-batcher",
+   "title": "Dependency batcher",
+   "app": "github",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:16:41Z"
+  },
+  {
+   "id": "lens-lab-reagent-reorder",
+   "title": "Lab reagent reorder",
+   "app": "sheets",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:16:41Z"
+  },
+  {
+   "id": "lens-local-review-replies",
+   "title": "Review responder",
+   "app": "googlebusinessprofile",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:16:41Z"
+  },
+  {
+   "id": "bc-etsy-proof-maker",
+   "title": "Custom order proofer",
+   "app": "etsy",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:16:48Z"
+  },
+  {
+   "id": "bc-saas-support-drafter",
+   "title": "Support reply drafter",
+   "app": "helpscout",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:16:48Z"
+  },
+  {
+   "id": "bc-episode-notes-drafter",
+   "title": "Episode notes drafter",
+   "app": "descript",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:17:15Z"
+  },
+  {
+   "id": "bc-sponsor-read-drafter",
+   "title": "Sponsor read drafter",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:17:15Z"
+  },
+  {
+   "id": "bc-review-reply-drafter",
+   "title": "Review reply drafter",
+   "app": "googlebusiness",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:18:45Z"
+  },
+  {
+   "id": "bc-trade-estimate-drafter",
+   "title": "Site visit estimator",
+   "app": "jobber",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:18:45Z"
+  },
+  {
+   "id": "wb-market-day-planner",
+   "title": "Market day planner",
+   "app": "square",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:18:56Z"
+  },
+  {
+   "id": "wb-reteach-warmups",
+   "title": "Reteach warm-ups",
+   "app": "googleforms",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:18:56Z"
+  },
+  {
+   "id": "bc-fake-law-firm-watch",
+   "title": "Fake law firm watch",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:19:15Z"
+  },
+  {
+   "id": "bc-rental-scam-ad-sweeper",
+   "title": "Rental scam ad sweeper",
+   "app": "craigslist",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:19:15Z"
+  },
+  {
+   "id": "bc-amazon-hijacker-watch",
+   "title": "Listing hijacker watch",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:21:32Z"
+  },
+  {
+   "id": "bc-saas-trial-abuse-catcher",
+   "title": "Trial abuse catcher",
+   "app": "supabase",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:21:32Z"
+  },
+  {
+   "id": "bc-audition-scout",
+   "title": "Audition scout",
+   "app": "castingcall",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:21:48Z"
+  },
+  {
+   "id": "bc-wedding-gallery-pacer",
+   "title": "Wedding gallery pacer",
+   "app": "lightroom",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:21:48Z"
+  },
+  {
+   "id": "bc-overdue-hygiene-recall",
+   "title": "Overdue cleaning recall",
+   "app": "weave",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:22:53Z"
+  },
+  {
+   "id": "bc-trust-three-way-rec",
+   "title": "Trust account reconciler",
+   "app": "clio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:22:53Z"
+  },
+  {
+   "id": "lens-backup-restore-drill",
+   "title": "Backup restore drill",
+   "app": "docker",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:23:22Z"
+  },
+  {
+   "id": "lens-flaky-test-quarantine",
+   "title": "Flaky test quarantine",
+   "app": "github",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:23:22Z"
+  },
+  {
+   "id": "lens-menu-listing-sync",
+   "title": "Menu listing sync",
+   "app": "square",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:23:22Z"
+  },
+  {
+   "id": "lens-supplier-price-watch",
+   "title": "Supplier price check",
+   "app": "gmail",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:23:22Z"
+  },
+  {
+   "id": "bc-fake-review-flagger",
+   "title": "Fake review flagger",
+   "app": "googlebusiness",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:23:31Z"
+  },
+  {
+   "id": "bc-maps-spam-sweeper",
+   "title": "Map spam sweeper",
+   "app": "googlebusiness",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:23:31Z"
+  },
+  {
+   "id": "bc-course-qa-keeper",
+   "title": "Course Q&A keeper",
+   "app": "udemy",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:23:53Z"
+  },
+  {
+   "id": "bc-stream-clip-cutter",
+   "title": "Stream clip cutter",
+   "app": "twitch",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:23:53Z"
+  },
+  {
+   "id": "bc-affiliate-link-mender",
+   "title": "Affiliate link mender",
+   "app": "wordpress",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:23:57Z"
+  },
+  {
+   "id": "bc-chargeback-defender",
+   "title": "Chargeback defender",
+   "app": "paypal",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:25:49Z"
+  },
+  {
+   "id": "bc-commission-balance-chaser",
+   "title": "Commission pay chaser",
+   "app": "paypal",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:25:49Z"
+  },
+  {
+   "id": "bc-etsy-gpsr-listing-filler",
+   "title": "EU safety info filler",
+   "app": "etsy",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:25:55Z"
+  },
+  {
+   "id": "bc-saas-gdpr-request-desk",
+   "title": "GDPR request desk",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:25:55Z"
+  },
+  {
+   "id": "bc-fake-client-screener",
+   "title": "Fake client screener",
+   "app": "psychologytoday",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:26:54Z"
+  },
+  {
+   "id": "bc-therapy-denial-fixer",
+   "title": "Claim denial fixer",
+   "app": "simplepractice",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:26:54Z"
+  },
+  {
+   "id": "bc-clean-pay-nudger",
+   "title": "After-clean pay nudger",
+   "app": "square",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:28:08Z"
+  },
+  {
+   "id": "bc-clean-price-replier",
+   "title": "Cleaning price replier",
+   "app": "metabusiness",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:28:08Z"
+  },
+  {
+   "id": "bc-wasted-trip-guard",
+   "title": "Wasted trip guard",
+   "app": "jobber",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:28:08Z"
+  },
+  {
+   "id": "wb-lost-pet-search",
+   "title": "Lost pet search",
+   "app": "petcolovelost",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:28:45Z"
+  },
+  {
+   "id": "wb-speaking-drill-calls",
+   "title": "Speaking drill calls",
+   "app": "anki",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:28:45Z"
+  },
+  {
+   "id": "bc-case-close-review-ask",
+   "title": "Case close review ask",
+   "app": "clio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:29:12Z"
+  },
+  {
+   "id": "bc-patient-safe-review-replies",
+   "title": "Patient-safe replies",
+   "app": "googlebusinessprofile",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:29:12Z"
+  },
+  {
+   "id": "lens-chargeback-answerer",
+   "title": "Chargeback answers",
+   "app": "square",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:29:14Z"
+  },
+  {
+   "id": "lens-maintainer-triage",
+   "title": "Maintainer triage",
+   "app": "github",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:29:14Z"
+  },
+  {
+   "id": "lens-quote-followup",
+   "title": "Quote follow-up",
+   "app": "jobber",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:29:14Z"
+  },
+  {
+   "id": "lens-reupload-takedowns",
+   "title": "Reupload takedowns",
+   "app": "tiktok",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:29:14Z"
+  },
+  {
+   "id": "bc-amazon-feedback-remover",
+   "title": "Seller feedback remover",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:30:17Z"
+  },
+  {
+   "id": "bc-amazon-review-request-timer",
+   "title": "Review request timer",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:30:17Z"
+  },
+  {
+   "id": "bc-food-handler-keeper",
+   "title": "Food handler card keeper",
+   "app": "toast",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:30:20Z"
+  },
+  {
+   "id": "bc-refrigerant-leak-clock",
+   "title": "Refrigerant leak clock",
+   "app": "servicetitan",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:30:20Z"
+  },
+  {
+   "id": "bc-ad-disclosure-checker",
+   "title": "Ad disclosure checker",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:30:30Z"
+  },
+  {
+   "id": "bc-royalty-registrar",
+   "title": "Royalty registrar",
+   "app": "themlc",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:30:30Z"
+  },
+  {
+   "id": "bc-merch-trademark-screen",
+   "title": "Merch trademark screen",
+   "app": "merch",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:32:03Z"
+  },
+  {
+   "id": "bc-shopify-shopping-feed-fixer",
+   "title": "Shopping feed fixer",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:32:03Z"
+  },
+  {
+   "id": "bc-gig-copycat-watch",
+   "title": "Gig copycat watch",
+   "app": "fiverr",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:32:52Z"
+  },
+  {
+   "id": "bc-review-threat-shield",
+   "title": "Review threat shield",
+   "app": "fiverr",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:32:52Z"
+  },
+  {
+   "id": "wb-listing-photo-tester",
+   "title": "Listing photo tester",
+   "app": "airbnb",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:33:28Z"
+  },
+  {
+   "id": "bc-shopify-late-order-notice",
+   "title": "Late order notice",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:33:35Z"
+  },
+  {
+   "id": "bc-deposit-deadline-keeper",
+   "title": "Deposit deadline keeper",
+   "app": "turbotenant",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:33:47Z"
+  },
+  {
+   "id": "bc-iep-due-date-keeper",
+   "title": "IEP due date keeper",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:33:47Z"
+  },
+  {
+   "id": "wb-story-image-sourcer",
+   "title": "Story image sourcer",
+   "app": "capcut",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:34:15Z"
+  },
+  {
+   "id": "bc-efile-signature-chase",
+   "title": "E-file signature chase",
+   "app": "taxdome",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:35:36Z"
+  },
+  {
+   "id": "bc-renewal-remarketer",
+   "title": "Renewal remarketer",
+   "app": "ezlynx",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:35:36Z"
+  },
+  {
+   "id": "bc-health-code-walkthrough",
+   "title": "Health code walkthrough",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:36:07Z"
+  },
+  {
+   "id": "bc-roof-tieoff-check",
+   "title": "Roof tie-off check",
+   "app": "companycam",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:36:07Z"
+  },
+  {
+   "id": "lens-dbt-data-checks",
+   "title": "Data model checks",
+   "app": "dbt",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:36:32Z"
+  },
+  {
+   "id": "lens-delivery-refund-disputes",
+   "title": "Delivery refund disputes",
+   "app": "ubereats",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:36:32Z"
+  },
+  {
+   "id": "lens-photo-licence-billing",
+   "title": "Photo licence billing",
+   "app": "gmail",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:36:32Z"
+  },
+  {
+   "id": "lens-print-sales-windows",
+   "title": "Print sales windows",
+   "app": "pictime",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:36:32Z"
+  },
+  {
+   "id": "bc-shopify-app-review-asker",
+   "title": "App review asker",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:37:11Z"
+  },
+  {
+   "id": "bc-shopify-app-uninstall-saver",
+   "title": "Early uninstall saver",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:37:11Z"
+  },
+  {
+   "id": "bc-bot-follower-sweep",
+   "title": "Bot follower sweep",
+   "app": "instagram",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:37:31Z"
+  },
+  {
+   "id": "bc-income-claim-checker",
+   "title": "Income claim checker",
+   "app": "kajabi",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:37:31Z"
+  },
+  {
+   "id": "bc-ebay-watcher-offer-sender",
+   "title": "Watcher offer sender",
+   "app": "ebay",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:38:31Z"
+  },
+  {
+   "id": "bc-saas-shipped-request-notifier",
+   "title": "You asked, we built it",
+   "app": "helpscout",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:38:31Z"
+  },
+  {
+   "id": "bc-permit-closeout-chaser",
+   "title": "Permit closeout chaser",
+   "app": "accela",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:38:32Z"
+  },
+  {
+   "id": "bc-rainout-reshuffler",
+   "title": "Rain-out reshuffler",
+   "app": "jobber",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:38:32Z"
+  },
+  {
+   "id": "bc-agent-query-pacer",
+   "title": "Agent query pacer",
+   "app": "querytracker",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:39:20Z"
+  },
+  {
+   "id": "bc-arc-review-keeper",
+   "title": "ARC review keeper",
+   "app": "bookfunnel",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:39:20Z"
+  },
+  {
+   "id": "bc-lease-renewal-offers",
+   "title": "Lease renewal offers",
+   "app": "appfolio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:39:30Z"
+  },
+  {
+   "id": "bc-nurse-license-ce-keeper",
+   "title": "License and CE keeper",
+   "app": "cebroker",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:39:30Z"
+  },
+  {
+   "id": "lens-cluster-job-tuner",
+   "title": "Cluster job tuner",
+   "app": "slurm",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:39:55Z"
+  },
+  {
+   "id": "lens-craft-fair-scout",
+   "title": "Craft fair scout",
+   "app": "eventbrite",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:39:55Z"
+  },
+  {
+   "id": "lens-patch-tuesday-scout",
+   "title": "Patch Tuesday scout",
+   "app": "reddit",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:39:55Z"
+  },
+  {
+   "id": "lens-waste-bill-audit",
+   "title": "Waste bill audit",
+   "app": "gmail",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:39:55Z"
+  },
+  {
+   "id": "wb-engine-oil-trend-watch",
+   "title": "Engine oil trend watch",
+   "app": "blackstone",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:40:30Z"
+  },
+  {
+   "id": "bc-sales-tax-return-keeper",
+   "title": "Sales tax return keeper",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:42:16Z"
+  },
+  {
+   "id": "bc-makeup-lesson-bank",
+   "title": "Makeup lesson bank",
+   "app": "mymusicstaff",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:43:16Z"
+  },
+  {
+   "id": "bc-move-claim-clock",
+   "title": "Move damage claim clock",
+   "app": "smartmoving",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:43:16Z"
+  },
+  {
+   "id": "bc-amazon-safet-claim-filer",
+   "title": "Bad return claim filer",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:43:21Z"
+  },
+  {
+   "id": "bc-hpd-violation-certifier",
+   "title": "HPD violation certifier",
+   "app": "nycopendata",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:43:55Z"
+  },
+  {
+   "id": "bc-shoot-block-clash-check",
+   "title": "Shoot block clash check",
+   "app": "nycopendata",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:44:01Z"
+  },
+  {
+   "id": "lens-lab-data-backup",
+   "title": "Lab data backup",
+   "app": "sheets",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:44:35Z"
+  },
+  {
+   "id": "lens-star-seller-keeper",
+   "title": "Star Seller keeper",
+   "app": "etsy",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:44:35Z"
+  },
+  {
+   "id": "lens-wholesale-stockists",
+   "title": "Wholesale stockists",
+   "app": "gmail",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:44:35Z"
+  },
+  {
+   "id": "bc-mini-session-filler",
+   "title": "Mini session filler",
+   "app": "pixieset",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:44:42Z"
+  },
+  {
+   "id": "bc-wedding-inquiry-replier",
+   "title": "Wedding inquiry replier",
+   "app": "honeybook",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:44:42Z"
+  },
+  {
+   "id": "bc-music-claim-disputer",
+   "title": "Music claim disputer",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:45:45Z"
+  },
+  {
+   "id": "bc-etsy-digital-order-helper",
+   "title": "Digital order helper",
+   "app": "etsy",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:46:42Z"
+  },
+  {
+   "id": "bc-tiktok-shop-violation-appeals",
+   "title": "Shop violation appeals",
+   "app": "tiktok",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:46:42Z"
+  },
+  {
+   "id": "wb-varroa-wash-planner",
+   "title": "Varroa wash planner",
+   "app": "hivetracks",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:47:23Z"
+  },
+  {
+   "id": "bc-school-immunization-chase",
+   "title": "School shot record chase",
+   "app": "powerschool",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:47:54Z"
+  },
+  {
+   "id": "bc-uscis-status-updater",
+   "title": "Case status updater",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:47:54Z"
+  },
+  {
+   "id": "lens-backer-survey-chaser",
+   "title": "Backer survey chaser",
+   "app": "kickstarter",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:48:55Z"
+  },
+  {
+   "id": "lens-paywall-preview-teaser",
+   "title": "Paywall preview teaser",
+   "app": "substack",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:48:55Z"
+  },
+  {
+   "id": "lens-sample-request-pacer",
+   "title": "Sample request pacer",
+   "app": "tiktok",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:48:55Z"
+  },
+  {
+   "id": "lens-uncollected-repairs",
+   "title": "Uncollected repairs",
+   "app": "gmail",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:48:55Z"
+  },
+  {
+   "id": "bc-holiday-sit-opener",
+   "title": "Holiday sitting opener",
+   "app": "timetopet",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:49:07Z"
+  },
+  {
+   "id": "bc-walk-capacity-guard",
+   "title": "Walk capacity guard",
+   "app": "timetopet",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:49:07Z"
+  },
+  {
+   "id": "bc-payroll-quarter-tieout",
+   "title": "Payroll quarter tie-out",
+   "app": "quickbooks",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:49:37Z"
+  },
+  {
+   "id": "bc-spore-test-keeper",
+   "title": "Spore test keeper",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:49:37Z"
+  },
+  {
+   "id": "bc-patron-churn-reader",
+   "title": "Patron churn reader",
+   "app": "patreon",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:50:14Z"
+  },
+  {
+   "id": "bc-venue-booking-pitcher",
+   "title": "Venue booking pitcher",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:50:14Z"
+  },
+  {
+   "id": "bc-healed-tattoo-checkin",
+   "title": "Healed tattoo check-in",
+   "app": "instagram",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:50:36Z"
+  },
+  {
+   "id": "bc-walmart-unpublish-fixer",
+   "title": "Unpublished item fixer",
+   "app": "walmart",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:50:47Z"
+  },
+  {
+   "id": "lens-ad-service-account-owners",
+   "title": "Service account owners",
+   "app": "activedirectory",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:51:04Z"
+  },
+  {
+   "id": "bc-artist-alley-applier",
+   "title": "Artist alley applier",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:52:07Z"
+  },
+  {
+   "id": "bc-sync-brief-submitter",
+   "title": "Sync brief submitter",
+   "app": "songtradr",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:52:07Z"
+  },
+  {
+   "id": "bc-chrome-store-review-precheck",
+   "title": "Store review pre-check",
+   "app": "chromewebstore",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:52:34Z"
+  },
+  {
+   "id": "wb-installed-recall-sweep",
+   "title": "Installed recall sweep",
+   "app": "housecallpro",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:52:43Z"
+  },
+  {
+   "id": "bc-c2-count-reconciler",
+   "title": "C2 count reconciler",
+   "app": "pioneerrx",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:53:34Z"
+  },
+  {
+   "id": "bc-hipaa-risk-analysis",
+   "title": "Security risk analysis",
+   "app": "microsoft365",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:53:34Z"
+  },
+  {
+   "id": "lens-commission-queue",
+   "title": "Commission queue keeper",
+   "app": "kofi",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:54:47Z"
+  },
+  {
+   "id": "lens-mailchimp-bill-trimmer",
+   "title": "Mailchimp bill trimmer",
+   "app": "mailchimp",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:54:47Z"
+  },
+  {
+   "id": "lens-pipeline-rerun-check",
+   "title": "Pipeline rerun check",
+   "app": "github",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:54:47Z"
+  },
+  {
+   "id": "bc-loan-signing-flagger",
+   "title": "Loan signing flagger",
+   "app": "snapdocs",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:55:01Z"
+  },
+  {
+   "id": "bc-warranty-inspection-finder",
+   "title": "11-month warranty finder",
+   "app": "lob",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:55:03Z"
+  },
+  {
+   "id": "bc-notion-template-update-notes",
+   "title": "Template update notes",
+   "app": "notion",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:55:47Z"
+  },
+  {
+   "id": "bc-gym-dropoff-catcher",
+   "title": "Attendance drop catcher",
+   "app": "mindbody",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:55:58Z"
+  },
+  {
+   "id": "wb-freezer-beef-presale",
+   "title": "Freezer beef presale",
+   "app": "grazecart",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T19:56:03Z"
+  },
+  {
+   "id": "lens-covers-forecast",
+   "title": "Covers forecast",
+   "app": "sheets",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T19:56:41Z"
+  },
+  {
+   "id": "bc-etsy-ads-pruner",
+   "title": "Etsy ads pruner",
+   "app": "etsy",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:56:52Z"
+  },
+  {
+   "id": "bc-fba-restock-planner",
+   "title": "FBA restock planner",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T19:56:52Z"
+  },
+  {
+   "id": "bc-issue-slot-filler",
+   "title": "Issue slot filler",
+   "app": "beehiiv",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:57:23Z"
+  },
+  {
+   "id": "bc-language-track-tester",
+   "title": "Language track tester",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:57:23Z"
+  },
+  {
+   "id": "bc-spray-day-notice",
+   "title": "Spray day notice",
+   "app": "realgreen",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T19:58:11Z"
+  },
+  {
+   "id": "bc-engagement-letter-round",
+   "title": "Engagement letter round",
+   "app": "ignition",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:58:40Z"
+  },
+  {
+   "id": "bc-trust-funding-tracker",
+   "title": "Trust funding tracker",
+   "app": "clio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T19:58:40Z"
+  },
+  {
+   "id": "bc-festival-entry-picker",
+   "title": "Festival entry picker",
+   "app": "filmfreeway",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:59:22Z"
+  },
+  {
+   "id": "bc-type-beat-uploader",
+   "title": "Type beat uploader",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T19:59:22Z"
+  },
+  {
+   "id": "bc-shopify-customs-form-filler",
+   "title": "Customs form filler",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:00:27Z"
+  },
+  {
+   "id": "bc-shopify-metal-price-repricer",
+   "title": "Metal price repricer",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:00:27Z"
+  },
+  {
+   "id": "lens-guest-share-pack",
+   "title": "Guest share pack",
+   "app": "gmail",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:00:36Z"
+  },
+  {
+   "id": "lens-lyrics-sync-keeper",
+   "title": "Lyrics sync keeper",
+   "app": "spotify",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:00:36Z"
+  },
+  {
+   "id": "bc-credit-balance-refunds",
+   "title": "Credit balance resolver",
+   "app": "availity",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:01:29Z"
+  },
+  {
+   "id": "bc-oig-exclusion-screen",
+   "title": "Exclusion list screen",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:01:29Z"
+  },
+  {
+   "id": "bc-shopify-bundle-price-keeper",
+   "title": "Bundle price keeper",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:01:40Z"
+  },
+  {
+   "id": "bc-shopify-net-terms-collector",
+   "title": "Net terms collector",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:01:40Z"
+  },
+  {
+   "id": "wb-next-piece-picker",
+   "title": "Next piece picker",
+   "app": "musicnotes",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:01:41Z"
+  },
+  {
+   "id": "bc-pool-route-filler",
+   "title": "Pool route filler",
+   "app": "lob",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:02:31Z"
+  },
+  {
+   "id": "bc-pool-schedule-watch",
+   "title": "Pump schedule watch",
+   "app": "omnilogic",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:02:31Z"
+  },
+  {
+   "id": "lens-platform-request-desk",
+   "title": "Platform request desk",
+   "app": "github",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:04:09Z"
+  },
+  {
+   "id": "lens-revision-cap-keeper",
+   "title": "Revision cap keeper",
+   "app": "fiverr",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:04:09Z"
+  },
+  {
+   "id": "bc-backflow-test-cycle",
+   "title": "Backflow test cycle",
+   "app": "syncta",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:04:18Z"
+  },
+  {
+   "id": "bc-cold-reader-sweep",
+   "title": "Cold reader sweep",
+   "app": "ghost",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:04:38Z"
+  },
+  {
+   "id": "bc-stream-health-check",
+   "title": "Stream health check",
+   "app": "obs",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:04:38Z"
+  },
+  {
+   "id": "bc-downcode-appealer",
+   "title": "Downcode appealer",
+   "app": "availity",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:05:15Z"
+  },
+  {
+   "id": "bc-new-provider-enrollment",
+   "title": "New provider enrollment",
+   "app": "caqh",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:05:15Z"
+  },
+  {
+   "id": "bc-shopify-return-restock-checker",
+   "title": "Return restock checker",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:05:39Z"
+  },
+  {
+   "id": "bc-shopify-tracking-gap-watch",
+   "title": "Tracking gap watch",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:05:39Z"
+  },
+  {
+   "id": "wb-class-minimum-filler",
+   "title": "Class minimum filler",
+   "app": "civicrec",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:06:17Z"
+  },
+  {
+   "id": "bc-pod-provider-switcher",
+   "title": "Print provider switcher",
+   "app": "printify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:06:54Z"
+  },
+  {
+   "id": "bc-card-offload-verifier",
+   "title": "Card offload verifier",
+   "app": "lightroom",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:07:23Z"
+  },
+  {
+   "id": "bc-episode-loudness-check",
+   "title": "Episode loudness check",
+   "app": "descript",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:07:23Z"
+  },
+  {
+   "id": "bc-childcare-licensing-binder",
+   "title": "Licensing binder keeper",
+   "app": "brightwheel",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:07:34Z"
+  },
+  {
+   "id": "lens-firewall-rule-audit",
+   "title": "Firewall rule audit",
+   "app": "fortigate",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:08:09Z"
+  },
+  {
+   "id": "bc-coating-upkeep-keeper",
+   "title": "Coating upkeep keeper",
+   "app": "urable",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:08:32Z"
+  },
+  {
+   "id": "bc-seasonal-circle-back",
+   "title": "Seasonal circle-back",
+   "app": "customerfactor",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:08:32Z"
+  },
+  {
+   "id": "lens-inherited-site-audit",
+   "title": "Inherited site audit",
+   "app": "wordpress",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:09:23Z"
+  },
+  {
+   "id": "wb-bus-tracker-fixer",
+   "title": "Bus tracker fixer",
+   "app": "herecomesthebus",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:09:53Z"
+  },
+  {
+   "id": "bc-backer-shipping-gap-auditor",
+   "title": "Backer shipping auditor",
+   "app": "kickstarter",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:10:08Z"
+  },
+  {
+   "id": "bc-storm-service-log",
+   "title": "Storm service log",
+   "app": "companycam",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:10:37Z"
+  },
+  {
+   "id": "bc-turnover-rekey-desk",
+   "title": "Turnover rekey desk",
+   "app": "appfolio",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:10:37Z"
+  },
+  {
+   "id": "bc-mips-quality-gaps",
+   "title": "MIPS quality gap closer",
+   "app": "athenahealth",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:11:10Z"
+  },
+  {
+   "id": "bc-saas-renewal-notice-sender",
+   "title": "Renewal notice sender",
+   "app": "stripe",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:11:26Z"
+  },
+  {
+   "id": "bc-gallery-print-nudger",
+   "title": "Gallery print nudger",
+   "app": "pixieset",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:12:26Z"
+  },
+  {
+   "id": "bc-voucher-inspection-prep",
+   "title": "Voucher inspection prep",
+   "app": "turbotenant",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:12:43Z"
+  },
+  {
+   "id": "lens-shadow-app-review",
+   "title": "Shadow app review",
+   "app": "github",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:12:57Z"
+  },
+  {
+   "id": "lens-tiered-early-release",
+   "title": "Tiered early release",
+   "app": "patreon",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:12:57Z"
+  },
+  {
+   "id": "lens-loyalty-points-audit",
+   "title": "Loyalty points audit",
+   "app": "toast",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:14:14Z"
+  },
+  {
+   "id": "bc-estate-plan-review-nudge",
+   "title": "Estate plan review nudge",
+   "app": "clio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:14:37Z"
+  },
+  {
+   "id": "bc-irs-notice-desk",
+   "title": "IRS notice desk",
+   "app": "taxdome",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:14:37Z"
+  },
+  {
+   "id": "bc-narration-offer-vetter",
+   "title": "Narration offer vetter",
+   "app": "acx",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:14:55Z"
+  },
+  {
+   "id": "bc-flower-handoff-check",
+   "title": "Flower handoff check",
+   "app": "floranext",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:15:04Z"
+  },
+  {
+   "id": "bc-occasion-reorder",
+   "title": "Occasion reorder nudge",
+   "app": "floranext",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:15:04Z"
+  },
+  {
+   "id": "bc-fba-dead-stock-exit",
+   "title": "Dead stock exit planner",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:15:06Z"
+  },
+  {
+   "id": "wb-new-volunteer-keeper",
+   "title": "New volunteer keeper",
+   "app": "volgistics",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:15:13Z"
+  },
+  {
+   "id": "bc-ios-refund-consumption-reply",
+   "title": "App refund responder",
+   "app": "appledev",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:16:14Z"
+  },
+  {
+   "id": "bc-truck-booking-screen",
+   "title": "Truck booking screen",
+   "app": "bestfoodtrucks",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:16:46Z"
+  },
+  {
+   "id": "lens-digital-file-update",
+   "title": "File update notifier",
+   "app": "etsy",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:17:46Z"
+  },
+  {
+   "id": "bc-rental-license-keeper",
+   "title": "Rental license keeper",
+   "app": "appfolio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:18:47Z"
+  },
+  {
+   "id": "bc-play-policy-deadline-keeper",
+   "title": "Play policy fixer",
+   "app": "androiddev",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:19:47Z"
+  },
+  {
+   "id": "bc-open-mic-planner",
+   "title": "Open mic planner",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:19:49Z"
+  },
+  {
+   "id": "bc-set-bit-tracker",
+   "title": "Set bit tracker",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:19:49Z"
+  },
+  {
+   "id": "bc-court-date-reminders",
+   "title": "Court date reminders",
+   "app": "mycase",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:20:35Z"
+  },
+  {
+   "id": "bc-boutique-line-sheet-importer",
+   "title": "Line sheet importer",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:21:00Z"
+  },
+  {
+   "id": "bc-catering-final-count",
+   "title": "Final headcount chaser",
+   "app": "tripleseat",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:21:21Z"
+  },
+  {
+   "id": "bc-empty-chair-filler",
+   "title": "Empty chair filler",
+   "app": "craigslist",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:21:21Z"
+  },
+  {
+   "id": "wb-missed-debit-catcher",
+   "title": "Missed debit catcher",
+   "app": "n26",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:21:55Z"
+  },
+  {
+   "id": "bc-brand-deal-tracker",
+   "title": "Brand deal tracker",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:22:16Z"
+  },
+  {
+   "id": "bc-usage-rights-pricer",
+   "title": "Usage rights pricer",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:22:16Z"
+  },
+  {
+   "id": "bc-promotion-review-queue",
+   "title": "Promotion review queue",
+   "app": "zenplanner",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:23:02Z"
+  },
+  {
+   "id": "lens-vod-archive-uploader",
+   "title": "VOD archive uploader",
+   "app": "twitch",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:24:00Z"
+  },
+  {
+   "id": "bc-consignor-payout-runner",
+   "title": "Consignor payout runner",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:24:12Z"
+  },
+  {
+   "id": "bc-1099-season-runner",
+   "title": "1099 season runner",
+   "app": "taxbandits",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:24:30Z"
+  },
+  {
+   "id": "bc-report-card-comments",
+   "title": "Report card comments",
+   "app": "powerschool",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:25:57Z"
+  },
+  {
+   "id": "wb-cpap-night-coach",
+   "title": "CPAP night coach",
+   "app": "myair",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:27:15Z"
+  },
+  {
+   "id": "bc-addon-approval-text",
+   "title": "Add-on approval text",
+   "app": "housecallpro",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:27:25Z"
+  },
+  {
+   "id": "bc-trip-end-photo-match",
+   "title": "Trip-end photo match",
+   "app": "turo",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:27:25Z"
+  },
+  {
+   "id": "bc-shopify-rental-return-keeper",
+   "title": "Rental return keeper",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:27:37Z"
+  },
+  {
+   "id": "bc-cosplay-build-planner",
+   "title": "Cosplay build planner",
+   "app": "notion",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:27:50Z"
+  },
+  {
+   "id": "bc-pattern-test-coordinator",
+   "title": "Pattern test coordinator",
+   "app": "ravelry",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:27:50Z"
+  },
+  {
+   "id": "lens-baked-plug-remover",
+   "title": "Baked plug remover",
+   "app": "descript",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:28:11Z"
+  },
+  {
+   "id": "bc-ebay-authentication-precheck",
+   "title": "Authentication pre-check",
+   "app": "ebay",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:28:36Z"
+  },
+  {
+   "id": "lens-schema-change-guard",
+   "title": "Schema change guard",
+   "app": "dbt",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:29:10Z"
+  },
+  {
+   "id": "bc-intake-conflict-check",
+   "title": "Intake conflict check",
+   "app": "microsoft365",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:29:54Z"
+  },
+  {
+   "id": "bc-affiliate-link-auditor",
+   "title": "Affiliate link auditor",
+   "app": "wordpress",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:30:35Z"
+  },
+  {
+   "id": "bc-efiling-reject-fixer",
+   "title": "E-filing reject fixer",
+   "app": "onelegal",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:31:20Z"
+  },
+  {
+   "id": "bc-amazon-eu-stock-country-watch",
+   "title": "EU stock country watch",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:31:51Z"
+  },
+  {
+   "id": "wb-pre-maverick-review",
+   "title": "Pre-maverick review",
+   "app": "inaturalist",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:32:29Z"
+  },
+  {
+   "id": "bc-silent-machine-alert",
+   "title": "Silent machine alert",
+   "app": "laundroworks",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:32:39Z"
+  },
+  {
+   "id": "lens-transcript-show-checker",
+   "title": "Episode delivery check",
+   "app": "captivate",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:32:55Z"
+  },
+  {
+   "id": "bc-saas-quiet-account-catcher",
+   "title": "Quiet account catcher",
+   "app": "posthog",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:32:59Z"
+  },
+  {
+   "id": "bc-garment-intake-proof",
+   "title": "Garment intake proof",
+   "app": "cleancloud",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:34:09Z"
+  },
+  {
+   "id": "bc-session-note-drafter",
+   "title": "Session note drafter",
+   "app": "simplepractice",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:35:18Z"
+  },
+  {
+   "id": "bc-saas-security-form-filler",
+   "title": "Security form filler",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:36:06Z"
+  },
+  {
+   "id": "bc-sample-clearance-tracker",
+   "title": "Sample clearance tracker",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:36:25Z"
+  },
+  {
+   "id": "bc-story-submission-manager",
+   "title": "Story submission manager",
+   "app": "submittable",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:36:25Z"
+  },
+  {
+   "id": "bc-shopify-market-price-points",
+   "title": "Local price point setter",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:37:06Z"
+  },
+  {
+   "id": "wb-family-care-rota",
+   "title": "Family care rota",
+   "app": "caringbridge",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:37:32Z"
+  },
+  {
+   "id": "bc-repair-pickup-chaser",
+   "title": "Repair pickup chaser",
+   "app": "lightspeed",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:38:32Z"
+  },
+  {
+   "id": "bc-turnover-proof-walk",
+   "title": "Turnover proof walk",
+   "app": "turno",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:38:32Z"
+  },
+  {
+   "id": "bc-charity-stream-pacer",
+   "title": "Charity stream pacer",
+   "app": "tiltify",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:38:42Z"
+  },
+  {
+   "id": "bc-giveaway-runner",
+   "title": "Giveaway runner",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:38:42Z"
+  },
+  {
+   "id": "lens-missing-details-chaser",
+   "title": "Missing details chaser",
+   "app": "etsy",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:38:48Z"
+  },
+  {
+   "id": "bc-patient-cost-estimator",
+   "title": "Patient cost estimator",
+   "app": "athenahealth",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:40:11Z"
+  },
+  {
+   "id": "bc-etsy-away-planner",
+   "title": "Shop away planner",
+   "app": "etsy",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:40:12Z"
+  },
+  {
+   "id": "wb-building-heat-case",
+   "title": "Building heat case",
+   "app": "nyc311",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:43:21Z"
+  },
+  {
+   "id": "bc-contract-price-stepper",
+   "title": "Contract price stepper",
+   "app": "quickbooks",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:43:22Z"
+  },
+  {
+   "id": "bc-hood-cleaning-due-list",
+   "title": "Hood cleaning due list",
+   "app": "servicetrade",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:43:22Z"
+  },
+  {
+   "id": "bc-collab-session-planner",
+   "title": "Collab session planner",
+   "app": "discord",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:43:34Z"
+  },
+  {
+   "id": "bc-second-shooter-usage-watch",
+   "title": "Second shooter watch",
+   "app": "instagram",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:43:34Z"
+  },
+  {
+   "id": "bc-woo-failed-order-sorter",
+   "title": "Failed order sorter",
+   "app": "woocommerce",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:43:38Z"
+  },
+  {
+   "id": "bc-woo-silent-job-watch",
+   "title": "Silent store job watch",
+   "app": "woocommerce",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:43:38Z"
+  },
+  {
+   "id": "lens-listing-video-tester",
+   "title": "Listing video tester",
+   "app": "etsy",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:44:33Z"
+  },
+  {
+   "id": "bc-chiro-maintenance-abn",
+   "title": "Maintenance ABN keeper",
+   "app": "chirotouch",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:44:45Z"
+  },
+  {
+   "id": "bc-tcm-discharge-tracker",
+   "title": "TCM discharge tracker",
+   "app": "athenahealth",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:44:45Z"
+  },
+  {
+   "id": "bc-upload-buffer-keeper",
+   "title": "Upload buffer keeper",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:45:55Z"
+  },
+  {
+   "id": "bc-date-last-seen-fetcher",
+   "title": "Date last seen fetcher",
+   "app": "athenahealth",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:46:34Z"
+  },
+  {
+   "id": "bc-injection-limit-tracker",
+   "title": "Injection limit tracker",
+   "app": "availity",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:46:34Z"
+  },
+  {
+   "id": "bc-store-renewal-watch",
+   "title": "Store renewal watch",
+   "app": "squarespace",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:47:12Z"
+  },
+  {
+   "id": "bc-catalog-data-linter",
+   "title": "Catalog data linter",
+   "app": "bigcommerce",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:48:14Z"
+  },
+  {
+   "id": "bc-tent-stake-clearance",
+   "title": "Tent stake clearance",
+   "app": "goodshuffle",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:48:20Z"
+  },
+  {
+   "id": "wb-garden-plot-upkeep",
+   "title": "Plot upkeep notices",
+   "app": "mailchimp",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:49:30Z"
+  },
+  {
+   "id": "bc-revision-round-counter",
+   "title": "Revision round counter",
+   "app": "frameio",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:50:30Z"
+  },
+  {
+   "id": "bc-handmade-make-list",
+   "title": "Daily make list",
+   "app": "wix",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:51:26Z"
+  },
+  {
+   "id": "bc-ob-episode-biller",
+   "title": "Pregnancy episode biller",
+   "app": "tebra",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:51:28Z"
+  },
+  {
+   "id": "bc-vfc-stock-screener",
+   "title": "VFC stock screener",
+   "app": "athenahealth",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:51:28Z"
+  },
+  {
+   "id": "bc-midroll-setting-guard",
+   "title": "Mid-roll setting guard",
+   "app": "youtube",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:52:05Z"
+  },
+  {
+   "id": "bc-roof-claim-gap-check",
+   "title": "Roof claim gap check",
+   "app": "acculynx",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:52:37Z"
+  },
+  {
+   "id": "lens-late-payer-risk",
+   "title": "Late payer risk",
+   "app": "quickbooks",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:53:43Z"
+  },
+  {
+   "id": "wb-boiler-fuel-tuner",
+   "title": "Boiler fuel tuner",
+   "app": "heattimer",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:53:43Z"
+  },
+  {
+   "id": "bc-fmla-form-desk",
+   "title": "FMLA form desk",
+   "app": "tebra",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:54:23Z"
+  },
+  {
+   "id": "bc-amazon-business-tier-pricer",
+   "title": "Business tier pricer",
+   "app": "sellercentral",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:54:38Z"
+  },
+  {
+   "id": "bc-tree-job-site-verify",
+   "title": "Tree job site verify",
+   "app": "arborgold",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T20:56:59Z"
+  },
+  {
+   "id": "bc-listener-mailbag-sorter",
+   "title": "Listener mailbag sorter",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:57:18Z"
+  },
+  {
+   "id": "bc-rising-stars-push-timer",
+   "title": "Rising Stars push timer",
+   "app": "royalroad",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:57:18Z"
+  },
+  {
+   "id": "lens-held-queue-clearer",
+   "title": "Held queue clearer",
+   "app": "youtube",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:57:44Z"
+  },
+  {
+   "id": "lens-job-margin-check",
+   "title": "Job margin check",
+   "app": "jobber",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T20:57:44Z"
+  },
+  {
+   "id": "bc-shopify-po-receiving-checker",
+   "title": "PO receiving checker",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T20:57:49Z"
+  },
+  {
+   "id": "bc-coverage-rule-watcher",
+   "title": "Coverage rule watcher",
+   "app": "notion",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T20:58:39Z"
+  },
+  {
+   "id": "bc-release-rollout-timer",
+   "title": "Release rollout timer",
+   "app": "spotify",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T20:58:58Z"
+  },
+  {
+   "id": "wb-tasting-club-follow-up",
+   "title": "Tasting club follow-up",
+   "app": "commerce7",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T20:59:17Z"
+  },
+  {
+   "id": "bc-records-request-desk",
+   "title": "Records request desk",
+   "app": "availity",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:00:46Z"
+  },
+  {
+   "id": "bc-antique-channel-router",
+   "title": "Antique channel router",
+   "app": "chairish",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:00:59Z"
+  },
+  {
+   "id": "bc-drying-log-keeper",
+   "title": "Drying log keeper",
+   "app": "encircle",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:01:15Z"
+  },
+  {
+   "id": "lens-substack-notes-ledger",
+   "title": "Notes ledger",
+   "app": "substack",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:01:22Z"
+  },
+  {
+   "id": "bc-mix-deliverables-packer",
+   "title": "Mix deliverables packer",
+   "app": "wetransfer",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:04:11Z"
+  },
+  {
+   "id": "bc-case-note-audit-check",
+   "title": "Case note audit check",
+   "app": "netsmart",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:04:48Z"
+  },
+  {
+   "id": "wb-green-speed-planner",
+   "title": "Green speed planner",
+   "app": "usgadeacon",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:05:00Z"
+  },
+  {
+   "id": "bc-preorder-balance-collector",
+   "title": "Preorder balance chaser",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:05:06Z"
+  },
+  {
+   "id": "lens-silent-couple-chaser",
+   "title": "Silent couple chaser",
+   "app": "gmail",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:05:20Z"
+  },
+  {
+   "id": "bc-radon-retest-keeper",
+   "title": "Radon retest keeper",
+   "app": "jobber",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:05:54Z"
+  },
+  {
+   "id": "bc-clip-music-scrubber",
+   "title": "Clip music scrubber",
+   "app": "twitch",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:06:12Z"
+  },
+  {
+   "id": "bc-guest-release-keeper",
+   "title": "Guest release keeper",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:06:12Z"
+  },
+  {
+   "id": "bc-voucher-rent-increase",
+   "title": "Voucher rent increase",
+   "app": "turbotenant",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:07:41Z"
+  },
+  {
+   "id": "bc-saas-outage-update-writer",
+   "title": "Outage update writer",
+   "app": "statuspage",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:09:01Z"
+  },
+  {
+   "id": "lens-offsite-trigger-sweep",
+   "title": "Off-site trigger sweep",
+   "app": "etsy",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:09:07Z"
+  },
+  {
+   "id": "lens-shorts-drag-brake",
+   "title": "Shorts drag brake",
+   "app": "youtube",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:09:07Z"
+  },
+  {
+   "id": "bc-adas-calibration-packet",
+   "title": "ADAS calibration packet",
+   "app": "omegaedi",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:10:08Z"
+  },
+  {
+   "id": "wb-reporter-pitch-triage",
+   "title": "Reporter pitch triage",
+   "app": "gmail",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:10:47Z"
+  },
+  {
+   "id": "bc-roster-deck-builder",
+   "title": "Roster deck builder",
+   "app": "canva",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:10:54Z"
+  },
+  {
+   "id": "bc-shopify-app-revenue-leak",
+   "title": "App revenue leak check",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:12:30Z"
+  },
+  {
+   "id": "bc-alarm-certificate-desk",
+   "title": "Alarm certificate desk",
+   "app": "turbotenant",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:12:34Z"
+  },
+  {
+   "id": "bc-lead-safe-renewal",
+   "title": "Lead safe renewal",
+   "app": "appfolio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:12:34Z"
+  },
+  {
+   "id": "bc-network-ad-inventory",
+   "title": "Network ad inventory",
+   "app": "sheets",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:12:39Z"
+  },
+  {
+   "id": "bc-slab-layout-signoff",
+   "title": "Slab layout sign-off",
+   "app": "moraware",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:14:48Z"
+  },
+  {
+   "id": "lens-renewal-week-poster",
+   "title": "Renewal week poster",
+   "app": "patreon",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:14:59Z"
+  },
+  {
+   "id": "lens-video-episode-copier",
+   "title": "Video episode copier",
+   "app": "spotify",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:14:59Z"
+  },
+  {
+   "id": "bc-wholesale-delivery-runs",
+   "title": "Wholesale delivery runs",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:15:45Z"
+  },
+  {
+   "id": "wb-crew-trip-bid-builder",
+   "title": "Trip bid builder",
+   "app": "navblue",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:16:07Z"
+  },
+  {
+   "id": "bc-comp-audit-prep",
+   "title": "Comp audit prep",
+   "app": "appliedepic",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:16:22Z"
+  },
+  {
+   "id": "bc-edit-handoff-manager",
+   "title": "Edit handoff manager",
+   "app": "discord",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:16:59Z"
+  },
+  {
+   "id": "bc-duplicate-customer-merger",
+   "title": "Duplicate customer fixer",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:18:56Z"
+  },
+  {
+   "id": "bc-standby-fleet-watch",
+   "title": "Standby fleet watch",
+   "app": "generac",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:18:57Z"
+  },
+  {
+   "id": "bc-annual-report-keeper",
+   "title": "Annual report keeper",
+   "app": "taxdome",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:20:50Z"
+  },
+  {
+   "id": "bc-loss-run-chaser",
+   "title": "Loss run chaser",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:20:50Z"
+  },
+  {
+   "id": "lens-safety-sheet-keeper",
+   "title": "Safety sheet keeper",
+   "app": "sheets",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:20:59Z"
+  },
+  {
+   "id": "wb-kiln-firing-ledger",
+   "title": "Kiln firing ledger",
+   "app": "sheets",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:21:04Z"
+  },
+  {
+   "id": "bc-guest-prep-brief",
+   "title": "Guest prep brief",
+   "app": "riverside",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:21:30Z"
+  },
+  {
+   "id": "bc-shipping-margin-audit",
+   "title": "Shipping margin audit",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:22:08Z"
+  },
+  {
+   "id": "bc-superbill-claim-helper",
+   "title": "Superbill claim helper",
+   "app": "simplepractice",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:22:42Z"
+  },
+  {
+   "id": "bc-schedule-slip-notice",
+   "title": "Schedule slip notice",
+   "app": "buildertrend",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:23:11Z"
+  },
+  {
+   "id": "bc-saas-renewal-insight-brief",
+   "title": "Renewal insight brief",
+   "app": "posthog",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:25:39Z"
+  },
+  {
+   "id": "wb-plain-summary-publisher",
+   "title": "Plain summary publisher",
+   "app": "notion",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:26:25Z"
+  },
+  {
+   "id": "bc-sponsor-renewal-planner",
+   "title": "Sponsor renewal planner",
+   "app": "gmail",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:26:39Z"
+  },
+  {
+   "id": "bc-usage-term-watch",
+   "title": "Usage term watch",
+   "app": "metabusiness",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:26:39Z"
+  },
+  {
+   "id": "lens-download-tie-out",
+   "title": "Download tie out",
+   "app": "captivate",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:27:18Z"
+  },
+  {
+   "id": "lens-dub-track-pruner",
+   "title": "Dub track pruner",
+   "app": "youtube",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:27:18Z"
+  },
+  {
+   "id": "lens-repeat-reseller-tracker",
+   "title": "Repeat reseller tracker",
+   "app": "etsy",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:27:18Z"
+  },
+  {
+   "id": "bc-crew-license-renewal",
+   "title": "Crew license renewal",
+   "app": "servicetitan",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:27:50Z"
+  },
+  {
+   "id": "bc-pi-lien-resolver",
+   "title": "Injury lien resolver",
+   "app": "clio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:28:11Z"
+  },
+  {
+   "id": "bc-pi-records-retriever",
+   "title": "Injury records retriever",
+   "app": "mycase",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:28:11Z"
+  },
+  {
+   "id": "bc-welcome-code-guard",
+   "title": "Welcome code guard",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:28:49Z"
+  },
+  {
+   "id": "bc-archive-footage-sourcer",
+   "title": "Archive footage sourcer",
+   "app": "internetarchive",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:28:56Z"
+  },
+  {
+   "id": "wb-class-track-composer",
+   "title": "Class track composer",
+   "app": "fitnessplayer",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:30:49Z"
+  },
+  {
+   "id": "bc-retainage-release-chaser",
+   "title": "Retainage release chaser",
+   "app": "procore",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:32:04Z"
+  },
+  {
+   "id": "bc-store-transfer-planner",
+   "title": "Store transfer planner",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:32:18Z"
+  },
+  {
+   "id": "bc-supplier-stock-feed-sync",
+   "title": "Supplier stock sync",
+   "app": "shopify",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:32:18Z"
+  },
+  {
+   "id": "bc-initial-evidence-check",
+   "title": "Initial evidence check",
+   "app": "clio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:32:59Z"
+  },
+  {
+   "id": "bc-pip-bill-tracker",
+   "title": "PIP bill tracker",
+   "app": "filevine",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:32:59Z"
+  },
+  {
+   "id": "bc-screening-copy-runner",
+   "title": "Screening copy runner",
+   "app": "filmfreeway",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:33:51Z"
+  },
+  {
+   "id": "bc-shoot-permit-checker",
+   "title": "Shoot permit checker",
+   "app": "honeybook",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:33:51Z"
+  },
+  {
+   "id": "lens-grant-portal-check",
+   "title": "Grant portal check",
+   "app": "grantsgov",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:34:34Z"
+  },
+  {
+   "id": "bc-woo-update-stager",
+   "title": "Plugin update stager",
+   "app": "woocommerce",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:35:39Z"
+  },
+  {
+   "id": "wb-product-3d-modeler",
+   "title": "Product 3D modeler",
+   "app": "shopify",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:35:55Z"
+  },
+  {
+   "id": "bc-paint-record-keeper",
+   "title": "Paint record keeper",
+   "app": "paintscout",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:36:29Z"
+  },
+  {
+   "id": "bc-estoppel-request-desk",
+   "title": "Estoppel request desk",
+   "app": "appfolio",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:37:54Z"
+  },
+  {
+   "id": "bc-hygiene-code-check",
+   "title": "Hygiene code check",
+   "app": "curvedental",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:37:54Z"
+  },
+  {
+   "id": "bc-commission-status-board",
+   "title": "Commission status board",
+   "app": "vgen",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:38:56Z"
+  },
+  {
+   "id": "bc-saas-access-review-runner",
+   "title": "Access review runner",
+   "app": "microsoft365",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:39:06Z"
+  },
+  {
+   "id": "lens-patron-leak-tracer",
+   "title": "Patron leak tracer",
+   "app": "patreon",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:39:53Z"
+  },
+  {
+   "id": "bc-subfloor-prep-record",
+   "title": "Subfloor prep record",
+   "app": "rfms",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:40:51Z"
+  },
+  {
+   "id": "wb-overnight-sequence-sitter",
+   "title": "Overnight run sitter",
+   "app": "teamviewer",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:41:38Z"
+  },
+  {
+   "id": "bc-clip-bounty-manager",
+   "title": "Clip bounty manager",
+   "app": "whop",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:43:50Z"
+  },
+  {
+   "id": "bc-pbm-audit-guard",
+   "title": "PBM audit guard",
+   "app": "pioneerrx",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:43:58Z"
+  },
+  {
+   "id": "bc-state-extension-check",
+   "title": "State extension check",
+   "app": "taxdome",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:43:58Z"
+  },
+  {
+   "id": "bc-saas-vat-id-checker",
+   "title": "VAT ID checker",
+   "app": "stripe",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:44:10Z"
+  },
+  {
+   "id": "bc-rebate-packet-runner",
+   "title": "Rebate packet runner",
+   "app": "snuggpro",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:45:05Z"
+  },
+  {
+   "id": "lens-biosketch-preflight",
+   "title": "Biosketch preflight",
+   "app": "sciencv",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:47:04Z"
+  },
+  {
+   "id": "lens-first-scan-runner",
+   "title": "First scan runner",
+   "app": "etsy",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:47:04Z"
+  },
+  {
+   "id": "lens-shift-drawer-check",
+   "title": "Shift drawer check",
+   "app": "square",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:47:04Z"
+  },
+  {
+   "id": "wb-home-inventory-proof",
+   "title": "Home inventory proof",
+   "app": "sheets",
+   "swarm": "wb",
+   "role": "worker",
+   "created": "2026-10-21T21:47:30Z"
+  },
+  {
+   "id": "bc-cohost-split-closer",
+   "title": "Co-host split closer",
+   "app": "quickbooks",
+   "swarm": "bc",
+   "role": "w1",
+   "created": "2026-10-21T21:48:18Z"
+  },
+  {
+   "id": "bc-dscsa-receipt-keeper",
+   "title": "DSCSA receipt keeper",
+   "app": "tracelink",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:48:23Z"
+  },
+  {
+   "id": "bc-medicare-scope-check",
+   "title": "Medicare scope check",
+   "app": "agencybloc",
+   "swarm": "bc",
+   "role": "w4",
+   "created": "2026-10-21T21:48:23Z"
+  },
+  {
+   "id": "bc-ebay-backlog-list-planner",
+   "title": "Backlog listing planner",
+   "app": "ebay",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:48:34Z"
+  },
+  {
+   "id": "bc-ebay-rolling-stock-take",
+   "title": "Rolling stock take",
+   "app": "ebay",
+   "swarm": "bc",
+   "role": "w2",
+   "created": "2026-10-21T21:48:34Z"
+  },
+  {
+   "id": "bc-heat-pump-rebate-match",
+   "title": "Heat pump rebate match",
+   "app": "servicetitan",
+   "swarm": "bc",
+   "role": "w3",
+   "created": "2026-10-21T21:49:16Z"
+  },
+  {
+   "id": "lens-session-audio-check",
+   "title": "Session audio check",
+   "app": "riverside",
+   "swarm": "lens",
+   "role": "synthesizer",
+   "created": "2026-10-21T21:51:17Z"
+  }
+ ],
+ "rejected": []
+}

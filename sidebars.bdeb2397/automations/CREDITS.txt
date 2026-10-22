@@ -1,24 +1,24 @@
 Sources for the Automations tab (view.03378ba4.html, automations-view.03378ba4.js). Never shown on screen.
 Every file here is made by ../tools/automations-assets.03378ba4.mjs; nothing in it is drawn by hand.
 
-THUMBNAILS (*.webp, 768x432, the size of ROB IT's own thumbnails), one per automation, each showing what it makes.
+THUMBNAILS (*.webp, 16:9), one per automation, each showing what it makes, large enough to stay sharp in the
+automation's full view (../automation-detail.71c311e9.js draws them 512px wide in the app, up to about 2x on a 2x screen).
 
 From the creative's own pictures (see ../../img/CREDITS.txt for where each came from):
-  thumbs   the gold vault thumbnail (rbx/assets/a3def5f381990d.webp, A) beside iteration 1 (img/iter/iter-3.webp, B,
-           itself an AI iteration on ROB IT's public thumbnail), B ringed and checked as the keeper
-  report   Creator Hub's Thumbnails page as the spot's live view shows it at 48s (rbx/thumbs, captured from the
-           owner's signed-in Chrome; its figures are illustrative), superbot's takeover edge and Stop hidden
+  thumbs   the diamond heist thumbnail (rbx/assets/31d0a6cdb1dac6.webp) beside the museum heist thumbnail
+           (rbx/assets/cd3cce6d08bc20.webp), the museum ringed and checked as the keeper; unlabelled, and 1536x864 so
+           each thumbnail in it is cut once from its 768px original
 The rbx/assets thumbnails are ROB IT's own, as Creator Hub served them. Roblox, its pages, marks and UI are Roblox
 Corporation's.
 
-Generated, 2026-10-21, by fal-ai/nano-banana-pro (text to image) or fal-ai/nano-banana-pro/edit (with ROB IT's
-thumbnails as the reference where the output is of this game: icon, gamepass, updatelog, devlog, gdd). Every prompt,
-its reference files and its fal request id: prompts.03378ba4.json. All 15 others are generated: playtest, icon,
-updatelog, reviews, revenue, wishlist, welcome, gamepass, builds, gdd, bugs, trends, devlog, jam, schedule. No brand
-mark was asked for or kept. The one-off automations (a store page, a retopology, a trailer and the like) were taken
-out of the catalogue on 2026-10-21 with their thumbnails: every automation runs again and again.
+Generated, 2026-10-21, by fal-ai/nano-banana-pro/edit with ROB IT's thumbnails as the reference: icon. Its 1376x768
+output was upscaled 2x by fal-ai/seedvr/upscale/image (SeedVR2, 2026-10-21) and cut to 2048x1152. Its prompt,
+reference files and both fal request ids: prompts.03378ba4.json. No brand mark was asked for or kept. Only these two
+automations, the Roblox Thumbnail and Icon Optimizers, are in the catalogue; every other one was taken out with its
+thumbnail.
 
-APP ICONS (apps/*.png, 64px), each app's own mark from its own site, fetched 2026-10-21:
+APP ICONS (apps/*.png, 64px), each app's own mark from its own site, fetched 2026-10-21. Only Roblox's is on the tab;
+the others stay for ALL_APPS (automations.03378ba4.js) and Settings' connected apps (settings-data.bdeb2397.js):
   roblox, creatorhub, steam, youtube, discord, reddit, notion, shopify
               https://www.google.com/s2/favicons?domain=<the app's domain>&sz=128 (roblox.com, create.roblox.com,
               store.steampowered.com, youtube.com, discord.com, reddit.com, notion.so, shopify.com)
@@ -27,6 +27,8 @@ APP ICONS (apps/*.png, 64px), each app's own mark from its own site, fetched 202
   twitch      https://www.twitch.tv/apple-touch-icon.png (its favicon is 32px)
   sheets      https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png
   gmail       https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png
+  calendar    https://www.gstatic.com/images/branding/product/2x/calendar_2020q4_48dp.png (fetched 2026-10-22, for
+              an automation published with Google Calendar as its app, published.6c0fd59e.js)
 The marks are their owners', used only to name the app an automation works in.
 
 star.png: Fluent Emoji, 3D style, https://github.com/microsoft/fluentui-emoji (assets/Star/3D/star_3d.png), fetched

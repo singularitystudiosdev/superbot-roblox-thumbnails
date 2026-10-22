@@ -1,0 +1,14 @@
+Gmail pages of the sponsors chat (pages.gmail.json: compose, inbox). Taken 2026-10-21 from the owner's signed-in Gmail in
+Chrome (browser-control), in a tab opened for the capture, 1470x837 CSS px at 2x, saved as WebP (cwebp -q 80). Staged by
+DOM edits only with ../../tools/stage-gmail.bdeb2397.js and ../../tools/play-sponsors.8889b4ff.js: the list, the made-up
+identity (Jordan Lee, jordan@quillnote.app, J in place of the photo) and all counts are the chat's (../../transcripts.bdeb2397.js);
+every sender, subject, snippet and address is made up; 0 traces of the real account's name or address in the page's text,
+attributes and field values before each capture was kept. Gmail's own "Enable desktop notifications" toast and, in the
+compose capture, its "Not connected" bar were removed.
+compose.webp: Gmail's real New Message window, opened with its own Compose button. The browser was set offline (CDP
+Network.emulateNetworkConditions) for the whole time the window was open, so nothing could be saved or sent. The recipient
+chip was made by Gmail itself (address put in the To field, Enter pressed); subject and body were set by DOM edits, nothing
+typed into the editor. The window was then closed with its own Discard button; after a reload Drafts was as before (18, no
+new draft). Send was never pressed.
+inbox.webp: Gmail inbox, the replies (Desk Setup Daily $900, Calm Code $1,600, Tidy Tabs $650), as screens/sponsors.webp.
+Nothing was opened, sent, archived or changed; the tab was reloaded and closed.

@@ -1,0 +1,20 @@
+Sources for the impossible logos (logos.4bc2a2d5). Never shown on screen.
+
+The figures are drawn by code (engine, lattice and sweep .4bc2a2d5.js) from geometry: the Penrose triangle, the
+impossible hexagon, twin Penrose triangles, and square-section tubes with a quarter-turn twist round a ring, a rounded
+triangle, a diamond and a figure eight. These shapes are classic public figures (Reutersvard 1934, Penrose 1958); the
+owner's reference images (a cube-built Penrose triangle render, impossible-figure line art and gradient renders) were
+used for the shapes and the look only, and nothing in them was copied.
+
+Color: #F0A156, sampled from the owner's swatch (swatch.png).
+
+three.js r186 (vendor/three.module.js, vendor/three.core.js, vendor/RoundedBoxGeometry.js), from the npm package
+three@0.186.1, MIT license, Copyright 2010-2025 three.js authors (vendor/three-LICENSE.txt).
+
+out/: exported by export.4bc2a2d5.mjs: <id>.webm (VP9 with alpha, 512px, 30fps), <id>.mp4 (on white, 512px, 30fps),
+<id>.gif (on white, 360px, 25fps), <id>.png (the poster frame, transparent).
+
+research/: the logo-collision check behind the pentagon (never shown on screen). ai-mark-collisions.png sets the ring,
+tribar, diamond and infinity beside the closest of 350 AI brand marks, pentagon-vs-nearest.png the pentagon beside the
+nearest polygon rings, at full size and at 32px. The marks are LobeHub icons 2.1.0 (npm @lobehub/icons-static-png,
+fetched 2026-10-21); each mark belongs to its company.

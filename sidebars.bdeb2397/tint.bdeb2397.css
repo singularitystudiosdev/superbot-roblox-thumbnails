@@ -1,3 +1,3 @@
 /* The takeover vignette (style.af4c3c6b.css .cc-band) with its four stops from --tint-0..3, which tint.bdeb2397.js
-   sets to the app superbot is working in; the creative's own orange until it does. */
+   sets once to the chat's task color; the creative's own orange where nothing sets them. */
 .cc-band { background: conic-gradient(from var(--cc-a, 0deg), var(--tint-0, #fd9e43), var(--tint-1, #ffb769), var(--tint-2, #f68a2c), var(--tint-3, #ffc185), var(--tint-0, #fd9e43)); }

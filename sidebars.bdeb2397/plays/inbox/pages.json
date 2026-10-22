@@ -1,0 +1,6 @@
+{"chat":"inbox","pages":{
+"inbox-88":{"img":"inbox-88.webp","title":"Inbox (88) - jordan@quillnote.app - Gmail","host":"mail.google.com","path":"/mail/u/0/#inbox","fav":"../../screens/fav/gmail.png","targets":{"newsletter1":[282,188],"newsletter2":[282,268],"select-all":[282,88]},"scroll":null,"field":null},
+"inbox-selected":{"img":"inbox-selected.webp","title":"Inbox (88) - jordan@quillnote.app - Gmail","host":"mail.google.com","path":"/mail/u/0/#inbox","fav":"../../screens/fav/gmail.png","targets":{"archive":[342,88]},"scroll":null,"field":null},
+"inbox-17":{"img":"inbox-17.webp","title":"Inbox (17) - jordan@quillnote.app - Gmail","host":"mail.google.com","path":"/mail/u/0/#inbox","fav":"../../screens/fav/gmail.png","targets":{"scheduling1":[626.7,228]},"scroll":null,"field":null},
+"inbox-zero":{"img":"inbox-zero.webp","title":"Inbox - jordan@quillnote.app - Gmail","host":"mail.google.com","path":"/mail/u/0/#inbox","fav":"../../screens/fav/gmail.png","targets":{"starred1":[312,188],"starred1-subject":[668.9,188]},"scroll":null,"field":null}
+}}

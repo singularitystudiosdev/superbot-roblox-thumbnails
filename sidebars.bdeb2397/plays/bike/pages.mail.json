@@ -1,0 +1,54 @@
+{
+ "chat": "bike",
+ "pages": {
+  "sent-asks": {
+   "img": "sent-asks.webp",
+   "title": "Sent Mail - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#sent",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "ask1": [
+     707.6,
+     170
+    ],
+    "ask5": [
+     705.7,
+     330
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "agreed": {
+   "img": "agreed.webp",
+   "title": "Inbox (3) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "agreed": [
+     717.4,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar": {
+   "img": "calendar.webp",
+   "title": "Google Calendar - Week of October 18, 2026",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/week/2026/10/24",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "pickup": [
+     1289.9,
+     307
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

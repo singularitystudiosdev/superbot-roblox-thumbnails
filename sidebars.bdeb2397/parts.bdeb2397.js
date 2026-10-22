@@ -18,6 +18,16 @@ const LUCIDE = {
   folder: '<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
   trash: '<path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/>',
   chevronRight: '<path d="m9 18 6-6-6-6"/>',
+  // Settings (settings.bdeb2397.js): its close button, the profile photo's change button
+  x: '<path d="M18 6 6 18M6 6l12 12"/>',
+  camera: '<path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z"/><circle cx="12" cy="13" r="3"/>',
+  // the profile photo's editor (photo-crop.9e39bc12.js): the zoom slider's ends and its quarter turn
+  image: '<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>',
+  rotateCwSquare: '<path d="M12 5H6a2 2 0 0 0-2 2v3"/><path d="m9 8 3-3-3-3"/><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>',
+  // the credits row's Get more credits (sidebar-tools.854d0793.js)
+  plus: '<path d="M5 12h14"/><path d="M12 5v14"/>',
+  // Billing's Add payment method (settings-pay.8a3994ee.js): its Card tile and the security code's field
+  creditCard: '<rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/>',
 };
 export const lu = (name, cls = 'sb-lu') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${LUCIDE[name]}</svg>`;
 
@@ -35,21 +45,19 @@ export const title = (text) => `<span class="sb-title"><span class="sb-title-in"
 // the "•••" a row shows on hover or focus; it opens the row's menu (groups.bdeb2397.js)
 export const moreButton = (label) => `<button class="sb-more" type="button" aria-label="${esc(label)}" aria-haspopup="menu" aria-expanded="false">${lu('ellipsis')}</button>`;
 
-// the superbot mark, static: the mask geometry of beta.superbot.gg's mascot (superbot-ad-gallery/assets/sb-mark-live.html),
-// its single ink layer, eyes cut out. Each copy needs its own mask id.
-let markCount = 0;
-export function mark() {
-  const id = `sb-mark-${++markCount}`;
-  return `<svg class="sb-mark" viewBox="10 13 80 80" aria-hidden="true"><defs><mask id="${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><g fill="white"><rect x="14" y="32" width="72" height="54" rx="15"/><path d="M14 46V28Q14 20 21 21Q28 24 36 32Z"/><path d="M86 46V28Q86 20 79 21Q72 24 64 32Z"/></g><g fill="black"><ellipse cx="35" cy="58" rx="8" ry="11"/><ellipse cx="65" cy="58" rx="8" ry="11"/></g></mask></defs><rect width="100" height="100" fill="currentColor" mask="url(#${id})"/></svg>`;
-}
+// the ouroboro mark: the logos' Impossible infinity in grey (../logos.4bc2a2d5), its poster frame until mark.901bc0c7.js
+// sets it rolling
+export const mark = () => `<sb-mark class="sb-mark"><img src="${asset('./fx/mark.901bc0c7.png')}" alt="" width="19" height="19" draggable="false"></sb-mark>`;
 
 export const time = (chat) => `<span class="sb-time">${esc(chat.time)}</span>`;
 
-// one chat: its row (icon, title, an optional trailing slot) and the row's "•••". The open chat is the current page.
+// one chat: its row (icon, title, an optional trailing slot) and the row's "•••". The open chat is the current page; a
+// chat at work is .is-working, its icon turning (spin.4bc2a2d5.js).
 export function row(chat, { trail = '' } = {}) {
   const current = chat.active ? ' aria-current="page"' : '';
   const unread = chat.unread ? ' is-unread' : '';
-  return `<li class="sb-item"><a class="sb-row${unread}" href="#${chat.id}" draggable="false"${current}>${fx(chat.fx)}<span class="sb-t">${title(chat.title)}</span>${trail}</a>${moreButton(`More options for ${chat.title}`)}</li>`;
+  const working = chat.working ? ' is-working' : '';
+  return `<li class="sb-item${working}"><a class="sb-row${unread}" href="#${chat.id}" draggable="false"${current}>${fx(chat.fx)}<span class="sb-t">${title(chat.title)}</span>${trail}</a>${moreButton(`More options for ${chat.title}`)}</li>`;
 }
 
 // a group of chats: a row that folds its list (the folder opens with it), a count, its own "•••", then the list

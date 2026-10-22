@@ -1,0 +1,10 @@
+{
+ "swarms": [
+  { "archetype": "Lens Swarm", "prefix": "lens", "project": "Auto Swarm Lens", "root": "/Users/adrianagne/Documents/cosmos/projects/auto-swarm-lens" },
+  { "archetype": "Worker + Bumper", "prefix": "wb", "project": "Auto Swarm Worker Bumper", "root": "/Users/adrianagne/Documents/cosmos/projects/auto-swarm-worker-bumper" },
+  { "archetype": "Breakthrough Broadcast", "prefix": "bc", "project": "Auto Swarm Broadcast", "root": "/Users/adrianagne/Documents/cosmos/projects/auto-swarm-broadcast" },
+  { "archetype": "MAP-Elites Quality-Diversity", "prefix": "qd", "project": "Auto Swarm Quality Diversity", "root": "/Users/adrianagne/Documents/cosmos/projects/auto-swarm-quality-diversity" },
+  { "archetype": "Dreamer (ACE playbook)", "prefix": "ace", "project": "Auto Swarm Dreamer", "root": "/Users/adrianagne/Documents/cosmos/projects/auto-swarm-dreamer" },
+  { "archetype": "Meta-Conductor", "prefix": "mc", "project": "Auto Swarm Meta Conductor", "root": "/Users/adrianagne/Documents/cosmos/projects/auto-swarm-meta-conductor" }
+ ]
+}

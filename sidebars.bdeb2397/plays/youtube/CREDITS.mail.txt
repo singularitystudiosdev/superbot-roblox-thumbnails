@@ -1,0 +1,10 @@
+Sources for this chat's YouTube Studio page (never shown on screen). Captured 2026-10-21 in the owner's own signed-in Chrome via
+browser-control, in a tab opened for the capture, at 1470x837 CSS px and 2x (cdp Emulation.setDeviceMetricsOverride,
+Page.captureScreenshot, ../../debug/cdp-shot.4c8bc671.mjs, cwebp -q 80). Each page is the app's real layout staged by DOM
+edits only; the account's own name, address and photo are replaced by the made-up Jordan Lee, jordan@quillnote.app, and
+0 traces of the real identity were left in the page text and attributes before a capture was kept. Nothing was opened,
+sent, archived, created, moved or saved; the tab was closed after.
+YouTube Studio (studio.youtube.com): Analytics, Advanced mode, Content by thumbnail click-through, staged by
+../../tools/play-youtube.8889b4ff.js with the figures of ../../tools/play-youtube-after.4c8bc671.js (the chat's own
+thumbnails read locally from ../../chats/yt-*.webp; the channel and its videos are made up).
+  analytics-after   a week after the tests: Sheet Pan Gnocchi on version 2 at 6.8%, every video up, the channel at 5.6%

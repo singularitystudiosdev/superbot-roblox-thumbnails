@@ -40,8 +40,29 @@ gemini-muse-meme-superbot-6fbc38f8/scenes/tabs-assets/computer.ba3976b6.css.
 img/fx/: the Activity tab's icons, Fluent Emoji in their 3D style, fetched 2026-10-21 from
 https://github.com/microsoft/fluentui-emoji (assets/<Name>/3D/<name>_3d.png, 256px) and scaled to 96px. License: MIT,
 Copyright (c) Microsoft Corporation (https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE).
+The chat list's own (chats.5a028abd.html, ?chats=1..10) came the same way, the same day: bell, file_folder, gem_stone,
+hammer_and_wrench, jack-o-lantern, megaphone, memo, money_bag, open_file_folder, speech_balloon, sports_medal. Its
+New chat, search, new tab and close marks are lucide (ISC): square-pen, search, plus, x.
 
 TOOLS (tools/): serialize.af4c3c6b.js is run in the owner's Chrome to capture a page; rbx-build.af4c3c6b.mjs turns the
 captures into rbx/ and scrubs them; verify-*.af4c3c6b.mjs are the headless checks used on this spot (frames and DOM
 audit, thumbnail and live playback, the popper's burst, the composer placeholder). They load Playwright from
 quick-chats/superbot-ad-gallery/node_modules by absolute path; the unscrubbed raw captures are not kept.
+
+The sidebar's top bar (share, close) and the chat's reopen button use lucide icons (https://lucide.dev, ISC license):
+share, x, panel-right.
+
+CHAT LIST VARIANTS (sidebars/, ?sidebar=1..10)
+  sidebars/img/superbot-mark.svg  superbot's own mark, flat black: frontend-website-revamp-superbot
+                                  superbot/assets/brand/logos/superbot-mark-mono-black.svg
+  place icons                     lucide (https://lucide.dev, ISC license), fetched 2026-10-21 from
+                                  https://api.iconify.design/lucide.json: square-pen, search, panel-left, monitor,
+                                  calendar-clock, library, layout-grid, ellipsis, message-square, folder-plus, folder,
+                                  folder-open, chevron-down, chevron-right, plus, list-filter, bell, monitor-smartphone,
+                                  settings, hand-heart, pin
+  chat-kind glyphs                Phosphor Icons, fill weight (https://phosphoricons.com, MIT license, Copyright (c)
+                                  2023 Phosphor Icons), fetched 2026-10-21 from https://api.iconify.design/ph.json:
+                                  image, game-controller, calendar-dots, chat-circle-dots, film-slate, chart-bar, code,
+                                  megaphone, storefront, check-circle
+  The layout and icon split (line icons for places, filled glyphs for a chat's kind, a dashed ring on the running chat)
+  follow Manus's web sidebar, from a screenshot the owner supplied. The chats listed are illustrative.

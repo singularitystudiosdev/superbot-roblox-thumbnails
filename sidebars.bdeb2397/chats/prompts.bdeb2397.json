@@ -89,5 +89,173 @@
     "prompt": "A YouTube cooking video thumbnail: a heavy pot of thick beef and bean chili topped with sour cream, cheddar and scallions, dark moody background, bold red text \"BEST CHILI?\" with a white outline on the left. No logos, brand marks or watermarks.",
     "request_id": "01a15fbb-c774-72f2-9676-921066cc569e",
     "at": "2026-10-21T18:32:00.900Z"
+  },
+  "bike-listing": {
+    "id": "bike-listing",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A used silver aluminium road bike with drop handlebars, new black tires and a clean chain, leaning against a brick wall on a sunny street, seen side on. Photorealistic, shot on a full-frame camera, natural soft window light, crisp focus, shallow depth of field, rich true colors, high dynamic range, looks like a premium editorial photograph. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a1603d-4091-7901-b46c-50648c6ea4ea",
+    "at": "2026-10-21T20:53:27.096Z"
+  },
+  "haircut-sam": {
+    "id": "haircut-sam",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "Head-and-shoulders portrait of Sam, a friendly barber in his thirties with a neat fade haircut and a short beard, in a black barber apron, standing in a small neighbourhood barbershop with warm lamps and a vintage barber chair softly blurred behind him, looking at the camera with a warm smile, like a profile photo on a booking page. Photorealistic, crisp focus, rich true colors, high dynamic range, looks like a premium editorial photograph. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a16045-373b-7c42-a5de-65fe88fe7202",
+    "at": "2026-10-21T21:02:10.888Z"
+  },
+  "ch-desk-setup-daily": {
+    "id": "ch-desk-setup-daily",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube channel profile picture for a made-up channel, square, to be shown cropped to a circle: one bold, simple emblem centered with a generous margin on a solid background color that fills the whole square edge to edge, clean modern logo design with a subtle soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. The channel reviews desk setups and productivity gear: a minimal white emblem of a desk with a monitor and a small desk lamp, on a warm orange background.",
+    "request_id": "01a16045-374f-70b2-b0e4-e1a157f9a7e5",
+    "at": "2026-10-21T21:02:09.309Z"
+  },
+  "ch-calm-code": {
+    "id": "ch-calm-code",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube channel profile picture for a made-up channel, square, to be shown cropped to a circle: one bold, simple emblem centered with a generous margin on a solid background color that fills the whole square edge to edge, clean modern logo design with a subtle soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. The channel reviews developer tools and focus apps: white curly braces enclosing a small soft green leaf, on a deep teal background that runs to every edge of the square, with no white border, frame or inner tile.",
+    "request_id": "01a16046-a0d4-7003-8dab-24394fa38c08",
+    "at": "2026-10-21T21:03:39.623Z"
+  },
+  "ch-tidy-tabs": {
+    "id": "ch-tidy-tabs",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube channel profile picture for a made-up channel, square, to be shown cropped to a circle: one bold, simple emblem centered with a generous margin on a solid background color that fills the whole square edge to edge, clean modern logo design with a subtle soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. The channel is about organising browser tabs: a white browser window seen from the front with three rounded tabs along its top edge, the first tab lilac, on a violet background that runs to every edge of the square, with no white border, frame or inner tile.",
+    "request_id": "01a16046-a0da-7ad2-b532-0d1810f4108e",
+    "at": "2026-10-21T21:03:41.264Z"
+  },
+  "ch-workflow-weekly": {
+    "id": "ch-workflow-weekly",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube channel profile picture for a made-up channel, square, to be shown cropped to a circle: one bold, simple emblem centered with a generous margin on a solid background color that fills the whole square edge to edge, clean modern logo design with a subtle soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. The channel posts weekly workflow and automation videos: three white dots linked by a looping flow arrow, on a royal blue background.",
+    "request_id": "01a16045-3741-7701-9194-6554ae6f101a",
+    "at": "2026-10-21T21:02:06.238Z"
+  },
+  "ch-focus-friday": {
+    "id": "ch-focus-friday",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube channel profile picture for a made-up channel, square, to be shown cropped to a circle: one bold, simple emblem centered with a generous margin on a solid background color that fills the whole square edge to edge, clean modern logo design with a subtle soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. The channel is about focus and deep work: a white bullseye target with a single arrow in its centre, on a coral red background.",
+    "request_id": "01a16045-373b-7a61-8ddc-988a3ada11f7",
+    "at": "2026-10-21T21:02:07.325Z"
+  },
+  "ch-keyboard-coffee": {
+    "id": "ch-keyboard-coffee",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A YouTube channel profile picture for a made-up channel, square, to be shown cropped to a circle: one bold, simple emblem centered with a generous margin on a solid background color that fills the whole square edge to edge, clean modern logo design with a subtle soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. The channel is about mechanical keyboards and cosy work setups: a cream keyboard keycap beside a small coffee cup, on a mocha brown background.",
+    "request_id": "01a16045-3752-78f0-854d-afb76684270a",
+    "at": "2026-10-21T21:02:10.257Z"
+  },
+  "app-streambox": {
+    "id": "app-streambox",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A video streaming service: a white rounded play triangle inside a white outlined box, on a vivid red to crimson gradient that runs to every edge of the square, with no white border or frame.",
+    "request_id": "01a16046-a0c6-7c53-85f8-b29a67363cdb",
+    "at": "2026-10-21T21:03:40.267Z"
+  },
+  "app-reelhouse": {
+    "id": "app-reelhouse",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A film and series streaming service: a golden film reel, on a deep navy blue background.",
+    "request_id": "01a16045-3753-79f3-a599-6d5702a74f2e",
+    "at": "2026-10-21T21:02:08.523Z"
+  },
+  "app-freshcrate": {
+    "id": "app-freshcrate",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A weekly meal kit delivery service: a small wooden crate filled with fresh green vegetables and a red tomato, on a fresh lime green background.",
+    "request_id": "01a16045-3741-7fb3-8dca-df41ff315cc1",
+    "at": "2026-10-21T21:02:09.550Z"
+  },
+  "app-cloudvault": {
+    "id": "app-cloudvault",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A cloud backup service: a white cloud with a small vault dial in its centre, on a sky blue gradient.",
+    "request_id": "01a16045-3752-7b53-b9f2-d5cb2dd17f85",
+    "at": "2026-10-21T21:02:07.939Z"
+  },
+  "app-ironworks-gym": {
+    "id": "app-ironworks-gym",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A gym membership: a black iron kettlebell with an orange highlight, on a warm steel grey background.",
+    "request_id": "01a16045-3752-7fb2-9e36-acd1f30219b8",
+    "at": "2026-10-21T21:02:20.188Z"
+  },
+  "app-music": {
+    "id": "app-music",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A music streaming service: white sound wave bars, on a magenta to purple gradient.",
+    "request_id": "01a16045-3756-7862-b460-5cf3adb84336",
+    "at": "2026-10-21T21:02:05.587Z"
+  },
+  "app-news": {
+    "id": "app-news",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A daily news subscription: a folded newspaper in white and grey, on a deep charcoal background.",
+    "request_id": "01a16045-3752-7833-b0e2-59ad9ffdc497",
+    "at": "2026-10-21T21:02:09.002Z"
+  },
+  "app-meditation": {
+    "id": "app-meditation",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A meditation app: a single white lotus flower, on a soft sage green background.",
+    "request_id": "01a16045-3745-7da1-a3f6-2ccc4cc69bff",
+    "at": "2026-10-21T21:02:08.302Z"
+  },
+  "logo-westlake-property": {
+    "id": "logo-westlake-property",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no margin, no device, no drop shadow around it). The pale silver grey surface is the whole square and runs to all four edges and corners, with no tile, card, frame, border or button shape drawn inside it: a soft vertical gradient from near white at the top to light grey at the bottom, a thin bright highlight along the very top edge and a faint darker grey band along the very bottom edge, as if the square were slightly raised. One flat solid charcoal grey glyph centered with a generous margin, taking up about half the width, with softly rounded ends and no gradient, outline or shine on it. No color anywhere, only greys. Legible at a very small size. No text, no letters, no words, no watermark. A property management company's tenant portal: a house roofline with a small chimney above a gentle lake wave, drawn in thick rounded strokes.",
+    "request_id": "01a1605b-7b9e-7981-af16-3693317e9f8d",
+    "at": "2026-10-21T21:26:26.744Z"
+  },
+  "logo-bay-federal": {
+    "id": "logo-bay-federal",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "An app icon for a made-up app: full-bleed square artwork that fills the entire image edge to edge (no rounded corners, no border, no margin, no device, no shadow around it), one bold simple glyph centered on a vivid background, polished modern iOS app icon style with a soft gradient and gentle depth, legible at a very small size. No text, no letters, no words, no watermark. A credit union's banking app: a white suspension bridge arch over water, on a navy blue background.",
+    "request_id": "01a16045-37cc-7f91-bac8-8a43a5f7a042",
+    "at": "2026-10-21T21:02:08.170Z"
+  },
+  "moveout-living": {
+    "id": "moveout-living",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A phone photo from a tenant's move-out inspection: the empty, freshly cleaned living room of a small apartment, swept hardwood floors, clean white walls, bare windows. Bare and spotless, nothing left behind, bright daylight, slightly wide angle, honest and unstyled. Photorealistic. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a16045-3757-7992-b0d7-0517d8214031",
+    "at": "2026-10-21T21:02:10.367Z"
+  },
+  "moveout-kitchen": {
+    "id": "moveout-kitchen",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A phone photo from a tenant's move-out inspection: the empty, freshly cleaned kitchen of a small apartment, wiped counters, a clean stove and an empty open fridge. Bare and spotless, nothing left behind, bright daylight, slightly wide angle, honest and unstyled. Photorealistic. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a16045-3744-7612-a165-785d2645e2ee",
+    "at": "2026-10-21T21:02:10.200Z"
+  },
+  "moveout-bath": {
+    "id": "moveout-bath",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A phone photo from a tenant's move-out inspection: the freshly cleaned bathroom of a small apartment, a spotless white tub, sink and mirror, white tiles. Bare and spotless, nothing left behind, bright daylight, slightly wide angle, honest and unstyled. Photorealistic. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a16045-374f-7bf1-85e3-e5a7f008b425",
+    "at": "2026-10-21T21:02:08.128Z"
+  },
+  "moveout-bedroom": {
+    "id": "moveout-bedroom",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A phone photo from a tenant's move-out inspection: the empty, freshly cleaned bedroom of a small apartment, vacuumed carpet, an empty closet with its doors open. Bare and spotless, nothing left behind, bright daylight, slightly wide angle, honest and unstyled. Photorealistic. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a16045-3741-7610-808d-c5b9062cc21d",
+    "at": "2026-10-21T21:02:09.815Z"
+  },
+  "lisbon-dinner": {
+    "id": "lisbon-dinner",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "A dinner table at a cosy Lisbon tasca at night: grilled octopus with potatoes and olive oil, a plate of clams in garlic and coriander, two glasses of vinho verde, warm candlelight, blue and white azulejo tiles on the wall behind. Photorealistic, crisp focus, rich true colors, high dynamic range, looks like a premium editorial photograph. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a16045-3755-7383-9ad3-76d21ed7cd5a",
+    "at": "2026-10-21T21:02:09.972Z"
+  },
+  "lisbon-sintra": {
+    "id": "lisbon-sintra",
+    "model": "fal-ai/nano-banana-pro",
+    "prompt": "Pena Palace in Sintra on its forested hilltop, its red and yellow towers bright against a clear blue sky on a November morning, seen from the park below. Photorealistic, crisp focus, rich true colors, high dynamic range, looks like a premium editorial photograph. No logos, no brand marks, no watermarks, no captions or text in the image.",
+    "request_id": "01a16045-3756-7743-b1dd-2abd4d82cfcd",
+    "at": "2026-10-21T21:02:10.316Z"
   }
 }

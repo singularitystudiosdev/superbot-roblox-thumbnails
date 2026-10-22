@@ -1,0 +1,22 @@
+plays/flights: page captures for the "flights" chat run (SFO to Tokyo, Mon Mar 8 to Mon Mar 22 2027, 1 adult, economy, round
+trip). Captured 2026-10-21 by ../../tools/play-flights.8889b4ff.mjs (headless Chromium via Playwright, 1470x837 CSS px,
+deviceScaleFactor 2, cwebp -q 80). Never shown on screen.
+
+Source: Google Flights (google.com/travel/flights), public, no account. The tool opens the real search page, then really
+clicks the first departing flight (the real "Returning flights" page) and the first return flight (the real "Booking
+options" page). Nothing is bought or booked: the airline's "Continue" button is never pressed.
+Staged only by DOM edits (text, aria-labels, the site's own CSS variables for airline logos, the site's own price-insight
+markup/classes), all figures from the chat:
+  results-894   results page, rows: American+Japan Airlines 1 stop SFO-HND $894 first, then ANA, United, Japan Airlines
+                nonstops above $1,100; "Cheapest from $894"; the page's own "Prices are currently typical" line kept.
+  results-731   same page: Delta 1 stop SFO-NRT $731 first, then $894, $1,109, $1,144; "Cheapest from $731".
+  results-612   same page: Japan Airlines nonstop SFO-NRT 11:35 AM-3:45 PM $612, then $731, $894, $1,109 (the state of
+                screens/flights.webp); "Cheapest from $612"; "Prices are currently low" with the site's low-price icon.
+  returning     "Returning flights" for Mon Mar 22 after selecting the $612 departing flight: Japan Airlines nonstop
+                NRT-SFO 5:30 PM-10:45 AM $612 first (clones of the site's own row, ANA $648 and United $683 below), the
+                trip-summary chip's logo set to Japan Airlines.
+  booking       Google's "Booking options" page for that round trip: both selected flights (Japan Airlines, Mar 8 11:35 AM
+                and Mar 22 5:30 PM), "Book with Japan Airlines" $612, Continue, the price-insight card as "$612 is low".
+Airline logos are the site's own (gstatic.com/flights/airline_logos). The Google page chrome (nav, filters, footer) is
+unedited. Favicon reused from ../../screens/fav/google-flights.png. The paths in pages.json keep Google's real tfs/tfu
+URL parameters from the capture (they encode the real ZIPAIR flight that was clicked; nothing on screen shows it).

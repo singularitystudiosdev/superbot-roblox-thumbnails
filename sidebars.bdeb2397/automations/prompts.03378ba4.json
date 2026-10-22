@@ -9,127 +9,13 @@
    "rbx/assets/a3def5f381990d.webp"
   ],
   "request_id": "01a15f75-d2db-7fd0-80ff-7943078ad6ef",
-  "at": "2026-10-21T17:15:43.831Z"
- },
- "gamepass": {
-  "id": "gamepass",
-  "endpoint": "fal-ai/nano-banana-pro/edit",
-  "prompt": "A shiny gold VIP pass card for this cartoon heist game, with a crown emblem and the striped-shirt robber character on it, floating beside three blank price tags of different sizes hanging on strings and a stack of gold coins, on a deep purple background.",
-  "refs": [
-   "img/iter/iter-6.webp",
-   "rbx/assets/a3def5f381990d.webp"
-  ],
-  "request_id": "01a15f75-d2d2-7a11-85a7-03e08409261d",
-  "at": "2026-10-21T17:15:38.275Z"
- },
- "trends": {
-  "id": "trends",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A grid of nine colorful cartoon 3D game thumbnails about heists and robberies (bank vaults, museums, getaway cars, laser mazes), three of them lifted forward and highlighted with glowing green upward arrows and small rising bar charts, on a dark background.",
-  "refs": [],
-  "request_id": "01a15f75-d2a5-70c3-ba4d-f83b43a483c7",
-  "at": "2026-10-21T17:15:36.786Z"
- },
- "playtest": {
-  "id": "playtest",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A top-down view of a small 3D game level (rooms, corridors and a vault) in a game engine editor, overlaid with a heatmap of player paths: glowing red and yellow hotspots where players die near the vault, cool blue zones elsewhere, thin dotted path lines, dark editor panels at the edges.",
-  "refs": [],
-  "request_id": "01a15f76-3168-78b1-b044-1b419d473c4b",
-  "at": "2026-10-21T17:16:00.360Z"
- },
- "builds": {
-  "id": "builds",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A product shot of a laptop, a smartphone and a handheld game console side by side on a clean light grey surface, all showing the same colorful cartoon game title screen, each with a small green check badge above it.",
-  "refs": [],
-  "request_id": "01a15f76-3168-70a3-8747-06d90ff27a22",
-  "at": "2026-10-21T17:16:01.329Z"
- },
- "reviews": {
-  "id": "reviews",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "Dozens of player review cards on a dark navy background being sorted into two piles, one with green thumbs-up icons and one with red thumbs-down icons, a few cards mid-air between them, a glowing summary gauge above.",
-  "refs": [],
-  "request_id": "01a15f76-8023-78c0-bb32-ba7ff39da951",
-  "at": "2026-10-21T17:16:21.412Z"
- },
- "wishlist": {
-  "id": "wishlist",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A dark navy analytics dashboard with a bright blue line chart of a game wishlist count climbing over several months, two sharp spikes marked with small star markers, faint gridlines and glowing data points.",
-  "refs": [],
-  "request_id": "01a15f76-8023-72e1-9027-7f5b2ecc8ed2",
-  "at": "2026-10-21T17:16:21.357Z"
- },
- "jam": {
-  "id": "jam",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A wall of colorful pixel-art indie game cover tiles in a grid (platformers, puzzle games, spaceships, dungeons), with a big round countdown stopwatch in the foreground, warm red and pink accents, playful.",
-  "refs": [],
-  "request_id": "01a15f76-8022-7422-b889-4e7f76e8bc30",
-  "at": "2026-10-21T17:16:20.893Z"
- },
- "schedule": {
-  "id": "schedule",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A livestreamer weekly schedule panel: a seven-day calendar grid with five bright purple time blocks, a studio microphone and a webcam beside it, purple and black color scheme.",
-  "refs": [],
-  "request_id": "01a15f76-c63d-7e03-94cf-91a5ccc69dcd",
-  "at": "2026-10-21T17:16:39.434Z"
- },
- "updatelog": {
-  "id": "updatelog",
-  "endpoint": "fal-ai/nano-banana-pro/edit",
-  "prompt": "A dark-themed chat app channel with one big announcement post: a banner image from this cartoon heist game at the top of the post, bullet rows below it shown as grey bars, and a row of colorful emoji reaction bubbles underneath.",
-  "refs": [
-   "rbx/assets/7d845c7485b985.webp"
-  ],
-  "request_id": "01a15f76-c63d-7a51-a7b4-bc14d325ed95",
-  "at": "2026-10-21T17:16:39.567Z"
- },
- "bugs": {
-  "id": "bugs",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "Chat message bubbles with little ladybug icons flowing into a three-column kanban board, cards stacked by priority with red, yellow and green tags, a dark blue-grey background.",
-  "refs": [],
-  "request_id": "01a15f76-c63c-77f1-92f2-8bf9fe951bd8",
-  "at": "2026-10-21T17:16:39.487Z"
- },
- "welcome": {
-  "id": "welcome",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A dark chat server welcome screen with a big friendly waving hand, and a row of colorful round role badges (crossed swords, paintbrush, game controller, star, music note) for new members to pick, soft glow.",
-  "refs": [],
-  "request_id": "01a15f76-c63d-7e73-86c7-de8278a4000b",
-  "at": "2026-10-21T17:16:39.299Z"
- },
- "devlog": {
-  "id": "devlog",
-  "endpoint": "fal-ai/nano-banana-pro/edit",
-  "prompt": "A forum post card on a light background showing a gameplay frame from this cartoon heist game, large orange upvote arrows beside it and a growing comment thread of grey placeholder lines below.",
-  "refs": [
-   "rbx/assets/cd3cce6d08bc20.webp"
-  ],
-  "request_id": "01a15f76-c63c-7533-8ec2-e6ccb77d4393",
-  "at": "2026-10-21T17:16:39.629Z"
- },
- "revenue": {
-  "id": "revenue",
-  "endpoint": "fal-ai/nano-banana-pro",
-  "prompt": "A spreadsheet with a green header row and neat columns of cells shown as grey bars, with a colorful weekly revenue bar chart and a pie chart floating on top of it, a few gold coins in the corner, light background.",
-  "refs": [],
-  "request_id": "01a15f77-0c2b-7621-bc5c-2c8dc4bdc36d",
-  "at": "2026-10-21T17:16:58.619Z"
- },
- "gdd": {
-  "id": "gdd",
-  "endpoint": "fal-ai/nano-banana-pro/edit",
-  "prompt": "A clean minimalist document workspace on white showing a game design document: a cover image from this cartoon heist game, headings as dark bars, a character sketch card, a checklist with ticked boxes and a small table, black and white with soft accents.",
-  "refs": [
-   "rbx/assets/7d845c7485b985.webp"
-  ],
-  "request_id": "01a15f77-0c2c-7ee0-981f-97a1f18a9576",
-  "at": "2026-10-21T17:16:59.264Z"
+  "at": "2026-10-21T17:15:43.831Z",
+  "upscale": {
+   "endpoint": "fal-ai/seedvr/upscale/image",
+   "factor": 2,
+   "size": "2752x1536",
+   "request_id": "01a16137-0ad2-7ef1-b29e-2da9c5c1a6ee",
+   "at": "2026-10-22T01:26:09.673Z"
+  }
  }
 }

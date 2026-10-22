@@ -1,0 +1,5 @@
+{"chat":"subscriptions","pages":{
+"statements":{"img":"statements.webp","title":"Search results - jordan@quillnote.app - Gmail","host":"mail.google.com","path":"/mail/u/0/#search/from%3AHarbor+Card+Services+statement","fav":"../../screens/fav/gmail.png","targets":{"statement1":[634.3,188]},"scroll":null,"field":null},
+"receipts":{"img":"receipts.webp","title":"Search results - jordan@quillnote.app - Gmail","host":"mail.google.com","path":"/mail/u/0/#search/receipt+OR+renewal+OR+subscription","fav":"../../screens/fav/gmail.png","targets":{"row1":[604.8,188],"row2":[606.6,228]},"scroll":null,"field":null},
+"results":{"img":"results.webp","title":"Search results - jordan@quillnote.app - Gmail","host":"mail.google.com","path":"/mail/u/0/#search/subscription+OR+membership+OR+statement+newer_than%3A3m","fav":"../../screens/fav/gmail.png","targets":{"cancel1":[665.3,228],"gym":[650.6,188]},"scroll":null,"field":null}
+}}

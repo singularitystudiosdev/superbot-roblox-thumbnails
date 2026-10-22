@@ -1,0 +1,22 @@
+plays/pricewatch: live-run page captures for the "pricewatch" chat (Buy tickets for Neon Harbor anytime they drop below $150; Neon Harbor, Riverside Arena,
+Portland, Sat Nov 14 2026 7:30pm). Date 2026-10-22. Never shown on screen. Every later page of the run is the "tickets" chat's (../tickets/, CREDITS*.txt there).
+
+Source: Vivid Seats (vividseats.com), the real home page, its search field and search suggestions, and the event page of the same real arena concert the
+"tickets" captures use (production 6912149) as it first opens, captured headless (Playwright/Chromium 1470x837 @2x, cwebp -q 80) by
+../../tools/play-pricewatch.b37df443.mjs (re-runnable), the event page staged by ../../tools/stage-vividseats.b37df443.js (shared with play-tickets).
+Location: the site's own `user-location` cookie set to Portland, OR before the home page loaded (the site otherwise reads it off the visitor's IP), so
+"Our top picks in Portland, OR" and its four picks are the site's real Portland listings; the capture machine's own city appears nowhere.
+Staged by DOM edits only: the search is typed for the real act ("Teddy Swims") so the site draws its own suggestions, then the field's value is set to the
+made-up "Neon Harbor" and the suggestions restaged (act name, its three next dates as Thu Nov 12 Seattle, WA / Sat Nov 14 Portland, OR / Mon Nov 16
+Sacramento, CA, all 7:30pm, and their links); the act's photo in the suggestions replaced with a flat navy block; the focused field's placeholder
+cleared (it goes with the first key). The event page's show, venue, city, date, listings, pins and price filter staged as on event-238, with 61 listings
+since no quantity is picked yet; the site's own "How many tickets?" picker left open over it.
+
+Pages: home (the home page, search field at rest), home-focus (the field focused, the site's own Trending panel open; the typed field is revealed from
+home-typed), home-typed (the made-up search typed, the suggestions open), event-qty (the event page asking how many tickets), event-159 (the event
+page for 2 tickets once the pair bought, Section 108, Row K, is gone: 45 listings, Section 115, Row M at $159 the cheapest, staged as event-142 less that
+listing). Targets: search, suggest (the Sat Nov 14 Portland suggestion), qty2 (the picker's 2), row1 and price1 (event-159's first listing).
+
+Safety: no purchase, hold, sign-in, form submit or payment entry; nothing typed but the search. Every non-GET to vividseats.com
+/hermes|api|checkout|cart|order|purchase was aborted in the browser (0 were attempted). Only the page's own analytics beacons went out.
+No paid API calls (no fal / image generation) were made for this chat.

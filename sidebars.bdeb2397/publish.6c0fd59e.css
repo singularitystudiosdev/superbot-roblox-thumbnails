@@ -1,0 +1,219 @@
+/* Publishing an automation: the Automations tab's Publish (automations-view.03378ba4.js), the Publish dialog
+   (publish.6c0fd59e.js), Settings' My Automations (my-automations.6c0fd59e.js) and the extra steps of the question an
+   automation asks above the composer (gameask.b3fb005c.js). Tokens only, as their neighbours are: the tab in its own px
+   sizes (automations.03378ba4.css), the dialog and Settings in --ref sizes at the sidebar's on-screen scale (--k), as
+   Settings is (settings.854d0793.css). Fluent 3D icons name what each part is, as Settings' sections do; lucide line
+   icons are the small tool buttons, as the sidebar's are. Motion: fills on hover, things rising in as they arrive and
+   folding away as they go, all at the tokens' durations; none with reduced motion. */
+
+/* ---------- the tab: Publish before the categories, ink as Try Me! is, since it does rather than filters ---------- */
+.am-cats-row { display: flex; align-items: flex-start; gap: var(--sp-6); }
+.am-cats-row > .am-cats { flex: 1; min-width: 0; }
+.am-publish { flex: none; display: inline-flex; align-items: center; gap: var(--sp-6); height: var(--chip-h); padding: 0 var(--sp-12) 0 var(--sp-8); border: 0; border-radius: 9999px; background: var(--ink); color: var(--surface); font: 600 var(--fs-small)/1 var(--ui); white-space: nowrap; cursor: pointer; transition: background-color var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.am-publish:hover { background: color-mix(in srgb, var(--ink) 82%, var(--surface)); }
+.am-publish:active { transform: scale(0.96); }
+.am-publish-ic { flex: none; display: block; width: 16px; height: 16px; }
+.am-rate:not([role]) { color: var(--muted); }
+
+/* ---------- the question above the composer: which of several it is, and an app to connect first ---------- */
+.ga-n { flex: none; margin-left: auto; font: 11px/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums; }
+.ga-n[hidden], .ga-form[hidden] { display: none; }
+
+/* ---------- Publish: a modal over the spot or over Settings ---------- */
+.pb { box-sizing: border-box; width: calc(800px * var(--ref)); height: calc(660px * var(--ref)); max-width: none; max-height: none; padding: 0; border: var(--hair) solid var(--sel); border-radius: var(--r-surf); overflow: hidden; background: var(--surface); box-shadow: var(--lift); color: var(--ink); font: var(--fs-body)/1.45 var(--ui); -webkit-font-smoothing: antialiased; transform: scale(var(--k, 1)); }
+.pb[open] { display: flex; flex-direction: column; animation: sb-dialog-in var(--d-hover) var(--ease-std); }
+.pb::backdrop { background: var(--scrim); }
+.pb *, .pb *::before { box-sizing: border-box; }
+.pb [hidden] { display: none !important; }
+.pb button { font: inherit; color: inherit; }
+.pb button:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--focus); }
+.pb-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.pb-lu { flex: none; width: var(--tool-ic); height: var(--tool-ic); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.pb-ic { flex: none; display: block; width: calc(16px * var(--ref)); height: calc(16px * var(--ref)); }
+.pb-btn-ic { flex: none; display: block; width: calc(16px * var(--ref)); height: calc(16px * var(--ref)); }
+.pb .sb-btn-ghost, .pb .sb-btn-primary { display: inline-flex; align-items: center; gap: calc(6px * var(--ref)); flex: none; transition: background-color var(--d-hover) ease-out, opacity var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.pb .sb-btn-primary { color: var(--surface); }
+.pb .sb-btn-ghost:disabled, .pb .sb-btn-primary:disabled { opacity: .45; cursor: default; }
+.pb .sb-btn-ghost:disabled:hover { background: transparent; }
+.pb .sb-btn-primary:not(:disabled):active, .pb .sb-btn-ghost:not(:disabled):active { transform: scale(0.97); }
+
+/* its name, Draft saved once something is kept, the close button */
+.pb-top { flex: none; display: flex; align-items: center; gap: calc(10px * var(--ref)); padding: calc(14px * var(--ref)) calc(14px * var(--ref)) calc(14px * var(--ref)) calc(20px * var(--ref)); box-shadow: inset 0 calc(-1 * var(--hair)) 0 var(--sel); }
+.pb-top-ic { flex: none; display: block; width: calc(22px * var(--ref)); height: calc(22px * var(--ref)); }
+.pb-h { flex: 1; min-width: 0; margin: 0; font: 600 calc(17px * var(--ref))/1.2 var(--ui); letter-spacing: -0.01em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.pb-saved { flex: none; display: inline-flex; align-items: center; gap: calc(4px * var(--ref)); font: var(--fs-meta)/1 var(--ui); color: var(--muted); opacity: 0; transition: opacity var(--d-hover) ease-out; }
+.pb-saved .pb-lu { width: calc(12px * var(--ref)); height: calc(12px * var(--ref)); stroke-width: 2.5; }
+.pb-saved.is-on { opacity: 1; animation: pb-pop 260ms var(--ease-std); }
+.pb-x { flex: none; display: grid; place-items: center; width: var(--tool); height: var(--tool); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.pb-x:hover { background: var(--hover); color: var(--ink); }
+
+/* what scrolls: the card's parts, the prompt beside its questions (stretched to whatever room is left, so the page
+   always reaches the foot), then the apps */
+.pb-body { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: calc(18px * var(--ref)); overflow-y: auto; overscroll-behavior: contain; padding: calc(16px * var(--ref)) calc(20px * var(--ref)) calc(18px * var(--ref)); }
+.pb-l { display: flex; align-items: center; gap: calc(6px * var(--ref)); margin: 0; font: 500 var(--fs-body)/1.3 var(--ui); color: var(--ink); }
+.pb-hint { margin: 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.pb-l .pb-hint { margin-left: calc(4px * var(--ref)); font-weight: 400; }
+.pb-field { display: flex; flex-direction: column; gap: calc(6px * var(--ref)); margin: 0; }
+.pb :is(input:not([type="checkbox"]), textarea) { display: block; width: 100%; margin: 0; border: 0; border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; font: var(--fs-body)/1.4 var(--ui); color: var(--ink); transition: box-shadow var(--d-hover) ease-out; }
+.pb input:not([type="checkbox"]) { height: calc(32px * var(--ref)); padding: 0 calc(10px * var(--ref)); }
+.pb textarea { padding: calc(8px * var(--ref)) calc(10px * var(--ref)); resize: none; }
+.pb :is(input, textarea):hover { box-shadow: 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 25%, transparent); }
+.pb :is(input, textarea, .pb-editor):focus-visible { box-shadow: 0 0 0 var(--focus) var(--ink); }
+.pb :is(input, .pb-editor)[aria-invalid="true"] { box-shadow: 0 0 0 var(--focus) var(--danger); }
+.pb ::placeholder { color: var(--muted); opacity: 1; }
+
+/* the card's parts: the thumbnail well, then the title over the description, the two the well's height */
+.pb-details { display: grid; grid-template-columns: calc(232px * var(--ref)) minmax(0, 1fr); gap: calc(16px * var(--ref)); }
+.pb-pic { position: relative; align-self: start; }
+.pb-drop { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 16 / 9; padding: 0; border: var(--hair) dashed color-mix(in srgb, var(--muted) 55%, transparent); border-radius: var(--r-ctl); overflow: hidden; background: var(--ground); color: var(--muted); cursor: pointer; transition: border-color var(--d-hover) ease-out, background-color var(--d-hover) ease-out; }
+.pb-drop:hover, .pb-drop.is-over { border-color: var(--ink); background: color-mix(in srgb, var(--sel) 60%, var(--ground)); }
+.pb-drop.has-thumb { border-style: solid; border-color: var(--sel); }
+.pb-thumb { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; animation: pb-fade 220ms ease-out; }
+.pb-drop-t { display: flex; flex-direction: column; align-items: center; gap: calc(3px * var(--ref)); font: var(--fs-meta)/1.3 var(--ui); }
+.pb-drop-t b { font-weight: 500; color: var(--ink); }
+.pb-drop-ic { display: block; width: calc(28px * var(--ref)); height: calc(28px * var(--ref)); margin-bottom: calc(3px * var(--ref)); transition: transform var(--d-hover) var(--ease-std); }
+.pb-drop:hover .pb-drop-ic { transform: translateY(calc(-2px * var(--ref))); }
+.pb-drop.has-thumb .pb-drop-t { display: none; }
+.pb-swap { position: absolute; left: calc(8px * var(--ref)); bottom: calc(8px * var(--ref)); display: none; align-items: center; gap: calc(4px * var(--ref)); height: calc(24px * var(--ref)); padding: 0 calc(10px * var(--ref)) 0 calc(8px * var(--ref)); border-radius: 9999px; background: color-mix(in srgb, var(--ink) 72%, transparent); color: var(--surface); font: 500 var(--fs-meta)/1 var(--ui); opacity: 0; transition: opacity var(--d-hover) ease-out; }
+.pb-swap .pb-lu { width: calc(12px * var(--ref)); height: calc(12px * var(--ref)); }
+.pb-drop.has-thumb .pb-swap { display: inline-flex; }
+.pb-pic:hover .pb-swap, .pb-drop:focus-visible .pb-swap { opacity: 1; }
+.pb-unthumb { position: absolute; top: calc(6px * var(--ref)); right: calc(6px * var(--ref)); display: grid; place-items: center; width: calc(24px * var(--ref)); height: calc(24px * var(--ref)); padding: 0; border: 0; border-radius: 9999px; background: color-mix(in srgb, var(--surface) 92%, transparent); box-shadow: 0 1px 3px color-mix(in srgb, var(--ink) 18%, transparent); color: var(--ink); cursor: pointer; opacity: 0; transition: opacity var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.pb-unthumb .pb-lu { width: calc(12px * var(--ref)); height: calc(12px * var(--ref)); }
+.pb-pic:hover .pb-unthumb, .pb-unthumb:focus-visible { opacity: 1; }
+.pb-unthumb:hover { color: var(--danger); }
+.pb-meta { display: flex; flex-direction: column; gap: calc(10px * var(--ref)); min-width: 0; }
+.pb-grow { flex: 1; }
+.pb-grow textarea { flex: 1; min-height: calc(44px * var(--ref)); }
+
+/* the prompt beside its questions: the two columns as tall as the taller, the prompt's field filling its own */
+.pb-work { flex: 1 0 auto; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: calc(16px * var(--ref)); min-height: calc(240px * var(--ref)); }
+.pb-col { display: flex; flex-direction: column; gap: calc(8px * var(--ref)); min-width: 0; }
+
+/* the prompt: plain text and line breaks, with each answer placed in it as a chip carrying its question */
+.pb-editor { position: relative; flex: 1; min-height: calc(180px * var(--ref)); padding: calc(10px * var(--ref)) calc(12px * var(--ref)); border-radius: var(--r-ctl); background: var(--surface); box-shadow: 0 0 0 var(--hair) var(--sel); outline: 0; font: var(--fs-body)/1.75 var(--ui); color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; cursor: text; transition: box-shadow var(--d-hover) ease-out, background-color var(--d-hover) ease-out; }
+.pb-editor:hover { box-shadow: 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 25%, transparent); }
+.pb-editor.is-empty::before { content: attr(data-placeholder); position: absolute; inset: calc(10px * var(--ref)) calc(12px * var(--ref)) auto; color: var(--muted); pointer-events: none; }
+/* an answer on its way: the prompt shows where it can land, and lights as it is over it */
+.pb-editor.is-target { background: color-mix(in srgb, var(--ground) 60%, var(--surface)); box-shadow: 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 30%, transparent); }
+.pb-editor.is-drop { background: var(--ground); box-shadow: 0 0 0 var(--focus) color-mix(in srgb, var(--ink) 55%, transparent); }
+.pb-ref { display: inline-flex; align-items: center; gap: calc(4px * var(--ref)); max-width: 100%; margin: 0 calc(1px * var(--ref)); padding: 0 calc(8px * var(--ref)) 0 calc(4px * var(--ref)); border-radius: 9999px; background: var(--sel); font: 500 var(--fs-meta)/calc(20px * var(--ref)) var(--ui); white-space: nowrap; vertical-align: baseline; cursor: grab; user-select: none; -webkit-user-select: none; transition: background-color var(--d-hover) ease-out; }
+.pb-ref:hover { background: color-mix(in srgb, var(--sel) 80%, var(--ink)); }
+.pb-ref.is-new { animation: pb-pop 300ms var(--ease-std); }
+.pb-ref-ic { flex: none; display: block; width: calc(14px * var(--ref)); height: calc(14px * var(--ref)); }
+.pb-ref-t { overflow: hidden; text-overflow: ellipsis; }
+
+/* the questions: each one's answer to drag (or click), what it asks, and its remove button, on the ground */
+.pb-qs { display: flex; flex-direction: column; gap: calc(6px * var(--ref)); margin: calc(2px * var(--ref)) 0 0; padding: 0; list-style: none; }
+.pb-q { display: flex; align-items: center; gap: calc(6px * var(--ref)); padding: calc(4px * var(--ref)); border-radius: calc(8px * var(--ref)); background: var(--ground); transition: opacity 160ms ease-out, transform 160ms var(--ease-std); }
+.pb-q.is-entering { animation: pb-rise 240ms var(--ease-std); }
+.pb-q.is-leaving { opacity: 0; transform: translateX(calc(8px * var(--ref))); }
+.pb-ref-src { flex: none; display: inline-flex; align-items: center; gap: calc(3px * var(--ref)); height: calc(28px * var(--ref)); padding: 0 calc(9px * var(--ref)) 0 calc(3px * var(--ref)); border: 0; border-radius: 9999px; background: var(--surface); box-shadow: inset 0 0 0 var(--hair) var(--sel); font: 500 var(--fs-meta)/1 var(--ui); cursor: grab; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out, box-shadow var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.pb-ref-src:hover { box-shadow: inset 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 40%, transparent); transform: translateY(calc(-1px * var(--ref))); }
+.pb-ref-src:active { cursor: grabbing; transform: scale(0.97); }
+.pb-ref-src .pb-grip { width: calc(12px * var(--ref)); height: calc(12px * var(--ref)); color: var(--muted); }
+.pb-q.is-used .pb-ref-src { background: var(--ink); box-shadow: none; color: var(--surface); }
+.pb-q.is-used .pb-ref-src .pb-grip { color: color-mix(in srgb, var(--surface) 60%, transparent); }
+.pb .pb-q .pb-q-text { flex: 1; min-width: 0; width: auto; height: calc(28px * var(--ref)); }
+.pb-q-del { flex: none; display: grid; place-items: center; width: calc(24px * var(--ref)); height: calc(24px * var(--ref)); padding: 0; border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out; }
+.pb-q-del:hover { background: var(--sel); color: var(--danger); }
+.pb-add { display: flex; align-items: center; gap: calc(6px * var(--ref)); padding: calc(4px * var(--ref)); border-radius: calc(8px * var(--ref)); box-shadow: inset 0 0 0 var(--hair) var(--sel); transition: box-shadow var(--d-hover) ease-out; }
+.pb-add:focus-within { box-shadow: inset 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 40%, transparent); }
+.pb .pb-add .pb-add-in { flex: 1; min-width: 0; width: auto; height: calc(28px * var(--ref)); box-shadow: none; background: transparent; }
+.pb .pb-add .pb-add-in:focus-visible { box-shadow: none; }
+.pb-add-go { flex: none; display: grid; place-items: center; width: calc(28px * var(--ref)); height: calc(28px * var(--ref)); padding: 0; border: 0; border-radius: 9999px; background: var(--ink); color: var(--surface); cursor: pointer; transition: opacity var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.pb-add-go:disabled { background: var(--sel); color: var(--muted); cursor: default; }
+.pb-add-go:not(:disabled):active { transform: scale(0.92); }
+
+/* its categories: a tile for each of the tab's apps, ticked on the ground; the box itself is hidden but takes the
+   keyboard */
+.pb-conn { display: flex; flex-direction: column; gap: calc(8px * var(--ref)); }
+.pb-apps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: calc(8px * var(--ref)); margin: 0; padding: 0; list-style: none; }
+.pb-app { position: relative; display: flex; align-items: center; gap: calc(10px * var(--ref)); height: calc(38px * var(--ref)); padding: 0 calc(10px * var(--ref)); border-radius: var(--r-ctl); box-shadow: inset 0 0 0 var(--hair) var(--sel); cursor: pointer; transition: background-color var(--d-hover) ease-out, box-shadow var(--d-hover) ease-out; }
+.pb-app:hover { background: var(--hover); }
+.pb-app input { position: absolute; opacity: 0; pointer-events: none; }
+.pb-app:has(input:focus-visible) { outline: var(--focus) solid var(--ink); outline-offset: var(--hair); }
+.pb-mark { flex: none; display: block; width: calc(20px * var(--ref)); height: calc(20px * var(--ref)); border-radius: var(--r-ctl); object-fit: contain; }
+.pb-app-n { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: var(--fs-body)/1.2 var(--ui); }
+.pb-check { flex: none; display: grid; place-items: center; width: calc(18px * var(--ref)); height: calc(18px * var(--ref)); border-radius: 9999px; box-shadow: inset 0 0 0 var(--hair) var(--sel); color: transparent; transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.pb-check .pb-lu { width: calc(11px * var(--ref)); height: calc(11px * var(--ref)); stroke-width: 3; }
+.pb-app:has(input:checked) { background: var(--ground); box-shadow: inset 0 0 0 var(--hair) color-mix(in srgb, var(--ink) 30%, transparent); }
+.pb-app:has(input:checked) .pb-check { background: var(--ink); box-shadow: none; color: var(--surface); transform: scale(1.06); }
+
+/* what is wrong, over the foot; the foot: Clear, an undo when there is one, Publish */
+.pb-error { flex: none; margin: 0; padding: calc(8px * var(--ref)) calc(20px * var(--ref)) 0; font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--danger); animation: pb-fade 160ms ease-out; }
+.pb-foot { flex: none; display: flex; align-items: center; gap: calc(10px * var(--ref)); padding: calc(12px * var(--ref)) calc(20px * var(--ref)); box-shadow: inset 0 var(--hair) 0 var(--sel); }
+.pb-undo { flex: 1; min-width: 0; display: flex; align-items: center; gap: calc(8px * var(--ref)); margin: 0; font: var(--fs-meta)/1 var(--ui); color: var(--muted); opacity: 0; transform: translateY(calc(4px * var(--ref))); pointer-events: none; transition: opacity var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.pb-undo.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.pb-undo-go, .ma-undo-go { display: inline-flex; align-items: center; gap: calc(4px * var(--ref)); height: calc(24px * var(--ref)); padding: 0 calc(8px * var(--ref)) 0 calc(6px * var(--ref)); border: 0; border-radius: 9999px; background: var(--ground); color: var(--ink); font: 500 var(--fs-meta)/1 var(--ui); cursor: pointer; transition: background-color var(--d-hover) ease-out; }
+.pb-undo-go:hover, .ma-undo-go:hover { background: var(--sel); }
+:is(.pb-undo-go, .ma-undo-go) .pb-lu { width: calc(12px * var(--ref)); height: calc(12px * var(--ref)); }
+
+@keyframes pb-pop { from { transform: scale(0.85); opacity: 0.4; } }
+@keyframes pb-rise { from { opacity: 0; transform: translateY(calc(6px * var(--ref))); } }
+@keyframes pb-fade { from { opacity: 0; } }
+
+/* ---------- Settings' My Automations: the totals, then each card as the tab draws it, Publish kept at the foot ---------- */
+.ma-totals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: calc(8px * var(--ref)) 0 calc(16px * var(--ref)); padding: 0; list-style: none; border-radius: calc(12px * var(--ref)); box-shadow: inset 0 0 0 var(--hair) var(--sel); }
+.ma-totals li { display: flex; align-items: center; gap: calc(10px * var(--ref)); min-width: 0; padding: calc(12px * var(--ref)) calc(16px * var(--ref)); }
+.ma-totals li + li { box-shadow: inset var(--hair) 0 0 var(--sel); }
+.ma-tot-ic { flex: none; display: block; width: calc(26px * var(--ref)); height: calc(26px * var(--ref)); }
+.ma-tot-t { display: flex; flex-direction: column; min-width: 0; }
+.ma-tot-t b { font: 600 calc(18px * var(--ref))/1.2 var(--ui); font-variant-numeric: tabular-nums; }
+.ma-tot-t span { font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); white-space: nowrap; }
+.ma-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(14px * var(--ref)); margin: 0; padding: 0; list-style: none; }
+/* a card: published, it is only read here (nothing opens it), its edge darkening under the pointer as its bin comes in */
+.ma-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: calc(6px * var(--ref)); border: var(--hair) solid var(--sel); border-radius: calc(12px * var(--ref)); background: var(--surface); transition: transform 200ms var(--ease-std), border-color var(--d-hover) ease-out, opacity 180ms ease-out; }
+.ma-card:hover { border-color: color-mix(in srgb, var(--sel) 60%, var(--muted)); }
+.ma-grid.is-entering .ma-card { animation: ma-in 320ms var(--ease-std) both; animation-delay: calc(var(--i) * 50ms); }
+.ma-card.is-leaving { opacity: 0; transform: scale(0.96); }
+.ma-card.is-fresh { animation: ma-glow 1400ms ease-out; }
+.ma-media { position: relative; overflow: hidden; border-radius: var(--r-ctl); background: var(--ground); }
+.ma-thumb { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+/* its pencil and bin, on the picture's corner, coming in under the pointer or the keyboard */
+.ma-tools { position: absolute; top: calc(6px * var(--ref)); right: calc(6px * var(--ref)); z-index: 1; display: flex; gap: calc(4px * var(--ref)); opacity: 0; transform: translateY(calc(-3px * var(--ref))); transition: opacity var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.ma-card:hover .ma-tools, .ma-card:focus-within .ma-tools { opacity: 1; transform: none; }
+@media (hover: none) { .ma-tools { opacity: 1; transform: none; } }
+.ma-tool { display: grid; place-items: center; width: calc(28px * var(--ref)); height: calc(28px * var(--ref)); padding: 0; border: 0; border-radius: 9999px; background: color-mix(in srgb, var(--surface) 92%, transparent); box-shadow: 0 1px 4px color-mix(in srgb, var(--ink) 18%, transparent); color: var(--ink); cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background-color var(--d-hover) ease-out, color var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.ma-tool:hover { background: var(--surface); transform: scale(1.06); }
+.ma-tool:active { transform: scale(0.94); }
+.ma-tool:focus-visible { outline: var(--focus) solid var(--ink); outline-offset: var(--hair); }
+.ma-del:hover { color: var(--danger); }
+.ma-lu { width: calc(13px * var(--ref)); height: calc(13px * var(--ref)); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ma-head { display: flex; align-items: center; gap: calc(8px * var(--ref)); padding: calc(10px * var(--ref)) calc(6px * var(--ref)) 0; }
+.ma-app { flex: none; display: block; width: calc(22px * var(--ref)); height: calc(22px * var(--ref)); border-radius: var(--r-ctl); }
+.ma-name { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.ma-title { overflow: hidden; margin: 0; white-space: nowrap; text-overflow: ellipsis; font: 600 calc(13px * var(--ref))/calc(17px * var(--ref)) var(--ui); }
+.ma-sub { font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+.ma-desc { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; min-height: calc(2 * var(--lh-meta)); margin: calc(6px * var(--ref)) 0 0; padding: 0 calc(6px * var(--ref)); font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--muted); }
+/* its figures along its foot, each with its icon, in one even run from the left */
+.ma-stats { display: flex; flex-wrap: wrap; align-items: center; gap: calc(6px * var(--ref)) calc(14px * var(--ref)); margin-top: auto; padding: calc(12px * var(--ref)) calc(6px * var(--ref)) calc(6px * var(--ref)); font: 500 var(--fs-meta)/1 var(--ui); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ma-stat { display: inline-flex; align-items: center; gap: calc(5px * var(--ref)); }
+.ma-stat-ic, .ma-star { flex: none; display: block; width: calc(14px * var(--ref)); height: calc(14px * var(--ref)); }
+/* past their own display, which would otherwise show them hidden */
+.ma-empty[hidden], .ma-undo-go[hidden] { display: none; }
+.ma-empty { display: flex; flex-direction: column; align-items: center; gap: calc(4px * var(--ref)); padding: calc(28px * var(--ref)) 0; text-align: center; animation: pb-rise 300ms var(--ease-std); }
+.ma-empty-ic { display: block; width: calc(40px * var(--ref)); height: calc(40px * var(--ref)); margin-bottom: calc(6px * var(--ref)); }
+/* the title and what the section is beside Publish, clear of Settings' close button in the corner */
+.ma-top { display: flex; align-items: flex-start; gap: calc(16px * var(--ref)); padding-right: calc(28px * var(--ref)); }
+.ma-top-t { flex: 1; min-width: 0; }
+.ma-top .st-title { padding-right: 0; }
+.ma-top .ma-publish { margin-top: calc(-4px * var(--ref)); }
+/* what was just done, with its undo: a toast rising from the pane's foot over the cards, gone after a while */
+.ma-undo { position: sticky; bottom: calc(12px * var(--ref)); z-index: 2; display: flex; align-items: center; gap: calc(10px * var(--ref)); width: max-content; max-width: 100%; margin: calc(16px * var(--ref)) auto 0; padding: calc(6px * var(--ref)) calc(8px * var(--ref)) calc(6px * var(--ref)) calc(14px * var(--ref)); border-radius: 9999px; background: var(--ink); box-shadow: var(--lift); font: var(--fs-meta)/var(--lh-meta) var(--ui); color: var(--surface); opacity: 0; transform: translateY(calc(8px * var(--ref))); pointer-events: none; transition: opacity var(--d-hover) ease-out, transform 220ms var(--ease-std); }
+.ma-undo:has(.ma-undo-go[hidden]) { padding-right: calc(14px * var(--ref)); }
+.ma-undo.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.ma-undo-t { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.ma-undo .ma-undo-go { background: color-mix(in srgb, var(--surface) 16%, transparent); color: var(--surface); }
+.ma-undo .ma-undo-go:hover { background: color-mix(in srgb, var(--surface) 26%, transparent); }
+.ma-publish { transition: background-color var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std); }
+.ma-publish:active { transform: scale(0.97); }
+.ma-btn-ic { flex: none; display: block; width: calc(16px * var(--ref)); height: calc(16px * var(--ref)); }
+@keyframes ma-in { from { opacity: 0; transform: translateY(calc(10px * var(--ref))); } }
+@keyframes ma-glow { from { box-shadow: 0 0 0 calc(3px * var(--ref)) color-mix(in srgb, var(--ink) 30%, transparent); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pb[open], .pb-saved.is-on, .pb-thumb, .pb-ref.is-new, .pb-q.is-entering, .pb-error, .ma-grid.is-entering .ma-card, .ma-card.is-fresh, .ma-empty { animation: none; }
+  .am-publish, .pb *, .ma-card, .ma-tools, .ma-tool, .ma-undo, .ma-publish { transition: none; }
+  .am-publish:active, .ma-tool:hover, .ma-tool:active { transform: none; }
+}

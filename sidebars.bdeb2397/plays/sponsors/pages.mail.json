@@ -1,0 +1,81 @@
+{
+ "chat": "sponsors",
+ "pages": {
+  "sent": {
+   "img": "sent.webp",
+   "title": "Sent Mail - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#sent",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "first": [
+     620.6,
+     170
+    ],
+    "sixth": [
+     627.4,
+     370
+    ],
+    "nav-sent": [
+     79.5,
+     237.8
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "sent-brief": {
+   "img": "sent-brief.webp",
+   "title": "Sent Mail - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#sent",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "brief": [
+     638.9,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "inbox-desk": {
+   "img": "inbox-desk.webp",
+   "title": "Inbox (1) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "desk-setup": [
+     638.9,
+     170
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "sent-followup": {
+   "img": "sent-followup.webp",
+   "title": "Sent Mail - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#sent",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "first": [
+     637.5,
+     170
+    ],
+    "sixth": [
+     628.5,
+     370
+    ],
+    "last": [
+     632.3,
+     650
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

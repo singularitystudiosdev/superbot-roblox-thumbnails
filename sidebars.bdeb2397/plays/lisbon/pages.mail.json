@@ -1,0 +1,63 @@
+{
+ "chat": "lisbon",
+ "pages": {
+  "plan": {
+   "img": "plan.webp",
+   "title": "Inbox (5) - jordan@quillnote.app - Gmail",
+   "host": "mail.google.com",
+   "path": "/mail/u/0/#inbox",
+   "fav": "../../screens/fav/gmail.png",
+   "targets": {
+    "plan": [
+     665.4,
+     170
+    ],
+    "train": [
+     678.6,
+     210
+    ],
+    "dinner2": [
+     677.6,
+     250
+    ],
+    "dinner1": [
+     677.8,
+     290
+    ],
+    "hotel": [
+     707.8,
+     330
+    ]
+   },
+   "scroll": null,
+   "field": null
+  },
+  "calendar": {
+   "img": "calendar.webp",
+   "title": "Google Calendar - 4 days, starting Friday, November 20, 2026",
+   "host": "calendar.google.com",
+   "path": "/calendar/u/0/r/customday/2026/11/20",
+   "fav": "../../screens/fav/google-calendar.png",
+   "targets": {
+    "train": [
+     913.6,
+     188
+    ],
+    "dinner1": [
+     386.1,
+     763
+    ],
+    "dinner2": [
+     649.8,
+     787
+    ],
+    "hotel": [
+     386.1,
+     523
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

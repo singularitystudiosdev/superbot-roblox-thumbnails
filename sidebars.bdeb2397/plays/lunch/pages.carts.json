@@ -1,0 +1,73 @@
+{
+  "chat": "lunch",
+  "pages": {
+    "item-menya": {
+      "img": "item-menya.webp",
+      "title": "Order Menya Sora Menu Delivery in San Francisco | Menya Sora Prices | Uber Eats",
+      "host": "ubereats.com",
+      "path": "/store/menya-sora-san-francisco/Rk3vN8dQTx2HcLw5Yb1pMA?diningMode=DELIVERY&mod=quickView&modctx=%257B%2522storeUuid%2522%253A%25225d1c7a42-8b3e-4f0a-9c61-2e7b04d8a915%2522%252C%2522sectionUuid%2522%253A%2522c8a2f6e1-3d94-4b7a-a05e-91f2d6c37b48%2522%252C%2522subsectionUuid%2522%253A%25227e3b9d05-6a12-4c8f-b2d7-4f81a0e5c936%2522%252C%2522itemUuid%2522%253A%2522a41d8e27-5c60-4f93-8b1a-d2e07f593c64%2522%252C%2522showSeeDetailsCTA%2522%253Atrue%257D",
+      "targets": {
+        "desc": [
+          993,
+          224
+        ],
+        "add": [
+          735,
+          773
+        ]
+      },
+      "fav": "../../screens/fav/delivery-site.png",
+      "scroll": null,
+      "field": null
+    },
+    "cart-menya": {
+      "img": "cart-menya.webp",
+      "title": "Order Menya Sora Menu Delivery in San Francisco | Menya Sora Prices | Uber Eats",
+      "host": "ubereats.com",
+      "path": "/store/menya-sora-san-francisco/Rk3vN8dQTx2HcLw5Yb1pMA?diningMode=DELIVERY",
+      "targets": {
+        "checkout": [
+          1231,
+          785
+        ]
+      },
+      "fav": "../../screens/fav/delivery-site.png",
+      "scroll": null,
+      "field": null
+    },
+    "item-esquina": {
+      "img": "item-esquina.webp",
+      "title": "Order La Esquina Menu Delivery in San Francisco | La Esquina Prices | Uber Eats",
+      "host": "ubereats.com",
+      "path": "/store/la-esquina-san-francisco/Zt9fK4mXQe-uA7sVd0cJhw?diningMode=DELIVERY&mod=quickView&modctx=%257B%2522storeUuid%2522%253A%25225d1c7a42-8b3e-4f0a-9c61-2e7b04d8a915%2522%252C%2522sectionUuid%2522%253A%2522c8a2f6e1-3d94-4b7a-a05e-91f2d6c37b48%2522%252C%2522subsectionUuid%2522%253A%25227e3b9d05-6a12-4c8f-b2d7-4f81a0e5c936%2522%252C%2522itemUuid%2522%253A%2522a41d8e27-5c60-4f93-8b1a-d2e07f593c64%2522%252C%2522showSeeDetailsCTA%2522%253Atrue%257D",
+      "targets": {
+        "desc": [
+          993,
+          224
+        ],
+        "add": [
+          735,
+          773
+        ]
+      },
+      "fav": "../../screens/fav/delivery-site.png",
+      "scroll": null,
+      "field": null
+    },
+    "cart-esquina": {
+      "img": "cart-esquina.webp",
+      "title": "Order La Esquina Menu Delivery in San Francisco | La Esquina Prices | Uber Eats",
+      "host": "ubereats.com",
+      "path": "/store/la-esquina-san-francisco/Zt9fK4mXQe-uA7sVd0cJhw?diningMode=DELIVERY",
+      "targets": {
+        "checkout": [
+          1231,
+          785
+        ]
+      },
+      "fav": "../../screens/fav/delivery-site.png",
+      "scroll": null,
+      "field": null
+    }
+  }
+}

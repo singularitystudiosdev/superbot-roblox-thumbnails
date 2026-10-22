@@ -1,0 +1,32 @@
+{
+ "chat": "youtube",
+ "pages": {
+  "analytics-after": {
+   "img": "analytics-after.webp",
+   "title": "Channel analytics - YouTube Studio",
+   "host": "studio.youtube.com",
+   "path": "/channel/UCwk7nQx2LmPzR4vYt9HfE1A/analytics/hub_overview/explore?entity_type=CHANNEL&entity_id=UCwk7nQx2LmPzR4vYt9HfE1A&time_period=4_weeks&explore_type=TABLE_AND_CHART&metrics_computation_type=DELTA&metric=EXTERNAL_VIEWS&granularity=DAY&t_metrics=VIDEO_THUMBNAIL_IMPRESSIONS&t_metrics=VIDEO_THUMBNAIL_IMPRESSIONS_VTR&t_metrics=EXTERNAL_VIEWS&t_metrics=EXTERNAL_WATCH_TIME&t_metrics=SUBSCRIBERS_NET_CHANGE&dimension=VIDEO&o_column=VIDEO_THUMBNAIL_IMPRESSIONS_VTR&o_direction=ANALYTICS_ORDER_DIRECTION_ASC",
+   "fav": "../../screens/fav/youtube-studio.png",
+   "targets": {
+    "total-ctr": [
+     960.5,
+     245
+    ],
+    "gnocchi": [
+     520.1,
+     561
+    ],
+    "gnocchi-ctr": [
+     960.5,
+     561
+    ],
+    "row1": [
+     447.3,
+     291
+    ]
+   },
+   "scroll": null,
+   "field": null
+  }
+ }
+}

@@ -1,0 +1,15 @@
+Sources for the subscriptions chat's live computer view pages (pages.json). Never shown on screen.
+
+Gmail search results (mail.google.com), the owner's own signed-in Chrome via browser-control, captured 2026-10-21 at
+1470x837 CSS px, 2x, saved as WebP (cwebp -q 80). Each page is Gmail's real search-results layout (its own search chips,
+"Showing most relevant", page count) staged in the page by DOM edits only, with ../../tools/stage-gmail.bdeb2397.js fed
+by ../../tools/play-subscriptions.8889b4ff.js: the rows are made-up mail (Harbor Card Services statements and alerts,
+StreamBox, Reelhouse, FreshCrate, CloudVault, Ironworks Gym, Waveline Music, Daybreak News, Stillwater; figures from the
+chat), the search field shows the chat's query, the account's name, address and photo are replaced by Jordan Lee,
+jordan@quillnote.app, and 0 traces of the real identity were left in the page text and markup before each capture
+(checked). Gmail's own desktop-notifications pop-up was removed. The real search behind the staging was a broad
+read-only one (is:read); nothing was opened, sent, archived or saved, and the tab was reloaded and closed after.
+  statements  search "from:Harbor Card Services statement": the Oct, Sep and Aug statements, payments and charge alerts
+  receipts    search "receipt OR renewal OR subscription": monthly receipts of the cancelled four, the gym, and the music,
+              news and meditation apps that are kept
+  results     the state ../../screens/subscriptions.webp shows: four cancellation confirmations, the gym charge, two statements

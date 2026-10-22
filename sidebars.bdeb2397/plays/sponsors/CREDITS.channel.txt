@@ -1,0 +1,28 @@
+Sources for the sponsors play's pages in pages.channel.json (channel, sheet-before, sheet-after). Never shown on screen. Date: 2026-10-21.
+Captured by ../../tools/play-sponsors-channel.4c8bc671.mjs: headless Chromium (Playwright), signed out, 1470x837 CSS px at 2x, cwebp -q 80.
+
+channel.webp   A real YouTube channel page (youtube.com/@<handle>/videos, a public channel used only as the page template), staged by DOM
+               edits only as the made-up channel "Desk Setup Daily" (@desksetupdaily, 88K subscribers, 212 videos), Videos tab, Latest
+               chip. Replaced: banner, avatar (../../chats/parts/ch-desk-setup-daily.webp), channel name, handle, subscriber and video counts,
+               description, and the six video rows (thumbnail, title, duration, views, age; newest first: "I Rebuilt My Desk for Focus
+               (Under $300)" 10:48 41K 2d ago, then "7 Productivity Apps I Actually Use at My Desk (Honest Review)" 12:04 96K 5d ago, ...).
+               Removed: the donor's verified tick, its sponsor link line, the Shows, Podcasts, Store and Posts tabs, the real video rows
+               (including collaboration rows). Links and metadata carrying the donor's handle were rewritten. Nothing is signed in, followed,
+               subscribed or changed on the site.
+               Art (generated, no people, no real brands; prompts and fal request ids in prompts.4c8bc671.json): banner-desk-setup-daily.webp
+               (fal-ai/nano-banana-pro, 21:9 2K, cropped to 2140x342), thumb-desk-setup-daily-2..6.webp (16:9 1K, 768x432), made the same way
+               as thumb-*.webp of ../../tools/play-sponsors-thumbs.8889b4ff.mjs; thumb-desk-setup-daily.webp is the play's existing one.
+               The first draft banner (a monitor/laptop scene showing a laptop logo) and the first "NO MORE CABLES" thumbnail (a monitor
+               showing a brand mark) were discarded and regenerated.
+sheet-before.webp, sheet-after.webp
+               A real Baserow public shared grid view (baserow.io/public/grid/<token>; Baserow is an open-source Airtable / spreadsheet style
+               database, its grid is plain DOM, unlike Google Sheets' canvas). The donor was a public shared view of someone else's table;
+               every column, row and name of it was replaced. Staged by DOM edits only (the grid's own header, row and cell elements cloned
+               and re-labelled): view name "Quillnote sponsorships", columns Channel, Subscribers, Format, Rate, Live date, Status, Tracking
+               link; sheet-before = header and one empty row; sheet-after = three rows (Desk Setup Daily | 88k | 60-second integration |
+               $900 | Oct 28 | Booked | quillnote.app/r/desksetup; Calm Code | 142k | Dedicated review | $1,600 | Nov 4 | Booked |
+               quillnote.app/r/calmcode; Tidy Tabs | ~60k | 45-second mention | $650 | Nov 9 | Booked | quillnote.app/r/tidytabs). The
+               address bar path is a made-up share token. Removed: the donor's rows, active sort highlight, scrollbar. Nothing is edited,
+               saved or submitted; the shared view is read-only and only loaded.
+fav-sheet.png  Baserow's own favicon (baserow.io/img/favicon_192.png), scaled to 64px with sips.
+fav-youtube.png (the YouTube favicon) is the play's existing ../sponsors/fav-youtube.png.

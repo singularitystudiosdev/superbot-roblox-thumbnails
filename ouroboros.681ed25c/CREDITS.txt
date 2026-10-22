@@ -1,0 +1,15 @@
+Sources for the ouroboros logos (ouroboros.681ed25c). Never shown on screen.
+
+The dragon is drawn by code from geometry, at the owner's request for a set like the impossible logos
+(logos.4bc2a2d5): the head is signed distance fields (round cones, ellipsoids and curved horns) meshed with surface
+nets (head.681ed25c.js), the body a tube that tapers round a circle into its own jaws, with thorn spines along its
+back (dragon.681ed25c.js). The ouroboros, a serpent or dragon eating its own tail, is an ancient public motif; no
+image of one was copied.
+
+Material, light, camera and colours are the impossible logos' engine (logos.4bc2a2d5/engine.4bc2a2d5.js): #F0A156,
+sampled from the owner's swatch, and the same five rainbow modes.
+
+three.js r186, loaded from logos.4bc2a2d5/vendor (npm three@0.186.1, MIT license, Copyright 2010-2025 three.js authors).
+
+out/: exported by export.681ed25c.mjs: <id>.webm (VP9 with alpha, 512px, 30fps), <id>.mp4 (on white, 512px, 30fps),
+<id>.gif (on white, 360px, 25fps), <id>.png (the poster frame, transparent).

@@ -1,0 +1,23 @@
+Sources for the subscriptions chat's cancel-flow computer view pages (pages.portal.json). Never shown on screen.
+
+Stripe Customer Portal demo (billing.stripe.com), https://billing.stripe.com/customer-portal-demo, Stripe's own public demo of its hosted
+billing portal (demo business "Typographic", test mode), captured 2026-10-21 headless at 1470x837 CSS px, 2x, saved as WebP (cwebp -q 80)
+by ../../tools/play-subscriptions-portal.4c8bc671.mjs. One fresh demo session per merchant (StreamBox, Reelhouse, FreshCrate, CloudVault),
+walked through the portal's real flow: overview -> plan page -> "Cancel plan" -> review page (cancellation reason picked from the portal's own
+list: "I no longer need it") -> "Cancel plan" -> "Plan canceled" -> overview showing the plan as Canceled. Each page was reloaded from its
+real address, then staged in the page by DOM edits only:
+  - business name: the logo image is hidden and the merchant's name shown as text in its place (Stripe shows the name when no logo is set);
+    the sidebar and accent colours are set per merchant (the portal's own brand-colour slots)
+  - plan name, price, billing day, renewal / cancel dates, the "10% off your next invoice" amounts on the review page (10% of the price)
+  - customer: jordan@quillnote.app in the sidebar, "Hi, Jordan"; card Visa ending 4417 (the Harbor Card Services card)
+  - the tab title uses the merchant name where Stripe shows the business name; the address-bar paths keep the portal's real shape
+    (/p/session/subscriptions/sub_.../cancel?secret=...) with made-up ids and secrets
+  - favicon: billing.stripe.com/favicon.ico (Stripe's own; the demo's per-business icon is the Typographic pilcrow, so it is not used)
+Nothing was bought, paid, submitted or saved to anyone's account: the demo is a throw-away test-mode session, its one cancel request was
+the only non-GET to billing.stripe.com allowed (every other one is aborted), no payment form was opened, and every browser context was closed after.
+The four plans add up to the chat's "$64 saved a month" ($11.99 + $15.49 + $26.99 + $9.99 = $64.46).
+  portal-<m>            the plan page: plan name, price, next bill date, Update plan / Cancel plan, upcoming payment, card
+  portal-<m>-confirm    "Review your changes": plan stays active until the renewal date, reason selected, retention offer, Cancel plan
+  portal-<m>-cancelled  the overview after cancelling: plan marked Canceled, "Cancels on <date>"
+  portal-<m>-home       (extra) the overview before cancelling: plan card with price and next bill date
+  portal-<m>-done       (extra) "Plan canceled" page the real flow shows between confirm and the overview

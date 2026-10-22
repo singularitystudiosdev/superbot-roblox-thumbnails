@@ -25,7 +25,7 @@ body.freeze .hint { display: none; }
 svg { flex: none; }
 
 /* ---------- the chat: no header bar; what scrolls off the top fades out over its last 32px ---------- */
-.ch { position: absolute; left: 0; top: 0; bottom: 0; display: flex; flex-direction: column; width: 476px; min-height: 0; }
+.ch { position: absolute; left: var(--sb-w, 0px); top: 0; bottom: 0; display: flex; flex-direction: column; width: 476px; min-height: 0; }
 .ch-feed { position: relative; flex: 1; min-height: 0; overflow: hidden; -webkit-mask: linear-gradient(transparent, #000 32px); mask: linear-gradient(transparent, #000 32px); }
 /* the thread is a centred column the composer's width (the hub's --hub-column, 590px), so the full-width chat reads like
    the hub and the narrowed one fills its pane */
@@ -33,8 +33,8 @@ svg { flex: none; }
 .cm { margin-bottom: 14px; opacity: 0; }
 .cm-u { display: flex; justify-content: flex-end; }
 .cm-u span { max-width: 82%; padding: 8px 14px; border-radius: 16px; background: #f2f2f7; font: 12.5px/17px var(--ui); color: var(--ink); }
-/* a link in a sent message: the system link blue, underlined */
-.cm-link { color: #0a66d8; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+/* a link in a sent message: the system link blue, underlined below the descenders so the line is never cut around a g or p */
+.cm-link { color: #0a66d8; text-decoration: underline; text-decoration-thickness: 1px; text-underline-position: under; text-underline-offset: 1px; }
 .cm-say { margin: 0; font: 12.5px/18px var(--ui); color: var(--ink); }
 .cm-h { color: transparent; }
 .cm-after { margin-top: 0; }
@@ -72,16 +72,25 @@ svg { flex: none; }
 .rc-mic, .rc-send { width: 26px; height: 26px; border-radius: 50%; }
 .rc-mic { background: #f2f2f7; box-shadow: inset 0 0 0 1px var(--line); color: #3a3a3c !important; }
 .rc-mic svg { width: 12.5px; height: 12.5px; }
+/* the sidebar pages' composers add a bell before the mic: the chat's notifications (sidebars.bdeb2397/composer) */
+.rc-bell { width: 26px; height: 26px; border-radius: 50%; color: #3a3a3c !important; }
+.rc-bell svg { width: 13px; height: 13px; }
 .rc-send { background: #e5e5ea; color: #aeaeb2 !important; }
 .rc-send svg { width: 12px; height: 12px; stroke-width: 2.2; }
 .rc-send.is-on { background: var(--ink); color: #fff !important; }
 
 /* ---------- the right side: a sidebar cut flush to the top, right and bottom edges, a hairline on its left, a faint
    grey ground; the live view, the activity tab under it ---------- */
-.cc { position: absolute; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; width: 724px; min-height: 0; visibility: hidden; }
+.cc { position: absolute; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; width: var(--side-w, 724px); min-height: 0; visibility: hidden; }
 .cc-stack { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow: hidden; border-left: 1px solid var(--line); background: var(--side); }
-/* the screen share, with no title bar over it: its view is the desktop's shape at the sidebar's width, and Stop floats
-   on the screen itself, bottom centre, over the vignette */
+/* the sidebar's top bar: share, and the close button that slides the sidebar away (main.af4c3c6b.js setSide) */
+.cc-top { flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 4px; height: 38px; padding: 0 8px; box-shadow: inset 0 -1px 0 var(--line); }
+.cc-top-btn { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3a3a3c; cursor: pointer; }
+.cc-top-btn:hover { background: rgba(0,0,0,.06); }
+.cc-top-btn:focus-visible { outline: 2px solid #0a66d8; outline-offset: 2px; }
+.cc-top-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* the screen share under the bar: its view is the desktop's shape at the sidebar's width, and Stop floats on the
+   screen itself, bottom centre, over the vignette */
 .cc-frame { position: relative; flex: none; }
 .cc-view { position: relative; aspect-ratio: 1470 / 919; overflow: hidden; background: #fff; }
 .cc-stop { position: absolute; left: 50%; bottom: 16px; z-index: 5; display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 13px; border-radius: 999px; transform: translateX(-50%); background: var(--ink); box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 6px 18px rgba(0,0,0,.24); white-space: nowrap; font: 600 11.5px/1 var(--ui); color: #fff; }
@@ -89,7 +98,13 @@ svg { flex: none; }
 
 /* the activity tab, with no header row: one plain line per step, text only, newest at the foot; a breakthrough's line
    bold in the ink */
-.ac { flex: 1; min-height: 0; display: flex; flex-direction: column; box-shadow: 0 -1px 0 var(--line); }
+.ac { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; box-shadow: 0 -1px 0 var(--line); }
+/* the chat's button that brings the sidebar back once its top bar's close button has slid it away (main.af4c3c6b.js
+   setSide) */
+.ch-open { position: absolute; top: 12px; right: 16px; z-index: 3; display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3a3a3c; cursor: pointer; opacity: 0; pointer-events: none; }
+.ch-open:hover { background: rgba(0,0,0,.06); }
+.ch-open:focus-visible { outline: 2px solid #0a66d8; outline-offset: 1px; }
+.ch-open svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 /* a row scrolling off under the live view fades out over 14px, as the chat's do */
 .ac-list { position: relative; flex: 1; min-height: 0; overflow: hidden; -webkit-mask: linear-gradient(transparent, #000 14px); mask: linear-gradient(transparent, #000 14px); }
 .ac-in { position: absolute; left: 0; right: 0; top: 0; padding: 6px 0; }

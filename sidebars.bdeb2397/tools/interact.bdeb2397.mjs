@@ -79,7 +79,7 @@ async function run(where, url, root) {
       const href = await rows.nth(i).getAttribute('href');
       check(where, cv.open && cv.prompt.length > 20 && cv.cards >= 2 && cv.wins >= 1 && cv.acts >= 5 && cv.winActs >= 1 && cv.atLatest && !cv.broken.length && cv.current.join() === href && cv.caret === 'none', `"${titles[i]}" opens its own chat at its latest`, cv);
       // its computer view (screenview.bdeb2397.js): Chrome on its own app's page filling the side's width, the address
-      // showing, the vignette on in that app's colors, Stop on it, under the live view's top bar (out of the tab order)
+      // showing, the vignette on in that app's colors, Stop on it, under the live view's top bar (its Share and close in the tab order, chat-ui.854d0793.js)
       await page.waitForFunction(() => [...document.querySelectorAll('.cv-screen img')].every((im) => im.complete), null, { timeout: 5000 });
       const sc = await page.evaluate(() => {
         const s = document.querySelector('.cv-screen'), view = s.querySelector('.cv-view'), edge = s.querySelector('.cv-edge');
@@ -92,7 +92,7 @@ async function run(where, url, root) {
         };
       });
       screens.push(sc);
-      check(where, sc.page === 2940 && sc.fav > 0 && sc.host && sc.hostOn === '1' && sc.fill < 1 && sc.edge === '1' && /^#/.test(sc.tint) && sc.tint !== '#fd9e43' && sc.stop && sc.top.length === 2 && sc.top.every((t) => t === -1), `"${titles[i]}" shows its app on the computer view, tinted to it`, sc);
+      check(where, sc.page === 2940 && sc.fav > 0 && sc.host && sc.hostOn === '1' && sc.fill < 1 && sc.edge === '1' && /^#/.test(sc.tint) && sc.tint !== '#fd9e43' && sc.stop && sc.top.length === 2 && sc.top.every((t) => t === 0), `"${titles[i]}" shows its app on the computer view, tinted to it`, sc);
     }
     check(where, new Set(screens.map((s) => s.src)).size === screens.length, 'no two chats show the same screen', screens.map((s) => s.src));
     await rows.nth(0).click();
@@ -288,6 +288,31 @@ async function run(where, url, root) {
   now = await order();
   check(where, await picker.count() === 0 && now.some((t) => t.startsWith('[Launch:') && t.includes(mover2Title)), 'Enter moves the chat into the match', now);
 
+  // New group on a chat already in a group makes the new group inside that one, in the chat's place; Ungroup on it
+  // puts the chat back in the outer group
+  const launch = sb.locator('li.sb-group').filter({ has: page.locator(':scope > .sb-ghead', { hasText: 'Launch' }) });
+  const nestee = launch.locator(':scope > .sb-group-list > li.sb-item').first();
+  const nesteeTitle = await nestee.locator('.sb-title-in').textContent();
+  await openMore(nestee);
+  await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'New group' }).click();
+  await page.keyboard.type('Inner');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(200);
+  const nested = await launch.evaluate((g) => {
+    const sub = g.querySelector(':scope > .sb-group-list > li.sb-group');
+    return { name: sub?.querySelector('.sb-ghead .sb-title-in').textContent, chats: [...(sub?.querySelectorAll('.sb-group-list > li.sb-item .sb-title-in') ?? [])].map((t) => t.textContent) };
+  });
+  now = await order();
+  check(where, nested.name === 'Inner' && nested.chats.join() === nesteeTitle && !now.some((t) => t.startsWith('[Inner')), 'New group on a chat in a group makes the new group inside it', { nested, now });
+  const inner = launch.locator('li.sb-group');
+  await page.mouse.move(...Object.values(await centre(inner.locator('.sb-ghead'))));
+  await page.waitForTimeout(200);
+  await inner.locator('.sb-ghead .sb-more').click();
+  await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'Ungroup' }).click();
+  await page.waitForTimeout(200);
+  now = await order();
+  check(where, await inner.count() === 0 && now.some((t) => t.startsWith('[Launch:') && t.includes(nesteeTitle)), 'Ungroup on the inner group puts its chat back in the outer one', now);
+
   // no match: one line and one way on, nothing created on Escape
   await openMore(chats.nth(0));
   await page.locator('.sb-menu:popover-open .sb-menu-item', { hasText: 'Move to group' }).click();
@@ -386,16 +411,33 @@ async function run(where, url, root) {
 await run('creative', `${BASE}view.html?v=1&t=40`, '.app > .sb');
 await run('sheet', BASE, '.sheet .sb');
 
-// the takeover vignette's color follows the app on screen (tint.bdeb2397.js): superbot's orange on the opening New Tab
-// page, Roblox's logo blue once roblox.com loads, still blue on the second New Tab page mid-task
-for (const [t, app, first] of [[6, 'superbot', '#fd9e43'], [7, 'roblox', '#335fff'], [10, 'roblox', '#335fff'], [40, 'roblox', '#335fff']]) {
+// the takeover vignette wears the chat's task color the whole run (tint.bdeb2397.js): Roblox's logo blue in the live
+// chat from the opening New Tab page on, and each other chat's task app (screens.bdeb2397.js) from its first frame to
+// its last, whatever page or tab is on screen
+const { SCREENS } = await import('../screens.bdeb2397.js');
+const { paletteOf } = await import('../tint.bdeb2397.js');
+const tintAt = async (url, ready, edge) => {
   const page = await browser.newPage({ viewport: { width: 1456, height: 815 } });
-  await page.goto(`${BASE}view.html?v=1&t=${t}`);
-  await page.waitForFunction(() => window.__ready === true, null, { timeout: 30000 });
-  const got = await page.evaluate(() => { const e = document.querySelector('.cc-edge'); return { app: e.dataset.app, first: e.style.getPropertyValue('--tint-0'), band: getComputedStyle(document.querySelector('.cc-band')).backgroundImage }; });
-  const [r, g, b] = [1, 3, 5].map((i) => parseInt(first.slice(i, i + 2), 16));
-  check('tint', got.app === app && got.first === first && got.band.includes(`rgb(${r}, ${g}, ${b})`), `at ${t}s the vignette is ${app} (${first})`, got);
+  await page.goto(url);
+  await page.waitForFunction(ready, null, { timeout: 30000 });
+  const got = await page.evaluate((sel) => { const e = document.querySelector(sel); return { app: e.dataset.app, first: e.style.getPropertyValue('--tint-0'), band: getComputedStyle(e.querySelector('.cc-band')).backgroundImage, len: window.__playLength }; }, edge);
   await page.close();
+  return got;
+};
+const tinted = (got, app) => {
+  const first = paletteOf(app)[0], [r, g, b] = [1, 3, 5].map((i) => parseInt(first.slice(i, i + 2), 16));
+  return got.app === app && got.first === first && got.band.includes(`rgb(${r}, ${g}, ${b})`);
+};
+for (const t of [1, 6, 7, 10, 40]) {
+  const got = await tintAt(`${BASE}view.html?v=1&t=${t}`, () => window.__ready === true, '.app > .cc .cc-edge');
+  check('tint', tinted(got, 'roblox'), `at ${t}s the live chat's vignette is roblox`, got);
+}
+for (const [id, s] of Object.entries(SCREENS)) {
+  const len = (await tintAt(`${BASE}view.html?v=1&chat=${id}&t=1`, () => window.__playReady === true, '.cv-screen .cc-edge')).len;
+  for (const t of [1, len * 0.25, len * 0.5, len * 0.75, len - 0.1]) {
+    const got = await tintAt(`${BASE}view.html?v=1&chat=${id}&t=${t.toFixed(2)}`, () => window.__playReady === true, '.cv-screen .cc-edge');
+    check('tint', tinted(got, s.app), `at ${t.toFixed(1)}s ${id}'s vignette is ${s.app}`, got);
+  }
 }
 
 // the app fills whatever frame it is in, no bars beside it: wide, tall, and resized while open; the sidebar, the chat

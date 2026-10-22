@@ -1,0 +1,62 @@
+{
+  "chat": "sponsors",
+  "pages": {
+    "channel": {
+      "img": "channel.webp",
+      "title": "Desk Setup Daily - YouTube",
+      "host": "youtube.com",
+      "path": "/@desksetupdaily/videos",
+      "fav": "fav-youtube.png",
+      "targets": {
+        "subs": [
+          665.1,
+          306.5
+        ],
+        "video1": [
+          483.7,
+          630.1
+        ]
+      },
+      "scroll": null,
+      "field": null
+    },
+    "sheet-before": {
+      "img": "sheet-before.webp",
+      "title": "Quillnote sponsorships",
+      "host": "baserow.io",
+      "path": "/public/grid/q7Vn2kXe0uLmT4rBz9QhYcWd3sJf6AaGpR1oNiUxE8M",
+      "fav": "fav-sheet.png",
+      "scroll": null,
+      "field": null,
+      "targets": {
+        "head": [
+          188,
+          67
+        ]
+      }
+    },
+    "sheet-after": {
+      "img": "sheet-after.webp",
+      "title": "Quillnote sponsorships",
+      "host": "baserow.io",
+      "path": "/public/grid/q7Vn2kXe0uLmT4rBz9QhYcWd3sJf6AaGpR1oNiUxE8M",
+      "fav": "fav-sheet.png",
+      "scroll": null,
+      "field": null,
+      "targets": {
+        "row1": [
+          188,
+          100
+        ],
+        "row2": [
+          188,
+          133
+        ],
+        "row3": [
+          188,
+          166
+        ]
+      }
+    }
+  }
+}

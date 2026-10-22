@@ -14,11 +14,12 @@
 
 /* ---------- the "•••" menu ---------- */
 .sb-menu { position: fixed; inset: auto; box-sizing: border-box; min-width: calc(150px * var(--ref)); margin: 0; padding: calc(4px * var(--ref)); border: var(--hair) solid var(--sel); border-radius: var(--r-surf); background: var(--surface); box-shadow: var(--lift); color: var(--ink); font: var(--fs-body)/var(--lh-body) var(--ui); -webkit-font-smoothing: antialiased; transform-origin: 0 0; }
-/* it eases in from just above, a touch small, and fades; closing is the same, quicker. `overlay` and `display` let it
-   stay drawn while it fades out of the top layer */
-.sb-menu { opacity: 0; transform: translateY(calc(-4px * var(--ref) * var(--k, 1))) scale(calc(var(--k, 1) * 0.96)); transition: opacity 100ms ease-in, transform 100ms ease-in, overlay 100ms allow-discrete, display 100ms allow-discrete; }
+/* it eases in from a little toward its button (--dy 1 for one above its button, -1 below it, the default; a
+   popover.854d0793.js one sets it and grows from its button), a touch small, and fades; closing is the same, quicker.
+   `overlay` and `display` let it stay drawn while it fades out of the top layer */
+.sb-menu { opacity: 0; transform: translateY(calc(4px * var(--ref) * var(--k, 1) * var(--dy, -1))) scale(calc(var(--k, 1) * 0.96)); transition: opacity 100ms ease-in, transform 100ms ease-in, overlay 100ms allow-discrete, display 100ms allow-discrete; }
 .sb-menu:popover-open { opacity: 1; transform: translateY(0) scale(var(--k, 1)); transition: opacity var(--d-hover) ease-out, transform var(--d-hover) var(--ease-std), overlay var(--d-hover) allow-discrete, display var(--d-hover) allow-discrete; }
-@starting-style { .sb-menu:popover-open { opacity: 0; transform: translateY(calc(-4px * var(--ref) * var(--k, 1))) scale(calc(var(--k, 1) * 0.96)); } }
+@starting-style { .sb-menu:popover-open { opacity: 0; transform: translateY(calc(4px * var(--ref) * var(--k, 1) * var(--dy, -1))) scale(calc(var(--k, 1) * 0.96)); } }
 .sb-menu-item { display: flex; align-items: center; gap: calc(var(--gap-ic) * 0.75); width: 100%; height: var(--row); padding: 0 calc(8px * var(--ref)); border: 0; border-radius: var(--r-ctl); background: transparent; color: inherit; font: inherit; text-align: left; white-space: nowrap; cursor: pointer; }
 .sb-menu-item:hover { background: var(--ground); }
 .sb-menu-item:focus-visible { background: var(--ground); outline: var(--focus) solid var(--ink); outline-offset: calc(-1 * var(--focus)); }

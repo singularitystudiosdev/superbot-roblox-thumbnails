@@ -1,0 +1,17 @@
+plays/tickets: live-run page captures for the "tickets" chat (Neon Harbor, Riverside Arena, Portland, Sat Nov 14 2026 7:30pm). Date 2026-10-21. Never shown on screen.
+
+Source: Vivid Seats (vividseats.com), a real arena concert's public event page, listing detail panel and checkout page,
+captured headless (Playwright/Chromium 1470x837 @2x, cwebp -q 80) by ../../tools/play-tickets.8889b4ff.mjs (re-runnable).
+Staged by DOM edits only (text, the site's own fills/pins/styles, image src swaps): the real show/venue/city/date/address replaced with the
+made-up ones, prices, rows and sections replaced with the chat's (Section 214 C $238 ... 120 R $171, 108 K $142), map pins moved to their sections and
+priced as each section's lowest listing, available sections coloured with the legend's own zone colours, the artist photo (event card and checkout
+carousel) replaced with a flat block / the site's arena seat-view render. Nothing added that the site does not draw itself.
+
+Pages: event-238 / event-171 / event-142 (event page, 2 tickets, Lowest Price: same layout, only the listings, pins, price filter and listing count differ),
+listing-108 (the real listing detail panel opened by clicking the first row: Section 108, Row K, 2 tickets, $142 ea fees incl., seat view, Checkout button),
+checkout + checkout-filled (the real /purchase page, "Checkout - Step 1 of 2": Guest Checkout / Sign In gate; filled = made-up jordan@quillnote.app typed in the guest email box).
+NOT captured: the saved-Visa 4242 "Place order" page. Vivid Seats only shows it after the email is submitted (step 2) and a hold is created; skipped.
+
+Safety: no purchase, hold, sign-in, form submit or payment entry. Every non-GET to vividseats.com /hermes|api|checkout|cart|order|purchase was aborted in the browser
+(the site only sends price-quote POSTs there). Only the page's analytics beacons went out. No paid API calls (no fal / image generation) were made for this chat.
+Seat-view pictures and the arena map are the site's own (a rendered 3D view, no identifiable people).

@@ -1,0 +1,15 @@
+---
+description: The superbot sidebar app (sidebars.bdeb2397/view.html) is a working frontend, not a mockup: every control on it must do what it shows
+globs: sidebars.bdeb2397/**
+alwaysApply: false
+---
+
+# Every control works
+
+User directive: "treat all the ui as if it was not a frontend mockup, we need everything to be functional for the frontend".
+
+- Anything drawn as a control (button, link, field, toggle, menu row, Stop, a bell) must work when clicked or typed into, on every surface: the live chat and the chats started in it (live.e61b4e86.js), open chats (chat-ui.854d0793.js), New chat, the sidebar, Settings, Automations.
+- Never ship a control that is only a picture (`inert`, a `span` styled as a button, an `<a>` with no `href`). Wire it, or don't draw it.
+- A new chat type or surface reuses the existing wiring (`wireComposer`, the shared `stopped` / `paintWorking`) instead of copying markup that does nothing.
+- Nothing answers (there is no backend): a control's effect is local state (store.854d0793.js) and what it shows.
+- Pass check: drive each control headless and confirm it changes state.

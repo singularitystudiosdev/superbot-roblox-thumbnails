@@ -1,0 +1,120 @@
+/* The chat-list variants (sidebar.22c1941e.js), in the app's own px (1200x675, drawn at 1.6x). Manus's sidebar is the
+   model: line icons for places, filled grey glyphs for a chat's kind, a dashed orange ring on the chat that is running.
+   Six colours (canvas, grey ground, ink, muted, hairline, the takeover's orange for the ring alone), one family, two
+   radii: 8px rows, controls and thumbnails, 12px surfaces. No CSS animation or transition: the ring's turn and the new
+   chat's arrival are written from t, as everything in the spot is. */
+/* no scrollbar anywhere in the page: everything still scrolls by wheel, touch and keys */
+* { scrollbar-width: none; }
+*::-webkit-scrollbar { display: none; }
+.sb {
+  --sb-canvas: #fff; --sb-ground: #f4f4f5; --sb-ink: #1c1c1e; --sb-muted: #636366; --sb-line: #e5e5ea; --sb-accent: #fd9e43;
+  --sb-on: rgb(28 28 30 / 7%);
+  --sb-font: "SF Pro Rounded", ui-rounded, Inter, system-ui, sans-serif;
+  position: absolute; left: 0; top: 0; bottom: 0; display: flex; flex-direction: column; width: 240px; min-height: 0;
+  padding: 8px; overflow: hidden; background: var(--sb-ground); box-shadow: inset -1px 0 0 var(--sb-line);
+  font: 400 12.5px/16px var(--sb-font); color: var(--sb-ink); -webkit-font-smoothing: antialiased;
+}
+.sb *, .sb *::before, .sb *::after { box-sizing: border-box; }
+.sb svg { flex: none; display: block; }
+.sb p { margin: 0; }
+.sb b { font-weight: 500; }
+.sb small { font-size: 12px; line-height: 16px; color: var(--sb-muted); }
+
+/* the three marks: places in line, a chat's kind as a filled glyph, the running chat as a dashed ring */
+.sb-ln { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sb-gl { width: 16px; height: 16px; fill: currentColor; color: var(--sb-muted); }
+.sb-ring { width: 16px; height: 16px; fill: none; stroke: var(--sb-accent); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 2 1.77; }
+
+.sb-head { flex: none; display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 4px 0 8px; }
+.sb-brand { display: flex; align-items: center; gap: 8px; font: 600 15px/1 var(--sb-font); letter-spacing: -0.01em; }
+.sb-mark { flex: none; width: 18px; height: 18px; }
+.sb-h { font: 600 15px/1 var(--sb-font); letter-spacing: -0.01em; }
+.sb-tools { display: flex; align-items: center; gap: 4px; margin-left: auto; color: var(--sb-muted); }
+.sb-tool { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 8px; }
+.sb-kbd { flex: none; font: 400 12px/16px var(--sb-font); color: var(--sb-muted); }
+
+/* a row: a place or a chat */
+.sb-item { flex: none; display: flex; align-items: center; gap: 12px; height: 32px; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
+.sb-item.is-on { background: var(--sb-on); font-weight: 500; }
+/* a long title fades out at the pane's edge rather than ending in an ellipsis */
+.sb-t { flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; -webkit-mask: linear-gradient(90deg, #000 calc(100% - 16px), transparent); mask: linear-gradient(90deg, #000 calc(100% - 16px), transparent); }
+.sb-when { flex: none; font-variant-numeric: tabular-nums; }
+.sb-sec { flex: none; display: flex; align-items: center; justify-content: space-between; height: 32px; padding: 12px 8px 4px; font: 500 12px/16px var(--sb-font); color: var(--sb-muted); }
+.sb-sec .sb-ln { width: 12px; height: 12px; }
+/* the list takes what is left and fades out at its foot when it runs past it */
+.sb-list { flex: 1; min-height: 0; overflow: hidden; -webkit-mask: linear-gradient(#000 calc(100% - 24px), transparent); mask: linear-gradient(#000 calc(100% - 24px), transparent); }
+/* the new chat's slot, opened from 0 to its height by the paint (data-empty runs the other way) */
+.sb-grow { display: grid; grid-template-rows: 0fr; opacity: 0; }
+.sb-grow[data-empty] { grid-template-rows: 1fr; opacity: 1; }
+.sb-grow > div { min-height: 0; overflow: hidden; }
+
+/* two-line rows */
+.sb-item2 { height: 48px; }
+.sb-two { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.sb-l1 { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.sb-l2 { display: flex; align-items: center; gap: 4px; min-width: 0; overflow: hidden; white-space: nowrap; font: 400 12px/16px var(--sb-font); color: var(--sb-muted); }
+.sb-l2 .sb-ring { width: 12px; height: 12px; }
+.sb-step { min-width: 0; overflow: hidden; -webkit-mask: linear-gradient(90deg, #000 calc(100% - 16px), transparent); mask: linear-gradient(90deg, #000 calc(100% - 16px), transparent); }
+.sb-item2.is-on { font-weight: 400; }
+.sb-item2.is-on .sb-l1 { font-weight: 500; }
+.sb-tile { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--sb-canvas); box-shadow: inset 0 0 0 1px var(--sb-line); }
+
+/* fields and buttons on the ground */
+.sb-new, .sb-search { flex: none; display: flex; align-items: center; gap: 8px; height: 32px; margin: 4px 0; padding: 0 8px; border-radius: 8px; background: var(--sb-canvas); box-shadow: inset 0 0 0 1px var(--sb-line); }
+.sb-new { gap: 12px; height: 36px; margin-bottom: 8px; font-weight: 500; }
+.sb-search { color: var(--sb-muted); }
+.sb-search .sb-ln { width: 14px; height: 14px; }
+
+.sb-foot { flex: none; display: flex; align-items: center; gap: 8px; height: 40px; margin-top: 4px; padding: 0 4px 0 8px; }
+.sb-foot .sb-two b { font-size: 12.5px; line-height: 16px; }
+.sb-av { flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--sb-ink); color: var(--sb-canvas); font: 600 12px/1 var(--sb-font); }
+
+/* 1. the invite card above the account */
+.sb-invite { flex: none; display: flex; align-items: center; gap: 12px; margin-top: 8px; padding: 8px 8px 8px 12px; border-radius: 12px; background: var(--sb-canvas); box-shadow: inset 0 0 0 1px var(--sb-line); }
+.sb-invite > .sb-ln:last-child { width: 14px; height: 14px; color: var(--sb-muted); }
+
+/* 4. the labelled rail and the pane beside it */
+.sb-v4 { flex-direction: row; padding: 0; }
+.sb-rail { flex: none; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 64px; padding: 12px 0; }
+.sb-rail .sb-mark { margin-bottom: 12px; }
+.sb-rail .sb-av { margin-top: auto; }
+.sb-rl { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 60px; padding: 8px 0; border-radius: 8px; font: 500 12px/16px var(--sb-font); color: var(--sb-muted); }
+.sb-rl .sb-ln { width: 18px; height: 18px; color: var(--sb-ink); }
+.sb-rl.is-on { background: var(--sb-on); color: var(--sb-ink); }
+.sb-pane { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 8px; background: var(--sb-canvas); box-shadow: inset 1px 0 0 var(--sb-line), inset -1px 0 0 var(--sb-line); }
+.sb-pane .sb-head { padding-left: 8px; }
+.sb-pane .sb-search { margin-bottom: 8px; background: var(--sb-ground); box-shadow: none; }
+.sb-v4 .sb-item { gap: 8px; }
+
+/* 5. project folders: chevron, folder, then the chats on a guide line */
+.sb-fold { gap: 8px; }
+.sb-fold > .sb-ln:first-child { width: 12px; height: 12px; color: var(--sb-muted); }
+.sb-kids { margin-left: 24px; padding-left: 4px; box-shadow: inset 1px 0 0 var(--sb-line); }
+.sb-kids .sb-item { gap: 8px; }
+
+/* 6. counts beside the status headings, the running section's empty line */
+.sb-count { min-width: 20px; padding: 0 6px; border-radius: 9999px; background: var(--sb-on); font: 500 12px/16px var(--sb-font); color: var(--sb-ink); text-align: center; font-variant-numeric: tabular-nums; }
+.sb-empty { padding: 8px; font-size: 12px; line-height: 16px; color: var(--sb-muted); }
+.sb-link { color: var(--sb-ink); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+
+/* 7. each chat's latest output at 16:9 */
+.sb-th { flex: none; display: block; width: 56px; height: 32px; border-radius: 8px; object-fit: cover; box-shadow: 0 0 0 1px var(--sb-line); }
+.sb-th-gl { display: grid; place-items: center; background: var(--sb-canvas); }
+.sb-v7 .sb-l2 .sb-when { margin-left: auto; }
+
+/* 8. the status filter */
+.sb-chips { flex: none; display: flex; gap: 4px; padding: 4px 0; }
+.sb-chip { height: 24px; padding: 0 12px; border-radius: 9999px; box-shadow: inset 0 0 0 1px var(--sb-line); font: 500 12px/24px var(--sb-font); color: var(--sb-muted); }
+.sb-chip.is-on { background: var(--sb-ink); color: var(--sb-canvas); box-shadow: none; }
+
+/* 9. dense rows */
+.sb-v9 .sb-item { height: 28px; gap: 8px; }
+.sb-v9 .sb-list .sb-item { height: 24px; }
+.sb-v9 .sb-gl, .sb-v9 .sb-ring, .sb-v9 .sb-ln { width: 14px; height: 14px; }
+
+/* 10. the inset panel over the ground */
+.sb-panel { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 4px 8px 8px; border-radius: 12px; background: var(--sb-canvas); box-shadow: inset 0 0 0 1px var(--sb-line); }
+.sb-v10 .sb-new { background: var(--sb-ground); box-shadow: none; }
+.sb-v10 .sb-item.is-on { background: var(--sb-ground); }
+.sb-v10 .sb-foot > .sb-tools { color: var(--sb-muted); }
+.sb-v10 .sb-foot .sb-ln { width: 14px; height: 14px; }
